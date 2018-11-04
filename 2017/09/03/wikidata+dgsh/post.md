@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="github.css">
 <script src="rainbow-custom.min.js"></script>
 </head>
-<body>
+<body vocab="http://schema.org/">
 
 <article resource="https://lucaswerkmeister.de/posts/2017/09/03/wikidata+dgsh/" typeof="BlogPosting">
 <header>
