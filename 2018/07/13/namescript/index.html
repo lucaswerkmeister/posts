@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Adding command line support to the namescript user script</title>
+    <link rel="stylesheet" href="/basic.css"/>
+  </head>
+  <body>
+    <article resource="https://lucaswerkmeister.de/posts/2018/07/13/namescript/" typeof="BlogPosting">
+      <header>
+        <h1 property="headline">Adding command line support to the namescript user script</h1>
+        <address><a rel="author" href="https://lucaswerkmeister.de" typeof="Person"><span property="name" lang="de-DE">Lucas Werkmeister</span></a></address>,
+        <time property="datePublished" datetime="2018-07-13">2018-07-13</time>.
+        <link property="publisher" href="https://lucaswerkmeister.de" typeof="Person"/>
+        <meta property="isAccessibleForFree" content="true"/>
+      </header>
+      <p>
+        One of the projects I worked on at <a href="http://www.wikidata.org/entity/Q30087264">Wikimedia Hackathon 2018</a>
+        was adding support for running the <a href="https://www.wikidata.org/wiki/User:Harmonia_Amanda/namescript.js">namescript</a> user script on the command line.
+        Since the general process I used could be useful for other user scripts as well too, I’m going to describe it here.
+      </p>
+      <h2>Situation / requirements</h2>
+      <p>
+        namescript is a Wikidata user script to add labels, descriptions and aliases to Wikidata items for names.
+        It is usually run when the user visits an item page and clicks a link on it,
+        and only updates data that is not already there
+        (for example, an existing description will not be replaced).
+      </p>
+      <p>
+        Recently, Harmonia Amanda, the script’s maintainer,
+        wanted to fix a list of names with the script
+        (initially 2000, then over 10000, by now more than 200000).
+        These names all had incorrect descriptions,
+        so the script should in this case delete all descriptions before adding new ones
+        (alternatively, this could be done with the <a href="https://www.wikidata.org/wiki/User:Ash_Crow/dataDrainer.js">dataDrainer</a> script as well),
+        and ideally it would be possible to do this without visiting all the thousands of items individually.
+      </p>
+      <p>
+        To make it possible to batch-edit items using the script,
+        I decided to turn it into a script that could be run on the command line using Node.js.
+        However, the script is sometimes updated on Wikidata,
+        e. g. to add new translations (either of the user interface or of the descriptions),
+        so I wanted to avoid having a second codebase for the <abbr title="command-line interface">CLI</abbr> version
+        which would slowly fall behind the user script version, or even diverge from it.
+        To avoid this, the script was rewritten in a way such that it supports both modes of operation:
+        in the browser and on the command line.
+      </p>
+      <h2>New source code layout</h2>
+      <p>
+        The main functionality of namescript now lives in <dfn><a href="https://www.wikidata.org/wiki/User:Harmonia_Amanda/namescript-lib.js"><code>namescript-lib.js</code></a></dfn>,
+        which “exports” a single <var>namescript</var> global that the other scripts work with.
+        (We’re ignoring any actual module system here because I’m not sure how to make that work.
+        Just one global seems acceptable to me.)
+        It uses some environment-dependent functions which are not directly implemented in it,
+        but should be filled in at <code>namescript.config</code> (see below).
+      </p>
+      <p>
+        Some large datasets belonging to the script (e. g. translations)
+        are moved to <dfn><a href="https://www.wikidata.org/wiki/User:Harmonia_Amanda/namescript-data.json"><code>namescript-data.json</code></a></dfn>.
+        I initially did this just out of a sense of aesthetics,
+        but it turns out ot be mildly useful as well because MediaWiki has some special support for JSON files,
+        ensuring that they are well-formed and consistently formatted.
+      </p>
+      <p>
+        Two entrypoints then are responsible for loading <code>namescript-lib.js</code> and <code>namescript-data.json</code>,
+        configuring <code>namescript-lib.js</code>,
+        storing the data inside the <var>namescript</var> global,
+        and starting the process.
+        <dfn><a href="https://www.wikidata.org/wiki/User:Harmonia_Amanda/namescript-browser.js"><code>namescript-browser.js</code></a></dfn> does this in a browser environment,
+        loading the files via jQuery and adding a link to the page which, when clicked, will trigger the necessary edits using <a href="https://doc.wikimedia.org/mediawiki-core/master/js/#!/api/mw.Api"><code>mw.Api</code></a>.
+        <dfn><a href="https://github.com/lucaswerkmeister/namescript/blob/master/namescript-cli.js"><code>namescript-cli.js</code></a></dfn> is the Node.js CLI counterpart, running the necessary edits directly using <a href="https://www.npmjs.com/package/mwbot">mwbot</a> according to command line arguments.
+        Both register various functions (how to log messages, how to make API requests, etc.) in <code>namescript.config</code>,
+        where they are used by <code>namescript-lib.js</code>.
+      </p>
+      <p>
+        Finally, a convenience entrypoint <dfn><a href="https://www.wikidata.org/wiki/User:Harmonia_Amanda/namescript.js"><code>namescript.js</code></a></dfn> detects the current environment (browser or Node.js)
+        and loads the correct real entrypoint.
+        You can also load the correct entrypoint directly,
+        but users of the user script were already referencing <code>namescript.js</code>,
+        and it’s also more convenient to use from the CLI.
+      </p>
+      <h2>Further development</h2>
+      <p>
+        As I mentioned, the goal of this reorganization was to have a single code-base power the Wikidata user script and the command line script.
+        This means that the canonical source for the script’s code is still Harmonia Amanda’s user namespace on Wikidata;
+        however, since I don’t have permission to edit that (and I like working with Git anyways),
+        I’m also mirroring the code <a href="https://github.com/lucaswerkmeister/namescript">on GitHub</a>.
+        The process to make any changes usually goes something like this:
+      </p>
+      <ol>
+        <li>Harmonia Amanda contacts me with a feature request, e. g. it would be nice if the command-line version supported reading item IDs from files.</li>
+        <li>I run <dfn><a href="https://github.com/lucaswerkmeister/namescript/blob/master/namescript-download.js"><code>namescript-download.js</code></a></dfn> to update my local copy with any changes made on-wiki (e. g. in <code>namescript-data.json</code>) and commit any outstanding changes.</li>
+        <li>I implement the feature locally, testing it on the sandbox item and checking with Harmonia if the edits made there look correct.</li>
+        <li>I commit my changes, push everything to GitHub, and tell Harmonia that they’re ready.</li>
+        <li>She pulls the changes and tests the script locally as well, e. g. with a large batch edit which motivated the feature request in the first place.</li>
+        <li>If everything is fine, she runs <dfn><a href="https://github.com/lucaswerkmeister/namescript/blob/master/namescript-upload.js"><code>namescript-upload.js</code></a></dfn> to upload all the changes back to Wikidata.</li>
+      </ol>
+      <footer>
+        <div class="license-info">
+          <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+            <img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png"/>
+          </a><br/>
+          This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+        </div>
+      </footer>
+    </article>
+  </body>
+</html>

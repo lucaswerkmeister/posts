@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8"/>
+    <title>A correction on “My first git rebase --exec”</title>
+    <link rel="stylesheet" href="/basic.css"/>
+    <link rel="stylesheet" href="/posts/github.css"/>
+    <script src="/posts/rainbow-custom.min.js"></script>
+  </head>
+  <body>
+    <article resource="https://lucaswerkmeister.de/posts/2018/03/01/correction-git-rebase-exec/" typeof="BlogPosting">
+      <header>
+        <h1 property="headline">A correction on <q>My first <kbd>git rebase --exec</kbd></q></h1>
+        <address><a rel="author" href="https://lucaswerkmeister.de" typeof="Person"><span property="name" lang="de-DE">Lucas Werkmeister</span></a></address>,
+        <time property="datePublished" datetime="2018-03-01">2018-03-01</time>.
+        <link property="publisher" href="https://lucaswerkmeister.de" typeof="Person"/>
+        <meta property="isAccessibleForFree" content="true"/>
+      </header>
+      <p>
+        On <time datetime="2018-02-16">16 February</time>,
+        I published <a rel="about" href="/posts/2018/02/16/git-rebase-exec/" typeof="BlogPosting"><cite property="name">My first git rebase --exec</cite></a>,
+        which contained two <kbd>git rebase --exec</kbd> command with a multi-line script argument.
+        Today I tried to re-run the second one on a different chain of commits,
+        and discovered to my dismay that it doesn’t actually work!
+        I had “cleaned up” the command for the blog post,
+        which included splitting up the long <code>x; y; z && foo</code> command into multiple lines –
+        but it turns out that the script argument cannot span multiple lines.
+        <kbd>git rebase --exec</kbd> really does nothing other than inserting <code>exec</code> lines into a <code>git rebase --interactive</code> script:
+        if the argument contains line breaks, they will be interpreted as additional rebase script commands,
+        and Git will complain that it doesn’t know these commands
+        (it’s expecting <code>pick</code>, <code>squash</code>, etc.).
+      </p>
+      <p>
+        One solution for this is to not split up the script after all:
+        <pre><code>git rebase --exec '<code class="language-shell">cd ../.. && php tests/phpunit/phpunit.php extensions/WikibaseQualityConstraints/tests/phpunit/</code>' master</code></pre>
+        and (brace yourselves)
+        <pre><code>git rebase --exec '<code class="language-shell">composer fix; GIT_PAGER=cat git diff; if ! git diff-index --quiet HEAD --; then read -p "ok? " -r ok; if [ "$ok" = ok ]; then; git commit --all --amend --no-edit; fi; fi</code>' master</code></pre>
+        But while this works in the shell, it’s clearly terrible for a blog post (overfull hbox, badness 10000).
+        Much nicer: write the script to a file and use that for the command.
+      </p>
+      <pre>cat > run-tests <<- 'EOF'
+<code class="language-shell">	#!/bin/sh
+	cd ../.. &&
+	php tests/phpunit/phpunit.php \
+	    extensions/WikibaseQualityConstraints/tests/phpunit/</code>
+EOF
+chmod +x run-tests
+git rebase --exec ./run-tests master</code></pre>
+      <pre><code>cat > fix-commit <<- 'EOF'
+<code class="language-shell">	#!/bin/sh
+	composer fix
+	GIT_PAGER=cat git diff
+	if ! git diff-index --quiet HEAD --; then
+	    read -p "ok? " -r ok
+	    if [ "$ok" = ok ]; then
+	        git commit --all --amend --no-edit
+	    fi
+	fi</code>
+EOF
+chmod +x fix-commit
+git rebase --exec ./fix-commit master</code></pre>
+      <p>
+        This has the added benefit that you can later just run <kbd>git rebase --exec ./fix-commit master</kbd>
+        without having to dig up the whole script from your own blog post 😉
+      </p>
+      <footer>
+        <div class="license-info">
+          <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+            <img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png"/>
+          </a><br/>
+          This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+        </div>
+        <div class="license-info">
+          Syntax highlighting is done by a custom build
+          (included languages: c, generic, json, shell)
+          of <a href="https://craig.is/making/rainbows">Rainbow</a> 2.1.3,
+          using its <a href="https://github.com/ccampbell/rainbow/blob/91e5e497406fcbe6def6b72681e61794ebc53a10/themes/css/github.css"><code>github.css</code></a> style.
+          Rainbow is published under the <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>.
+        </div>
+      </footer>
+    </article>
+  </body>
+</html>

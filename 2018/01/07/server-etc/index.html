@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Publishing my server’s /etc repository</title>
+    <link rel="stylesheet" href="/basic.css"/>
+  </head>
+  <body>
+    <article resource="https://lucaswerkmeister.de/posts/2018/01/07/server-etc/" typeof="BlogPosting">
+      <header>
+        <h1 property="headline">Publishing my server’s <code>/etc</code> repository</h1>
+        <address><a rel="author" href="https://lucaswerkmeister.de" typeof="Person"><span property="name" lang="de-DE">Lucas Werkmeister</span></a></address>,
+        <time property="datePublished" datetime="2018-01-07">2018-01-07</time>.
+        <link property="publisher" href="https://lucaswerkmeister.de" typeof="Person"/>
+        <meta property="isAccessibleForFree" content="true"/>
+      </header>
+      <h2>Motivation</h2>
+      <p>
+        Fairly soon after I started playing with my own private server
+        (I seem to have purchased it in November 2014 and the first Git commit dates to February 2015),
+        I started tracking its configuration in a Git repository.
+        I didn’t add everything in <code>/etc</code> (that is, the <code>.gitignore</code> is just <code>*</code>),
+        but I felt that I wanted to be able to have a history of changes,
+        with the ability to roll them back later if necessary,
+        or at least understand why a setting was in place.
+        I started tracking just the configuration of the email services,
+        but later added other things as well.
+        When I moved servers, I found the repository really useful as well.
+      </p>
+      <p>
+        However, eventually I found myself posting more and more parts of the repository publicly,
+        usually via <a href="https://gist.github.com/lucaswerkmeister">GitHub gists</a>:
+        I had managed to put together this nice bit of configuration,
+        and I wanted others to benefit from it as well!
+        Sometimes I posted just the configuration files,
+        but sometimes I even posted the full Git commit
+        (i. e., in <code>git format-patch</code> format)
+        because I wanted to include the commit message as well.
+        At this point, it seemed only logical to publish the repository.
+        The rest of this post describes how I went about doing that.
+      </p>
+      <h2>Sensitive information</h2>
+      <p>
+        The first step was, of course,
+        to deal with any sensitive information that might lurk in the repository.
+        I had never added any <em>really</em> sensitive information to it
+        (things like SSH server keys, X.509 certificate keys, the <code>shadow</code> file…),
+        but I couldn’t just assume that I could publish everything as-is:
+        for a while, I had used the repository with the full expectation
+        that it would not be published,
+        as evidenced in the commit message of commit <a href="https://github.com/lucaswerkmeister/server-etc/commit/6eb85275be35a9b0aea0dceacfcdb0ca065e5a85" class="commit">6eb85275be</a>:
+      </p>
+      <blockquote cite="https://github.com/lucaswerkmeister/server-etc/commit/6eb85275be35a9b0aea0dceacfcdb0ca065e5a85">
+        This repository will stay private anyways, and I don’t think there’s
+        actually any very sensitive information in the torrc. (The keys etc. are
+        in the data directory under /var.)
+      </blockquote>
+      <p>
+        So, when I had some spare time during 34C3,
+        I cloned the <code>/etc</code> repository to my laptop
+        and went through the entire <kbd>git log --patch</kbd>,
+        looking for anything that I might not want to make public.
+      </p>
+      <aside>
+        <h3>On default configuration and empty <code>/etc</code></h3>
+        <p>
+          Going through the log took far longer than it should have
+          because Postfix, Dovecot and Apache all place enormous amounts of default configuration in <code>/etc</code>
+          which I had added to the repository.
+          This just reminded me of how much I prefer the systemd approach to configuration,
+          so I wanted to elaborate a bit on that.
+          (Though I’m sure systemd didn’t invent it,
+          that is where I was introduced to it,
+          and I’m not aware of many other programs
+          which are configured this way.)
+        </p>
+        <p>
+          With systemd-style configuration,
+          <code>/etc</code> does not contain any default configuration files:
+          those live in <code>/usr/lib</code>,
+          and if they’re good enough for you,
+          then you don’t need anything in <code>/etc</code>.
+          Otherwise you can either amend or entirely overwrite configuration files in <code>/etc</code> –
+          for instance, the file
+          <code>/etc/systemd/system/foo.service</code>
+          completely replaces the file
+          <code>/usr/lib/systemd/system/foo.service</code>,
+          whereas <code>/etc/systemd/system/foo.service.d/bar.conf</code>
+          merely augments it with extra directives.
+        </p>
+        <p>
+          If Apache followed this convention, for instance,
+          it might be configured out of the box
+          to serve <code>/srv/http/</code>
+          (or, closer to the Debian convention, <code>/var/www/</code>)
+          over HTTP on localhost.
+          For a basic version of my website,
+          I would only need to configure the server name,
+          the interface to bind to,
+          and the location of my certificate.
+          (For a more complete version,
+          I would also need to enable PHP,
+          enable indexes on a few directories,
+          specify some redirects,
+          etc.)
+        </p>
+        <p>
+          There is <em>no reason</em> that my <code>/etc</code> needs to be spammed with crap like
+          <ul>
+            <li>which <abbr title="Multipurpose Internet Mail Extensions">MIME</abbr> types <abbr title="Microsoft Internet Explorer">MSIE</abbr> 6 can handle in DEFLATEd form,</li>
+            <li>that <code>.es</code> means Spanish and not ECMAScript,</li>
+            <li>which bytes Just System Word Processor Ichitaro files start with,</li>
+            <li>where the <code>.so</code> file for module which provides Basic Authentication via <abbr title="Lightweight Directory Access Protocol">LDAP</abbr> is located,</li>
+            <li>that <abbr title="Revision Control System">RCS</abbr> files should not be listed in a directory index,</li>
+            <li>that RealPlayer 4.0 does not support HTTP/1.1,</li>
+          </ul>
+          or any of a thousand other things which are now all in my <code>/etc</code> repository.
+          (Just to be clear: I’ve picked a lot of obsure or legacy stuff here,
+          but I don’t mind that it’s obscure or legacy per se –
+          I just don’t want it in <code>/etc</code>, which is supposed to be server-specific.)
+        </p>
+        <p>
+          Of course, the big problem is not that these files bloat the repository,
+          or that it took longer to review the history because of it.
+          But I also have to find my way through all of this cruft
+          any time I want to change the config,
+          or even just debug it to understand where something might be going wrong.
+          And where it gets really ugly is during upgrades,
+          especially full distribution upgrades –
+          when I need to merge all of the changes that upstream made to the files
+          (including indentation changes, hooray!)
+          with my own changes.
+          If the new version of the package supports a new option that should be on by default,
+          then just make that the built-in default,
+          or add the configuration in <code>/usr/lib</code> where the package manager’s stuff belongs,
+          but don’t create a merge conflict in my configuration directory
+          just because we both appended to the end of the config file!
+        </p>
+        <p>
+          This aside is already getting too long,
+          and I’m not sure where I was going with this anyways, but –
+          if you’re working on a program,
+          please take this to heart.
+          Load your configuration from <code>/etc</code>,
+          falling back to <code>/usr/lib</code>,
+          and place all the default configuration in the latter directory.
+          Support drop-in files,
+          including in <code>/usr/lib</code>
+          so that other packages can also augment the configuration!
+          (Also, for ease of debugging,
+          provide ways for the system administrator
+          to see the final config that your program understands.
+          systemd does this with <kbd>systemctl show</kbd> and <kbd>systemctl cat</kbd>,
+          Apache with <kbd>apachectl -S</kbd> and <kbd>apachectl -t</kbd>.)
+        </p>
+      </aside>
+      <p>
+        In the end, I didn’t find any smoking guns,
+        but I did decide that I wanted to redact the <code>postfix/virtual</code> file –
+        I don’t want a full list of all valid email addresses on my domain to be public –
+        and I also needed to rephrase one commit message
+        which mentioned the not-yet-public name of a certain project.
+        (I also took the opportunity to fix innocent typos in two other commit messages.)
+      </p>
+      <p>
+        To redact the <code>postfix/virtual</code> file
+        while still keeping it under version control,
+        I decided to use <a href="https://github.com/AGWA/git-crypt">git-crypt</a>,
+        which transparently encrypts files in a Git repository
+        using Git’s <i>filter</i> mechanism
+        (see <a href="https://www.git-scm.com/docs/gitattributes"><b>gitattributes</b>(5)</a>).
+      </p>
+      <h2>Rewriting history</h2>
+      <p>
+        As I was going to rewrite history,
+        I also wanted to update all commit hashes I had used in commit messages,
+        so I found all commits whose messages might have mentioned another commit
+        with <kbd>git log --grep '[0-9a-f]\{7,\}'</kbd>
+        and added those that weren’t false positives
+        to the text file where I had already collected the commits I needed to redact for other reasons.
+      </p>
+      <p>
+        Then, in a temporary clone of the repository
+        (<code>/etc</code> needed to remain functional, of course!),
+        I started the big rebase:
+        <kbd>git rebase --interactive --root</kbd>.
+        I marked the root commit (the one that added <code>postfix/virtual</code>) for <kbd>edit</kbd>ing,
+        and all the others where the commit message needed rephrasing to <kbd>reword</kbd>.
+      </p>
+      <p>
+        When the first commit was reached,
+        I added the following <code>postfix/.gitattributes</code> file to the commit:
+        <pre>virtual filter=git-crypt diff=git-crypt
+virtual-mailbox-users filter=git-crypt diff=git-crypt</pre>
+        I amended the commit and then checked with
+        <kbd>git cat-file -p @:postfix/virtual | less</kbd>
+        that the content recorded in Git was really encrypted.
+        Then I continued the rebase.
+      </p>
+      <p>
+        Unfortunately, one consequence of the encryption
+        is that patches cannot be applied,
+        so the rebase was interrupted on every commit
+        that touched the encrypted files.
+        Fortunately, this wasn’t too hard to resolve:
+        I could just restore the unencrypted file from the original commit
+        (when Git said that it <samp>could not apply <span class="commit">641464f</span>... Postfix: add lots of virtual addresses</samp>,
+        I ran <kbd>git cat-file -p <samp class="commit">641464f</samp>:postfix/virtual >| postfix/virtual</kbd>),
+        add it to the index,
+        and it would be encrypted through the regular filter process
+        once <kbd>git rebase --continue</kbd> amended the commit.
+      </p>
+      <p>
+        For the other commits,
+        I just found the new commit hash in the <kbd>git log</kbd>
+        and replaced the hash in the commit message.
+      </p>
+      <p>
+        At the end, I added a <code>README.md</code>
+        (hidden in the <code>.github</code> directory),
+        uploaded it to GitHub,
+        and done!
+        <a href="https://github.com/lucaswerkmeister/server-etc/">And here it is.</a>
+      </p>
+      <footer>
+        <div class="license-info">
+          <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+            <img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png"/>
+          </a><br/>
+          This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+        </div>
+      </footer>
+    </article>
+  </body>
+</html>

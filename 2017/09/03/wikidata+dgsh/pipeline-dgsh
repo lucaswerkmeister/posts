@@ -1,0 +1,42 @@
+function countDescriptions {
+    jq -r '
+      .descriptions |
+      .[] |
+      (.language + "\t" + .value)
+    ' | awk '
+      {
+        a[$0]++
+      }
+      END {
+        for (k in a)
+          print a[k] "\036" k
+      }
+    '
+}
+
+function summarizeDescriptions {
+    awk -F$'\036' '
+      {
+        a[$2] += $1
+      }
+      END {
+          for (k in a)
+            if (a[k] >= 1000)
+              print a[k] "\t" k
+      }
+    ' |
+    sort -nr
+}
+
+file=~/Downloads/latest-all-20170718/latest-100000-20170718.json
+
+pv -- "$file" |
+    ja2l |
+    {{
+        countDescriptions &
+        countDescriptions &
+        countDescriptions &
+        countDescriptions &
+    }} |
+    cat |
+    summarizeDescriptions > common-descriptions-dgsh

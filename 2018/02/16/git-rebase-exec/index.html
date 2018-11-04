@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8"/>
+    <title>My first git rebase --exec</title>
+    <link rel="stylesheet" href="/basic.css"/>
+    <link rel="stylesheet" href="/posts/github.css"/>
+    <script src="/posts/rainbow-custom.min.js"></script>
+  </head>
+  <body>
+    <article resource="https://lucaswerkmeister.de/posts/2018/02/16/git-rebase-exec/" typeof="BlogPosting">
+      <header>
+        <h1 property="headline">My first <kbd>git rebase --exec</kbd></h1>
+        <address><a rel="author" href="https://lucaswerkmeister.de" typeof="Person"><span property="name" lang="de-DE">Lucas Werkmeister</span></a></address>,
+        <time property="datePublished" datetime="2018-02-16">2018-02-16</time>.
+        <link property="publisher" href="https://lucaswerkmeister.de" typeof="Person"/>
+        <meta property="isAccessibleForFree" content="true"/>
+      </header>
+      <aside>
+        Note: please also see the <a href="/posts/2018/03/01/correction-git-rebase-exec/">correction</a> for this post!
+      </aside>
+      <p>
+        Today at work, I was working on two long-ish chains of patches.
+        They’re split up into several commits,
+        but those commits were frequently moved around and reorganized while I was working on them.
+        I usually only run the tests on the last commit in a chain,
+        and rely on CI to tell me if any of the intermediate commits is bad
+        (for instance, one commit might rely on something added in a later commit).
+        However, this time, I wanted to try running the tests locally,
+        and catch any errors before pushing to Gerrit.
+      </p>
+      <p>
+        Of course, I could have done that by manually checking out each commit in the chain.
+        Or I could have done a <kbd>git rebase --interactive</kbd>,
+        replaced each <samp>pick</samp> with <kbd>edit</kbd>,
+        and ran the tests each time Git dropped me back into the shell
+        before running <kbd>git rebase --continue</kbd>.
+        However, I decided to try out an option for <kbd>git rebase</kbd>
+        which I had found in the manual a while ago: <strong><kbd>--exec</kbd></strong>.
+        Its use is fairly simple:
+      </p>
+      <pre><code>git rebase --exec '<code class="language-shell">
+    # this doesn’t work, please see the correction post!
+    cd ../.. &&
+    php tests/phpunit/phpunit.php \
+        extensions/WikibaseQualityConstraints/tests/phpunit/
+</code>' master</code></pre>
+      <p>
+        The argument to <kbd>--exec</kbd> is a shell command
+        (<code>/bin/sh</code> – warning: not necessarily Bash),
+        which is executed after each commit.
+        If the command exits nonzero, the rebase pauses and returns to your shell,
+        where you can <kbd>--continue</kbd>, <kbd>--abort</kbd> etc. it like in a normal interactive rebase.
+        In my case, the tests failed on one commit
+        (I had written two test cases which depended on a later commit),
+        so I added two lines to temporarily skip those tests,
+        amended the commit to add those two lines
+        (and briefly mention them in the commit message),
+        edited the rebase’s to-do list (<kbd>git rebase --edit-todo</kbd>) to <kbd>edit</kbd> the later commit,
+        and <kbd>--continue</kbd>d the rebase.
+        When the later commit was reached,
+        I amended it to remove the skipping lines again
+        and then finished the rebase.
+      </p>
+      <p>
+        And that’s the story of my <em>first</em> <kbd>git rebase --exec</kbd>…
+        but I said I was working on <em>two</em> chains, and as it happens,
+        I found another use for <kbd>git rebase --exec</kbd> in the second chain.
+        This time, I was less worried about test failures between the commits
+        (they were more clearly separated – several “prepare for change” commits and then one “do the change” commit),
+        but more worried about our automatic code style sniffer.
+        It has a companion program to automatically fix most code style violations,
+        but on a chain of commits it can still be annoying to find the right commit which needs to be fixed.
+        So I used the following command:
+      </p>
+      <pre><code>git rebase --exec '<code class="language-shell">
+    # this doesn’t work, please see the correction post!
+    composer fix
+    GIT_PAGER=cat git diff
+    if ! git diff-index --quiet HEAD --; then
+        read -p "ok? " -r ok
+        if [ "$ok" = ok ]; then
+            git commit --all --amend --no-edit
+        fi
+    fi
+</code>' master</code></pre>
+      <p>
+        This is slightly more involved than the first command above
+        (the <code>diff-index</code> part is copied from <a href="https://stackoverflow.com/a/3879077/1420237">this StackOverflow answer</a>,
+        and I’ll admit that the command wasn’t as nicely formatted
+        when I hacked it together in my shell),
+        but what it does is fairly simple –
+        run <code>composer fix</code> after each commit (fix code style violations),
+        show me the diff,
+        and if the diff is non-empty, commit the changes
+        (after a confirmation prompt, just in case something went wrong).
+        This took a while to run in the background
+        (the fixer is annoyingly slow),
+        but apart from that it worked flawlessly.
+        After that, the chain was ready to push.
+      </p>
+      <p>
+        And that’s the story of my first two <kbd>git rebase --exec</kbd>s!
+        I like this option – I think I’ll find more uses for it in the future.
+        And perhaps you’ll find it useful as well!
+      </p>
+      <p>
+        Oh, and if you actually want to see all these commits I’m talking about
+        (not that they’re very interesting) –
+        the first chain starts with <a href="https://gerrit.wikimedia.org/r/#/c/411235/1/">change I95e2235eef</a>,
+        and the second one with <a href="https://gerrit.wikimedia.org/r/#/c/411303/1/">change I64dc0a3200</a>.
+        One of the many nice things about working on free software is being able to post those links without any problems ☺
+      </p>
+      <footer>
+        <div class="license-info">
+          <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+            <img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png"/>
+          </a><br/>
+          This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+        </div>
+        <div class="license-info">
+          Syntax highlighting is done by a custom build
+          (included languages: c, generic, json, shell)
+          of <a href="https://craig.is/making/rainbows">Rainbow</a> 2.1.3,
+          using its <a href="https://github.com/ccampbell/rainbow/blob/91e5e497406fcbe6def6b72681e61794ebc53a10/themes/css/github.css"><code>github.css</code></a> style.
+          Rainbow is published under the <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>.
+        </div>
+      </footer>
+    </article>
+  </body>
+</html>

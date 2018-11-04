@@ -1,0 +1,19 @@
+pv latest-all-20170718.json |
+    ja2l |
+    jq -r '
+      .descriptions |
+      .[] |
+      (.language + "\t" + .value)
+    ' |
+    awk '
+      {
+        a[$0]++
+      }
+      END {
+        for (k in a)
+          if (a[k] >= 1000)
+            print a[k] "\t" k
+      }
+    ' |
+    sort -nr \
+    > common-descriptions

@@ -1,0 +1,11 @@
+digraph {
+	n0 [label="pv"];
+	n0 -> n1;
+	n1 [label="ja2l"];
+	n1 -> n2;
+	n2 [label="jq"];
+	n2 -> n3;
+	n3 [label="awk"];
+	n3 -> n4;
+	n4 [label="sort -nr"];
+}

@@ -1,0 +1,17 @@
+/* colors taken from matplotlib, Pastel1 https://github.com/matplotlib/matplotlib/blob/v2.2.2/lib/matplotlib/_cm.py#L899-L901 */
+
+.PV {
+    background: rgb(98.431372549019602%, 70.588235294117652%, 68.235294117647061%);
+}
+
+.VG {
+    background: rgb(70.196078431372544%, 80.392156862745101%, 89.01960784313725% );
+}
+
+.LV {
+    background: rgb(80.0%, 92.156862745098034%, 77.254901960784317%);
+}
+
+.internal {
+    opacity: 0.8;
+}

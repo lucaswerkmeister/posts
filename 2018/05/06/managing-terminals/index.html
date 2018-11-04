@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8"/>
+    <title>How I manage my terminals</title>
+    <link rel="stylesheet" href="/basic.css"/>
+    <link rel="stylesheet" href="/posts/github.css"/>
+    <script src="/posts/rainbow-custom.min.js"></script>
+  </head>
+  <body>
+    <article resource="https://lucaswerkmeister.de/posts/2018/05/06/managing-terminals/" typeof="BlogPosting">
+      <header>
+        <h1 property="headline">How I manage my terminals</h1>
+        <address><a rel="author" href="https://lucaswerkmeister.de" typeof="Person"><span property="name" lang="de-DE">Lucas Werkmeister</span></a></address>,
+        <time property="datePublished" datetime="2018-05-06">2018-05-06</time>.
+        <link property="publisher" href="https://lucaswerkmeister.de" typeof="Person"/>
+        <meta property="isAccessibleForFree" content="true"/>
+      </header>
+      <p>
+        Inspired by Diomedis Spinellis’ <a href="https://www.spinellis.gr/blog/20170810/index.html">not so recent blog post</a>,
+        I wanted to share how I (currently) manage my terminals.
+        The key component is <code>tmux</code>,
+        plus a useful little function of my own devising which you might find useful as well.
+        (Source code is at the bottom.)
+      </p>
+      <p>
+        My first boost in terminal use effectiveness came when I started to use <code>tmux</code> (terminal multiplexer) for all my local terminals, with no exceptions:
+        previously I’d sometimes fire up <code>tmux</code> when I thought that I was embarking on some task where I would want a terminal multiplexer,
+        but more often than not I found myself knee deep into a task already by the time I’d realize that it would be great to be in a <code>tmux</code> session right now –
+        so one day, I configured GNOME Terminal to use <code>tmux</code> as command instead of running my shell directly,
+        and I haven’t looked back since.
+        Soon after, I stopped using GNOME Terminal’s native tabs in favor of <code>tmux</code> windows.
+      </p>
+      <p>
+        The second, much more significant boost came from the realization
+        that the default directory for new windows and panes in a <code>tmux</code> session isn’t necessarily your home directory –
+        it’s a property of each session,
+        by default the working directory of the initial process creating the session (for new sessions launched by GNOME Terminal, <var>$HOME</var>)
+        but configurable with <kbd>tmux new-session -c DIRECTORY</kbd>.
+        And if I’m working in some Git repository,
+        setting the start directory of my <code>tmux</code> session to that repository makes creating new windows and panes significantly less painful,
+        since they immediately start out in the right directory.
+      </p>
+      <p>
+        To facilitate this, I created a shell function which could launch a new <code>tmux</code> session
+        in a certain directory in a new terminal window, to be used like this:
+      </p>
+        <pre><code class="language-shell">lterm formatter ~/git/ceylon/ceylon.formatter</code></pre>
+      <p>
+        And I quickly realized that I usually needed the same directories fairly often,
+        so I added the capability to read the location from symlinks in <code>~/.config/lterm/</code>
+        (respecting XDG variables and falling back to <code>/etc</code> and all that, of course):
+      </p>
+      <pre><code class="language-shell">lterm formatter
+lterm ceylon
+lterm systemd
+lterm mw # MediaWiki
+lterm wbqc # Wikibase Quality constraints</code></pre>
+      <p>
+        With this setup, it’s extremely painless to just launch a quick auxiliary shell for a command
+        when your main shell is currently occupied by a <code>less</code>, <code>emacs</code>, etc.,
+        since any new window in the session will start out in the right directory automatically.
+      </p>
+      <p>
+        Eventually, however, I started using so many terminal windows that I felt myself almost drowning in them,
+        and just navigating to the right one could be a nuisance.
+        GNOME’s <kbd><kbd>Alt</kbd>+<kbd>Key above Tab</kbd></kbd>
+        (e. g. <kbd><kbd>Alt</kbd>+<kbd>`</kbd></kbd> on US keyboards or <kbd><kbd>Alt</kbd>+<kbd>^</kbd></kbd> on German keyboards)
+        shortcut helped with this:
+        it cycles between all the windows of the same application
+        (while <kbd><kbd>Alt</kbd>+<kbd>Tab</kbd></kbd> cycles between different applications),
+        so I could use that shortcut to switch between the most recent terminals,
+        no matter how many other windows (Firefox, IDE, etc.) were also opened in between.
+        However, I eventually added another feature to <code>lterm</code> to solve this problem properly:
+      </p>
+      <p>
+        If a certain <code>tmux</code> session already existed, <code>lterm</code> would fail to create it –
+        but what if instead it switched to that window?
+        Fortunately, my <code>tmux</code> was already set up to set the GNOME Terminal window title according to the <code>tmux</code> session name inside it
+        (e. g. <samp>systemd:1:bash - "hostname"</samp> – session name, window number, window name (usually process), and hostname),
+        so I could just activate the window with a title matching the expected session name from <code>lterm</code> and be set.
+        I implemented that using <code>xdotool</code>
+        (and then later had to reimplement it using GNOME Shell’s dbus / JavaScript bindings due to <code>xdotool</code> not working in Wayland sessions),
+        and now I could bring up any terminal using <kbd>lterm foo</kbd>, regardless of whether that terminal had already been running or not.
+      </p>
+      <p>
+        As a minor bonus, <code>lterm</code> exits if it’s the first command in an interactive shell –
+        so if you start a new terminal window using <kbd><kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>T</kbd></kbd> only to launch a “real” terminal with <code>lterm</code>,
+        then the temporary terminal window will quietly close itself behind your back automatically,
+        since you don’t need it anymore.
+        Another bonus: <code>lterm</code> has automatic completion for all pre-configured locations.
+      </p>
+      <p>
+        If you want this functionality for yourself, feel free to copy the source code from my GitHub home repository:
+        the <a href="https://github.com/lucaswerkmeister/home/blob/master/.bashrc.d/lterm">lterm</a> function itself
+        and the underlying <a href="https://github.com/lucaswerkmeister/home/blob/master/.bashrc.d/term">term</a> function it uses
+        (which you might want to tweak if you prefer a different terminal emulator, like Konsole ☺).
+        There is also a similar <a href="https://github.com/lucaswerkmeister/home/blob/master/.bashrc.d/rterm">rterm</a> function for remote terminals.
+        Place those functions somewhere in your shell initialization files,
+        and make sure the <code>set-titles</code> option is enabled in your <a href="https://github.com/lucaswerkmeister/home/blob/5d3f9be03afd27c46cf24c6dad1630e084a7f84e/.tmux.conf#L37">tmux.conf</a>,
+        and everything should work!
+      </p>
+      <footer>
+        <div class="license-info">
+          <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+            <img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png"/>
+          </a><br/>
+          This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+        </div>
+        <div class="license-info">
+          Syntax highlighting is done by a custom build
+          (included languages: c, generic, json, shell)
+          of <a href="https://craig.is/making/rainbows">Rainbow</a> 2.1.3,
+          using its <a href="https://github.com/ccampbell/rainbow/blob/91e5e497406fcbe6def6b72681e61794ebc53a10/themes/css/github.css"><code>github.css</code></a> style.
+          Rainbow is published under the <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>.
+        </div>
+      </footer>
+    </article>
+  </body>
+</html>

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8"/>
+<title>Processing Wikidata JSON dumps in parallel on the command line with dgsh</title>
+<link rel="stylesheet" href="/basic.css"/>
+<link rel="stylesheet" href="post.css"/>
+<link rel="stylesheet" href="/posts/github.css">
+<script src="/posts/rainbow-custom.min.js"></script>
+</head>
+<body>
+<article resource="https://lucaswerkmeister.de/posts/2017/09/03/wikidata+dgsh/" typeof="BlogPosting">
+<header>
+<h1 property="headline">Processing Wikidata JSON dumps in parallel on the command line with dgsh</h1>
+<address><a rel="author" href="https://lucaswerkmeister.de" typeof="Person"><span property="name" lang="de-DE">Lucas Werkmeister</span></a></address>,
+<time property="datePublished" datetime="2017-09-03">2017-09-03</time>.
+<link property="publisher" href="https://lucaswerkmeister.de" typeof="Person"/>
+<meta property="isAccessibleForFree" content="true"/>
+</header>
+<h2>Motivation</h2>
+<p>A few weeks ago, I <a href="https://twitter.com/WikidataFacts/status/888785983663112192">wondered</a> what the most common descriptions on Wikidata were.
+I usually use the Wikidata Query Service to answer any questions about Wikidata I have,
+but this time that didn’t work,
+since there are too many descriptions on Wikidata to check
+without running into the query service’s timeout.
+At first, I was left at guessing a description
+and checking how many times it was used
+(counting the occurrences of a single description <em>is</em> possible in the query service).
+However, after a quick chat on IRC,
+<a href="https://www.wikidata.org/wiki/User:Nikki">Nikki</a> produced a script that went through a recent JSON dump of Wikidata
+and collected the most common descriptions –
+first, for just a handful of languages (<a href="https://pastebin.com/raw/0mBBSwDE">pastebin</a>),
+then for some more (<a href="https://pastebin.com/raw/DhR3358T">pastebin</a>).</p>
+<h2>First version</h2>
+<p>I liked the idea of going through the dump to collect these statistics,
+and I wanted to see if it was feasible to do this from a shell script,
+so I put together a quick pipeline and let it run on my laptop.
+I posted the result <a href="https://gist.github.com/lucaswerkmeister/a5b02cda1ce9ea14874dd2828ce57e79">in a GitHub Gist</a>,
+and the pipeline I used was:</p>
+<pre><code class="language-shell">time pv latest-all-20170718.json |
+    head -n-1 |
+    tail -n+2 |
+    sed 's/,$//' |
+    jq -r '
+      .descriptions |
+      .[] |
+      (.language + &quot;\t&quot; + .value)
+    ' |
+    awk '
+      {
+        a[$0]++
+      }
+      END {
+        for (k in a)
+          if (a[k] &gt;= 1000)
+            print a[k] &quot;\t&quot; k
+      }
+    ' |
+    sort -nr \
+    &gt; common-descriptions
+</code></pre>
+<p>Here’s the breakdown (feel free to skip any part you feel you already understand ☺):</p>
+<ul>
+<li>
+<p><code>time</code>: I wanted to know how much wall‑clock time and CPU time the entire pipeline consumed.
+(<code>pv</code> prints wall‑clock time, but not CPU time.)</p>
+</li>
+<li>
+<p><code>pv latest-all-20170718.json</code>: <code>latest-all-20170718.json</code> was the dump I had downloaded and extracted.
+<code>pv</code> is a tool that is functionally equivalent to <code>cat</code>
+(writes the file to standard output),
+but also prints a progress bar with estimated time left to standard error,
+based on how much of the file(s) was already written to standard output.
+(Since the pipe buffer is fairly small,
+the amount of data written by <code>pv</code> corresponds fairly well
+to the amount of data consumed by the rest of the pipeline.)</p>
+</li>
+<li>
+<p><code>head -n-1</code>: Remove the last line.</p>
+</li>
+<li>
+<p><code>tail -n+2</code>: Remove the first line.</p>
+</li>
+<li>
+<p><code>sed 's/,$//'</code>: Remove a trailing comma from each line.</p>
+<p>Together, the last three steps transform the JSON dump from a single array</p>
+<pre><code class="language-json">[
+{...},
+{...},
+{...}
+]
+</code></pre>
+<p>into a stream</p>
+<pre><code class="language-json">{...}
+{...}
+{...}
+</code></pre>
+<p>which is more suitable for ingestion with <code>jq</code>.</p>
+</li>
+<li>
+<p><code>jq</code>: <a href="https://github.com/stedolan/jq">jq</a> is an amazing tool for working with JSON on the command line.
+Here’s what it does in this pipeline:</p>
+<ul>
+<li><code>-r</code>: <b>R</b>aw output.
+Our output is strings, so this means that the string isn’t printed quoted or escaped.</li>
+<li><code>.descriptions</code>: This selects the <code>descriptions</code> member of each value in the input stream.</li>
+<li><code>.[]</code>: This flattens an array (in this case, of descriptions) into a stream.</li>
+<li><code>(.language + &quot;\t&quot; + .value)</code>: This prints the language and value of each description,
+separated by a tab.</li>
+</ul>
+<p>Together, this prints a stream of all descriptions with language code to standard output.</p>
+</li>
+<li>
+<p><code>awk</code>: A classic UNIX tool for processing data line by line. Breakdown:</p>
+<ul>
+<li><code>{ a[$0]++ }</code>: This block runs for each input line.
+<code>$0</code> refers to the entire input line,
+and <code>a[$0]++</code> takes that as the key into the <code>a</code> associative array
+and increments the corresponding value.
+In other words, <code>a</code> is an associative array counting how often each input line occurs.</li>
+<li><code>END { ... }</code>: This block runs after standard input is exhausted, just before the program ends.</li>
+<li><code>for (k in a)</code>: Runs the following command for each key in the <code>a</code> array, where <code>k</code> holds the key.</li>
+<li><code>if (a[k] &gt;= 1000)</code>: <code>a[k]</code> is the count of how often the line <code>k</code> appeared in the input.
+Runs the following command if that count is greater than or equal to one thousand.
+(This is where we filter for only the most common descriptions.)</li>
+<li><code>print a[k] &quot;\t&quot; k</code>: Print the count and the input
+(which is a language code and a description),
+separated by a tab.
+The three arguments to <code>print</code> are implicitly concatenated without any separator characters.</li>
+</ul>
+</li>
+<li>
+<p><code>sort -nr</code>: Sort <b>n</b>umerically in <b>r</b>everse order.
+The input begins with the count for each description,
+so this prints the most common descriptions first.</p>
+</li>
+<li>
+<p><code>&gt; common-descriptions</code>: Store the entire result in the <code>common-descriptions</code> file.</p>
+</li>
+</ul>
+<h2>Complaints</h2>
+<p>This pipeline works, but I wasn’t entirely happy with it, for two reasons:</p>
+<ol>
+<li>We’re using three different commands just to convert the input array to a more convenient form,
+none of which is very efficient for this task,
+and one of which does regex processing!</li>
+<li>The entire pipeline is CPU‑bound by <code>jq</code>,
+and that part is not parallelized,
+so we’re only using one CPU core.</li>
+</ol>
+<h2>Enter ja2l</h2>
+<p>To fix the first problem, I wrote a tiny C program to do the task of the three commands instead:</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main() {
+  char *line = NULL;
+  size_t len = 0;
+  ssize_t read;
+
+  while ((read = getline(&amp;line, &amp;len, stdin)) != -1) {
+    line[read-2] = 0;
+    printf(&quot;%s\n&quot;, line);
+  }
+
+  free(line);
+  exit(EXIT_SUCCESS);
+}
+</code></pre>
+<p>It’s simple, but it does its job and is much more efficient than the three‑command pipeline.
+I eventually cleaned it up a bit
+(bugfixes, add command line options, error handling, license, …)
+and published it as <a href="https://github.com/lucaswerkmeister/ja2l">ja2l</a> (<b>J</b>SON <b>a</b>rray <b>to</b> <b>l</b>ines).</p>
+<h2>Adding dgsh support</h2>
+<p>To fix the second problem, I had the idea of using <a href="https://www.spinellis.gr/sw/dgsh/">dgsh</a> to parallelize the processing.
+dgsh stands for “<b>d</b>irected <b>g</b>raph <b>sh</b>ell”
+and is an alternative shell
+(technically, a fork of <a href="https://www.gnu.org/software/bash/">bash</a>)
+that extends the notion of pipelines to be directed acyclic graphs instead of just a single string.
+Each command can have any number of inputs and outputs,
+and when a pipeline is started,
+the programs negotiate the input/output file descriptors between them
+before starting to execute.
+This means that we can <em>scatter</em> the JSON lines of the Wikidata dump across several <code>jq</code> processes
+and then <em>gather</em> the results of those processes
+before summarizing the description counts and printing the most common descriptions.</p>
+<p>That is, we transform the traditional pipeline shown in <a href="#pipeline-bash">figure one</a>
+into the parallelized version shown in <a href="#pipeline-dgsh">figure two</a>.</p>
+<figure id="pipeline-bash">
+<img src="pipeline-bash.svg"/>
+<figcaption>
+<i>Figure one:</i>
+The traditional shell pipeline.
+</figcaption>
+</figure>
+<figure id="pipeline-dgsh">
+<img src="pipeline-dgsh.svg"/>
+<figcaption>
+<i>Figure two:</i>
+The parallelized pipeline.
+<code>dgsh-tee</code> is another name for <code>cat</code>,
+which simply concatenates the four output streams into one;
+the extra <code>awk</code> is needed to sum up the partial counts of each <code>jq | awk</code> sub‑pipeline.
+</figcaption>
+</figure>
+<p>The version of <code>tee</code> included with dgsh
+can do this scattering with the <code>-s</code> option,
+but I wanted to add support for this to <code>ja2l</code> as well:
+partly because it’s ever so slightly more efficient
+(<code>ja2l</code> already knows where the line breaks are
+because it has to remove trailing commas,
+<code>tee</code> has to look for them in the input stream),
+partly just to play with <code>dgsh</code>.
+It turns out that the extra code in <code>ja2l</code> is fairly small,
+and building with dgsh support is as simple
+as adding a preprocessor flag and a linker library.</p>
+<h2>Result</h2>
+<p>I am very happy to report that on a system with two physical processor cores (hyperthreaded),
+using <code>ja2l</code> and <code>dgsh</code> reports in a 2.16× speedup (wall‑clock time) over the original script,
+with a <code>pv</code>‑reported throughput of 69.1 MiB/s instead of 31.2 MiB/s (2.21×).
+I tested this with the following polyglot script:</p>
+<pre><code class="language-shell">function countDescriptions {
+    jq -r '
+      .descriptions |
+      .[] |
+      (.language + &quot;\t&quot; + .value)
+    ' | awk '
+      {
+        a[$0]++
+      }
+      END {
+        for (k in a)
+          print a[k] &quot;\036&quot; k
+      }
+    '
+}
+
+function summarizeDescriptions {
+    awk -F$'\036' '
+      {
+        a[$2] += $1
+      }
+      END {
+          for (k in a)
+            if (a[k] &gt;= 1000)
+              print a[k] &quot;\t&quot; k
+      }
+    ' |
+    sort -nr
+}
+
+file=~/Downloads/latest-all-20170718/latest-100000-20170718.json
+
+if {{ : ; }} ; then dgsh=true; else dgsh=false; fi 2&gt;/dev/null
+
+time if $dgsh; then
+    pv -- &quot;$file&quot; |
+        ./ja2l |
+        {{
+            countDescriptions &amp;
+            countDescriptions &amp;
+            countDescriptions &amp;
+            countDescriptions &amp;
+        }} |
+        cat |
+        summarizeDescriptions &gt; common-descriptions-dgsh
+else
+    pv -- &quot;$file&quot; |
+        head -n-1 |
+        tail -n+2 |
+        sed 's/,$//' |
+        countDescriptions |
+        summarizeDescriptions &gt; common-descriptions-bash
+fi
+</code></pre>
+<p>The script tests if it’s running under dgsh or bash,
+and chooses the parallel or non-parallel pipeline to run accordingly.
+It should be possible to write similar scripts for many other data processing tasks across a Wikidata dump
+that can be expressed in <code>jq</code>, <code>awk</code> and other Unix command line tools,
+and speed them up similarly.</p>
+<footer>
+<div class="license-info">
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+<img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png"/>
+</a><br/>
+This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+</div>
+<div class="license-info">
+Syntax highlighting is done by a custom build
+(included languages: c, generic, json, shell)
+of <a href="https://craig.is/making/rainbows">Rainbow</a> 2.1.3,
+using its <a href="https://github.com/ccampbell/rainbow/blob/91e5e497406fcbe6def6b72681e61794ebc53a10/themes/css/github.css"><code>github.css</code></a> style.
+Rainbow is published under the <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>.
+</div>
+</footer>
+</article>
+</body>
+</html>

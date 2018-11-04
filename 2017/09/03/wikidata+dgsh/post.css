@@ -1,0 +1,4 @@
+h1 {
+	/* h1 inside article is smaller, restore original full size */
+	font-size: 2em;
+}
