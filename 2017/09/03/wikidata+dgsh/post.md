@@ -12,7 +12,7 @@
 
 <article resource="https://lucaswerkmeister.de/posts/2017/09/03/wikidata+dgsh/" typeof="BlogPosting">
 <header>
-<h1 property="headline">Processing Wikidata JSON dumps in parallel on the command line with dgsh</h1>
+<h1 property="name headline">Processing Wikidata JSON dumps in parallel on the command line with dgsh</h1>
 <address><a rel="author" href="https://lucaswerkmeister.de" typeof="Person"><span property="name" lang="de-DE">Lucas Werkmeister</span></a></address>,
 <time property="datePublished" datetime="2017-09-03">2017-09-03</time>.
 <link property="publisher" href="https://lucaswerkmeister.de" typeof="Person"/>
