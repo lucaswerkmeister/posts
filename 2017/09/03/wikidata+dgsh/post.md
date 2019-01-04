@@ -314,8 +314,8 @@ This work is licensed under a <a rel="license" href="http://creativecommons.org/
 </div>
 <div class="license-info">
 Syntax highlighting is done by a custom build
-(included languages: c, generic, json, shell)
-of <a href="https://craig.is/making/rainbows">Rainbow</a> 2.1.3,
+(included languages: c, generic, json, shell, python)
+of <a href="https://craig.is/making/rainbows">Rainbow</a> 2.1.4,
 using its <a href="https://github.com/ccampbell/rainbow/blob/91e5e497406fcbe6def6b72681e61794ebc53a10/themes/css/github.css"><code>github.css</code></a> style.
 Rainbow is published under the <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>.
 </div>
