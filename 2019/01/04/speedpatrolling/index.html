@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Building a Wikidata Tool – Behind the Scenes</title>
+    <link rel="stylesheet" href="/basic.css"/>
+    <link rel="stylesheet" href="/posts/github.css"/>
+    <script src="/posts/rainbow-custom.min.js"></script>
+    <link rel="stylesheet" href="post.css"/>
+  </head>
+  <body vocab="http://schema.org/">
+    <article resource="https://lucaswerkmeister.de/posts/URL" typeof="BlogPosting">
+      <header>
+        <h1 property="name headline">Building a Wikidata Tool – Behind the Scenes</h1>
+        <address><a rel="author" href="https://lucaswerkmeister.de" typeof="Person"><span property="name" lang="de-DE">Lucas Werkmeister</span></a></address>,
+        <time property="datePublished" datetime="2018-01-04">2018-01-04</time>.
+        <link property="publisher" href="https://lucaswerkmeister.de" typeof="Person"/>
+        <meta property="isAccessibleForFree" content="true"/>
+      </header>
+      <p>
+        At <a href="http://www.wikidata.org/entity/Q60178200">35C3</a>, I held a one-hour presentation
+        (<a href="https://cfp.verschwoerhaus.de/35c3/talk/XRQNHR/">talk page</a>, <a href="https://commons.wikimedia.org/wiki/File:35c3_WikipakaWG_-_Building_a_Wikidata_tool_(eng).webm">recording</a>)
+        where I built a simple Wikidata tool from scratch and deployed it on Wikimedia Toolforge.
+        To avoid giving the impression that I can just churn out tools like it’s no big deal,
+        this blog post describes how I practiced the presentation
+        and which problems I encountered at the time
+        (so that I wouldn’t have to encounter them live during the presentation),
+        as well as the problems that still occurred during the presentation despite my practice.
+      </p>
+      <h2>Basic idea</h2>
+      <p>
+        The general idea for this tool was suggested by <a href="https://twitter.com/Jokrates">Jonas</a> during some conversations a while ago:
+        while <a href="https://phabricator.wikimedia.org/T95878">Wikidata’s mobile interface currently doesn’t let you edit</a>,
+        and fixing that will probably be a lot of work,
+        one way for people to contribute while mobile,
+        e. g. on the train to work or in similar situations,
+        would be a kind of “patrolling <a href="https://www.wikidata.org/wiki/Special:GoToLinkedPage/enwiki/Q15078152">Tinder</a>” –
+        swipe right to mark an edit as patrolled,
+        swipe left to undo it or roll it back,
+        or something like that.
+      </p>
+      <p>
+        Since I don’t have any experience working with touch devices or gesture inputs,
+        I decided to go with three simple buttons for the first version:
+        skip an edit (very important – never force users to make a contribution just to move forward when they might not understand the current task!),
+        mark as patrolled,
+        or rollback.
+        People without rollback rights would simply not have the option to rollback –
+        undoing one edit is not very helpful,
+        since vandalism often happens in series of edits,
+        and I didn’t want to reimplement rollback functionality for people without proper rollback rights.
+        (Also, I couldn’t use “Tinder” in the name, so it was unimaginatively to be called “SpeedPatrolling”.)
+      </p>
+      <p>
+        I also asked <a href="https://www.wikidata.org/wiki/User:Lydia_Pintscher_(WMDE)">Lydia</a> if she was okay with this idea
+        (all this was going to be a private activity, but still,
+        I don’t want to do things that she thinks are a bad idea,
+        probably for good reasons that I can’t think of).
+        We looked through the <a href="https://phabricator.wikimedia.org/T90870">list of self-contained tasks around Wikidata</a> for something else to do,
+        but couldn’t find much that fit the bill of this presentation
+        (Toolforge tool, uses OAuth, can be built in one hour),
+        so she said I could go ahead with this project.
+      </p>
+      <h2>Preparation</h2>
+      <p>
+        Lots of things changed during the preparation phase.
+        I didn’t keep track of all of them,
+        so the following list, recalled from memory, is likely incomplete.
+      </p>
+      <ul>
+        <li>
+          <p>
+            The first problem arrived as soon as I tried to start working on the tool.
+            I was going to use the <a href="https://github.com/lucaswerkmeister/cookiecutter-toolforge">cookiecutter-toolforge</a> template to get started with the tool,
+            which includes a hook to check that the tool name you provided is actually a legal tool name.
+            The hook was originally only compatible with Python 3;
+            however, I was going to hold this presentation on my work laptop, which has Ubuntu installed,
+            where Cookiecutter is only available for Python 2.
+            In order to be able to use the template, I first needed to <a href="https://github.com/lucaswerkmeister/cookiecutter-toolforge/commit/62429fb8c50fb8c889495cb13a47b378cbbd1a5a">update the hook to support Python 2</a>.
+          </p>
+        </li>
+        <li>
+          <p>
+            When I originally planned the outline of the code I was going to write
+            (before I even started actually writing any code),
+            I intended to get at least as far as the “diff” page,
+            including the buttons to skip, patrol or rollback an edit,
+            before getting started with OAuth.
+            However, as soon as I actually started programming the tool
+            (first step: get a list of unpatrolled recent changes),
+            I noticed that this didn’t work:
+            the information whether an edit is patrolled or not isn’t public,
+            so to even get a list of unpatrolled changes
+            you need to make an API request as a user with the <code>patrol</code> right.
+            This meant that I had to move the registration of the OAuth consumer to the very beginning of the presentation,
+            just after the introductory remarks and the tool template setup,
+            before I could even start to write a single line of code.
+          </p>
+        </li>
+        <li>
+          <p>
+            Then, when figuring out how to get a list of unpatrolled changes via the API,
+            I found that the values for the <a href="https://www.wikidata.org/w/api.php?action=help&modules=query%2Brecentchanges"><code>rcshow</code> parameter</a> were insufficiently documented;
+            specifically, I was unsure whether I needed <code>!patrolled</code> or <code>unpatrolled</code> changes,
+            and the difference between them wasn’t documented anywhere
+            (<code>unpatrolled</code> was <a href="https://www.mediawiki.org/wiki/Special:PermanentLink/2985437#Parameters">completely missing</a>).
+            To understand the relationship between patrolled, autopatrolled and unpatrolled edits,
+            I first had to look through the MediaWiki code
+            and then tried to <a href="https://www.mediawiki.org/wiki/Special:Diff/3013350">update the documentation</a> to the best of my ability.
+          </p>
+          <p>
+            While looking at the code,
+            I also found a (very minor) security bug,
+            which I reported as <a href="https://phabricator.wikimedia.org/T212118">T212118</a>.
+            It hasn’t been fixed yet (and as such is not yet publicly visible),
+            but should hopefully be resolved soon.
+          </p>
+        </li>
+        <li>
+          <p>
+            When writing the handler for the <code>/diff/</code> route,
+            I originally intended to have it redirect to <code>/diff/<var>id</var>/</code>,
+            without implementing that route
+            (so the browser would display a 404 page after handling the redirect).
+            However, Flask’s <code>url_for()</code> function requires a function name,
+            so to implement the redirect,
+            a stub <code>/diff/<var>id</var>/</code> is also necessary.
+          </p>
+          <aside>
+            <p>
+              I also briefly struggled to find good names for these functions,
+              since they can’t very well both be called <code>diff()</code>,
+              even though that’s the only constant part in both routes.
+              In the end I settled on <code>any_diff()</code> and <code>diff()</code>.
+            </p>
+          </aside>
+        </li>
+        <li id="embed">
+          <p>
+            My original plan for the “diff” page was to directly embed the mobile diff page,
+            since it’s a nicely compact representation of the diff, with not too much clutter on the page
+            (no sidebar, header bar, etc., which would look weird when embedded on another page).
+            However, during the first practice round, I discovered that MediaWiki would not let me do that:
+            since I was logged in, and the diff page included a “mark as patrolled” link,
+            MediaWiki sent an <code>X-Frame-Options: deny</code> header to prevent <a href="https://www.wikidata.org/wiki/Special:GoToLinkedPage/enwiki/Q163231">clickjacking</a>,
+            so the browser only displayed a blank iframe on the tool page.
+          </p>
+          <p>
+            I tried to make embedding the diff page work –
+            for example, if I could somehow instruct the iframe to load anonymously,
+            as in a private window (that is, without cookie headers),
+            so that the user would not be logged in and MediaWiki would not prevent the embedding –
+            but ultimately found no working solution for that.
+            Instead, I decided to download the diff page from the tool’s code (anonymously),
+            serve it under a certain route,
+            and then embed that page (from my own tool) in the tool’s full diff page.
+            This was implemented using the following Python code:
+          </p>
+          <pre><code class="language-python">@app.route('/diff/&lt;int:id&gt;/embed')
+def diff_embed(id):
+    with urllib.request.urlopen('https://m.wikidata.org/wiki/Special:MobileDiff/%d' % id) as r:
+        html = r.read().decode('utf-8')
+    html = html.replace('"/w/', '"https://m.wikidata.org/w/')
+    html = html.replace('"/wiki/', '"https://m.wikidata.org/wiki/')
+    return html
+</code></pre>
+          <p>
+            The two <code>replace()</code> calls try to turn some relative URLs into absolute ones,
+            e. g. in hyperlinks or when loading JavaScript/CSS.
+            It’s a hack, of course, but it more or less worked and would be good enough for the presentation.
+            (A proper version of this would presumably better be implemented using the <a href="https://www.wikidata.org/wiki/Special:GoToLinkedPage/enwiki/Q2893296">Beautiful Soup</a> library.)
+            In the second practice run, I didn’t even bother embedding Wikidata and went straight for this hack instead;
+            however, I afterwards decided that it would be nicer for the presentation to first show the error when embedding Wikidata,
+            and then introduce the hack,
+            since it looked like there would be enough time for this.
+          </p>
+          <p>
+            To my great surprise, though, during the presentation embedding Wikidata suddenly worked, with no error.
+            I only later figured out what happened:
+            in the first practice run, I planned to first embed <code>https://<strong>www</strong>.wikidata.org/wiki/Special:MobileDiff/<var>id</var></code>,
+            and then briefly mention how the mobile diff page on the main domain still has some clutter on it,
+            and that we need to use the mobile domain instead, embedding <code>https://<strong>m</strong>.wikidata.org/wiki/Special:MobileDiff/<var>id</var></code>.
+            As I then ran into the <code>X-Frame-Options</code> header, I never got as far as the <code>m.wikidata.org</code> domain.
+            However, during the presentation, I skipped the <code>www.wikidata.org</code> step and went straight to <code>m.wikidata.org</code>,
+            and since I’m not logged in there,
+            there’s no “mark as patrolled” link and MediaWiki lets me embed this page.
+          </p>
+          <p>
+            Of course, I can’t rely on the fact that all tool users would never be logged in on <code>m.wikidata.org</code>
+            (this tool is, in fact, meant to be especially useful on mobile),
+            so I’ll still have to work around this somehow;
+            however, in the meantime, I also learned that the <a href="https://labels.wmflabs.org/">Wiki Labels tool</a>
+            (<a href="https://github.com/wikimedia/wikilabels">source code</a>)
+            also includes pretty diffs in its output, without embedding anything,
+            so I’ll look into how that is implemented instead of resurrecting my ugly hack.
+            (Fortunately, Wiki Labels is also a Flask app and published under a permissive source code license,
+            so it should be possible to borrow the relevant code from it.)
+          </p>
+        </li>
+        <li>
+          <p>
+            When I first started adding buttons to the diff page,
+            I discovered that clicking the “skip” button
+            unexpectedly sent a POST request to <code>/diff/skip</code> instead of <code>/diff/<var>id</var>/skip</code>.
+            I eventually figured out that this was
+            because had written the “diff” route as <code>/diff/<var>id</var></code> instead of <code>/diff/<var>id</var><strong>/</strong></code>;
+            without the trailing slash, the relative URL in <code>formaction="skip"</code> replaced the last URL component instead of appending to it.
+          </p>
+        </li>
+        <li>
+          <p>
+            The cookiecutter-toolforge template includes some sample code for protection against
+            <abbr title="cross-site request forgery"><a href="https://www.wikidata.org/wiki/Special:GoToLinkedPage/enwiki/Q15401472">CSRF</a></abbr> attacks,
+            which I had recently strengthened after discovering that the original version was not completely effective.
+            However, I hadn’t tested this strengthened version properly,
+            and as a result all POSTs were rejected as invalid until I fixed it.
+          </p>
+          <p>
+            Specifically, the CSRF protection included the following code (abbreviated):
+          </p>
+          <pre><code class="language-python">def full_url(endpoint, **kwargs):
+    schema=flask.request.headers.get('X-Forwarded-Proto', 'http')
+    return flask.url_for(endpoint, _external=True, _schema=schema, **kwargs)
+
+def submitted_request_valid():
+    # ...
+    if not flask.request.referrer.startswith(full_url('index')):
+        return False
+    return True</code></pre>
+          <p>
+            This was intended to check that the referrer started with <code>https://tools.wmflabs.org/<var>tool-name</var>/</code>;
+            the HTTP/HTTPS tweaking in <code>full_url()</code> is necessary because Flask on Toolforge sits behind a proxy,
+            and so it doesn’t know that absolute URLs to it should actually use HTTPS, not HTTP.
+          </p>
+          <p>
+            However, the parameter to communicate this to <code>flask.url_for()</code> is called <code>_schem<strong>e</strong></code>,
+            not <code>_schem<strong>a</strong></code>.
+            Since <code>_schema</code> is not a recognized paramater for <code>flask.url_for()</code> nor for <code>index()</code>,
+            it was appended to the URL as a query parameter,
+            resulting in <code>submitted_request_valid()</code> rejecting all requests
+            because their referrers would not begin with <code>http://tools.wmflabs.org/<var>tool-name</var>/?_schema=https</code>.
+            To make POSTs work, I had to <a href="https://github.com/lucaswerkmeister/cookiecutter-toolforge/commit/6500426f479074a8426c665cdd176da0d721eb07">fix the <code>full_url()</code> function</a> in the template.
+            (I hope no one created a new tool between the bug being introduced and fixed in the template,
+            otherwise that tool would have to be fixed as well.)
+          </p>
+        </li>
+        <li>
+          <p>
+            When trying to make the API request to mark an edit as patrolled,
+            I originally tried to use a regular MediaWiki API CSRF token as the <code>token</code> parameter for <code>action='patrol'</code>.
+            However, that action requires a <code>patrol</code>-type token.
+            (Likewike, there is a dedicated token type for rollback.)
+          </p>
+        </li>
+        <li>
+          <p>
+            When I started adding the handler for the “rollback” button,
+            I envisioned it as rolling back the specified revision,
+            just like the “patrol” handler.
+            But that’s just not how rollback works:
+            you don’t rollback a revision, you rollback all edits by a user on a page.
+            So I had to write some more code to query for the page ID and user name of that revision,
+            and then submit that to the rollback API.
+            If the request failed – for example, because someone else had edited the page after our user –
+            I was going to cop out and tell the user to please resolve the situation manually.
+          </p>
+          <p>
+            However, it turned out that the MediaWiki API would not let me rollback edits,
+            instead throwing a “permission denied” error:
+          </p>
+          <blockquote>
+            mwapi.errors.APIError: permissiondenied: The action you have requested is limited to users in one of the groups: *, [[Wikidata:Users|Users]].
+          </blockquote>
+          <p>
+            This greatly confused me at the time:
+            my OAuth consumer had the “rollback” grant, I was a rollbacker,
+            and neither “*” (any?) nor “users” are generally allowed to rollback edits
+            (that’s restricted to rollbackers and even more privileged groups).
+            I <a href="https://discourse-mediawiki.wmflabs.org/t/permissiondenied-on-rollback-api/1005">asked for help on the Wikimedia Developer Support forum</a>,
+            but we were unable to figure out a solution or workaround before the presentation.
+            Since rollback support wasn’t critical to me
+            (depending on the time of day, it can take a bit to find edits that should be rolled back anyways, to test the feature),
+            I took this as a ready-made excuse to just not implement rollback support during the presentation
+            (not even the version that would throw the MediaWiki error),
+            which gave me about five extra minutes of time.
+            It turned out I didn’t need that extra time, but I wasn’t sure about that until the presentation was done.
+          </p>
+          <p>
+            Afterwards, Gergő Tisza figured out what was wrong:
+            rollback requires both edit and rollback rights, and I didn’t request edit rights for my consumer.
+            This is now being discussed in <a href="https://phabricator.wikimedia.org/T212851">T212851</a>;
+            for the time being, I haven’t implemented rollback support in the tool yet.
+          </p>
+        </li>
+      </ul>
+      <h2>During the presentation</h2>
+      <p>
+        Despite my practice, some things went wrong during the presentation as well.
+        You can watch those in the recording, of course, but I might as well list them here, too:
+      </p>
+      <ul>
+        <li>
+          <p>
+            When I started to write the tool,
+            the Toolforge API reported that the “speedpatrolling” tool name was not available for a new tool.
+            I think this must have been a temporary hiccup,
+            since no such tool existed at the time,
+            the same error was also reported for other tool names,
+            and I was later able to create the tool under that name without a problem.
+            However, to proceed during the presentation,
+            I eventually had to disable the hook in the cookiecutter-toolforge template
+            which usually checks if a name is available before proceeding with the template,
+            by moving its file in my local copy of the template.
+          </p>
+          <p>
+            Unfortunately, this confusion also led me to call the tool “speed-patrolling” instead of “speedpatrolling” during the presentation,
+            even though that name didn’t work either;
+            after the presentation, I had to do some cleanup to create the “speedpatrolling” tool,
+            update all references in the source code,
+            and then finally <a href="https://phabricator.wikimedia.org/T212968">requested that “speed-patrolling” be deleted</a>.
+          </p>
+        </li>
+        <li>
+          <p>
+            As mentioned <a href="#embed">above</a>,
+            embedding the diff worked right away even though I didn’t expect it to.
+          </p>
+        </li>
+        <li>
+          <p>
+            Although this presentation and tool are private projects,
+            and I worked on them using my private accounts,
+            I did this on my work laptop,
+            because it was easier to practice it there
+            (and also, I guess, because my private laptop needs an adapter to emit HDMI).
+            However, this meant that when I was SSHing into Toolforge,
+            I was using my work account instead of my private account,
+            so I couldn’t deploy the tool, to which only my private account had access.
+            To fix this, I had to SSH into my home PC
+            (I’m <em>very</em> glad I left it running over the holidays
+            <small>(and yes, my electricity plan is green, why do you ask)</small>)
+            so I could SSH from there into Toolforge, using my private account.
+            (Note that this is not the same as tunneling my SSH traffic through that PC (<code>ssh -J host</code>),
+            in which case I would still authenticate against Toolforge using my work credentials.)
+          </p>
+          <aside>
+            This means that in the recording, you can see which hostname I use to refer to my home PC.
+            I’ve been meaning to write a blog post about my machine names for a while now…
+            I’ll do it eventually™.
+          </aside>
+        </li>
+      </ul>
+      <p>
+        And there we go!
+        I hope this makes me seem less like, I don’t know, some kind of wizard?
+        It’s completely normal to run into problems while building a tool
+        (or doing any kind of software development, I suppose) –
+        what matters is that you can find ways overcome those problems
+        (including but not limited to solving them),
+        and get help when you need it.
+        Try it out, it’s a lot of fun!
+      </p>
+      <footer>
+        <div class="license-info">
+          <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+            <img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png"/>
+          </a><br/>
+          This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+        </div>
+        <div class="license-info">
+          Syntax highlighting is done by a custom build
+          (included languages: c, generic, json, shell, python)
+          of <a href="https://craig.is/making/rainbows">Rainbow</a> 2.1.4,
+          using its <a href="https://github.com/ccampbell/rainbow/blob/91e5e497406fcbe6def6b72681e61794ebc53a10/themes/css/github.css"><code>github.css</code></a> style.
+          Rainbow is published under the <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>.
+        </div>
+      </footer>
+    </article>
+  </body>
+</html>

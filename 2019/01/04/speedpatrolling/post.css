@@ -1,0 +1,10 @@
+/* allow a bit more width than usual, mainly for code examples */
+body {
+    max-width: 850px;
+}
+
+/* Rainbow reduces the font size of code spans significantly; reset to the basic.css default */
+code {
+    font-size: 18px;
+}
+/* (we don’t touch code blocks, even though Rainbow scales those down as well, because otherwise our examples get even wider) */
