@@ -1,0 +1,10 @@
+• copy drafts/new to drafts/NAME
+• edit drafts/NAME/index.html
+• replace TITLE with the real title
+• write the post (this may take multiple days)
+• replace DATE with publication date
+• create YYYY/MM/DD/ directories
+• move drafts/NAME to YYYY/MM/DD/
+• replace URL with YYYY/MM/DD/NAME/
+• add to index.html
+• run Makefile
