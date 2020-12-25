@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Advent of Code 2020</title>
+    <link rel="stylesheet" href="/basic.css"/>
+  </head>
+  <body vocab="http://schema.org/">
+    <article resource="https://lucaswerkmeister.de/posts/2020/12/25/advent-of-code-2020/" typeof="BlogPosting">
+      <header>
+        <h1 property="name headline">Advent of Code 2020</h1>
+        <address><a rel="author" href="https://lucaswerkmeister.de" typeof="Person"><span property="name" lang="de-DE">Lucas Werkmeister</span></a></address>,
+        <time property="datePublished" datetime="2020-12-25">2020-12-25</time>.
+        <link property="publisher" href="https://lucaswerkmeister.de" typeof="Person"/>
+        <meta property="isAccessibleForFree" content="true"/>
+      </header>
+      <p>
+        This year I participated in <a href="https://adventofcode.com/">Advent of Code</a> for the first time.
+        (Thanks a lot to my colleague <a href="https://www.lebenplusplus.de/">Gabriel Birke</a> for the suggestion!)
+        I wrote a README.md file for each day’s puzzle – effectively one blog post per day – but I thought I’d write some summarizing thoughts here as well.
+        You can find those READMEs along with my solutions at <a href="https://github.com/lucaswerkmeister/advent-of-code-2020">lucas&shy;werkmeister<wbr>/advent-of-code-2020</a>.
+      </p>
+      <p>
+        Overall, I really enjoyed the experience, and I’m glad I did it.
+        Some of the puzzles were a bit tedious, but most were fun and enjoyable.
+        And while a handful of my solutions are inefficient or brute force,
+        most of the time I managed to a reasonably efficient way to solve the puzzle.
+      </p>
+      <p>
+        I solved the puzzles in a variety of programming languages,
+        depending on what I thought would be a good fit,
+        or what I wanted to gain some experience with,
+        or just whatever I felt like at the time.
+        The GitHub breakdown shows that the repository is 82% Rust,
+        but that’s in part because the Rust solutions tend to be longer
+        (due to having more error handling, tests etc.);
+        here’s the breakdown by day / puzzle:
+      </p>
+      <dl>
+        <dt>Rust</dt>
+        <dd>
+          <strong>12</strong> of my solutions were Rust programs.
+          I used Rust more frequently for the later puzzles;
+          it was especially my choice of language for anything that needed performance or more complicated algorithms.
+          I haven’t had that much experience with Rust yet,
+          and I enjoyed getting to know it better;
+          I feel like I’m starting to understand ownership and borrowing now.
+        </dd>
+        <dt>Bash</dt>
+        <dd>
+          <strong>7</strong> of my solutions were shell scripts.
+          I like shell scripts:
+          they let you quickly iterate on a solution,
+          trying things out on the command line before writing them into the script.
+          Shell scripts can also combine different tools;
+          for instance, for one solution (<a href="https://github.com/lucaswerkmeister/advent-of-code-2020/tree/main/day07">day 7</a>),
+          I used a fairly obscure GNU coreutils command, <code>tsort</code>,
+          to perform a <em>topological sort</em> of the input.
+          (<strong>1</strong> more solution, <a href="https://github.com/lucaswerkmeister/advent-of-code-2020/tree/main/day15">day 15</a>,
+          started out as a shell script but was then rewritten in JavaScript.)
+        </dd>
+        <dt>AWK</dt>
+        <dd>
+          <strong>3</strong> of my solutions were AWK scripts
+          (some specific to GNU AWK, some should work with any POSIX-compliant AWK as far as I’m aware, though I only used GNU AWK),
+          plus <strong>1</strong> more if you count <a href="https://github.com/lucaswerkmeister/advent-of-code-2020/tree/main/day10">day 10</a>,
+          which is a shell script but mostly uses AWK.
+          I like AWK as well – the pattern of running commands for each input line,
+          and then summarizing them in an <code>END</code> or <code>ENDFILE</code> action,
+          worked pretty well for some puzzles.
+        </dd>
+        <dt>sed</dt>
+        <dd>
+          <strong>1</strong> of my solutions was a sed program,
+          though some of my other shell scripts used sed as well, of course.
+          I did this one mainly to prove that it could be done,
+          and that I could use more of sed than just the <code>s</code> command –
+          this was my first time using the “hold space” in a sed program I wrote from scratch, I think.
+        </dd>
+        <dt>R</dt>
+        <dd>
+          <strong>1</strong> of my solutions was an R program,
+          since I thought its numerical capacities would be a good fit for <a href="https://github.com/lucaswerkmeister/advent-of-code-2020/tree/main/day12">day 12</a>.
+          It was nice enough, and I also happened to uncover <a href="https://github.com/oracle/fastr/issues/171">a FastR bug</a>.
+        </dd>
+        <dt>JavaScript</dt>
+        <dd>
+          <strong>1</strong> of my solutions was written in JavaScript.
+          Initially I wrote the <a href="https://github.com/lucaswerkmeister/advent-of-code-2020/tree/main/day15">day 15 solution</a> in Bash,
+          but part 2 was pretty much the same puzzle as part 1 except with a much higher limit,
+          so that my Bash solution would not be fast enough to finish in any reasonable amount of time.
+          JavaScript was the language where I thought it would be fairly straightforward to rewrite/translate my solution line-by-line –
+          I trusted V8’s engine to optimize the code enough,
+          and while it still took a while, it was good enough for me.
+        </dd>
+      </dl>
+      <p>
+        I’ll probably do Advent of Code next year again in some form.
+        Maybe then I’ll use Rust every day –
+        that would let me use <a href="https://github.com/gobanos/cargo-aoc">cargo-aoc</a>,
+        which looked useful but didn’t really fit with this year’s repository layout
+        of having one top-level <code>day<var>XY</var></code> directory per day.
+      </p>
+      <footer>
+        <div class="license-info">
+          <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+            <img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png"/>
+          </a><br/>
+          This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+        </div>
+      </footer>
+    </article>
+  </body>
+</html>
