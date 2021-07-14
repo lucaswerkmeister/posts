@@ -376,6 +376,15 @@ efibootmgr \
     --loader /vmlinuz-linux \
     --unicode 'initrd=intel-ucode.img initrd=initramfs-linux.img rd.luks.name=ab1d62d5-8dd5-4866-bec2-b8ab3bb70fea=root root=/dev/mapper/root systemd.unified_cgroup_hierarchy' \
     --verbose</pre>
+        <p>2021-07-15 note: I now have an AMD CPU; I don’t want to forget to change the microcode on the next CPU change, so let’s just load both, it doesn’t hurt. Now the bootloader is:</p>
+        <pre>sudo efibootmgr \
+    --disk /dev/sda \
+    --part 1 \
+    --create \
+    --label 'Arch Linux systemd ucode2 cgroupsv2' \
+    --loader /vmlinuz-linux \
+    --unicode 'initrd=amd-ucode.img initrd=intel-ucode.img initrd=initramfs-linux.img rd.luks.name=ab1d62d5-8dd5-4866-bec2-b8ab3bb70fea=root root=/dev/mapper/root systemd.unified_cgroup_hierarchy' \
+    --verbose</pre>
         <p>We also need to set up the initramfs so that it will be able to load and decrypt the root volume.</p>
         <pre>sed -i '
   /^HOOKS=/ {
