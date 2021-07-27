@@ -174,7 +174,7 @@
       <pre>mount /dev/mapper/root /mnt</pre>
       <h2>Boot setup</h2>
       <p>We also need to set up the ESP:</p>
-      <pre>mkfs.fat -F32 -n /boot /dev/sda1</pre>
+      <pre>mkfs.fat -F32 -n BOOT /dev/sda1</pre>
       <p>And mount it under <tt>/mnt</tt> for the rest of the installation:</p>
       <pre>mkdir /mnt/boot
 mount /dev/sda1 /mnt/boot</pre>
