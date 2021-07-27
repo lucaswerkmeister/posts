@@ -152,6 +152,11 @@
       <pre>pvcreate /dev/sda3 /dev/sdb1</pre>
       <p>Create the Volume Group:</p>
       <pre>vgcreate RootVG /dev/sda3 /dev/sdb1</pre>
+      <p>
+        2021-07-27 note: Recent versions of LVM may warn at this step about different block sizes on the two PVs.
+        If I understand correctly, mixing different block sizes in a regular LV is not supported,
+        but for a cache LV, it seems to work.
+      </p>
       <p>Create the “origin” Logical Volume, only on the HDD:</p>
       <pre>lvcreate -l 100%PVS -n cryptroot RootVG /dev/sdb1</pre>
       <p>Create the “cache pool” Logical Volume, only on the SSD:</p>
