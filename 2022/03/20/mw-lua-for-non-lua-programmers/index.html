@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8"/>
+    <title>MediaWiki Lua for non-Lua programmers</title>
+    <link rel="stylesheet" href="/basic.css"/>
+    <link rel="stylesheet" href="/posts/github-colors.css">
+    <style>
+      .example {
+          background: #d5fdf4; /* Green90 */
+      }
+      .counterexample {
+          color: #54595d; /* Base20 */
+      }
+    </style>
+  </head>
+  <body vocab="http://schema.org/">
+    <article resource="https://lucaswerkmeister.de/posts/2022/03/20/mw-lua-for-non-lua-programmers/" typeof="BlogPosting">
+      <header>
+        <h1 property="name headline">MediaWiki Lua for non-Lua programmers</h1>
+        <address><a rel="author" href="https://lucaswerkmeister.de" typeof="Person"><span property="name" lang="de-DE">Lucas Werkmeister</span></a></address>,
+        <time property="datePublished" datetime="2022-03-20">2022-03-20</time>.
+        <link property="publisher" href="https://lucaswerkmeister.de" typeof="Person"/>
+        <meta property="isAccessibleForFree" content="true"/>
+      </header>
+      <p>
+        This is a blog post to “onboard” people to Lua programming for MediaWiki
+        (e.g. on Wikipedias or Wikimedia Commons).
+        The target audience is people who already know some programming,
+        but aren’t very familiar with Lua specifically.
+        The goal is not that you’ll be a professional Lua programmer,
+        but that you’ll be aware of some of the more important aspects,
+        and be able to write some useful Lua code with a good portion of trial-and-error and some googling.
+        I’ll be comparing Lua to several other programming languages,
+        in the hope that you’re familiar enough with at least some of them to understand what I mean.
+      </p>
+      <h2>Some syntax</h2>
+      <p>
+        No semicolons.
+        No braces – blocks are usually introduced by a relevant keyword
+        (e.g. <code>function name(args)</code>, <code>if cond then</code>)
+        and always end with the keyword <code>end</code>.
+        Strings concatenate with <code class="example">..</code>,
+        not <code class="counterexample">.</code> like in PHP/Perl or <code class="counterexample">+</code> like in Java(Script)/Python.
+        The not-equal operator is <code class="example">~=</code>,
+        not <code class="counterexample">!=</code> like in most other languages.
+        Comments begin with <code class="example">--</code>, like in Haskell;
+        <code class="counterexample">#</code> (PHP, Perl, Python) is the length operator instead,
+        <code class="counterexample">//</code> and <code class="counterexample">/* */</code> (C, C++, Java, JS) are syntax errors.
+      </p>
+      <p>
+        Local variables are declared with the keyword <code>local</code>,
+        otherwise all variables are global (even inside a function!) –
+        in other words, you’ll want to write <code>local</code> a lot of the time.
+        (If you test your module using <a href="https://en.wikipedia.org/wiki/Module:ScribuntoUnit">ScribuntoUnit</a>,
+        it will yell at you if you forgot a <code>local</code> somewhere and accidentally leaked a global variable.)
+      </p>
+      <h2>Tables</h2>
+      <p>
+        <strong>Tables</strong> are a fairly fundamental data structure in Lua.
+        They’re similar to arrays in PHP,
+        in that they’re a single data structure that fulfills two purposes which many other languages have as separate data structures:
+        <strong>lists</strong>/arrays/vectors, and <strong>maps</strong>/dictionaries/hashes.
+        In Lua as in PHP, a list is just a map with sequential integer keys;
+        unlike in PHP and most other languages, though, <strong>list indexes start from 1</strong>, not 0.
+        (Nothing stops you from using 0 as an index manually, but it will make everything more confusing.
+        The syntax <code>{ "first", "last" }</code> creates a table using indexes 1 and 2, not 0 and 1.)
+      </p>
+      <p>
+        Unlike in JavaScript and PHP, and more like in Python and some other languages,
+        table keys (indexes) are not limited to strings or numbers:
+        any other value, including a table, can be used as a key.
+        That said, numbers and strings are more common, and strings have shortcut syntax:
+        <code>someTable.someKey</code> is equivalent to <code>someTable["someKey"]</code>.
+      </p>
+      <p>
+        Tables also fulfill the role of <strong>objects</strong>,
+        including methods, which we’ll talk about later.
+        There’s no special syntax to define classes or create instances of a class.
+        There are “metatables”, which can customize various behavior of a table,
+        kind of like the prototype of an object in JavaScript,
+        but I’ll just mention that here and let you look it up if you think you need it,
+        since I don’t think it usually comes up in normal module programming.
+      </p>
+      <p>Here’s an example table:</p>
+      <pre><code><span class="keyword">local</span> someTable <span class="keyword operator">=</span> {
+    <span class="comment">-- normalKey: "normalValue" in JavaScript,</span>
+    <span class="comment">-- i.e. uses the string "normalKey" as the key</span>
+    normalKey <span class="keyword operator">=</span> <span class="string">"normalValue"</span>,
+    <span class="comment">-- "otherKey": "otherValue" in Python</span>
+    <span class="comment">-- [ "otherKey" ]: "otherValue" in JavaScript</span>
+    <span class="comment">-- ("otherKey" can be any expression)</span>
+    [ <span class="string">"otherKey"</span> ] <span class="keyword operator">=</span> <span class="string">"otherValue"</span>,
+    <span class="comment">-- [ "a", "b", "c" ] in Python, JavaScript, etc.</span>
+    <span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>, <span class="comment">-- implicit indexes 1, 2, 3</span>
+}</code></pre>
+      <p>
+        For more information on tables, including a longer syntax example (scroll down a bit),
+        see the <a href="https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Scribunto/Lua_reference_manual#table">Scribunto Lua reference manual § table</a>.
+      </p>
+      <h2>nil</h2>
+      <p>
+        <code>nil</code> is Lua’s version of “null/none/nothing”. (Like in Lisp!)
+        For example, it’s what you get when accessing a table key that doesn’t exist.
+        (Incidentally, there’s actually no syntax to delete a table entry –
+        you just set it to <code>nil</code> instead: <code>someTable.someKey = nil</code>.)
+      </p>
+      <h2>Functions</h2>
+      <p>
+        Unlike in most other languages, <strong>functions can return multiple values</strong>.
+        A function can <code>return "first", "second", "third"</code>,
+        and a caller can assign <code>local a, b, c = someFunction()</code>,
+        and <code>a</code> will be <code>"first"</code>, <code>b</code> will be <code>"second"</code>, and <code>c</code> will be <code>"third"</code>.
+        (Yes, you can emulate this in other languages by returning a list, don’t @ me.)
+        If you’re just writing your own code, you can of course ignore this,
+        but you should be aware of it when interacting with other people’s code,
+        and you may also find that it’s useful for you.
+      </p>
+      <p>
+        If a function returns more values than a caller is interested in, the extra values are dropped.
+        This means that you can use this feature to return additional / auxiliary information,
+        and callers who aren’t interested in it can just write <code>local mainResult = yourFunction()</code>
+        and ignore whatever else it happens to return.
+        If a function returns <em>fewer</em> values than a caller asked for –
+        <code>local first, second, third = functionReturningOneValue()</code> –
+        then the other values are set to <code>nil</code>.
+      </p>
+      <p>
+        You can also define functions in a table,
+        in a way that I haven’t seen in a lot of other languages,
+        but actually find very natural and convenient:
+      </p>
+      <pre><code><span class="storage function">function</span> <span class="entity name function">someTable.someFunction</span>() ... <span class="keyword">end</span></code></pre>
+      <p>This is exactly the same as:</p>
+      <pre><code>someTable.someFunction <span class="keyword operator">=</span> <span class="keyword">function</span>() ... <span class="keyword">end</span></code></pre>
+      <p>
+        But nicer to read, since <code>someTable.someFunction()</code> matches how the function will be called.
+        This also leads us nicely into our next topic.
+      </p>
+      <h2>Methods</h2>
+      <p>
+        As we’ve just seen, you can have functions inside a table,
+        and call those functions using the <code>.</code> syntax familiar from many other languages.
+        However, these functions don’t automatically have access to the surrounding table.
+        For that, Lua has a mechanism kind of reminiscent of Python,
+        in that you’ll use the name <code>self</code> to identify that surrounding table
+        (what many other languages call <code>this</code>).
+        However, you don’t define <code>self</code> as the first parameter of the method,
+        like you would in Python (<code>def some_method(self, other_param)</code>);
+        instead, <em>you define and call the method with a colon instead of a period</em>:
+      </p>
+      <pre><code><span class="storage function">function</span> <span class="entity name function">someTable:someMethod</span>(param1, param2)
+    <span class="keyword">return</span> self.something <span class="keyword operator">+</span> param1 <span class="keyword operator">+</span> param2
+<span class="keyword">end</span>
+
+<span class="keyword">local</span> result <span class="keyword operator">=</span> someTable:someMethod(arg1, arg2)</code></pre>
+      <p>This is exactly equivalent to:</p>
+      <pre><code><span class="comment">-- do not write code like this, this is for demonstration only</span>
+<span class="storage function">function</span> <span class="entity name function">someTable.someMethod</span>(self, param1, param2)
+    <span class="keyword">return</span> self.something <span class="keyword operator">+</span> param1 <span class="keyword operator">+</span> param2
+<span class="keyword">end</span>
+
+<span class="keyword">local</span> result <span class="keyword operator">=</span> someTable.someMethod(someTable, arg1, arg2)</code></pre>
+      <p>
+        When defining a method, the colon is syntactic sugar for a first <code>self</code> parameter;
+        when calling it, it’s syntactic sugar for passing in the table as the first argument.
+        (In theory, you can mix and match this,
+        and colon-call non-colon-defined methods or vice versa,
+        but that will probably just result in confusion.)
+        When writing Lua, it’s important to get into a habit of using table members the right way,
+        which is usually indicated in the relevant documentation.
+        For instance, <a href="https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Scribunto/Lua_reference_manual#Frame_object">frame objects</a>
+        have <code>frame<strong>.</strong>args</code> but <code>frame<strong>:</strong>getParent()</code> –
+        the arguments are a normal table member, the parent frame is a method.
+        <code class="example">frame<strong>:</strong>getParent()<strong>.</strong>args</code> correctly gets the parent frame args (assuming there is a parent frame!);
+        <code class="counterexample">frame<strong>.</strong>getParent()</code> is wrong,
+        and <code class="counterexample">frame<strong>:</strong>getParent()<strong>:</strong>args</code> is a syntax error.
+      </p>
+      <h2>Named arguments</h2>
+      <p>
+        When calling a function with a single table literal argument,
+        you can omit the surrounding parentheses:
+        <code>func{...}</code> means the same as <code>func({...})</code>.
+        Some methods in MediaWiki are intended to be called like this,
+        emulating named arguments in some other languages:
+      </p>
+      <pre><code><span class="keyword">local</span> wikitext <span class="keyword operator">=</span> frame:expandTemplate{
+    title <span class="keyword operator">=</span> <span class="string">'Some template'</span>,
+    args <span class="keyword operator">=</span> {
+        <span class="string">'first'</span>,
+        <span class="string">'second'</span>,
+        other <span class="keyword operator">=</span> <span class="string">'named'</span>,
+    },
+}</code></pre>
+      <p>This would be equivalent to <code>{{Some template |first |second |other=named}}</code>.</p>
+      <h2>Conclusion</h2>
+      <p>
+        This was just an overview of some more noteworthy aspects of Lua.
+        For a more thorough introduction,
+        including more details on using Lua in MediaWiki specifically,
+        see the <a href="https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Scribunto/Lua_reference_manual">Scribunto Lua reference manual</a>:
+        it has a lot of information, and is also available in several other languages.
+      </p>
+      <footer>
+        <div class="license-info">
+          <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+            <img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png"/>
+          </a><br/>
+          This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+        </div>
+      </footer>
+    </article>
+  </body>
+</html>
