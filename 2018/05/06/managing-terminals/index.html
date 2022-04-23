@@ -84,6 +84,12 @@ lterm wbqc # Wikibase Quality constraints</code></pre>
         and now I could bring up any terminal using <kbd>lterm foo</kbd>, regardless of whether that terminal had already been running or not.
       </p>
       <p>
+        2022-04-23 edit: The reimplementation based on <code>org.gnome.Shell.Eval</code> eventually broke,
+        so I created a custom GNOME Shell extension, <a href="https://extensions.gnome.org/extension/5021/activate-window-by-title/">Activate Window By Title</a>
+        (<a href="https://github.com/lucaswerkmeister/activate-window-by-title">source code</a>),
+        to offer a custom D-Bus interface for just this purpose.
+      </p>
+      <p>
         As a minor bonus, <code>lterm</code> exits if it’s the first command in an interactive shell –
         so if you start a new terminal window using <kbd><kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>T</kbd></kbd> only to launch a “real” terminal with <code>lterm</code>,
         then the temporary terminal window will quietly close itself behind your back automatically,
@@ -99,6 +105,8 @@ lterm wbqc # Wikibase Quality constraints</code></pre>
         Place those functions somewhere in your shell initialization files,
         and make sure the <code>set-titles</code> option is enabled in your <a href="https://github.com/lucaswerkmeister/home/blob/5d3f9be03afd27c46cf24c6dad1630e084a7f84e/.tmux.conf#L37">tmux.conf</a>,
         and everything should work!
+        (2022-04-23 edit: you’ll also want to copy <a href="https://github.com/lucaswerkmeister/home/blob/master/.bashrc.d/activate-window">activate-window</a>,
+        and install <a href="https://extensions.gnome.org/extension/5021/activate-window-by-title/">Activate Window By Title</a>.)
       </p>
       <footer>
         <div class="license-info">
