@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8"/>
+    <title>LVM Cache Modes and Behavior</title>
+    <link rel="stylesheet" href="/basic.css"/>
+    <link rel="alternate" type="application/rss+xml" href="/posts/index.rss"/>
+  </head>
+  <body vocab="http://schema.org/">
+    <article resource="https://lucaswerkmeister.de/posts/2022/07/03/lvmcache/" typeof="BlogPosting">
+      <header>
+        <h1 property="name headline">LVM Cache Modes and Behavior</h1>
+        <address><a rel="author" href="https://lucaswerkmeister.de" typeof="Person"><span property="name" lang="de-DE">Lucas Werkmeister</span></a></address>,
+        <time property="datePublished" datetime="2022-07-03">2022-07-03</time>.
+        <link property="publisher" href="https://lucaswerkmeister.de" typeof="Person"/>
+        <meta property="isAccessibleForFree" content="true"/>
+      </header>
+      <p>
+        In a <a href="/posts/2018/05/12/luks-on-lvm/">previous blog post</a>,
+        I showed how to set up an encrypted Linux setup across an SSD and an HDD.
+        (Technically, you can set this up with any kind of disk,
+        but I’ll use “SSD” to refer to the “cache device” and “HDD” for the “origin device”.)
+        I still use this setup on my desktop PC, but I’ve now gained some more experience specifically with the SSD+HDD caching part of it,
+        and wanted to discuss some aspects of this here.
+        (The encryption part has just been smooth sailing, as far as I remember; nothing to report there.)
+      </p>
+      <h2>Cache modes</h2>
+      <p>
+        There are two main cache modes that can be used in this cached setup,
+        and the default cache modes actually depends on which “layer” of the system you’re looking at.
+      </p>
+      <p>
+        <strong>writeback</strong> is the default mode if you’re using <a href="https://www.kernel.org/doc/html/v5.18/admin-guide/device-mapper/cache.html">the kernel’s dm-cache feature</a> directly.
+        In this mode, modified blocks are written to the SSD,
+        and reported as complete as soon as the SSD write finishes.
+        The block is marked as “dirty” in the metadata (which also resides on the SSD),
+        but not necessarily written to the HDD at all (but see below for more on that).
+      </p>
+      <p>
+        <strong>writethrough</strong> is the default mode in <a href="https://man.archlinux.org/man/lvmcache.7.en">lvmcache</a>,
+        the caching component of LVM which is based on dm-cache.
+        (Since we’re using LVM, rather than using dm-cache directly,
+        this means that writethrough is the actual default value for our purposes.)
+        In this mode, modified blocks are written to both the SSD and the HDD,
+        and only reported as complete when both writes have finished.
+        Blocks that are already “clean” remain so.
+      </p>
+      <p>
+        I haven’t been able to find out why LVM chooses a different default cache mode.
+        My guess is that it’s a “conservative” or “safe” choice:
+        in writeback mode, losing the SSD means potentially losing data.
+        Since the LVM maintainers don’t know how much you trust the SSD
+        (could it break at any moment?),
+        defaulting to the cache mode that always has the latest data on the HDD is safer.
+      </p>
+      <p>
+        For my use case, I’m not particularly worried about failure of the SSD
+        (at least, not any more than I’m worried about failure of the HDD – and I have backups in any case),
+        so I changed the cache mode to writeback, and it’s been working fairly well.
+        If you’re also happy to put some trust into your SSD,
+        then <strong>I recommend you consider using writeback mode too.</strong>
+      </p>
+      <h2>Changing cache mode</h2>
+      <p>
+        Changing the cache mode is a relatively simple command:
+      </p>
+      <pre># lvchange --cachemode writeback <var>RootVG</var>/<var>cryptroot</var></pre>
+      <p>
+        I did this from an Arch Linux live system (on a USB stick),
+        but as far as I now understand, there’s actually no need to do that.
+        LVM doesn’t have a concept of volumes being “open” or “closed” or “live” or whatever
+        (unlike cryptsetup, which I think is where I got this idea from),
+        so you should also be able to do this while your system is running as usual.
+      </p>
+      <p>
+        The actual change of the cache mode happens very quickly –
+        when I rerun that command above, i.e. reset the cache mode to what it already is,
+        it finishes in half a second.
+        However, LVM will first insist that the cache is fully clean before it changes the cache mode,
+        and wait for any dirty blocks to be cleaned (written to the HDD) before it proceeds.
+        This can take quite a while;
+        to see why, let’s discuss when blocks become clean and dirty.
+      </p>
+      <h2>When blocks become clean</h2>
+      <p>
+        If you’re using the writeback mode, then blocks will be written to the SSD and marked as “dirty”.
+        They become marked as “clean” once they’ve been written to the HDD as well, but when does that happen?
+        The documentation on this question isn’t entirely clear, in my opinion.
+        The kernel dm-cache docs say that writes <q>will go only to the cache</q>,
+        suggesting that dirty blocks will accumulate until the whole SSD is dirty,
+        and they are never cleaned unless explicitly requested in some way.
+        On the other hand, the LVM docs say that writeback <q>delays writing data blocks from the cache back to the origin LV</q>,
+        so that you would expect the blocks to become clean after some unknown period of time.
+      </p>
+      <p>
+        In practice, the dirty cache blocks on my system usually stay in the single or low double digits,
+        and quite often there are 0 dirty cache blocks.
+        (You can see the number with <code>sudo lvs -ocache_dirty_blocks</code>.)
+        So it seems like blocks are cleaned automatically;
+        I haven’t been able to figure out whether this is default kernel behavior (and the kernel docs are misleading),
+        or whether LVM initiates this behavior in some way.
+        But in any case, <strong>dirty blocks become clean over time automatically</strong>,
+        often within seconds.
+      </p>
+      <h2>When blocks become dirty</h2>
+      <p>
+        In writethrough mode, as mentioned above, blocks never become dirty in the first place,
+        and if any blocks are already dirty for whatever reason,
+        they get gradually cleaned as well, as we’ve just seen.
+        In writeback mode, blocks temporarily become dirty when they’re written,
+        until they’re automatically cleaned at a later time, usually fairly soon.
+      </p>
+      <p>
+        However, there is one other condition that causes blocks to become dirty:
+        <strong style="text-decoration: underline">after a system crash, every block becomes dirty.</strong>
+        As the kernel documentation explains, the dirty state of blocks changes so often that writing it to disk every time would not be feasible.
+        Therefore, when the system boots and encounters a dm-cache device that wasn’t properly shut down,
+        it can’t know how many blocks’ dirty state wasn’t written to disk and got lost when the system crashed;
+        it has to assume that every single block on the SSD is dirty.
+      </p>
+      <p>
+        This is fairly catastrophic for I/O performance.
+        With the whole cache device dirty, any time the kernel wants to promote a block to the cache,
+        it first has to evict a different block, and because that block is dirty, it first needs to be written back to the HDD.
+        The only way out of this situation is to clean all the blocks,
+        which the kernel dutifully sets out to do,
+        but now we’re talking about cleaning hundreds of thousands of blocks!
+        Until this is finished – which will take at least several hours, and possibly <em>days</em> –
+        your system performance will suffer.
+      </p>
+      <h2>Behavior after a system crash</h2>
+      <p>
+        If the situation described above happens to you,
+        there’s no way around it: you will have a bad time using your computer.
+        When <a href="https://twitter.com/LucasWerkmeistr/status/1539037215648628741">a simple <code>sync</code> takes ten minutes</a>,
+        you’ll have wholly new opportunities to discover what actions on your computer block on disk I/O.
+        For example:
+      </p>
+      <ul>
+        <li>
+          On my system, browsing the internet mostly works fine in this state,
+          but any DNS lookup will take tens of seconds.
+          This will probably depend on your browser and network software, though.
+        </li>
+        <li>
+          In GNOME Shell, taking a screenshot always saves it to disk,
+          and the new file is added to the database of recently used files
+          (<code>~/.local/share/recently-used.xbel</code>),
+          and whenever GNOME (GTK?) writes this file, it <code>fsync()</code>s it.
+          (Which I discovered by <code>strace</code>ing the shell.)
+          When, due to the cache being dirty, <code>fsync()</code> on the file blocks for tens of seconds,
+          it blocks the entire shell process, which incidentally is also responsible for moving the mouse cursor.
+          So you end up in a fun situation where taking a screenshot freezes your mouse for a bit.
+        </li>
+      </ul>
+      <p>
+        I don’t have a “magic bullet” for this problem, and I suspect there isn’t one.
+        You just have to let the kernel work through the backlog of dirty blocks,
+        and the only way you can help is to <strong>leave your system running</strong>,
+        instead of powering it down or putting it into standby or something similar.
+        (I left it running overnight from an Arch Linux USB stick, instead of booted into the normal system,
+        figuring that this way there would be less other I/O load;
+        but to be honest, this probably made no significant difference.)
+        As mentioned above, you can run <code>sudo lvs -ocache_dirty_blocks</code> to see how many dirty blocks are left;
+        you can try to calculate an estimated remaining time based on how the number decreases over a period of time,
+        which in my experience works well enough for a rough estimate at least
+        (“it should be done by mid-day tomorrow”, estimated on the previous evening, turned out to be correct).
+      </p>
+      <p>
+        However, you can prepare for this situation when you put together your system hardware,
+        by recognizing that the time required to clean the whole cache is directly proportional to the size of the SSD:
+        the larger the SSD, the longer it will take to write its entire contents back to the HDD.
+        My current system has a 4&nbsp;TB HDD with a 500&nbsp;GB SSD;
+        I now think that this SSD is rather too large, and 250&nbsp;GB or 128&nbsp;GB would probably have been enough.
+        (Of course, this also depends on how often you expect your system to crash.)
+      </p>
+      <h2>Summary</h2>
+      <ul>
+        <li>
+          consider using <code>--cachemode writeback</code>
+        </li>
+        <li>
+          before changing the cache mode, check that there aren’t too many dirty blocks (<code>sudo lvs -ocache_dirty_blocks</code>),
+          or the command will have to wait for a long while
+        </li>
+        <li>
+          after a system crash, leave the system running as much as possible
+          (though it doesn’t have to be uninterrupted),
+          until <code>sudo lvs -ocache_dirty_blocks</code> shows low numbers again –
+          this can take days
+        </li>
+        <li>
+          don’t make the SSD too large for this kind of cache setup
+        </li>
+      </ul>
+      <p>
+        On the whole, I would still recommend this SSD+HDD setup for a desktop PC.
+        However, looking at current SSD prices,
+        I think within a few years it will become a sensible option to only have one or more large SSDs, with no HDD at all.
+        At that point, we won’t need dm-cache / lvmcache anymore,
+        and can hopefully stop worrying about dirty cache blocks.
+      </p>
+      <footer>
+        <div class="license-info">
+          <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+            <img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png"/>
+          </a><br/>
+          This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+        </div>
+      </footer>
+    </article>
+  </body>
+</html>

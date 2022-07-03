@@ -164,6 +164,10 @@
       <pre>lvcreate --type cache-pool -l 100%PVS -n cryptroot_cache RootVG /dev/sda3</pre>
       <p>Combine them into a single cache Logical Volume:</p>
       <pre>lvconvert --type cache --cachepool RootVG/cryptroot_cache RootVG/cryptroot</pre>
+      <p>
+        2022-07-03 note: I would now suggest adding <code>--cachemode writeback</code> to this command;
+        see <a href="https://lucaswerkmeister.de/posts/2022/07/03/lvmcache/">my follow-up blog post</a>.
+      </p>
       <h2>Encryption setup</h2>
       <p>Set up LUKS on the new root Logical Volume:</p>
       <pre>cryptsetup luksFormat --type luks2 /dev/RootVG/cryptroot</pre>
@@ -482,6 +486,12 @@ chown -R lucas: lucas</pre>
         (Those numbers persist after a reboot, by the way,
         so I assume they apply to the lifetime of the cache device,
         not just to the current boot.)
+      </p>
+      <p>
+        2022-07-03 note:
+        I’ve written <a href="https://lucaswerkmeister.de/posts/2022/07/03/lvmcache/">another blog post</a>
+        specifically about the cache behavior,
+        now that I think I understand it better.
       </p>
       <footer>
         <div class="license-info">
