@@ -395,6 +395,15 @@ efibootmgr \
     --loader /vmlinuz-linux \
     --unicode 'initrd=amd-ucode.img initrd=intel-ucode.img initrd=initramfs-linux.img rd.luks.name=ab1d62d5-8dd5-4866-bec2-b8ab3bb70fea=root root=/dev/mapper/root systemd.unified_cgroup_hierarchy' \
     --verbose</pre>
+        <p>2023-03-12 note: Following several other changes, my command to add the boot loader entry is now:</p>
+        <pre>sudo efibootmgr \
+    --disk /dev/nvme1n1 \
+    --part 1 \
+    --create \
+    --label 'Arch Linux systemd ucode2' \
+    --loader /vmlinuz-linux \
+    --unicode 'initrd=amd-ucode.img initrd=intel-ucode.img initrd=initramfs-linux.img rd.luks.name=9192457b-77e7-4080-a3fa-6adc3d08c57e=root root=/dev/mapper/root systemd.unified_cgroup_hierarchy' \
+    --verbose</pre>
         <p>We also need to set up the initramfs so that it will be able to load and decrypt the root volume.</p>
         <pre>sed -i '
   /^HOOKS=/ {
