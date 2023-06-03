@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Wikimedia Hackathon 2023 recap</title>
+    <link rel="stylesheet" href="/basic.css"/>
+    <link rel="alternate" type="application/rss+xml" href="/posts/index.rss"/>
+  </head>
+  <body vocab="http://schema.org/">
+    <article resource="https://lucaswerkmeister.de/posts/2023/06/03/wikimedia-hackathon-2023/" typeof="BlogPosting">
+      <header>
+        <h1 property="name headline">Wikimedia Hackathon 2023 recap</h1>
+        <address><a rel="author" href="https://lucaswerkmeister.de" typeof="Person"><span property="name" lang="de-DE">Lucas Werkmeister</span></a></address>,
+        <time property="datePublished" datetime="2023-06-03">2023-06-03</time>.
+        <link property="publisher" href="https://lucaswerkmeister.de" typeof="Person"/>
+        <meta property="isAccessibleForFree" content="true"/>
+      </header>
+      <p>
+        Two weeks ago, I participated in the <a href="https://www.mediawiki.org/wiki/Wikimedia_Hackathon_2023">Wikimedia Hackathon 2023</a>.
+        I had a wonderful time, and in this blog post I’m trying to capture some of the experience.
+      </p>
+      <p>
+        As is usual for me, the hackathon went fairly haphazardly:
+        I had come with some vague ideas for topics I could potentially work on,
+        which I didn’t end up touching in the slightest,
+        and instead interacted with lots of people and did various larger and smaller things along the way.
+        I like it this way, but it means you’ll just have to live with this blog post not having a lot of structure :)
+      </p>
+      <p>
+        One of my first achievements was to get a Gerrit change merged:
+        I had uploaded <a href="https://gerrit.wikimedia.org/r/c/mediawiki/core/+/919386">Add <code>Authorization</code> to default <code>$wgAllowedCorsHeaders</code></a> the previous week,
+        and found some people at the hackathon to review it:
+        <a href="https://en.wikipedia.org/wiki/User:Reedy">Reedy</a> and <a href="https://www.mediawiki.org/wiki/User:Legoktm">Legoktm</a>.
+        The intention here was to make it possible to have purely client-side (in-browser) web apps
+        that interact with Wikimedia wikis using OAuth 2.0 (e.g. making edits),
+        which requires making CORS-enabled authenticated requests.
+        Unfortunately, this still doesn’t work;
+        in addition to the Gerrit change mentioned above,
+        we probably need to tweak the way the API processes the <code>origin</code> parameter a little bit –
+        I’ll keep looking into <a href="https://phabricator.wikimedia.org/T322944">this issue</a>.
+        (You can find the <a href="https://github.com/lucaswerkmeister/m3api-examples/tree/main/webapp-clientside-vite-guestbook">example web app</a> I’m trying to make work on GitHub already.)
+      </p>
+      <p>
+        This interaction also had an unexpected additional outcome.
+        Both Reedy and Legoktm were reviewing the change in person, not from their own laptops,
+        so Legoktm wanted to +2 it from my account – but my volunteer account didn’t have +2 rights yet.
+        He suggested / asked that I make a request to get those rights, which I did,
+        and <a href="https://phabricator.wikimedia.org/T337014">+2 in mediawiki/ for Lucas Werkmeister [volunteer]</a> quickly started to rack up support tokens.
+        A week and a half later, Taavi made the change, so I can now merge MediaWiki changes as volunteer \o/
+      </p>
+      <p>
+        Another thing I did was play with the new Toolforge build service, or build packs beta (<a href="https://phabricator.wikimedia.org/T337040">T337040</a>).
+        This is a promising new way to deploy Toolforge tools, in a way that doesn’t rely on the shared NFS file system, <!-- no, this isn’t RAS syndrome. it’s a particular instance of the file system using the NFS technology -->
+        and with more flexibility for developers.
+        (The main reason I’m interested in it is that it should let me finally move the
+        <a href="https://wd-shex-infer.toolforge.org/">Wikidata Shape Expressions Inference tool</a> away from the Grid Engine,
+        but that will require support for multiple languages in the same image first,
+        which the build service doesn’t have yet.)
+        I made a <a href="https://gitlab.wikimedia.org/toolforge-repos/lucaswerkmeister-wmde-test">simple Python/Flask tool</a>
+        and then experimented with how to move it to the build service without losing the configuration file;
+        I also filed some related bugs and updated the documentation along the way.
+        The <a href="https://phabricator.wikimedia.org/T336055">build service session</a> later at the hackathon was also very interesting.
+        (At that session, I realized that some of my earlier documentation edits might have been a bit misguided:
+        I was working under the assumption that you’d still have the tool’s source code cloned in <code>~/www/python/src/</code>,
+        only realizing at the session on Sunday that a tool that’s fully migrated to build packs doesn’t really need this at all –
+        the source code is cloned from version control at image build time, it doesn’t need to exist on NFS at runtime –
+        so the config file should maybe be somewhere else, e.g. directly in the tool’s home directory.)
+      </p>
+      <p>
+        I also unexpectedly worked on two issues where Wikibase was broken:
+        <a href="https://phabricator.wikimedia.org/T336956">the mobile version of Wikidata was unintentionally loading desktop-only modules</a>,
+        and <a href="https://phabricator.wikimedia.org/T337081">interlanguage links couldn’t be added from client wikis</a>.
+      </p>
+      <p>
+        I contributed some very minor fixes to tools where I noticed tiny issues as they were mentioned in sessions:
+        <a href="https://phabricator.wikimedia.org/T337118">Toolhub had some HTTP links</a>,
+        and <a href="https://gitlab.wikimedia.org/toolforge-repos/versions/-/merge_requests/3">Versions was linking to its source code in the wrong place</a>.
+      </p>
+      <p>
+        I held two presentations:
+        <a href="https://phabricator.wikimedia.org/T331276">Cool new things in MediaWiki code</a>
+        and <a href="https://phabricator.wikimedia.org/T331275">Cool new things in PHP</a>.
+        In both cases, the idea is basically that, as a developer working on MediaWiki code,
+        you might have missed some of the cool things that happened recently,
+        so here’s a summary to catch you up.
+        I designed the slides
+        (<a href="https://upload.wikimedia.org/wikipedia/commons/5/54/Cool_new_things_in_MediaWiki_code_%E2%80%93_Wikimedia_Hackathon_2023.pdf">MediaWiki</a>,
+        <a href="https://upload.wikimedia.org/wikipedia/commons/b/b1/Cool_new_things_in_PHP_%E2%80%93_Wikimedia_Hackathon_2023.pdf">PHP</a>)
+        so that they’re useful on their own
+        (with additional slides to summarize what I was saying on the day),
+        so feel free to take a look :)
+      </p>
+      <p>
+        (Side note on the presentations:
+        I had thought about doing a practice run before the first presentation, but decided against it.
+        It turned out that it probably would’ve helped a lot –
+        I talked way too fast and was done in half the time I had been given, which was quite unfortunate.
+        I did a few practice runs for the second presentation and that one went much better.)
+      </p>
+      <p>
+        (Second side note: given that we recently <a href="https://phabricator.wikimedia.org/T178356">raised the JS syntax requirement from ES5 to ES6</a>,
+        I’d really love to have a similar presentation or overview of all the new things we can now use in JS:
+        I know a lot of the features, but I don’t know which can be used now (e.g. <code>class</code> syntax)
+        and which still can’t be used (e.g. <code>async</code>/<code>await</code>).
+        But as far as I know, nobody’s put anything like this together yet.)
+      <p>
+        Of course, a huge part of the hackathon is meeting and getting to know people
+        (whether it’s people I’ve met before, people I’ve only interacted with online but never met in person, or people I didn’t know at all),
+        but I don’t know how to put that into this blog post:
+        if I started to list them, I’d worry about forgetting anyone.
+        One thing I can mention, because it was closer to a planned session than just a random hallway meetup,
+        is that I sat together with <a href="https://en.wikipedia.org/wiki/User:Novem_Linguae">Novem Linguae</a> and <a href="https://meta.wikimedia.org/wiki/User:Gopavasanth">Gopa Vasanth</a>
+        to play with some Rubik’s cubes and juggling equipment.
+        Otherwise, please know that if we talked at the hackathon, I was very happy to meet you!
+      </p>
+      <p>
+        Towards the end of the hackathon,
+        because the topic of Kubernetes probes on Toolforge had been mentioned in a session,
+        I started to work again on a project I’d tried to do a few years ago already:
+        <a href="https://phabricator.wikimedia.org/T337182">make <code>webservice restart</code> do a graceful restart</a>.
+        My <a href="https://gerrit.wikimedia.org/r/c/operations/software/tools-webservice/+/721989/">previous patch for this</a>
+        had been rejected due to excessive complexity,
+        and the underlying code had also changed in the meantime,
+        so I tried to find a new approach to implement the same overall behavior.
+        Happily, my <a href="https://gerrit.wikimedia.org/r/c/operations/software/tools-webservice/+/921620/">new implementation</a>
+        let us remove a lot more code than was added,
+        and was merged soon afterwards;
+        once it’s deployed on Toolforge,
+        I can finally go back from running <code>kubectl rollout restart deployment <var>lexeme-forms</var></code> to just <code>webservice restart</code>.
+      </p>
+      <p>
+        I’ve also <a href="https://wikis.world/@LucasWerkmeister/110317538243683824">posted extensively on Mastodon</a>
+        about my travel surrounding the hackathon, if you’re interested in that.
+        (You can click the little “eye” icon in the upper right corner to expand all the content warnings.
+        Note that Mastodon is apparently not always loading the full thread,
+        so you might have to click on the “last” post a few times to load more.
+        The thread isn’t over until you reach the <a href="https://wikis.world/@LucasWerkmeister/110426553321621250">recap posts</a>.)
+        Otherwise, I think that’s it!
+      </p>
+      <footer>
+        <div class="license-info">
+          <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+            <img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png"/>
+          </a><br/>
+          This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+        </div>
+      </footer>
+    </article>
+  </body>
+</html>
