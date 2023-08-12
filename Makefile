@@ -1,6 +1,11 @@
 .PHONY: all
 
-all: index.rss
+ROOT = https://lucaswerkmeister.de/posts/
+
+all: index.rss wikimedia.rss
 
 index.rss: .
-	~lucas/git/rdf2rss/rdf2rss.py https://lucaswerkmeister.de/posts/ $@
+	~lucas/git/rdf2rss/rdf2rss.py $(ROOT) $@
+
+%.rss: .
+	~lucas/git/rdf2rss/rdf2rss.py -k $* $(ROOT) $@
