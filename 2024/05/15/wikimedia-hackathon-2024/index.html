@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Wikimedia Hackathon 2024 recap</title>
+    <link rel="stylesheet" href="/basic.css"/>
+    <link rel="alternate" type="application/rss+xml" href="/posts/index.rss"/>
+  </head>
+  <body vocab="http://schema.org/">
+    <article resource="https://lucaswerkmeister.de/posts/2024/05/15/wikimedia-hackathon-2024/" typeof="BlogPosting">
+      <header>
+        <h1 property="name headline">Wikimedia Hackathon 2024 recap</h1>
+        <address><a rel="author" href="https://lucaswerkmeister.de" typeof="Person"><span property="name" lang="de-DE">Lucas Werkmeister</span></a></address>,
+        <time property="datePublished" datetime="2024-05-15">2024-05-15</time>.
+        <link property="publisher" href="https://lucaswerkmeister.de" typeof="Person"/>
+        <meta property="isAccessibleForFree" content="true"/>
+        <meta property="keywords" content="wikimedia"/>
+      </header>
+      <p>
+        The <a href="https://www.mediawiki.org/wiki/Special:MyLanguage/Wikimedia_Hackathon_2024">Wikimedia Hackathon 2024</a>
+        took place from May 3 to 5 in Tallinn, Estonia,
+        and like <a href="/posts/2023/06/03/wikimedia-hackathon-2023/">last year</a> I was one of the participants
+        and want to write a recap blog post.
+      </p>
+      <h2>Major projects</h2>
+      <p>
+        I came to the Hackathon with two “major” ideas for things to work on this year,
+        and switched between both of them frequently
+        (one on the work laptop, one on the private laptop).
+        I think this worked well for me:
+        if I got stuck on something in one project,
+        or had to wait for someone else to react / respond,
+        I could switch to the other project and continue working there.
+      </p>
+      <p>
+        The first project was <a href="https://phabricator.wikimedia.org/T231755">T231755: Local language name should be translatable in translatewiki.net</a>.
+        The cldr extension contains many language names in PHP files,
+        and while they’re theoretically open to contributions,
+        it’s difficult for volunteers to suggest changes to those files
+        (they have to find their way around Git and Gerrit).
+        It would be much more convenient if they were defined as i18n messages
+        that could be translated on <a href="https://translatewiki.net/">translatewiki.net</a> instead.
+        Progress on this project mainly consisted of discussing things with other people;
+        I also wrote some code to explore the existing data (which wasn’t merged),
+        and uploaded or reviewed some adjacent cldr patches.
+        I hope to be able to continue working on this project later.
+      </p>
+      <p>
+        The second project, <a href="https://phabricator.wikimedia.org/T363626">T363626: Make Wikidata Image Positions tool translatable on translatewiki.net</a>,
+        saw more tangible progress (in fact it’s mostly done).
+        I had already been working on extracting some i18n code from my Wikidata Lexeme Forms tool,
+        which has been translatable for a while,
+        into a library that other tools can use as well;
+        during the Hackathon I made enough progress that the Wikidata Image Positions tool can now use this code as well.
+        (It’s not a real library yet, I still need to finish that.)
+        The first set of translations in about half a dozen languages
+        was already exported from translatewiki.net and deployed on Toolforge during the Hackathon,
+        which was great; since then, even more translations have come in.
+      </p>
+      <h2>Minor projects</h2>
+      <p>
+        I helped Amir Aharoni write two Wikidata Lexeme Forms templates for Hebrew verbs,
+        and deployed them to the tool
+        (<a href="https://lexeme-forms.toolforge.org/template/hebrew-verb-paal/">pa'al</a>,
+        <a href="https://lexeme-forms.toolforge.org/template/hebrew-verb-nifal/">nif'al</a>).
+        Since then, we’ve brought the total number to seven,
+        adding <a href="https://lexeme-forms.toolforge.org/template/hebrew-verb-piel/">pi'el</a>,
+        <a href="https://lexeme-forms.toolforge.org/template/hebrew-verb-pual/">pu'al</a>,
+        <a href="https://lexeme-forms.toolforge.org/template/hebrew-verb-hifil/">hif'il</a>,
+        <a href="https://lexeme-forms.toolforge.org/template/hebrew-verb-hufal/">huf'al</a>,
+        and <a href="https://lexeme-forms.toolforge.org/template/hebrew-verb-hitpael/">hitpa'el</a>.
+      </p>
+      <p>
+        I fulfilled two edit requests by other Hackathon participants for gadgets on Wikimedia Commons:
+        one <a href="https://commons.wikimedia.org/wiki/MediaWiki_talk:Gadget-Stockphoto.js#Some_updates">for Gadget-Stockphoto</a>
+        and one <a href="https://commons.wikimedia.org/wiki/MediaWiki_talk:Gadget-purgetab.js#Translated_label">for Gadget-purgetab</a>.
+      </p>
+      <p>
+        There were probably some other minor projects as well,
+        but I don’t remember them anymore ^^
+      </p>
+      <h2>Social things</h2>
+      <p>
+        This is really the most important part of the hackathon –
+        talking to people, meeting folks you’ve never seen in person before,
+        hearing what’s going on in their lives, discussing upcoming projects,
+        all sorts of fun stuff.
+        I don’t really know what to write about it here, though.
+      </p>
+      <p>
+        One particular social event was the <a href="https://phabricator.wikimedia.org/T363870">Wikimedia Cuteness Association meetup</a>:
+        several people who had brought plushies, cute companions or similar things to the Hackathon
+        met up in one of the rooms and took some group photos
+        (<a href="https://commons.wikimedia.org/wiki/Category:Wikimedia_Cuteness_Association_at_Wikimedia_Hackathon_2024">Commons category</a>).
+        It didn’t take very long, but I’m glad we did it :)
+      </p>
+      <p>
+        Another social event was <a href="https://phabricator.wikimedia.org/T364009">Juggling, Rubik’s cubes and other physical fun</a>,
+        continuing a tradition from 2019 and 2023.
+        I couldn’t really explain to you why juggling and cubing fits together,
+        but it seems to work alright as a fun hour to hang out ^^
+      </p>
+      <h2>Travel</h2>
+      <p>
+        I’m very happy that this year
+        I was able to travel to and from the Hackathon without flying;
+        I took an overnight train from Berlin to Stockholm
+        (fun fact: in 2019, for Wikimania, just getting to Stockholm by train took over 24 hours with six changeovers)
+        and an overnight ferry from Stockholm to Tallinn (Tuesday evening to Thursday morning)
+        and then the reverse on the way back (Monday evening to Wednesday morning).
+        As usual, I wrote about my travel in <a href="https://wikis.world/@LucasWerkmeister/112361884408412586">a Mastodon thread</a>
+        (only one long thread for travel there + Hackathon + travel back this time).
+      </p>
+      <footer>
+        <div class="license-info">
+          <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+            <img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png"/>
+          </a><br/>
+          This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+        </div>
+      </footer>
+    </article>
+  </body>
+</html>
