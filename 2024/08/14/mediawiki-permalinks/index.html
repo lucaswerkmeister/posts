@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Why MediaWiki permanent links aren’t fully permanent</title>
+    <link rel="stylesheet" href="/basic.css"/>
+    <link rel="alternate" type="application/rss+xml" href="/posts/index.rss"/>
+  </head>
+  <body vocab="http://schema.org/">
+    <article resource="https://lucaswerkmeister.de/posts/2024/08/14/mediawiki-permalinks/" typeof="BlogPosting">
+      <header>
+        <h1 property="name headline">Why MediaWiki permanent links aren’t fully permanent</h1>
+        <address><a rel="author" href="https://lucaswerkmeister.de" typeof="Person"><span property="name" lang="de-DE">Lucas Werkmeister</span></a></address>,
+        <time property="datePublished" datetime="2024-08-14">2024-08-14</time>.
+        <link property="publisher" href="https://lucaswerkmeister.de" typeof="Person"/>
+        <meta property="isAccessibleForFree" content="true"/>
+        <meta property="keywords" content="wikimedia"/>
+      </header>
+      <p>
+        <a href="https://en.wikipedia.org/wiki/MediaWiki">MediaWiki</a>,
+        the software behind <a href="https://en.wikipedia.org/wiki/Wikipedia">Wikipedia</a>
+        and <a href="https://wikiapiary.com/wiki/Main_Page">many other wikis</a>,
+        allows visitors to copy a “permanent link” (or “permalink”) of the article they are currently viewing.
+      </p>
+      <p>
+        As <a href="https://en.wikipedia.org/wiki/Help:Permanent_link">English Wikipedia’s help page on permanent links</a> notes,
+        these links aren’t fully “permanent”:
+        visiting these links later is not guaranteed to show the exact same content.
+        I thought it would be useful to list some of the different ways in which differences can appear.
+      </p>
+      <aside>
+        <p>
+          Please note that I’m mainly focusing on Wikimedia wikis here,
+          and for examples will often refer to Wikipedias in particular;
+          many of these issues will also affect other MediaWiki sites,
+          but there are probably additional ways in which third-party wikis can have permalinks’ contents change
+          (e.g. Fandom / Wikia has tons of custom extensions),
+          and I’m generally not super interested in those.
+          (But if I forgot something relevant to Wikimedia or standard MediaWiki,
+          let me know and I might edit it in.)
+        </p>
+      </aside>
+      <h2>What a permalink is</h2>
+      <p>
+        While the permalink shown in the sidebar (or “tools” menu) contains both the <code>title=</code> and <code>oldid=</code> URL parameters
+        (example: <a href="https://en.wikipedia.org/w/index.php?title=Wikimedia_Commons&oldid=1185477778">https://en.wikipedia.org/w/index.php?title=Wikimedia_Commons&amp;oldid=1185477778</a>),
+        only the <code>oldid=</code> is actually required
+        (equivalent example: <a href="https://en.wikipedia.org/w/index.php?oldid=1185477778">https://en.wikipedia.org/w/index.php?oldid=1185477778</a>).
+        The value of this parameter is the revision ID of a page,
+        and it tells MediaWiki to use the content of this revision of that page instead of its latest revision.
+        For normal wiki articles, this content is the wikitext (the source code of the article),
+        which is then rendered and shown to the visitor;
+        you can also see the content unrendered by adding <code>&action=raw</code> to the URL
+        (<a href="https://en.wikipedia.org/w/index.php?oldid=1185477778&action=raw">example</a>).
+      </p>
+      <h2>Changes in on-wiki content</h2>
+      <p>
+        Let’s start with the biggest one.
+        Visiting a permalink only loads the content of the page itself as of the revision specified in the URL.
+        Any other <a href="https://en.wikipedia.org/wiki/Help:Template">templates</a>,
+        <a href="https://en.wikipedia.org/wiki/Wikipedia:Lua">Lua/Scribunto modules</a>,
+        or <a href="https://en.wikipedia.org/wiki/Help:Transclusion">other transcluded pages</a>
+        are loaded, parsed / evaluated and shown using their latest revision,
+        not whatever was their latest revision when the permalink’s revision was created.
+        Templates may look and behave very differently from what they used to do;
+        their parameters also may or may not be compatible with the template invocation in the old revision,
+        depending on how the community edited the templates.
+      </p>
+      <p>
+        In fact, it’s not even guaranteed that the page will show the same templates at all.
+        Templates are looked up by their name according to the old revision’s wikitext,
+        but templates can be deleted, recreated, or renamed.
+        For instance, several wikis now have templates like <code>{{Q|Q123}}</code> and/or <code>{{P|P123}}</code>
+        to show Wikidata items and/or properties;
+        but in the past, “<code>Q</code>” or “<code>P</code>” may have referred to different templates that were later deleted,
+        as e.g. on <a href="https://eo.wikipedia.org/wiki/Specialaĵo:Protokolo?page=Ŝablono%3AP">Esperanto</a>,
+        <a href="https://zh.wikipedia.org/wiki/Special:%E6%97%A5%E5%BF%97?page=Template%3AP">Chinese</a> or
+        <a href="https://es.wikipedia.org/wiki/Especial:Registro?page=Plantilla%3AQ">Spanish</a> Wikipedia.
+        (These are conveniently short names, after all!
+        On English Wikipedia, <code>{{<a href="https://en.wikipedia.org/wiki/Template:P">P</a>}}</code> is still a smiley 🙂)
+      </p>
+      <p>
+        A more niche phenomenon is redlinks (h/t <a href="https://mamot.fr/@pintoch/112953410745774438">Antonin Delpeuch</a> for this one).
+        MediaWiki shows internal links to existing pages in blue, and links to pages that don’t exist in red;
+        but when rendering a permalink, this refers to whether the page currently exists,
+        not whether it used to exist when the old revision was saved.
+        (You can actually see this in the <a href="https://en.wikipedia.org/w/index.php?oldid=1185477778">example permalink from earlier</a>,
+        where a “not to be confused with” <a href="https://en.wikipedia.org/wiki/Wikipedia:Hatnote">hatnote</a> points to a redlink that was evidently deleted in the meantime.)
+      </p>
+      <p>
+        Articles may also be affected by changes in the wiki’s default interface <a href="https://en.wikipedia.org/wiki/Wikipedia:Common.js_and_common.css">JavaScript and CSS</a>
+        and default <a href="https://en.wikipedia.org/wiki/Wikipedia:Gadget">gadgets</a>,
+        which may interact with page contents.
+        For example, styles for frequently used templates are sometimes moved into <code>common.css</code> (or out of it),
+        and some templates may rely on gadgets for interactive functionality
+        (like – CW for some medical imagery in the next link – Wikimedia Commons’ <a href="https://commons.wikimedia.org/wiki/Template:Imagestack">Imagestack</a>).
+        As with templates, it’s ultimately up to the community whether changes here are backwards compatible or not.
+      </p>
+      <h2>Changes in content on other wikis</h2>
+      <p>
+        Articles can also use content from other wikis,
+        the most prominent example being Wikimedia Commons images
+        (which, thanks to <a href="https://www.mediawiki.org/wiki/InstantCommons">InstantCommons</a>,
+        are used not only on Wikimedia wikis but also <em>many</em> other wikis using MediaWiki).
+        A permalink will show the latest version of an image on Commons,
+        which is not necessarily the same version as was shown when the old revision was saved –
+        although, due to Commons’ <a href="https://commons.wikimedia.org/w/index.php?title=Commons:Don%27t_be_bold&rdfrom=commons:Commons:Be_bold">don’t be bold</a> policy,
+        the differences should usually be minor
+        (e.g. a higher-quality version or a slightly improved crop).
+      </p>
+      <p>
+        The image on Commons may also have been deleted in the meantime,
+        e.g. because it turned out to be a copyright violation.
+        In this case, the permalink will show the image as a redlink.
+      </p>
+      <p>
+        There are also other ways for wikis to refer to Commons.
+        Prior to its <a href="https://phabricator.wikimedia.org/T334940">undeployment due to security issues</a>,
+        the Graph extension could load data from the Data: namespace on Commons,
+        and show it e.g. as a line chart.
+      </p>
+      <p>
+        And then there’s <a href="https://en.wikipedia.org/wiki/Wikidata">Wikidata</a>.
+        Wikipedia editors can, at their discretion, make an article read information from Wikidata;
+        this has a number of benefits,
+        but is also another case where visible parts of an article aren’t part of the article’s source code
+        and viewing old revisions will still pull the latest version from the referenced place.
+      </p>
+      <h2>Changes in the software</h2>
+      <p>
+        Finally, the software which actually renders the old revision’s content is also subject to changes.
+        MediaWiki sees roughly two thousand code changes per release, <!-- git log --oneline --grep='Update git submodules\|Localisation updates\|^Merge' --invert-grep gerrit/REL1_41..gerrit/REL1_42 | wc -l # repeat for a few older REL branch pairs -->
+        and any of them might affect the way an article looks.
+        While the parser is developed fairly conservatively
+        (as nobody wants to break millions of existing pages all at once),
+        there are sometimes breaking changes to it;
+        many of them may be preceded by on-wiki fixes to avoid the breakage
+        (e.g. using the <a href="https://en.wikipedia.org/wiki/Wikipedia:Linter">Linter</a> to locate problematic constructs whose behavior will change in future),
+        but this doesn’t help when looking at old revisions.
+      </p>
+      <aside>
+        <p>
+          (Side note: Because the parser always produces <em>some</em> output HTML,
+          and never returns an error like “invalid input wikitext”,
+          arguably any change to its output is a breaking change.
+          After all, even if some new wikitext syntax is intentionally introduced,
+          that syntax will previously have rendered in a different way,
+          and it’s theoretically possible that someone used that syntax and relies on its previous behavior.
+          This is also something that irritates me about Markdown “flavors”
+          that describe themselves as “compatible with” or “strict supersets of” CommonMark.)
+        </p>
+      </aside>
+      <p>
+        Also, similar to the earlier point about the wiki’s default CSS and JS,
+        the old revision may also have relied on CSS or JS included in MediaWiki, which is subject to change.
+        For example, many articles rely on <a href="https://www.mediawiki.org/wiki/Manual:Collapsible_elements">collapsible elements</a>
+        (which is an intentional feature offered by MediaWiki which has stayed very stable so far),
+        and many pages (help and project pages more so than articles, I believe)
+        rely or relied on styles from the OOUI or MediaWiki UI interface libraries,
+        a practice that is <a href="https://phabricator.wikimedia.org/T360010">increasingly discouraged</a>
+        as these libraries are being phased out in favor of Codex
+        (though <a href="https://phabricator.wikimedia.org/T355242">the replacement is not yet clear</a>).
+      </p>
+      <h2>Now what?</h2>
+      <p>
+        If you want to create a new link to some wiki content as you currently see it:
+        you can use a permalink as offered by MediaWiki (it’s a pretty “lightweight” solution),
+        but if you want to be absolutely sure that everyone else will see the same content,
+        I believe the only way to do that and avoid all the issues here
+        is to grab a snapshot of the <em>rendered</em> wiki content and distribute that.
+        You can do this via a trusted intermediary,
+        such as the <a href="https://en.wikipedia.org/wiki/Internet_Archive">Internet Archive</a>’s <a href="https://en.wikipedia.org/wiki/Wayback_Machine">Wayback Machine</a>,
+        or you can save the page yourself.
+      </p>
+      <p>
+        If you’re looking at a permalink that you found somewhere else,
+        I think it’s worth keeping in mind that there are some caveats to it,
+        but 99% of the time it’s fine –
+        in practice, I think most of the issues listed here are more theoretical than practical concerns.
+        If you really want to be sure you’re seeing a page as it originally appeared,
+        you can try to find a snapshot on the Wayback Machine or another web archiving site.
+      </p>
+      <p>
+        There is also a proposal for a <a href="https://www.mediawiki.org/wiki/User:Ainali/Wiki_Timeslicer">Wiki Timeslicer</a> tool which would bypass some of these problems.
+        (Personally, I’m skeptical how feasible it is, to be honest.
+        But it probably is possible to improve on MediaWiki’s own functionality, at least.)
+      </p>
+      <footer>
+        <div class="license-info">
+          <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+            <img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png"/>
+          </a><br/>
+          This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+        </div>
+      </footer>
+    </article>
+  </body>
+</html>
