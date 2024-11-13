@@ -96,12 +96,15 @@ lterm wbqc # Wikibase Quality constraints</code></pre>
         then the temporary terminal window will quietly close itself behind your back automatically,
         since you don’t need it anymore.
         Another bonus: <code>lterm</code> has automatic completion for all pre-configured locations.
+        (2024-11-13 edit: I just realized <kbd><kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>T</kbd></kbd> is a custom keyboard shortcut of mine,
+        not a standard GNOME feature.
+        So this should probably read “if you start a new terminal window using whatever keyboard shortcut you configured for yourself” 😉)
       </p>
       <p>
         If you want this functionality for yourself, feel free to copy the source code from my GitHub home repository:
         the <a href="https://github.com/lucaswerkmeister/home/blob/master/.bashrc.d/lterm">lterm</a> function itself
         and the underlying <a href="https://github.com/lucaswerkmeister/home/blob/master/.bashrc.d/term">term</a> function it uses
-        (which you might want to tweak if you prefer a different terminal emulator, like Konsole ☺).
+        (which you might want to tweak if you prefer a different terminal emulator, like Konsole 🙂).
         There is also a similar <a href="https://github.com/lucaswerkmeister/home/blob/master/.bashrc.d/rterm">rterm</a> function for remote terminals.
         Place those functions somewhere in your shell initialization files,
         and make sure the <code>set-titles</code> option is enabled in your <a href="https://github.com/lucaswerkmeister/home/blob/5d3f9be03afd27c46cf24c6dad1630e084a7f84e/.tmux.conf#L37">tmux.conf</a>,
