@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Reduce The Size Of Your Tarsnap Backups With This One Weird Trick (the trick is “pay attention to the size of your backups”)</title>
+    <link rel="stylesheet" href="/basic.css"/>
+    <link rel="stylesheet" href="/posts/github-colors.css">
+    <link rel="alternate" type="application/rss+xml" href="/posts/index.rss"/>
+  </head>
+  <body vocab="http://schema.org/">
+    <article resource="https://lucaswerkmeister.de/posts/2024/12/10/tarsnap-backup-size/" typeof="BlogPosting">
+      <header>
+        <h1 property="name headline">Reduce The Size Of Your Tarsnap Backups With This One Weird Trick (the trick is “pay attention to the size of your backups”)</h1>
+        <address><a rel="author" href="https://lucaswerkmeister.de" typeof="Person"><span property="name" lang="de-DE">Lucas Werkmeister</span></a></address>,
+        <time property="datePublished" datetime="2024-12-10">2024-12-10</time>.
+        <link property="publisher" href="https://lucaswerkmeister.de" typeof="Person"/>
+        <meta property="isAccessibleForFree" content="true"/>
+      </header>
+      <p>
+        <a href="https://www.tarsnap.com/">Tarsnap</a> is an encrypted backup product.
+        The client software is gratis and source-available (but not FLOSS);
+        you pay for storage (US$ 0.25 / GB-month) and network traffic (US$ 0.25 / GB) on and with their service.
+        You get an email notification when your current account balance dips below 7 days’ worth of storage costs at your current size,
+        at which point you should increase your balance and/or delete some old backups.
+        (There’s no built-in auto-deletion of backups;
+        some third-party software exists but I just do it manually.)
+        My backups include <code>/etc</code> and <code>/home</code>,
+        with an exclude list of various files and directories that I don’t need backed up
+        which I put together when I first set up these backups.
+      </p>
+      <p>
+        When I most recently got this notification,
+        I was disturbed to see that the daily storage costs were higher than usual –
+        not exorbitant but bad enough to warrant inspection.
+        I could see in the account history on which day the storage cost had increased,
+        but I didn’t remember what happened on that day which might have triggered it.
+        I set out to extract the most recent backup so I could inspect it with <code>ncdu</code> –
+        this seemed like the most practical way to find out what was taking up the most space inside.
+        The extraction process took much longer than I expected
+        (as of this writing, it’s been running for 10 days and hasn’t actually finished yet),
+        but partway through it became clear that I had inadvertently included a large SQL dump in the backup,
+        and failed to update the exclude list when renaming some previously-excluded ISO files.
+      </p>
+      <p>
+        Because waiting for days to extract the latest backup doesn’t sound like a great experience to go through regularly
+        (and remember, you’re paying for that network traffic to download it again!),
+        I started thinking about alternative solutions to find out what’s getting backed up.
+        I found out that <code><a href="https://en.wikipedia.org/wiki/Ncdu">ncdu</a></code> (“ncurses disk usage”) has an option to exclude files from the disk usage report,
+        and its pattern syntax is (as far as I can tell) compatible with the one for Tarsnap.
+        So I put together a little shell script to run <code>ncdu</code> with the exclude list from my Tarsnap config;
+        you can find the <a href="https://github.com/lucaswerkmeister/home/blob/main/.bashrc.d/ncdu-tarsnap">latest version</a> on GitHub (assuming I don’t rename the file),
+        or the current version as of this writing below:
+      </p>
+      <details>
+        <summary><code>ncdu-tarsnap</code></summary>
+        <pre><code><span class="comment"># Show disk usage of tarsnap backups.</span>
+<span class="comment">#</span>
+<span class="comment"># You can delete files in ncdu,</span>
+<span class="comment"># but keep in mind that ncdu is operating on the local file system.</span>
+<span class="comment"># Don’t delete any files that you want to keep there,</span>
+<span class="comment"># and don’t assume that they will be removed from any existing backups.</span>
+<span class="comment">#</span>
+<span class="comment"># Assumptions that apply to my setup but may or may not apply to others’:</span>
+<span class="comment"># * the most relevant folder being backed up is ~</span>
+<span class="comment">#   (I actually back up /home and /etc but everything outside of ~ is negligible –</span>
+<span class="comment">#   ncdu doesn’t support inspecting multiple directories at once)</span>
+<span class="comment"># * some files below ~ are not $USER-readable, so running ncdu with sudo is useful</span>
+<span class="comment"># * the backup is being made as root</span>
+<span class="comment">#   (otherwise the non-$USER-readable files should not be counted after all)</span>
+<span class="comment"># * only /etc/tarsnap/tarsnap.conf is used</span>
+<span class="comment">#   (no ~/.tarsnaprc and also no --exclude on the command line)</span>
+<span class="keyword">function</span> ncdu-tarsnap {
+    <span class="comment"># bash -c is needed because sudo … &lt;() doesn’t work properly (see -C in sudo(8))</span>
+
+    <span class="comment"># --apparent-size probably makes more sense for a backup than --disk-usage</span>
+
+    <span class="comment"># note that this will also show (with empty size)</span>
+    <span class="comment"># files that are excluded;</span>
+    <span class="comment"># unfortunately, ncdu’s --hide-hidden hides both hidden (.*) and excluded files,</span>
+    <span class="comment"># and there seems to be no option for hiding excluded but showing hidden files :(</span>
+    sudo bash -c <span class="string">"ncdu \"</span>$HOME\" --apparent-size --exclude-from <span class="keyword operator">&lt;</span>(sed -n <span class="string">'/^exclude\s\+/ s///p'</span> /etc/tarsnap/tarsnap.conf)"
+}
+</code></pre>
+      </details>
+      <p>
+        Looking through the data-that-would-be-backed-up in <code>ncdu-tarsnap</code>,
+        I was able to identify several patterns that I should add to my exclude list,
+        and also some data that I could also just delete from my live file system.
+        So that’s the first part of my One Weird Trick (so sorry about that title):
+        <strong>adjust your exclude patterns based on your current file system contents.</strong>
+      </p>
+      <p>
+        That’s all nice and well, but what happens the next time I leave a large SQL dump in my home directory without thinking about the backups?
+        I realized I needed to set up a process to periodically check the total size of the data-that-would-be-backed-up and alert me if it got too large.
+        <code>ncdu</code> isn’t useful for that,
+        but fortunately <code><a href="https://en.wikipedia.org/wiki/Du_(Unix)">du</a></code> (“disk usage”) also has exclude-pattern support,
+        again with compatible syntax,
+        and is easy to use in a shell script.
+        Sending a desktop notification from a systemd system service
+        (I need it to run with privileges because not all the files in my home directory are readable by me)
+        isn’t pretty, but the following works:
+      </p>
+      <details>
+        <summary><code>tarsnap-size-check.service</code></summary>
+        <pre><code># /etc/systemd/system/tarsnap-size-check.service
+[Unit]
+Description=Warn Lucas if it appears that the next tarsnap backup would be bigger than 50 GB
+
+[Service]
+Type=oneshot
+ExecStart=bash -s
+StandardInputText=\
+  bytes=$(du --summarize --bytes /home /etc --exclude-from <(sed -n '/^exclude\\s\\+/ s///p' /etc/tarsnap/tarsnap.conf) | awk '{ total += $1 } END { print total }'); \
+  if (( bytes <= 50000000000 )); then exit 0; fi; \
+  gigabytes=$(bc <<< "scale=1; $bytes/1000000000"); \
+  DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$UID/bus notify-send -a 'Tarsnap size warning' -i dialog-warning 'Tarsnap backup too large' "The projected size of a new backup is $gigabytes GB ($bytes bytes), should be below 50 GB! Use ncdu-tarsnap to inspect the situation."; \
+  exit 1
+User=lucas
+AmbientCapabilities=CAP_DAC_READ_SEARCH
+
+CapabilityBoundingSet=CAP_DAC_READ_SEARCH
+IPAddressDeny=any
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+NoNewPrivileges=yes
+PrivateDevices=yes
+PrivateMounts=yes
+PrivateNetwork=yes
+PrivateTmp=yes
+ProtectClock=yes
+ProtectControlGroups=yes
+ProtectHome=read-only
+ProtectHostname=yes
+ProtectKernelLogs=yes
+ProtectKernelModules=yes
+ProtectKernelTunables=yes
+ProtectProc=invisible
+ProtectSystem=strict
+RestrictAddressFamilies=AF_UNIX
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged @resources
+</code></pre>
+      </details>
+      <details>
+        <summary><code>tarsnap-size-check.timer</code></summary>
+        <pre><code># /etc/systemd/system/tarsnap-size-check.timer
+[Unit]
+Description=Regularly monitor the size of tarsnap backups according to the current configuration
+
+[Timer]
+OnCalendar=hourly
+AccuracySec=1h
+
+[Install]
+WantedBy=timers.target
+</code></pre>
+      </details>
+      <p>
+        (Of course, you may want to adjust the hard-coded threshold to something other than 50 GB.
+        And maybe you prefer another notification setup as well.)
+        The timer is set up to run hourly, whereas my backups run weekly,
+        so that should give me enough time to act whenever it notifies me.
+        (I included a pointer to <code>ncdu-tarsnap</code> in the notification text in case I forget what I called the script.)
+        And that’s the second part of my One Weird Trick:
+        <strong>Set up alerts if your projected backup size exceeds a preconfigured limit.</strong>
+      </p>
+      <p>
+        Either of these could be built into Tarsnap,
+        but as far as I can tell, they aren’t.
+        But at least it’s not too difficult to build them around Tarsnap instead.
+        (The above scripts and units might even be applicable to other backup solutions,
+        as long as those solutions also use <a href="https://en.wikipedia.org/wiki/Glob_(programming)">glob/fnmatch</a>-like patterns.)
+      </p>
+      <footer>
+        <div class="license-info">
+          <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+            <img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png"/>
+          </a><br/>
+          This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+        </div>
+      </footer>
+    </article>
+  </body>
+</html>
