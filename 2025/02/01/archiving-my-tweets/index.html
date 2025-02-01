@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Archiving my tweets</title>
+    <link rel="stylesheet" href="/basic.css"/>
+    <link rel="alternate" type="application/rss+xml" href="/posts/index.rss"/>
+  </head>
+  <body vocab="http://schema.org/">
+    <article resource="https://lucaswerkmeister.de/posts/2025/02/01/archiving-my-tweets/" typeof="BlogPosting">
+      <header>
+        <h1 property="name headline">Archiving my tweets</h1>
+        <address><a rel="author" href="https://lucaswerkmeister.de" typeof="Person"><span property="name" lang="de-DE">Lucas Werkmeister</span></a></address>,
+        <time property="datePublished" datetime="2025-02-01">2025-02-01</time>.
+        <link property="publisher" href="https://lucaswerkmeister.de" typeof="Person"/>
+        <meta property="isAccessibleForFree" content="true"/>
+      </header>
+      <p>
+        As you may be aware, Twitter has been going down the toilet for a while,
+        especially since noted asshole Jack Dorsey sold it to noted even bigger asshole Elon Musk.
+        As you may also be aware, I used to use Twitter quite a bit,
+        and I also generally enjoy referring back to my older social media posts.
+        So while I moved to Mastodon a while ago
+        (first the now-defunct mastodon.technology, then <a href="https://wikis.world/">Wikis World</a>),
+        I would still like to have access to my old tweets.
+      </p>
+      <p>
+        After opening tabs for several Twitter archivers and then not doing anything with them for ca. two years,
+        I’ve now finally tried them out, picked one I liked, and started setting it up.
+        My archiver of choice is <a href="https://tinysubversions.com/twitter-archive/make-your-own/">Darius Kazemi aka Tiny Subversions’ simple Twitter archiver</a>,
+        which is very easy to use (it runs in the browser: drop in your ZIP file, get a new ZIP file out),
+        fast, and produces output that I find useful and pleasing.
+        Its URL format also lends itself to supporting multiple archives next to each other,
+        which should be useful later;
+        I only had to tweak the <code>app.js</code> and <code>index.html</code> files slightly to make this work.
+      </p>
+      <p>
+        You can find the @LucasWerkmeistr Twitter archive at <strong><a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/">twitter.lucaswerkmeister.de/LucasWerkmeistr/</a></strong>,
+        and individual tweets at URLs like <a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1154827181387898882/">twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1154827181387898882</a>,
+        easily rewritable from the original URL <a href="https://twitter.com/LucasWerkmeistr/status/1154827181387898882">twitter.com/LucasWerkmeistr/status/1154827181387898882</a> –
+        just replace the <code>twitter.com</code> domain with <code>twitter.lucaswerkmeister.de</code>.
+        The archive also includes a search feature;
+        I’m <em>slightly</em> nervous about someone using it to find stupid things I wrote years ago,
+        but I think on the whole it should be okay as long as people keep in mind that this is an archive of things I posted in the past,
+        not necessarily an enthusiastic endorsement that I would post all of it in exactly the same way again today.
+      </p>
+      <p>
+        The biggest shortcoming of this Twitter archiver, which it shares with the other options I tried,
+        is that it doesn’t include the alt text of the images I posted.
+        This is very unfortunate, as the alt text is important for accessibility,
+        and also I put a lot of work into those alt texts if you add it up and I don’t want to lose it.
+        (The alt text is not included in Twitter’s own exports / archives,
+        so any tool that’s based on them is going to have the same limitation.
+        I assume in principle it would be possible for someone to build a tool that fetches the alt text from Twitter now,
+        as long as the tweets haven’t been deleted yet,
+        but I don’t know if anyone’s done that and I’m certainly not interested in switching to a different archiver now.)
+        So I picked out my most popular tweets – using the command
+        <code>sed 's/^const searchDocuments = //' searchDocuments.js | jq '[.[] | select(.full_text | contains("tweets_media"))] | sort_by(.favorite_count | tonumber | - .) | .[]' | less</code>
+        which picks them out of the search data – and manually copied the alt text for those,
+        as well as for plenty of other tweet threads where I wanted to keep the alt text,
+        just by copying it from the existing tweets (which I haven’t deleted yet)
+        and hand-editing it into the HTML files.
+        (Emacs’ syntax highlighting tells me when I need to switch between <code>alt=""</code> and <code>alt=''</code>, and/or HTML-escape individual single quotes as <code>&amp;#39;</code>, because of quote characters in the alt text.)
+        I expect I’ll keep doing this for a few more days after this blog post goes up,
+        and once I decide I’ve copied enough alt text,
+        then it will probably finally be time for me to, at long last, delete my account.
+      </p>
+      <p>
+        (Side note one: as the archive shows the full thread of a tweet on each page,
+        but still has a separate page per tweet,
+        threaded tweets are included in several copies – once per thread in the tweet.
+        I’ve generally only manually added the alt text to the page for the “top” tweet in the thread –
+        for instance, <a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1164116092882739200/">this page</a> has the alt text for <a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1164145887381245952/">this tweet</a> –
+        so if you ended up on a page in the middle of a thread, you might want to follow the link at the top.
+        If I can be bothered, maybe I’ll later write a little program that syncs the <code>alt=</code> attributes between different pages.)
+      </p>
+      <p>
+        (Side note two: in the original output of the archiver,
+        links to other tweets in the tweets themselves weren’t updated;
+        I fixed the links pointing to my own tweets using the command
+        <code>sed -i.sedbak -E 's|&lt;a href="https://twitter.com/LucasWerkmeistr/status/([1-9][0-9]*)">https://twitter.com/LucasWerkmeistr/status/\1&lt;/a>|&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/\1">https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/\1&lt;/a>|g' */index.html</code> –
+        i.e. making them point back to the archive rather than the original URL.
+        If anyone else I’ve interacted with has also archived their tweets in a similar way,
+        let me know and I can make my archived tweets point to your archive 🎉)
+      </p>
+      <p>
+        As part of copying the alt text, I also rediscovered many of my threads that I liked,
+        so here’s a selection of some of them –
+        some of my favorite tweets and threads:
+      </p>
+      <ul>
+        <li><a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1154826541588766726/">my coming out!</a></li>
+        <li><a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/824357495397289991/">systemd tip of the day</a> (<a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/849377832866377730/">part 2</a>), a series I did for a while (I assume most of the tips should still apply but do keep in mind they’re ca. eight years old 😄)</li>
+        <li>Wikimedia tools:
+          <ul>
+            <li><a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1006863422569492481/">Wikidata Lexeme Forms</a></li>
+            <li><a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1054066169907425280/">Wikidata Image Positions</a></li>
+            <li><a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1211216978083491841/">SpeedPatrolling</a> (<a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1180579346966138880/">alternate post</a>; see also the <a href="https://lucaswerkmeister.de/posts/2019/01/04/speedpatrolling/">behind-the-scenes blog post</a>)</li>
+            <li><a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1107400603649609729/">QuickCategories</a></li>
+            <li>AC/DC: no central thread, but see <a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1171886943375900672/">gadget announcement</a>, <a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1441133597365358592/">easter egg</a>, <a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1491556600561254404/">new features</a></li>
+            <li><a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1355554819478532102/">Ranker</a></li>
+          </ul>
+        </li>
+        <li>Pride parades:
+          <ul>
+            <li><a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1023258024079699968/">Berlin 2018</a></li>
+            <li><a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1155071561105399808/">Berlin 2019</a></li>
+            <li><a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1408749926356602889/">Berlin 2021 (June)</a></li>
+            <li><a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1418889315606749187/">Berlin 2021 (July)</a></li>
+            <li><a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1550780652072615938/">Berlin 2022</a></li>
+          </ul>
+        </li>
+        <li>Big holiday / travel threads:
+          <ul>
+            <li><a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1161171648315367424/">Wikimania 2019</a> – Stockholm (see also Queryboo below)</li>
+            <li><a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1164116092882739200/">CCCamp 2019</a> – Mildenberg</li>
+            <li><a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1299260745583034368/">Summer 2020</a> – Berlin to Fürth</li>
+            <li><a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1432239389380337664/">Summer 2021</a> – southern Germany round trip</li>
+            <li><a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1555635275572940805/">Summer 2022</a> – Alps, France, United Kingdom (including bike tour there); this one was split across multiple threads but they’re all linked to each other</li>
+          </ul>
+        </li>
+        <li><a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1161176506418249728/">Queryboo travel thread</a> (concurrent with Wikimania 2019 linked above)</li>
+        <li><a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1395790502809804800/">Wikimedia Hackathon 2021</a> (remote event)</li>
+        <li>Covid vaccine selfies:
+          <ul>
+            <li><a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1405423730088624129/">June 2021</a></li>
+            <li><a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1423263773499039749/">August 2021</a></li>
+            <li><a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1473626033077301250/">December 2021</a></li>
+            <li><a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1530110423302815744/">May 2022</a></li>
+          </ul>
+        </li>
+        <li>Shorter bike tours (for longer ones, see the travel threads above):
+          <ul>
+            <li><a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1242396608656027648/">March 2020</a></li>
+            <li><a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1267063408261763072/">May 2020</a> (<a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1267114176054525954/">part 2</a>)</li>
+            <li><a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1284823454936715266/">July 2020</a></li>
+            <li><a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1294963724609097728/">16 August 2020</a></li>
+            <li><a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1297103431912558593/">22 August 2020</a></li>
+            <li><a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1423980748374224897/">August 2021 (post-vaccine)</a></li>
+            <li><a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1516052902053396481/">April 2022</a> (short but I still really like the joke in the second post ^^)</li>
+            <li><a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1530867014700519424/">May 2022 (post-vaccine)</a></li>
+            <li><a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1533747147673374720/">June 2022</a></li>
+          </ul>
+        </li>
+        <li><a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1351536421086121986/">first(?) appearance of the “fuck biphobia” sweater</a> – this would turn out to be my most-faved tweet, heh</li>
+        <li>Painted nails / nail polish / #nailart:
+          <ul>
+            <li><a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1187708195717943296/">25 October 2019</a> (WikidataCon 2019)</li>
+            <li><a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1187747443959566339/">25 October 2019</a> (WikidataCon 2019), feat. Harmonia Amanda</li>
+            <li><a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1193900699177963520/">11 November 2019</a></li>
+            <li><a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1201456320332881922/">2 December 2019</a></li>
+            <li><a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1205113655647506432/">12 December 2019</a></li>
+            <li><a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1210489539891998721/">19 December 2019</a></li>
+            <li><a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1212075355156230147/">31 December 2019</a></li>
+            <li><a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1219740069155745792/">21 January 2020</a></li>
+            <li><a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1221489790589329408/">26 January 2020</a></li>
+            <li><a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1226584679849000960/">9 February 2020</a></li>
+            <li><a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1233715852077301762/">29 February 2020</a></li>
+            <li><a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1244711490269204484/">30 March 2020</a>, the first one under the influence of covid apparently</li>
+            <li><a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1262716886036492289/">19 May 2020</a></li>
+            <li><a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1405423730088624129/">17 June 2021</a> (also linked under the vaccine selfies above)</li>
+            <li><a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1280271600147972102/">7 July 2020</a></li>
+            <li><a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1293936669012504578/">13 August 2020</a></li>
+            <li><a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1298959741775941633/">27 August 2020</a></li>
+            <li><a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1320400758270021632/">25 October 2020</a></li>
+            <li><a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1358145980177219588/">6 February 2021</a></li>
+            <li><a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1454004321301970949/">29 October 2021</a></li>
+            <li><a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1457338310758645763/">7 November 2021</a></li>
+          </ul>
+        </li>
+        <li><a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1381731582545911811/">gratuitous selfie thread</a> (includes nail polish, 13 April 2021) – did you know I had a beard for a while during covid? wild</li>
+      </ul>
+      <p>
+        As I mentioned, the archive’s URL format can accommodate multiple Twitter accounts’ archives on the same domain,
+        so I expect at some point (hopefully soon) I’ll also set up twitter.lucaswerkmeister.de/WikidataFacts/ and twitter.lucaswerkmeister.de/ItsBiNotHetero/ –
+        stay tuned 🙂
+      </p>
+      <footer>
+        <div class="license-info">
+          <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+            <img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png"/>
+          </a><br/>
+          This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+        </div>
+      </footer>
+    </article>
+  </body>
+</html>
