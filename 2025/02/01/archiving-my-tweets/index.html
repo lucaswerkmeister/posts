@@ -72,7 +72,8 @@
         I’ve generally only manually added the alt text to the page for the “top” tweet in the thread –
         for instance, <a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1164116092882739200/">this page</a> has the alt text for <a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1164145887381245952/">this tweet</a> –
         so if you ended up on a page in the middle of a thread, you might want to follow the link at the top.
-        If I can be bothered, maybe I’ll later write a little program that syncs the <code>alt=</code> attributes between different pages.)
+        If I can be bothered, maybe I’ll later write a little program that syncs the <code>alt=</code> attributes between different pages.
+        [2025-02-09 update: I could be bothered. See below.])
       </p>
       <p>
         (Side note two: in the original output of the archiver,
@@ -174,6 +175,13 @@
         As I mentioned, the archive’s URL format can accommodate multiple Twitter accounts’ archives on the same domain,
         so I expect at some point (hopefully soon) I’ll also set up twitter.lucaswerkmeister.de/WikidataFacts/ and twitter.lucaswerkmeister.de/ItsBiNotHetero/ –
         stay tuned 🙂
+      </p>
+      <p>
+        <strong>2025-02-09 update:</strong> I wrote the program to synchronize the alt texts:
+        it’s called <a href="https://github.com/lucaswerkmeister/sync-alt">sync-alt</a>
+        and I applied it to the Twitter archive,
+        so now all the posts where I copied the alt text over should have it,
+        regardless of where in the thread you’re viewing them.
       </p>
       <footer>
         <div class="license-info">
