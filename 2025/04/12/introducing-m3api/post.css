@@ -1,0 +1,9 @@
+* {
+	tab-size: 4;
+}
+dt {
+	font-weight: bold;
+}
+dt::after {
+	content: ":";
+}

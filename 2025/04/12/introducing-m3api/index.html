@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Introducing m3api</title>
+    <link rel="stylesheet" href="/basic.css"/>
+    <link rel="stylesheet" href="/posts/github-colors.css">
+    <link rel="stylesheet" href="post.css">
+    <link rel="alternate" type="application/rss+xml" href="/posts/index.rss"/>
+  </head>
+  <body vocab="http://schema.org/">
+    <article resource="https://lucaswerkmeister.de/posts/2025/04/12/introducing-m3api/" typeof="BlogPosting">
+      <header>
+        <h1 property="name headline">Introducing m3api</h1>
+        <address><a rel="author" href="https://lucaswerkmeister.de" typeof="Person"><span property="name" lang="de-DE">Lucas Werkmeister</span></a></address>,
+        <time property="datePublished" datetime="2025-04-12">2025-04-12</time>.
+        <link property="publisher" href="https://lucaswerkmeister.de" typeof="Person"/>
+        <meta property="isAccessibleForFree" content="true"/>
+        <meta property="keywords" content="wikimedia"/>
+      </header>
+      <p>
+        For the past couple of years, I’ve been working on a new JavaScript library for the MediaWiki Action API, called <strong>m3api</strong>.
+        On the occasion of its 1.0.0 release today,
+        I want to talk about why I wrote it, what it does, and why I think you should use it :)
+      </p>
+      <h2 id="quick-links">Quick links</h2>
+      <p>
+        <a href="https://www.npmjs.com/package/m3api">npm package</a>,
+        <a href="https://github.com/lucaswerkmeister/m3api/">GitHub repository</a>,
+        <a href="https://lucaswerkmeister.github.io/m3api/">documentation</a>,
+        <a href="https://github.com/lucaswerkmeister/m3api-examples/">examples</a>.
+      </p>
+      <h2 id="why-a-new-library">Why a new JS library for the MediaWiki API?</h2>
+      <p>
+        So why did I write a new library for the MediaWiki API at all?
+        Aren’t there <a href="https://www.mediawiki.org/wiki/API:Client_code/All#JavaScript">enough of them</a> already?
+      </p>
+      <p>
+        I was looking for a library fulfilling two criteria,
+        and didn’t find any that fulfilled both:
+      </p>
+      <ol>
+        <li>
+          Cross-platform: I want to be able to use the same interface to the API whether I’m writing code for the browser or for Node.js.
+          (Small differences in setup are acceptable, but once setup is done, the interface should be uniform.)
+          This apparently rules out virtually all the libraries;
+          the only known exception on the list of libraries linked above (apart from m3api itself)
+          is <a href="https://github.com/kanasimi/CeJS">CeJS</a>, which is a mystery to me.
+          <!-- This phrasing is kind of ambiguous: it could mean “CeJS is a mystery” or “the fact that no other library is cross-platform is a mystery”. But I agree with both ^^ -->
+        </li>
+        <li>
+          Reasonably modern: at a minimum, this means promises rather than callbacks.
+          (As far as I can tell, this rules out CeJS, along with many other libraries.)
+          Additional modern things that would be nice to have
+          are <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/AsyncGenerator">async generators</a> as the interface for API continuation
+          and <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules">ES6 modules</a> instead of Node.js <code>require()</code> / UMD / etc.
+        </li>
+      </ol>
+      <p>
+        Since I couldn’t find a library matching my needs, I wrote it :)
+      </p>
+      <h2 id="main-characteristics">Main characteristics</h2>
+      <p>
+        <a href="https://www.martinfowler.com/bliki/TwoHardThings.html">Naming things is hard</a>;
+        m3api stands for “<strong>minimal, modern MediaWiki API [client]</strong>” (three ‘m’s, you see).
+        I’ve already mentioned “modern” above –
+        m3api uses promises, async generators, ES6 modules,
+        but also <code>fetch()</code> (even in Node – yay for <a href="https://nodejs.org/en/learn/getting-started/fetch">undici</a>),
+        <code>class</code> syntax, object spreading and destructuring,
+        <code>FormData</code> / <code>Blob</code> / <code>File</code> for file parameters, and more.
+        (Some of this felt fairly “bleeding edge” when I started working on m3api,
+        but keep in mind that this was almost five years ago.
+        m3api may not support all the <a href="https://www.mediawiki.org/wiki/Compatibility#Browsers">browsers supported by MediaWiki</a>,
+        but it does support the Node.js version that was shipped in stable Debian 12 (Bookworm) two years ago.)
+      </p>
+      <p>
+        I want to elaborate on the “minimal” term a bit more.
+        Basically, the point is that I’m familiar with the MediaWiki Action API,
+        and I don’t like libraries that aim to hide the API from me.
+        I’m wary of basic <a href="https://en.wikipedia.org/wiki/Create,_read,_update_and_delete"><abbr title="create, read, update, delete">CRUD</abbr></a> abstraction methods;
+        the <code>action=edit</code> API has plenty of useful options,
+        many of which a higher-level method probably doesn’t make available.
+        I want a library that helps me to work with the API directly.
+        (I don’t mind if it <em>also</em> offers abstraction methods, but they’re not a high priority for me when writing my own library.
+        Also, some other libraries seem to make it relatively hard to make direct API requests.)
+      </p>
+      <p>
+        However, “minimal” doesn’t mean that the library doesn’t have any features.
+        There are plenty of features designed to make it easier to use the API;
+        my basic rule of thumb is that the feature should be useful with more than one API action.
+        For example, API continuation is present in several API actions, and somewhat tedious to use “manually”,
+        so m3api offers support for it.
+      </p>
+      <p>
+        In addition to that, there are also several extension packages for m3api,
+        as well as <a href="https://github.com/lucaswerkmeister/m3api/#creating-extension-packages">guidelines</a>
+        for others to implement additional extension packages.
+        These implement support for specific API modules
+        (<a href="https://github.com/lucaswerkmeister/m3api-query/">m3api-query</a> for <code>action=query</code>,
+        <a href="https://github.com/lucaswerkmeister/m3api-botpassword/">m3api-botpassword</a> for <code>action=login</code>)
+        or other functionality that doesn’t belong in m3api itself
+        (<a href="https://github.com/lucaswerkmeister/m3api-oauth2/">m3api-oauth2</a> for the OAuth 2.0 authorization flow).
+        In combination, these libraries are intended to provide,
+        if not a full API framework,
+        then at least a powerful and flexible toolkit for working with the API.
+      </p>
+      <h2 id="basic-interface">Basic interface</h2>
+      <p>
+        The simplest way to make an API request with m3api looks like this:
+      </p>
+      <pre><code><span class="keyword">import</span> Session <span class="keyword">from</span> <span class="string">'m3api/node.js'</span>;
+<span class="storage type">const</span> session <span class="keyword operator">=</span> <span class="keyword">new</span> <span class="variable type">Session</span>( <span class="string">'en.wikipedia.org'</span> );
+<span class="storage type">const</span> response <span class="keyword operator">=</span> <span class="keyword">await</span> session.<span class="function call">request</span>(
+	{ action: <span class="string">'query'</span>, meta: <span class="string">'siteinfo'</span> },
+);</code></pre>
+      <p>
+        You can also specify default parameters that should apply to every request of a session when creating it:
+      </p>
+      <pre><code><span class="keyword">import</span> Session <span class="keyword">from</span> <span class="string">'m3api/node.js'</span>;
+<span class="storage type">const</span> session <span class="keyword operator">=</span> <span class="keyword">new</span> <span class="variable type">Session</span>(
+	<span class="string">'en.wikipedia.org'</span>,
+	{ formatversion: <span class="constant numeric">2</span> },
+);
+<span class="storage type">const</span> response <span class="keyword operator">=</span> <span class="keyword">await</span> session.<span class="function call">request</span>(
+	{ action: <span class="string">'query'</span>, meta: <span class="string">'siteinfo'</span> },
+);</code></pre>
+      <p>
+        These examples specify <em>parameters</em> to send to the API (<code>action=query</code>, <code>meta=siteinfo</code>, <code>formatversion=2</code>).
+        Additionally, you can specify <em>options</em> as another object after the parameters,
+        which instead influence how m3api sends the request.
+        One option that you should always set is the <code>userAgent</code>, which controls the <code>User-Agent</code> HTTP header
+        (see the <a href="https://meta.wikimedia.org/wiki/Special:MyLanguage/User-Agent_policy">User-Agent policy</a>).
+        Usually, you would set this option for all requests when creating the session:
+      </p>
+      <pre><code><span class="keyword">import</span> Session <span class="keyword">from</span> <span class="string">'m3api/node.js'</span>;
+<span class="storage type">const</span> session <span class="keyword operator">=</span> <span class="keyword">new</span> <span class="variable type">Session</span>(
+	<span class="string">'en.wikipedia.org'</span>,
+	{ formatversion: <span class="constant numeric">2</span> },
+	{ userAgent: <span class="string">'introducing-m3api-blog-post'</span> },
+);
+<span class="storage type">const</span> response <span class="keyword operator">=</span> <span class="keyword">await</span> session.<span class="function call">request</span>(
+	{ action: <span class="string">'query'</span>, meta: <span class="string">'siteinfo'</span> },
+);</code></pre>
+      <p>
+        But you could also set it on the individual request, if you wanted:
+      </p>
+      <pre><code><span class="keyword">import</span> Session <span class="keyword">from</span> <span class="string">'m3api/node.js'</span>;
+<span class="storage type">const</span> session <span class="keyword operator">=</span> <span class="keyword">new</span> <span class="variable type">Session</span>(
+	<span class="string">'en.wikipedia.org'</span>,
+	{ formatversion: <span class="constant numeric">2</span> },
+);
+<span class="storage type">const</span> response <span class="keyword operator">=</span> <span class="keyword">await</span> session.<span class="function call">request</span>(
+	{ action: <span class="string">'query'</span>, meta: <span class="string">'siteinfo'</span> },
+	{ userAgent: <span class="string">'introducing-m3api-blog-post'</span> },
+);</code></pre>
+      <p>
+        (It doesn’t make much sense to set the <code>userAgent</code> per request,
+        but there are other options where it’s more useful,
+        e.g. <code>method: 'POST'</code> and <code>tokenType: 'csrf'</code>.)
+      </p>
+      <p>
+        Other functions generally also follow this pattern of taking parameters followed by options,
+        with the options being, well, optional.
+        Both the parameters and options are merged with the defaults from the constructor,
+        making for a convenient and uniform interface.
+      </p>
+      <p>
+        In addition to strings, parameter values can also be numbers, booleans, and arrays, for example:
+      </p>
+      <pre><code><span class="storage type">const</span> response <span class="keyword operator">=</span> <span class="keyword">await</span> session.<span class="function call">request</span>( {
+	action: <span class="string">'query'</span>,
+	meta: [ <span class="string">'siteinfo'</span>, <span class="string">'userinfo'</span> ],
+	curtimestamp: <span class="constant language">true</span>,
+	formatversion: <span class="constant numeric">2</span>,
+} );</code></pre>
+      <p>
+        List parameters can also be sets instead of arrays; more on that <a href="#combining-requests">below</a>.
+      </p>
+      <h2 id="api-continuation">API continuation</h2>
+      <p>
+        As mentioned above, m3api includes support for API continuation.
+        I’m not aware of a great explanation of this feature in the API,
+        so I’ll just use this section to talk about it in general as well as how m3api supports it ^^
+      </p>
+      <p>
+        <em>Continuation</em> is the mechanism by which the API returns a limited set of data
+        while enabling you to make further requests to fetch additional data.
+        The MediaWiki Action API’s continuation mechanism is highly flexible;
+        a single API request can use many different modules, each of which contributes to continuation,
+        and it all works out.
+      </p>
+      <p>
+        The basic principle is that the API may return,
+        as part of the response,
+        a <code>continue</code> object with parameters you should send with your next request.
+        For instance, if you make an API request with <code>action=query</code> and <code>list=allpages</code>,
+        the response may include <code>"continue": { "apcontinue": "!important" }</code>;
+        your next request should then use the parameters
+        <code>action=query</code>, <code>list=allpages</code> and <code>apcontinue=!important</code>.
+        Continuation is finished when there is no <code>continue</code> object in a response.
+      </p>
+      <p>
+        In m3api, the main interface to continuation is the <code>requestAndContinue()</code> method,
+        which returns an async generator.
+        It’s typically used in a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for-await...of"><code>for await</code> loop</a> like this:
+      </p>
+      <pre><code><span class="keyword">for</span> <span class="keyword">await</span> ( <span class="storage type">const</span> response of session.<span class="function call">requestAndContinue</span>( {
+	action: <span class="string">'query'</span>,
+	list: <span class="string">'allpages'</span>,
+} ) ) {
+	console.<span class="function call">log</span>( response );
+}</code></pre>
+      <p>
+        Each <code>response</code> is a response object like would be returned from a normal <code>request()</code> call.
+        You can <code>break;</code> out of the loop at any time to stop making additional requests.
+      </p>
+      <p>
+        The above example shows a “simple” case of continuation:
+        each request produces one “batch” of pages (or, for some modules, revisions),
+        and the next request continues with the next batch of different pages.
+        However, it’s possible for a response to not contain the full data of one batch of pages.
+        (An extreme example of this would be
+        <code>action=query</code>, <code>generator=querypage</code>, <code>gqppage=Longpages</code>, <code>gqplimit=500</code>,
+        <code>prop=revisions</code>, <code>rvprop=text</code> –
+        that is, the text content of the 500 longest pages on the wiki.
+        This will run into the response size limit very quickly,
+        but the batch still contains all 500 longest pages,
+        even though not all 500 are returned with their text in the same response.)
+        In this case, continuation will first proceed <em>within</em> one batch of pages
+        (i.e., requests will return additional data for the same set of pages),
+        and only proceed to the next batch after the full data for the previous batch has been returned,
+        spread across multiple API responses.
+        (It’s the caller’s responsibility to merge those responses back together again in a way that makes sense.)
+        You can distinguish between these cases by the <code>batchcomplete</code> member in the response:
+        if it’s present (set to <code>""</code> in <code>formatversion=1</code> or <code>true</code> in <code>formatversion=2</code>),
+        then the request returned the full set of data for the current batch of pages,
+        and following continuation will proceed to the next batch;
+        if it’s not present, then the request didn’t return the full data yet,
+        and following continuation will yield additional data for the same batch of pages.
+      </p>
+      <p>
+        m3api supports this distinction too, using the <code>requestAndContinueReducingBatch()</code> method.
+        It also returns an async generator,
+        but follows continuation internally until the end of a batch has been reached,
+        yielding a value that represents the combined result of all the responses for that batch.
+        If you continue iterating over the async generator, it will continue with the next batch, and so on.
+        When you use this method, you have to provide a <code>reducer()</code> callback,
+        which somehow merges the latest API response into the current accumulated value.
+        The initial value for each batch can be specified via another callable,
+        and otherwise defaults to <code>{}</code> (empty object).
+        This interface is similar to <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce"><code>Array.reduce()</code></a>
+        (hence the name; elsewhere this operation is also known as <a href="https://www.wikidata.org/wiki/Special:GoToLinkedPage/enwiki/Q951651">fold</a>),
+        but with a separate “reduction” taking place for each batch of pages returned by the API.
+      </p>
+      <p>
+        <code>requestAndContinueReducingBatch()</code> is a fairly low-level method,
+        and is not intended to be used directly.
+        The <a href="https://github.com/lucaswerkmeister/m3api-query/">m3api-query</a> extension package offers some more convenient methods
+        (assuming you’re using <code>action=query</code>):
+        <code>queryFullPageByTitle()</code>, <code>queryFullPageByPageId()</code> and <code>queryFullRevisionByRevisionId()</code>
+        return the full data for a single page or revision (even that can be split across multiple responses!),
+        while <code>queryFullPages()</code> and <code>queryFullRevisions()</code>
+        return async generators that yield full pages or revisions.
+      </p>
+      <pre><code><span class="keyword">for</span> <span class="keyword">await</span> ( <span class="storage type">const</span> page of <span class="function call">queryFullPages</span>( session, {
+	action: <span class="string">'query'</span>,
+	list: <span class="string">'allpages'</span>,
+} ) ) {
+	console.<span class="function call">log</span>( page );
+}</code></pre>
+      <p>
+        You get a simple, flat stream of pages,
+        and don’t have to care that some of them may have been returned in the same response,
+        others in a later response,
+        and some may even have been split across multiple responses.
+        The way in which pages from multiple responses are merged is configurable via the options,
+        but the default should work for most cases.
+        This is one of the parts of m3api I’m proudest of –
+        making it easy to correctly work with API continuation.
+      </p>
+      <h2 id="combining-requests">Combining requests</h2>
+      <p>
+        Another m3api feature I’m proud of is automatically combining concurrent compatible requests.
+        The idea is taken from the <a href="https://www.wikidata.org/wiki/Special:MyLanguage/Wikidata:Wikidata_Bridge">Wikidata Bridge</a>
+        (an interface to edit Wikidata from Wikipedia),
+        where the Wikidata team at Wikimedia Germany (that I’m a part of) implemented something similar.
+        (I reimplemented the idea from scratch in m3api to avoid infringing any copyright.)
+      </p>
+      <p>
+        The Wikidata Bridge needs to load a lot of information from the API when it initializes itself:
+      </p>
+      <ol>
+        <li><a href="https://de.wikipedia.beta.wmflabs.org/w/api.php?action=query&format=json&titles=Data-Bridge&prop=info&intestactions=edit&intestactionsdetail=full&errorformat=raw&formatversion=2">Whether the user has permission to edit the Wikipedia article.</a></li>
+        <li><a href="https://de.wikipedia.beta.wmflabs.org/w/api.php?action=query&format=json&meta=siteinfo&siprop=restrictions&errorformat=raw&formatversion=2">The Wikipedia site’s restriction levels, to determine what kind of protection the article has.</a></li>
+        <li><a href="https://wikidata.beta.wmflabs.org/w/api.php?action=query&format=json&errorformat=raw&formatversion=2&titles=Q11&prop=info&intestactions=edit&intestactionsdetail=full">Whether the user has permission to edit the Wikidata item.</a></li>
+        <li><a href="https://wikidata.beta.wmflabs.org/w/api.php?action=query&format=json&meta=siteinfo&errorformat=raw&formatversion=2&siprop=restrictions">The Wikidata site’s restriction levels, to determine what kind of protection the item has.</a></li>
+        <li><a href="https://wikidata.beta.wmflabs.org/w/api.php?action=query&format=json&meta=siteinfo&errorformat=raw&formatversion=2&siprop=autocreatetempuser">Whether the Wikidata site has temporary accounts enabled, to determine whether to show a “your IP address will be publicly visible” warning.</a></li>
+        <li><a href="https://wikidata.beta.wmflabs.org/w/api.php?action=query&format=json&meta=wbdatabridgeconfig&errorformat=raw&formatversion=2">The bridge configuration on Wikidata.</a></li>
+        <li><a href="https://wikidata.beta.wmflabs.org/w/api.php?action=wbgetentities&format=json&props=datatype&ids=P443&errorformat=raw&formatversion=2">The data type of the property of the statement being edited.</a></li>
+        <li><a href="https://wikidata.beta.wmflabs.org/w/api.php?action=wbgetentities&format=json&props=info&ids=Q11&errorformat=raw&formatversion=2">The latest revision ID of the item being edited.</a></li>
+        <li><a href="https://wikidata.beta.wmflabs.org/w/api.php?action=wbgetentities&format=json&props=claims&ids=Q11&errorformat=raw&formatversion=2">The statements of the item being edited.</a></li>
+        <li><a href="https://wikidata.beta.wmflabs.org/w/api.php?action=wbgetentities&format=json&props=labels&ids=P443&languages=de&languagefallback=true&errorformat=raw&formatversion=2">The label of the property of the statement being edited.</a></li>
+      </ol>
+      <p>
+        A naïve implementation would make up to ten separate API requests to get this information
+        (I’ve linked them above for the <a href="https://de.wikipedia.beta.wmflabs.org/wiki/Data-Bridge">Beta Wikidata Bridge demo page</a>).
+        However, due to how API modules are designed to be flexible in which data they return,
+        and how parameters that specify “I’d like <em>this</em> piece of data” are often multi-valued,
+        you can also combine them into just three requests:
+        <a href="https://de.wikipedia.beta.wmflabs.org/w/api.php?action=query&format=json&titles=Data-Bridge&prop=info&meta=siteinfo&intestactions=edit&intestactionsdetail=full&siprop=restrictions&errorformat=raw&formatversion=2">action=query on Wikipedia</a> (1 and 2),
+        <a href="https://wikidata.beta.wmflabs.org/w/api.php?action=query&format=json&meta=wbdatabridgeconfig|siteinfo&errorformat=raw&formatversion=2&titles=Q11&prop=info&intestactions=edit&intestactionsdetail=full&siprop=autocreatetempuser|restrictions">action=query on Wikidata</a> (3 to 6),
+        and <a href="https://wikidata.beta.wmflabs.org/w/api.php?action=wbgetentities&format=json&props=labels%7Cdatatype%7Cinfo%7Cclaims&ids=P443%7CQ11&languages=de&languagefallback=true&errorformat=raw&formatversion=2">action=wbgetentities on Wikidata</a> (7 to 10).
+        The simple approach to implement the initialization with just three requests
+        would be to have one big blob of code that makes all the requests and extracts all the information from the responses,
+        but this wouldn’t be very readable or maintainable:
+        we’d rather have a bunch of <a href="https://gerrit.wikimedia.org/g/mediawiki/extensions/Wikibase/+/a8f78a9456/client/data-bridge/src/data-access/ApiEntityLabelRepository.ts">smaller</a>,
+        <a href="https://gerrit.wikimedia.org/g/mediawiki/extensions/Wikibase/+/a8f78a9456/client/data-bridge/src/data-access/ApiPropertyDataTypeRepository.ts">self-contained</a>
+        <a href="https://gerrit.wikimedia.org/g/mediawiki/extensions/Wikibase/+/a8f78a9456/client/data-bridge/src/data-access/ApiReadingEntityRepository.ts">services</a>
+        that each just specify the request parameters they need and extract the parts of the response that concern them.
+        But how do we then combine those requests?
+      </p>
+      <p>
+        One approach I’ve used in the Wikidata Image Positions tool (written in Python)
+        is to explicitly split the API requests into three “phases”: assemble the parameters, make the request, process the response.
+        Then you can assemble the parameters from multiple requests, make only one request, and process the same response multiple times
+        (example based on <a href="https://gitlab.wikimedia.org/toolforge-repos/wd-image-positions/-/blob/b8022cddca/app.py#L697"><code>load_image()</code></a>):
+      </p>
+      <pre><code>query_params <span class="keyword operator">=</span> <span class="function call">query_default_params</span>()
+<span class="function call">image_attribution_query_add_params</span>(
+    query_params,
+    image_title,
+)
+<span class="function call">image_size_query_add_params</span>(
+    query_params,
+    image_title,
+)
+
+query_response <span class="keyword operator">=</span> session.<span class="function call">get</span>(<span class="keyword operator">*</span><span class="keyword operator">*</span>query_params)
+
+attribution <span class="keyword operator">=</span> <span class="function call">image_attribution_query_process_response</span>(
+    query_response,
+    image_title,
+)
+width, height <span class="keyword operator">=</span> <span class="function call">image_size_query_process_response</span>(
+    query_response,
+    image_title,
+)</code></pre>
+      <p>
+        But this is fairly cumbersome,
+        and also requires the calling code to know which requests can be combined and which can’t.
+        We can do better.
+      </p>
+      <p>
+        Because all requests are asynchronous in JavaScript, <!-- please do not @ me about sync XHR -->
+        our <code>request()</code> function can return a <code>Promise</code> without immediately making an underlying network request.
+        We can then wait for a very short period
+        (specifically, until the next <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API/Microtask_guide">microtask</a>),
+        and see if any other requests come in during that time;
+        if they do, we check if they’re compatible, and potentially merge them into the pending request.
+        Then, we send the pending request(s),
+        and resolve the associated promises with the response(s).
+      </p>
+      <p>
+        The effect of this is that,
+        when several compatible requests are made within the same JS event loop run,
+        then m3api can merge them automatically.
+        Most often, making several requests within the same JS event loop run looks like a call to <code>Promise.all()</code> with several requests
+        (see the example below).
+      </p>
+      <p>
+        To determine whether requests are compatible,
+        we need to distinguish between list-type parameters that can be merged,
+        and ones that can’t be.
+        The convention we used in the Wikidata Bridge,
+        and which I reused for m3api,
+        is that mergeable parameters are specified as <code>Set</code>s,
+        while unmergeable parameters are specified as <code>Array</code>s.
+        (The reasoning behind this is that, in many other languages, sets are unordered,
+        and when a parameter is mergeable then you probably don’t care about the order the parameters are sent in;
+        conversely, when you care about the order, you probably don’t want another request’s values to be inserted in front of yours.
+        This doesn’t 100% apply in JavaScript because <code>Set</code>s obey insertion order,
+        but I think it still makes some sense.)
+        So, two requests are compatible if all their parameters either only occur in one request
+        (e.g. one has <code>list=allpages</code> while the other has <code>meta=siteinfo</code>),
+        have the same value in both requests
+        (e.g. both have <code>action=query</code>),
+        or are specified as <code>Set</code> in both requests.
+        To make creating <code>Set</code>s more convenient,
+        a <code>set()</code> helper function is provided,
+        so that e.g. requests with <code>list: set( 'allpages' )</code> and <code>list: set( 'allusers' )</code> are compatible.
+      </p>
+      <p>
+        The upshot of this is that the following example code will only make one underlying network request,
+        with <code>siprop=general|statistics</code>:
+      </p>
+      <pre><code><span class="keyword">async</span> <span class="storage function">function</span> <span class="entity name function">getSiteName</span>( session ) {
+	<span class="storage type">const</span> response <span class="keyword operator">=</span> <span class="keyword">await</span> session.<span class="function call">request</span>( {
+		action: <span class="string">'query'</span>,
+		meta: <span class="function call">set</span>( <span class="string">'siteinfo'</span> ),
+		siprop: <span class="function call">set</span>( <span class="string">'general'</span> ),
+	} );
+	<span class="keyword">return</span> response.query.general.sitename;
+}
+
+<span class="keyword">async</span> <span class="storage function">function</span> <span class="entity name function">getSiteEdits</span>( session ) {
+	<span class="storage type">const</span> response <span class="keyword operator">=</span> <span class="keyword">await</span> session.<span class="function call">request</span>( {
+		action: <span class="string">'query'</span>,
+		meta: <span class="function call">set</span>( <span class="string">'siteinfo'</span> ),
+		siprop: <span class="function call">set</span>( <span class="string">'statistics'</span> ),
+	} );
+	<span class="keyword">return</span> response.query.statistics.edits;
+}
+
+<span class="storage type">const</span> [ sitename, edits ] <span class="keyword operator">=</span> <span class="keyword">await</span> <span class="support class promise">Promise</span>.<span class="function call">all</span>( [
+	<span class="function call">getSiteName</span>( session ),
+	<span class="function call">getSiteEdits</span>( session ),
+] );</code></pre>
+      <p>
+        In principle, it’s possible that automatically combining requests will cause bugs in code written by developers who aren’t aware of this m3api feature.
+        (For example, if someone doesn’t use m3api-query,
+        they might use code like <code>response.query.pages[ 0 ]</code> to access the only page they expect to be present in the response,
+        without realizing that a merged request may have caused further pages to be returned.)
+        However, I hope that this will be rare,
+        thanks to the combination of requests only being combined if they happen within the same JS event loop run
+        and array-type parameters not being eligible for combining.
+        If I get a lot of bug reports about this feature,
+        I may reconsider it for the next major version.
+        (If you want to make absolutely sure that a particular request will not be combined with any other,
+        specify the <code>action</code> as a single-element array,
+        e.g. <code>action: [ 'query' ]</code> –
+        every other request will also specify the <code>action</code> parameter,
+        and they’ll all be incompatible,
+        because arrays are not mergeable.)
+      </p>
+      <h2 id="error-handling">Error handling</h2>
+      <p>
+        As you might expect, m3api detects errors in the response and throws them
+        (or, if you prefer, it rejects the promise, because all of this is async).
+        As you might also expect, any warnings in the response are detected and, by default, logged to the console via <code>console.warn()</code>.
+        (I was actually surprised to discover the other day that MediaWiki’s own <code>mw.Api()</code> doesn’t do this.
+        God knows how many on-wiki gadgets and user scripts use deprecated API parameters without realizing it because the warnings returned by the API go straight to <code>/dev/null</code>…)
+      </p>
+      <p>
+        m3api also supports transparently handling errors without throwing them.
+        Several errors returned by the API can be handled by retrying the request in some form;
+        m3api’s approach is to retry requests until a certain time limit (by default, 65 seconds) after the initial request has passed –
+        I think this makes more sense than limiting the absolute number of retries, as some other libraries do.
+        (You can change the limit using the <code>maxRetriesSeconds</code> request option –
+        bots may want to use a much longer limit than interactive applications.)
+        If the response by the API includes a <code>Retry-After</code> header, m3api will obey it (as long as it’s within said time limit);
+        otherwise, error handlers for different error codes can be configured,
+        which may likewise retry the request.
+        m3api ships error handlers for <code>badtoken</code> (update the token, then retry),
+        <code>maxlag</code> and <code>readonly</code> errors (sleep for an appropriate time period, then retry).
+        The <a href="https://github.com/lucaswerkmeister/m3api-oauth2/">m3api-oauth2</a> extension package
+        installs an error handler to refresh expired OAuth 2 access tokens
+        (on Wikimedia wikis, they expire after 4 hours)
+        and then retry the request.
+        These retries are always transparent to the code that made the request.
+      </p>
+      <h2 id="why-you-should-use-it">Why you should use it</h2>
+      <p>
+        I’m of course biased, but I happen to think it’s a well-designed library, for various reasons including the ones detailed above ;)
+        but I’ll close by mentioning some of the recommendations in the <a href="https://www.mediawiki.org/wiki/API:Etiquette">API Etiquette</a>
+        (<a href="https://www.mediawiki.org/w/index.php?title=API:Etiquette&oldid=7556535">permalink</a>)
+        and outlining how m3api aligns with them:
+      </p>
+      <dl>
+        <dt>request limit</dt>
+        <dd>
+          This is partially up to the developer using m3api, but m3api supports “ask[ing] for multiple items in one request”,
+          both manually by specifying parameters as lists or sets (e.g. <code>titles: set( 'PageA', 'PageB', 'PageC' )</code>)
+          and automatically by combining requests as explained above.
+          Also, as mentioned in the error handling section,
+          <code>Retry-After</code> response headers are respected;
+          this isn’t explicitly mentioned on the API Etiquette page, but I’ve heard it’s still considered good bot practice.
+        </dd>
+        <dt>maxlag</dt>
+        <dd>
+          Specifying the maxlag parameter is up to the developer using m3api,
+          but m3api <a href="https://github.com/lucaswerkmeister/m3api/?tab=readme-ov-file#recommendations-for-bots">recommends it</a> for bots,
+          and if it is used, then m3api will automatically wait and retry the request if the API returns a maxlag error.
+        </dd>
+        <dt>User-Agent header</dt>
+        <dd>
+          m3api sends a general User-Agent header for itself by default,
+          and also <a href="https://github.com/lucaswerkmeister/m3api/?tab=readme-ov-file#usage-recommendations">encourages</a> developers to specify a custom User-Agent header.
+          If developers neglect to specify the <code>userAgent</code> request option,
+          a warning is logged (by default, to <code>console.warn()</code>, where it should be relatively visible).
+        </dd>
+        <dt>data formats</dt>
+        <dd>
+          m3api uses the JSON format (of course).
+        </dd>
+      </dl>
+      <p>
+        If you’re already using a different API library or framework,
+        you’re free to continue using it, naturally.
+        But if you’re currently making network requests to the API directly,
+        or if you’re going to start a new project where you need to interact with the API,
+        I encourage you to give m3api a try.
+        And if you use it, please let me know how it’s working for you!
+      </p>
+      <footer>
+        <div class="license-info">
+          <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+            <img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png"/>
+          </a><br/>
+          This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+        </div>
+      </footer>
+    </article>
+  </body>
+</html>
