@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Wikimedia Hackathon 2025 recap</title>
+    <link rel="stylesheet" href="/basic.css"/>
+    <link rel="alternate" type="application/rss+xml" href="/posts/index.rss"/>
+  </head>
+  <body vocab="http://schema.org/">
+    <article resource="https://lucaswerkmeister.de/posts/2025/05/10/wikimedia-hackathon-2025/" typeof="BlogPosting">
+      <header>
+        <h1 property="name headline">Wikimedia Hackathon 2025 recap</h1>
+        <address><a rel="author" href="https://lucaswerkmeister.de" typeof="Person"><span property="name" lang="de-DE">Lucas Werkmeister</span></a></address>,
+        <time property="datePublished" datetime="2025-05-10">2025-05-10</time>.
+        <link property="publisher" href="https://lucaswerkmeister.de" typeof="Person"/>
+        <meta property="isAccessibleForFree" content="true"/>
+        <meta property="keywords" content="wikimedia"/>
+      </header>
+      <p>
+        A week ago, I took part in the <a href="https://www.mediawiki.org/wiki/Wikimedia_Hackathon_2025">Wikimedia Hackathon 2025</a>,
+        which took place on 2–4 May (Friday–Sunday) in Istanbul, Turkey.
+        Just like <a href="/posts/2024/05/15/wikimedia-hackathon-2024/">last year</a>
+        and <a href="/posts/2023/06/03/wikimedia-hackathon-2023/">the year before</a>,
+        I want to write a bit about the experience.
+      </p>
+      <p>
+        I had come into the hackathon with two vague project ideas:
+        work on the migration of m3api to Wikimedia GitLab (<a href="https://phabricator.wikimedia.org/T392290">T392290</a>),
+        especially the documentation (<a href="https://phabricator.wikimedia.org/T392716">T392716</a>),
+        and continue making local language names translatable on translatewiki.net (<a href="https://phabricator.wikimedia.org/T231755">T231755</a>).
+        But as sometimes happens at such events, things turned out otherwise.
+      </p>
+      <p>
+        During the travel to the hackathon (i.e. at the airport) and on Thursday evening,
+        I got a decent amount of work on m3api in:
+        I mostly managed to port the documentation-building release CI to GitLab actions
+        (though I’ll still need to get access to push it to doc.wikimedia.org).
+        However, also during that evening, in a dinner conversatiaon with <a href="https://www.mediawiki.org/wiki/User:HNordeen_(WMF)">Haley Nordeen</a>,
+        we came across the idea of “Redactle for Wikidata” on the venerable
+        <a href="https://phabricator.wikimedia.org/T165167">building more games using Wikidata’s data</a> task.
+        During the <a href="https://phabricator.wikimedia.org/T392540">game ideas session</a> the next morning,
+        I decided to try this out, and it ended up becoming my main project of the hackathon.
+        (I didn’t end up working on the local language names at all in the end.)
+      </p>
+      <p>
+        What I had by the time of the showcase on Sunday was not a finished product,
+        but at least a playable version of the game,
+        called <a href="https://wdactle.toolforge.org/">WDactle</a> (<a href="https://gitlab.wikimedia.org/toolforge-repos/wdactle/">source code</a>).
+        There’s no “puzzle of the day” yet (like in Wordle or Redactle),
+        just a random puzzle each time you load the page (cached for five minutes).
+        And despite the missing features, the game seems to be feasible in principle,
+        and more fun than I expected,
+        both according to my own experience and what I’m hearing from others 🙂
+        so I’ll definitely continue working on it.
+        (Special thanks to <a href="https://meta.wikimedia.org/wiki/User:SSanchez-WMF">Sarai Sánchez</a>
+        for talking through the design with me on Saturday evening!)
+      </p>
+      <p>
+        Of course, the hackathon isn’t just about hacking on your own projects.
+        I don’t think I directly worked on anyone else’s project,
+        but I was at least able to give some useful pointers and advice to several people.
+        I had also announced in the opening session that I could hand out some invite codes to <a href="https://meta.wikimedia.org/wiki/Wikis_World">Wikis World</a>,
+        and I’m happy to report that one invite code was successfully exchanged and used!
+        And I joined some sessions on the program, including several related to Wikimedia Toolforge and tool development,
+        and one on the future of the MediaWiki Action API.
+      </p>
+      <p>
+        On the more social side, I talked to or hung out with a fair amount of people,
+        ranging from an impromptu meeting of the <a href="https://wikitech.wikimedia.org/wiki/Help:Toolforge/Toolforge_standards_committee">Toolforge Standards Committee</a>
+        to a spontaneous magic show (yes!).
+        The “juggling + rubik’s cubes” session from the last two years didn’t really happen again,
+        but we still had some social time before the Kahoot session on Saturday afternoon.
+        I also restocked the sweets table with chocolate several times.
+        Sadly, although Taavi and I brought our blåhajar,
+        we didn’t have a proper Wikimedia Cuteness Association meetup this year 😔
+      </p>
+      <p>
+        As usual, I posted about my hackathon experience on Mastodon,
+        this time with separate threads for <a href="https://wikis.world/@LucasWerkmeister/114430682133543886">Thursday</a>,
+        <a href="https://wikis.world/@LucasWerkmeister/114436950287170418">Friday</a>,
+        <a href="https://wikis.world/@LucasWerkmeister/114442409903718033">Saturday</a>,
+        <a href="https://wikis.world/@LucasWerkmeister/114447994481484488">Sunday</a> and
+        <a href="https://wikis.world/@LucasWerkmeister/114453519361216347">Monday</a>.
+        As you can see there, I traveled to and from the hackathon by plane this year;
+        I looked into other options (ever heard of this thing called the “orient express”??),
+        but didn’t think that any of them looked feasible to me.
+        (Clearly I should’ve coordinated with Pintoch, who apparently found a way after all!)
+        I hope next year will be a little bit closer to Berlin again 🙂
+      </p>
+      <footer>
+        <div class="license-info">
+          <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+            <img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png"/>
+          </a><br/>
+          This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+        </div>
+      </footer>
+    </article>
+  </body>
+</html>
