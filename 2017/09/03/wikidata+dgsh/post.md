@@ -295,7 +295,7 @@ It should be possible to write similar scripts for many other data processing ta
 that can be expressed in `jq`, `awk` and other Unix command line tools,
 and speed them up similarly.
 
-[descriptions-tweet]: https://twitter.com/WikidataFacts/status/888785983663112192
+[descriptions-tweet]: https://twitter.lucaswerkmeister.de/WikidataFacts/status/888785983663112192
 [descriptions-few-languages]: https://pastebin.com/raw/0mBBSwDE
 [descriptions-many-languages]: https://pastebin.com/raw/DhR3358T
 [Nikki]: https://www.wikidata.org/wiki/User:Nikki
