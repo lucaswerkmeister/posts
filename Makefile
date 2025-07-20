@@ -1,11 +1,13 @@
 .PHONY: all
 
+RDF2RSS = ~lucas/git/rdf2rss/venv/bin/rdf2rss
+RDF2RSSFLAGS = --description --limit=10
 ROOT = https://lucaswerkmeister.de/posts/
 
 all: index.rss wikimedia.rss
 
 index.rss: .
-	~lucas/git/rdf2rss/rdf2rss.py --description --limit=10 $(ROOT) $@
+	$(RDF2RSS) $(RDF2RSSFLAGS) $(ROOT) $@
 
 %.rss: .
-	~lucas/git/rdf2rss/rdf2rss.py --description --limit=10 --keyword=$* $(ROOT) $@
+	$(RDF2RSS) $(RDF2RSSFLAGS) --keyword=$* $(ROOT) $@
