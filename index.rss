@@ -1,2 +1,1658 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Lucas’ Posts</title><link>https://lucaswerkmeister.de/posts/</link><description>I suppose this is a blog of sorts – or at least a place where I occasionally post stuff. Not necessarily about anything in particular.</description><lastBuildDate>Sun, 20 Jul 2025 11:05:02 GMT</lastBuildDate><generator>PyRSS2Gen-1.1.0</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Thoughts on Star Wars: Episode VII – The Force Awakens</title><link>https://lucaswerkmeister.de/posts/2016/09/16/the-force-awakens.html</link><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2016/09/16/the-force-awakens.html</guid><pubDate>Fri, 16 Sep 2016 00:00:00 GMT</pubDate></item><item><title>Thoughts on Rogue One – A Star Wars Story</title><link>https://lucaswerkmeister.de/posts/2016/12/20/rogue-one.html</link><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2016/12/20/rogue-one.html</guid><pubDate>Tue, 20 Dec 2016 00:00:00 GMT</pubDate></item><item><title>Processing Wikidata JSON dumps in parallel on the command line with dgsh</title><link>https://lucaswerkmeister.de/posts/2017/09/03/wikidata+dgsh/</link><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2017/09/03/wikidata+dgsh/</guid><pubDate>Sun, 03 Sep 2017 00:00:00 GMT</pubDate></item><item><title>Publishing my server’s /etc repository</title><link>https://lucaswerkmeister.de/posts/2018/01/07/server-etc/</link><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2018/01/07/server-etc/</guid><pubDate>Sun, 07 Jan 2018 00:00:00 GMT</pubDate></item><item><title>My first git rebase --exec</title><link>https://lucaswerkmeister.de/posts/2018/02/16/git-rebase-exec/</link><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2018/02/16/git-rebase-exec/</guid><pubDate>Fri, 16 Feb 2018 00:00:00 GMT</pubDate></item><item><title>A correction on My first git rebase --exec</title><link>https://lucaswerkmeister.de/posts/2018/03/01/correction-git-rebase-exec/</link><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2018/03/01/correction-git-rebase-exec/</guid><pubDate>Thu, 01 Mar 2018 00:00:00 GMT</pubDate></item><item><title>How I manage my terminals</title><link>https://lucaswerkmeister.de/posts/2018/05/06/managing-terminals/</link><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2018/05/06/managing-terminals/</guid><pubDate>Sun, 06 May 2018 00:00:00 GMT</pubDate></item><item><title>Encrypted Linux setup across an SSD and an HDD</title><link>https://lucaswerkmeister.de/posts/2018/05/12/luks-on-lvm/</link><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2018/05/12/luks-on-lvm/</guid><pubDate>Sat, 12 May 2018 00:00:00 GMT</pubDate></item><item><title>Adding command line support to the namescript user script</title><link>https://lucaswerkmeister.de/posts/2018/07/13/namescript/</link><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2018/07/13/namescript/</guid><pubDate>Fri, 13 Jul 2018 00:00:00 GMT</pubDate></item><item><title>Building a Wikidata Tool – Behind the Scenes</title><link>https://lucaswerkmeister.de/posts/2019/01/04/speedpatrolling/</link><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2019/01/04/speedpatrolling/</guid><pubDate>Fri, 04 Jan 2019 00:00:00 GMT</pubDate></item><item><title>My naming scheme for my personal systems</title><link>https://lucaswerkmeister.de/posts/2019/01/11/system-naming-scheme/</link><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2019/01/11/system-naming-scheme/</guid><pubDate>Fri, 11 Jan 2019 00:00:00 GMT</pubDate></item><item><title>Advent of Code 2020</title><link>https://lucaswerkmeister.de/posts/2020/12/25/advent-of-code-2020/</link><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2020/12/25/advent-of-code-2020/</guid><pubDate>Fri, 25 Dec 2020 00:00:00 GMT</pubDate></item><item><title>MediaWiki Lua for non-Lua programmers</title><link>https://lucaswerkmeister.de/posts/2022/03/20/mw-lua-for-non-lua-programmers/</link><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2022/03/20/mw-lua-for-non-lua-programmers/</guid><pubDate>Sun, 20 Mar 2022 00:00:00 GMT</pubDate></item><item><title>LVM Cache Modes and Behavior</title><link>https://lucaswerkmeister.de/posts/2022/07/03/lvmcache/</link><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2022/07/03/lvmcache/</guid><pubDate>Sun, 03 Jul 2022 00:00:00 GMT</pubDate></item><item><title>Wikimedia Hackathon 2023 recap</title><link>https://lucaswerkmeister.de/posts/2023/06/03/wikimedia-hackathon-2023/</link><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2023/06/03/wikimedia-hackathon-2023/</guid><pubDate>Sat, 03 Jun 2023 00:00:00 GMT</pubDate></item><item><title>Chaos Communication Camp 2023 recap</title><link>https://lucaswerkmeister.de/posts/2023/08/28/cccamp23/</link><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2023/08/28/cccamp23/</guid><pubDate>Mon, 28 Aug 2023 00:00:00 GMT</pubDate></item><item><title>Wikimedia Hackathon 2024 recap</title><link>https://lucaswerkmeister.de/posts/2024/05/15/wikimedia-hackathon-2024/</link><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2024/05/15/wikimedia-hackathon-2024/</guid><pubDate>Wed, 15 May 2024 00:00:00 GMT</pubDate></item><item><title>Why MediaWiki permanent links aren’t fully permanent</title><link>https://lucaswerkmeister.de/posts/2024/08/14/mediawiki-permalinks/</link><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2024/08/14/mediawiki-permalinks/</guid><pubDate>Wed, 14 Aug 2024 00:00:00 GMT</pubDate></item><item><title>JBL Quantum 810 wireless headset review</title><link>https://lucaswerkmeister.de/posts/2024/09/28/jbl-quantum-810-review/</link><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2024/09/28/jbl-quantum-810-review/</guid><pubDate>Sat, 28 Sep 2024 00:00:00 GMT</pubDate></item><item><title>How To Invent Everything review</title><link>https://lucaswerkmeister.de/posts/2024/11/23/how-to-invent-everything-review/</link><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2024/11/23/how-to-invent-everything-review/</guid><pubDate>Sat, 23 Nov 2024 00:00:00 GMT</pubDate></item><item><title>Declaration of partial email bankruptcy</title><link>https://lucaswerkmeister.de/posts/2024/11/26/email-bankruptcy/</link><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2024/11/26/email-bankruptcy/</guid><pubDate>Tue, 26 Nov 2024 00:00:00 GMT</pubDate></item><item><title>Reduce The Size Of Your Tarsnap Backups With This One Weird Trick (the trick is “pay attention to the size of your backups”)</title><link>https://lucaswerkmeister.de/posts/2024/12/10/tarsnap-backup-size/</link><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2024/12/10/tarsnap-backup-size/</guid><pubDate>Tue, 10 Dec 2024 00:00:00 GMT</pubDate></item><item><title>Archiving my tweets</title><link>https://lucaswerkmeister.de/posts/2025/02/01/archiving-my-tweets/</link><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2025/02/01/archiving-my-tweets/</guid><pubDate>Sat, 01 Feb 2025 00:00:00 GMT</pubDate></item><item><title>Introducing m3api</title><link>https://lucaswerkmeister.de/posts/2025/04/12/introducing-m3api/</link><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2025/04/12/introducing-m3api/</guid><pubDate>Sat, 12 Apr 2025 00:00:00 GMT</pubDate></item><item><title>Wikimedia Hackathon 2025 recap</title><link>https://lucaswerkmeister.de/posts/2025/05/10/wikimedia-hackathon-2025/</link><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2025/05/10/wikimedia-hackathon-2025/</guid><pubDate>Sat, 10 May 2025 00:00:00 GMT</pubDate></item></channel></rss>
+<rss version="2.0"><channel><title>Lucas’ Posts</title><link>https://lucaswerkmeister.de/posts/</link><description>I suppose this is a blog of sorts – or at least a place where I occasionally post stuff. Not necessarily about anything in particular.</description><lastBuildDate>Sun, 20 Jul 2025 17:34:30 GMT</lastBuildDate><generator>PyRSS2Gen-1.1.0</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Wikimedia Hackathon 2025 recap</title><link>https://lucaswerkmeister.de/posts/2025/05/10/wikimedia-hackathon-2025/</link><description>&lt;article&gt;
+
+&lt;p&gt;
+        A week ago, I took part in the &lt;a href="https://www.mediawiki.org/wiki/Wikimedia_Hackathon_2025"&gt;Wikimedia Hackathon 2025&lt;/a&gt;,
+        which took place on 2–4 May (Friday–Sunday) in Istanbul, Turkey.
+        Just like &lt;a href="https://lucaswerkmeister.de/posts/2024/05/15/wikimedia-hackathon-2024/"&gt;last year&lt;/a&gt;
+        and &lt;a href="https://lucaswerkmeister.de/posts/2023/06/03/wikimedia-hackathon-2023/"&gt;the year before&lt;/a&gt;,
+        I want to write a bit about the experience.
+      &lt;/p&gt;
+&lt;p&gt;
+        I had come into the hackathon with two vague project ideas:
+        work on the migration of m3api to Wikimedia GitLab (&lt;a href="https://phabricator.wikimedia.org/T392290"&gt;T392290&lt;/a&gt;),
+        especially the documentation (&lt;a href="https://phabricator.wikimedia.org/T392716"&gt;T392716&lt;/a&gt;),
+        and continue making local language names translatable on translatewiki.net (&lt;a href="https://phabricator.wikimedia.org/T231755"&gt;T231755&lt;/a&gt;).
+        But as sometimes happens at such events, things turned out otherwise.
+      &lt;/p&gt;
+&lt;p&gt;
+        During the travel to the hackathon (i.e. at the airport) and on Thursday evening,
+        I got a decent amount of work on m3api in:
+        I mostly managed to port the documentation-building release CI to GitLab actions
+        (though I’ll still need to get access to push it to doc.wikimedia.org).
+        However, also during that evening, in a dinner conversatiaon with &lt;a href="https://www.mediawiki.org/wiki/User:HNordeen_(WMF)"&gt;Haley Nordeen&lt;/a&gt;,
+        we came across the idea of “Redactle for Wikidata” on the venerable
+        &lt;a href="https://phabricator.wikimedia.org/T165167"&gt;building more games using Wikidata’s data&lt;/a&gt; task.
+        During the &lt;a href="https://phabricator.wikimedia.org/T392540"&gt;game ideas session&lt;/a&gt; the next morning,
+        I decided to try this out, and it ended up becoming my main project of the hackathon.
+        (I didn’t end up working on the local language names at all in the end.)
+      &lt;/p&gt;
+&lt;p&gt;
+        What I had by the time of the showcase on Sunday was not a finished product,
+        but at least a playable version of the game,
+        called &lt;a href="https://wdactle.toolforge.org/"&gt;WDactle&lt;/a&gt; (&lt;a href="https://gitlab.wikimedia.org/toolforge-repos/wdactle/"&gt;source code&lt;/a&gt;).
+        There’s no “puzzle of the day” yet (like in Wordle or Redactle),
+        just a random puzzle each time you load the page (cached for five minutes).
+        And despite the missing features, the game seems to be feasible in principle,
+        and more fun than I expected,
+        both according to my own experience and what I’m hearing from others 🙂
+        so I’ll definitely continue working on it.
+        (Special thanks to &lt;a href="https://meta.wikimedia.org/wiki/User:SSanchez-WMF"&gt;Sarai Sánchez&lt;/a&gt;
+        for talking through the design with me on Saturday evening!)
+      &lt;/p&gt;
+&lt;p&gt;
+        Of course, the hackathon isn’t just about hacking on your own projects.
+        I don’t think I directly worked on anyone else’s project,
+        but I was at least able to give some useful pointers and advice to several people.
+        I had also announced in the opening session that I could hand out some invite codes to &lt;a href="https://meta.wikimedia.org/wiki/Wikis_World"&gt;Wikis World&lt;/a&gt;,
+        and I’m happy to report that one invite code was successfully exchanged and used!
+        And I joined some sessions on the program, including several related to Wikimedia Toolforge and tool development,
+        and one on the future of the MediaWiki Action API.
+      &lt;/p&gt;
+&lt;p&gt;
+        On the more social side, I talked to or hung out with a fair amount of people,
+        ranging from an impromptu meeting of the &lt;a href="https://wikitech.wikimedia.org/wiki/Help:Toolforge/Toolforge_standards_committee"&gt;Toolforge Standards Committee&lt;/a&gt;
+        to a spontaneous magic show (yes!).
+        The “juggling + rubik’s cubes” session from the last two years didn’t really happen again,
+        but we still had some social time before the Kahoot session on Saturday afternoon.
+        I also restocked the sweets table with chocolate several times.
+        Sadly, although Taavi and I brought our blåhajar,
+        we didn’t have a proper Wikimedia Cuteness Association meetup this year 😔
+      &lt;/p&gt;
+&lt;p&gt;
+        As usual, I posted about my hackathon experience on Mastodon,
+        this time with separate threads for &lt;a href="https://wikis.world/@LucasWerkmeister/114430682133543886"&gt;Thursday&lt;/a&gt;,
+        &lt;a href="https://wikis.world/@LucasWerkmeister/114436950287170418"&gt;Friday&lt;/a&gt;,
+        &lt;a href="https://wikis.world/@LucasWerkmeister/114442409903718033"&gt;Saturday&lt;/a&gt;,
+        &lt;a href="https://wikis.world/@LucasWerkmeister/114447994481484488"&gt;Sunday&lt;/a&gt; and
+        &lt;a href="https://wikis.world/@LucasWerkmeister/114453519361216347"&gt;Monday&lt;/a&gt;.
+        As you can see there, I traveled to and from the hackathon by plane this year;
+        I looked into other options (ever heard of this thing called the “orient express”??),
+        but didn’t think that any of them looked feasible to me.
+        (Clearly I should’ve coordinated with Pintoch, who apparently found a way after all!)
+        I hope next year will be a little bit closer to Berlin again 🙂
+      &lt;/p&gt;
+
+&lt;/article&gt;</description><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2025/05/10/wikimedia-hackathon-2025/</guid><pubDate>Sat, 10 May 2025 00:00:00 GMT</pubDate></item><item><title>Introducing m3api</title><link>https://lucaswerkmeister.de/posts/2025/04/12/introducing-m3api/</link><description>&lt;article&gt;
+
+&lt;p&gt;
+        For the past couple of years, I’ve been working on a new JavaScript library for the MediaWiki Action API, called &lt;strong&gt;m3api&lt;/strong&gt;.
+        On the occasion of its 1.0.0 release today,
+        I want to talk about why I wrote it, what it does, and why I think you should use it :)
+      &lt;/p&gt;
+&lt;h2 id="quick-links"&gt;Quick links&lt;/h2&gt;
+&lt;p&gt;
+&lt;a href="https://www.npmjs.com/package/m3api"&gt;npm package&lt;/a&gt;,
+        &lt;a href="https://github.com/lucaswerkmeister/m3api/"&gt;GitHub repository&lt;/a&gt;,
+        &lt;a href="https://lucaswerkmeister.github.io/m3api/"&gt;documentation&lt;/a&gt;,
+        &lt;a href="https://github.com/lucaswerkmeister/m3api-examples/"&gt;examples&lt;/a&gt;.
+      &lt;/p&gt;
+&lt;h2 id="why-a-new-library"&gt;Why a new JS library for the MediaWiki API?&lt;/h2&gt;
+&lt;p&gt;
+        So why did I write a new library for the MediaWiki API at all?
+        Aren’t there &lt;a href="https://www.mediawiki.org/wiki/API:Client_code/All#JavaScript"&gt;enough of them&lt;/a&gt; already?
+      &lt;/p&gt;
+&lt;p&gt;
+        I was looking for a library fulfilling two criteria,
+        and didn’t find any that fulfilled both:
+      &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+          Cross-platform: I want to be able to use the same interface to the API whether I’m writing code for the browser or for Node.js.
+          (Small differences in setup are acceptable, but once setup is done, the interface should be uniform.)
+          This apparently rules out virtually all the libraries;
+          the only known exception on the list of libraries linked above (apart from m3api itself)
+          is &lt;a href="https://github.com/kanasimi/CeJS"&gt;CeJS&lt;/a&gt;, which is a mystery to me.
+          &lt;!-- This phrasing is kind of ambiguous: it could mean “CeJS is a mystery” or “the fact that no other library is cross-platform is a mystery”. But I agree with both ^^ --&gt;
+&lt;/li&gt;
+&lt;li&gt;
+          Reasonably modern: at a minimum, this means promises rather than callbacks.
+          (As far as I can tell, this rules out CeJS, along with many other libraries.)
+          Additional modern things that would be nice to have
+          are &lt;a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/AsyncGenerator"&gt;async generators&lt;/a&gt; as the interface for API continuation
+          and &lt;a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules"&gt;ES6 modules&lt;/a&gt; instead of Node.js &lt;code&gt;require()&lt;/code&gt; / UMD / etc.
+        &lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;
+        Since I couldn’t find a library matching my needs, I wrote it :)
+      &lt;/p&gt;
+&lt;h2 id="main-characteristics"&gt;Main characteristics&lt;/h2&gt;
+&lt;p&gt;
+&lt;a href="https://www.martinfowler.com/bliki/TwoHardThings.html"&gt;Naming things is hard&lt;/a&gt;;
+        m3api stands for “&lt;strong&gt;minimal, modern MediaWiki API [client]&lt;/strong&gt;” (three ‘m’s, you see).
+        I’ve already mentioned “modern” above –
+        m3api uses promises, async generators, ES6 modules,
+        but also &lt;code&gt;fetch()&lt;/code&gt; (even in Node – yay for &lt;a href="https://nodejs.org/en/learn/getting-started/fetch"&gt;undici&lt;/a&gt;),
+        &lt;code&gt;class&lt;/code&gt; syntax, object spreading and destructuring,
+        &lt;code&gt;FormData&lt;/code&gt; / &lt;code&gt;Blob&lt;/code&gt; / &lt;code&gt;File&lt;/code&gt; for file parameters, and more.
+        (Some of this felt fairly “bleeding edge” when I started working on m3api,
+        but keep in mind that this was almost five years ago.
+        m3api may not support all the &lt;a href="https://www.mediawiki.org/wiki/Compatibility#Browsers"&gt;browsers supported by MediaWiki&lt;/a&gt;,
+        but it does support the Node.js version that was shipped in stable Debian 12 (Bookworm) two years ago.)
+      &lt;/p&gt;
+&lt;p&gt;
+        I want to elaborate on the “minimal” term a bit more.
+        Basically, the point is that I’m familiar with the MediaWiki Action API,
+        and I don’t like libraries that aim to hide the API from me.
+        I’m wary of basic &lt;a href="https://en.wikipedia.org/wiki/Create,_read,_update_and_delete"&gt;&lt;abbr title="create, read, update, delete"&gt;CRUD&lt;/abbr&gt;&lt;/a&gt; abstraction methods;
+        the &lt;code&gt;action=edit&lt;/code&gt; API has plenty of useful options,
+        many of which a higher-level method probably doesn’t make available.
+        I want a library that helps me to work with the API directly.
+        (I don’t mind if it &lt;em&gt;also&lt;/em&gt; offers abstraction methods, but they’re not a high priority for me when writing my own library.
+        Also, some other libraries seem to make it relatively hard to make direct API requests.)
+      &lt;/p&gt;
+&lt;p&gt;
+        However, “minimal” doesn’t mean that the library doesn’t have any features.
+        There are plenty of features designed to make it easier to use the API;
+        my basic rule of thumb is that the feature should be useful with more than one API action.
+        For example, API continuation is present in several API actions, and somewhat tedious to use “manually”,
+        so m3api offers support for it.
+      &lt;/p&gt;
+&lt;p&gt;
+        In addition to that, there are also several extension packages for m3api,
+        as well as &lt;a href="https://github.com/lucaswerkmeister/m3api/#creating-extension-packages"&gt;guidelines&lt;/a&gt;
+        for others to implement additional extension packages.
+        These implement support for specific API modules
+        (&lt;a href="https://github.com/lucaswerkmeister/m3api-query/"&gt;m3api-query&lt;/a&gt; for &lt;code&gt;action=query&lt;/code&gt;,
+        &lt;a href="https://github.com/lucaswerkmeister/m3api-botpassword/"&gt;m3api-botpassword&lt;/a&gt; for &lt;code&gt;action=login&lt;/code&gt;)
+        or other functionality that doesn’t belong in m3api itself
+        (&lt;a href="https://github.com/lucaswerkmeister/m3api-oauth2/"&gt;m3api-oauth2&lt;/a&gt; for the OAuth 2.0 authorization flow).
+        In combination, these libraries are intended to provide,
+        if not a full API framework,
+        then at least a powerful and flexible toolkit for working with the API.
+      &lt;/p&gt;
+&lt;h2 id="basic-interface"&gt;Basic interface&lt;/h2&gt;
+&lt;p&gt;
+        The simplest way to make an API request with m3api looks like this:
+      &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class="keyword"&gt;import&lt;/span&gt; Session &lt;span class="keyword"&gt;from&lt;/span&gt; &lt;span class="string"&gt;'m3api/node.js'&lt;/span&gt;;
+&lt;span class="storage type"&gt;const&lt;/span&gt; session &lt;span class="keyword operator"&gt;=&lt;/span&gt; &lt;span class="keyword"&gt;new&lt;/span&gt; &lt;span class="variable type"&gt;Session&lt;/span&gt;( &lt;span class="string"&gt;'en.wikipedia.org'&lt;/span&gt; );
+&lt;span class="storage type"&gt;const&lt;/span&gt; response &lt;span class="keyword operator"&gt;=&lt;/span&gt; &lt;span class="keyword"&gt;await&lt;/span&gt; session.&lt;span class="function call"&gt;request&lt;/span&gt;(
+	{ action: &lt;span class="string"&gt;'query'&lt;/span&gt;, meta: &lt;span class="string"&gt;'siteinfo'&lt;/span&gt; },
+);&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+        You can also specify default parameters that should apply to every request of a session when creating it:
+      &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class="keyword"&gt;import&lt;/span&gt; Session &lt;span class="keyword"&gt;from&lt;/span&gt; &lt;span class="string"&gt;'m3api/node.js'&lt;/span&gt;;
+&lt;span class="storage type"&gt;const&lt;/span&gt; session &lt;span class="keyword operator"&gt;=&lt;/span&gt; &lt;span class="keyword"&gt;new&lt;/span&gt; &lt;span class="variable type"&gt;Session&lt;/span&gt;(
+	&lt;span class="string"&gt;'en.wikipedia.org'&lt;/span&gt;,
+	{ formatversion: &lt;span class="constant numeric"&gt;2&lt;/span&gt; },
+);
+&lt;span class="storage type"&gt;const&lt;/span&gt; response &lt;span class="keyword operator"&gt;=&lt;/span&gt; &lt;span class="keyword"&gt;await&lt;/span&gt; session.&lt;span class="function call"&gt;request&lt;/span&gt;(
+	{ action: &lt;span class="string"&gt;'query'&lt;/span&gt;, meta: &lt;span class="string"&gt;'siteinfo'&lt;/span&gt; },
+);&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+        These examples specify &lt;em&gt;parameters&lt;/em&gt; to send to the API (&lt;code&gt;action=query&lt;/code&gt;, &lt;code&gt;meta=siteinfo&lt;/code&gt;, &lt;code&gt;formatversion=2&lt;/code&gt;).
+        Additionally, you can specify &lt;em&gt;options&lt;/em&gt; as another object after the parameters,
+        which instead influence how m3api sends the request.
+        One option that you should always set is the &lt;code&gt;userAgent&lt;/code&gt;, which controls the &lt;code&gt;User-Agent&lt;/code&gt; HTTP header
+        (see the &lt;a href="https://meta.wikimedia.org/wiki/Special:MyLanguage/User-Agent_policy"&gt;User-Agent policy&lt;/a&gt;).
+        Usually, you would set this option for all requests when creating the session:
+      &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class="keyword"&gt;import&lt;/span&gt; Session &lt;span class="keyword"&gt;from&lt;/span&gt; &lt;span class="string"&gt;'m3api/node.js'&lt;/span&gt;;
+&lt;span class="storage type"&gt;const&lt;/span&gt; session &lt;span class="keyword operator"&gt;=&lt;/span&gt; &lt;span class="keyword"&gt;new&lt;/span&gt; &lt;span class="variable type"&gt;Session&lt;/span&gt;(
+	&lt;span class="string"&gt;'en.wikipedia.org'&lt;/span&gt;,
+	{ formatversion: &lt;span class="constant numeric"&gt;2&lt;/span&gt; },
+	{ userAgent: &lt;span class="string"&gt;'introducing-m3api-blog-post'&lt;/span&gt; },
+);
+&lt;span class="storage type"&gt;const&lt;/span&gt; response &lt;span class="keyword operator"&gt;=&lt;/span&gt; &lt;span class="keyword"&gt;await&lt;/span&gt; session.&lt;span class="function call"&gt;request&lt;/span&gt;(
+	{ action: &lt;span class="string"&gt;'query'&lt;/span&gt;, meta: &lt;span class="string"&gt;'siteinfo'&lt;/span&gt; },
+);&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+        But you could also set it on the individual request, if you wanted:
+      &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class="keyword"&gt;import&lt;/span&gt; Session &lt;span class="keyword"&gt;from&lt;/span&gt; &lt;span class="string"&gt;'m3api/node.js'&lt;/span&gt;;
+&lt;span class="storage type"&gt;const&lt;/span&gt; session &lt;span class="keyword operator"&gt;=&lt;/span&gt; &lt;span class="keyword"&gt;new&lt;/span&gt; &lt;span class="variable type"&gt;Session&lt;/span&gt;(
+	&lt;span class="string"&gt;'en.wikipedia.org'&lt;/span&gt;,
+	{ formatversion: &lt;span class="constant numeric"&gt;2&lt;/span&gt; },
+);
+&lt;span class="storage type"&gt;const&lt;/span&gt; response &lt;span class="keyword operator"&gt;=&lt;/span&gt; &lt;span class="keyword"&gt;await&lt;/span&gt; session.&lt;span class="function call"&gt;request&lt;/span&gt;(
+	{ action: &lt;span class="string"&gt;'query'&lt;/span&gt;, meta: &lt;span class="string"&gt;'siteinfo'&lt;/span&gt; },
+	{ userAgent: &lt;span class="string"&gt;'introducing-m3api-blog-post'&lt;/span&gt; },
+);&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+        (It doesn’t make much sense to set the &lt;code&gt;userAgent&lt;/code&gt; per request,
+        but there are other options where it’s more useful,
+        e.g. &lt;code&gt;method: 'POST'&lt;/code&gt; and &lt;code&gt;tokenType: 'csrf'&lt;/code&gt;.)
+      &lt;/p&gt;
+&lt;p&gt;
+        Other functions generally also follow this pattern of taking parameters followed by options,
+        with the options being, well, optional.
+        Both the parameters and options are merged with the defaults from the constructor,
+        making for a convenient and uniform interface.
+      &lt;/p&gt;
+&lt;p&gt;
+        In addition to strings, parameter values can also be numbers, booleans, and arrays, for example:
+      &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class="storage type"&gt;const&lt;/span&gt; response &lt;span class="keyword operator"&gt;=&lt;/span&gt; &lt;span class="keyword"&gt;await&lt;/span&gt; session.&lt;span class="function call"&gt;request&lt;/span&gt;( {
+	action: &lt;span class="string"&gt;'query'&lt;/span&gt;,
+	meta: [ &lt;span class="string"&gt;'siteinfo'&lt;/span&gt;, &lt;span class="string"&gt;'userinfo'&lt;/span&gt; ],
+	curtimestamp: &lt;span class="constant language"&gt;true&lt;/span&gt;,
+	formatversion: &lt;span class="constant numeric"&gt;2&lt;/span&gt;,
+} );&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+        List parameters can also be sets instead of arrays; more on that &lt;a href="https://lucaswerkmeister.de/posts/2025/04/12/introducing-m3api/#combining-requests"&gt;below&lt;/a&gt;.
+      &lt;/p&gt;
+&lt;h2 id="api-continuation"&gt;API continuation&lt;/h2&gt;
+&lt;p&gt;
+        As mentioned above, m3api includes support for API continuation.
+        I’m not aware of a great explanation of this feature in the API,
+        so I’ll just use this section to talk about it in general as well as how m3api supports it ^^
+      &lt;/p&gt;
+&lt;p&gt;
+&lt;em&gt;Continuation&lt;/em&gt; is the mechanism by which the API returns a limited set of data
+        while enabling you to make further requests to fetch additional data.
+        The MediaWiki Action API’s continuation mechanism is highly flexible;
+        a single API request can use many different modules, each of which contributes to continuation,
+        and it all works out.
+      &lt;/p&gt;
+&lt;p&gt;
+        The basic principle is that the API may return,
+        as part of the response,
+        a &lt;code&gt;continue&lt;/code&gt; object with parameters you should send with your next request.
+        For instance, if you make an API request with &lt;code&gt;action=query&lt;/code&gt; and &lt;code&gt;list=allpages&lt;/code&gt;,
+        the response may include &lt;code&gt;"continue": { "apcontinue": "!important" }&lt;/code&gt;;
+        your next request should then use the parameters
+        &lt;code&gt;action=query&lt;/code&gt;, &lt;code&gt;list=allpages&lt;/code&gt; and &lt;code&gt;apcontinue=!important&lt;/code&gt;.
+        Continuation is finished when there is no &lt;code&gt;continue&lt;/code&gt; object in a response.
+      &lt;/p&gt;
+&lt;p&gt;
+        In m3api, the main interface to continuation is the &lt;code&gt;requestAndContinue()&lt;/code&gt; method,
+        which returns an async generator.
+        It’s typically used in a &lt;a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for-await...of"&gt;&lt;code&gt;for await&lt;/code&gt; loop&lt;/a&gt; like this:
+      &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class="keyword"&gt;for&lt;/span&gt; &lt;span class="keyword"&gt;await&lt;/span&gt; ( &lt;span class="storage type"&gt;const&lt;/span&gt; response of session.&lt;span class="function call"&gt;requestAndContinue&lt;/span&gt;( {
+	action: &lt;span class="string"&gt;'query'&lt;/span&gt;,
+	list: &lt;span class="string"&gt;'allpages'&lt;/span&gt;,
+} ) ) {
+	console.&lt;span class="function call"&gt;log&lt;/span&gt;( response );
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+        Each &lt;code&gt;response&lt;/code&gt; is a response object like would be returned from a normal &lt;code&gt;request()&lt;/code&gt; call.
+        You can &lt;code&gt;break;&lt;/code&gt; out of the loop at any time to stop making additional requests.
+      &lt;/p&gt;
+&lt;p&gt;
+        The above example shows a “simple” case of continuation:
+        each request produces one “batch” of pages (or, for some modules, revisions),
+        and the next request continues with the next batch of different pages.
+        However, it’s possible for a response to not contain the full data of one batch of pages.
+        (An extreme example of this would be
+        &lt;code&gt;action=query&lt;/code&gt;, &lt;code&gt;generator=querypage&lt;/code&gt;, &lt;code&gt;gqppage=Longpages&lt;/code&gt;, &lt;code&gt;gqplimit=500&lt;/code&gt;,
+        &lt;code&gt;prop=revisions&lt;/code&gt;, &lt;code&gt;rvprop=text&lt;/code&gt; –
+        that is, the text content of the 500 longest pages on the wiki.
+        This will run into the response size limit very quickly,
+        but the batch still contains all 500 longest pages,
+        even though not all 500 are returned with their text in the same response.)
+        In this case, continuation will first proceed &lt;em&gt;within&lt;/em&gt; one batch of pages
+        (i.e., requests will return additional data for the same set of pages),
+        and only proceed to the next batch after the full data for the previous batch has been returned,
+        spread across multiple API responses.
+        (It’s the caller’s responsibility to merge those responses back together again in a way that makes sense.)
+        You can distinguish between these cases by the &lt;code&gt;batchcomplete&lt;/code&gt; member in the response:
+        if it’s present (set to &lt;code&gt;""&lt;/code&gt; in &lt;code&gt;formatversion=1&lt;/code&gt; or &lt;code&gt;true&lt;/code&gt; in &lt;code&gt;formatversion=2&lt;/code&gt;),
+        then the request returned the full set of data for the current batch of pages,
+        and following continuation will proceed to the next batch;
+        if it’s not present, then the request didn’t return the full data yet,
+        and following continuation will yield additional data for the same batch of pages.
+      &lt;/p&gt;
+&lt;p&gt;
+        m3api supports this distinction too, using the &lt;code&gt;requestAndContinueReducingBatch()&lt;/code&gt; method.
+        It also returns an async generator,
+        but follows continuation internally until the end of a batch has been reached,
+        yielding a value that represents the combined result of all the responses for that batch.
+        If you continue iterating over the async generator, it will continue with the next batch, and so on.
+        When you use this method, you have to provide a &lt;code&gt;reducer()&lt;/code&gt; callback,
+        which somehow merges the latest API response into the current accumulated value.
+        The initial value for each batch can be specified via another callable,
+        and otherwise defaults to &lt;code&gt;{}&lt;/code&gt; (empty object).
+        This interface is similar to &lt;a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce"&gt;&lt;code&gt;Array.reduce()&lt;/code&gt;&lt;/a&gt;
+        (hence the name; elsewhere this operation is also known as &lt;a href="https://www.wikidata.org/wiki/Special:GoToLinkedPage/enwiki/Q951651"&gt;fold&lt;/a&gt;),
+        but with a separate “reduction” taking place for each batch of pages returned by the API.
+      &lt;/p&gt;
+&lt;p&gt;
+&lt;code&gt;requestAndContinueReducingBatch()&lt;/code&gt; is a fairly low-level method,
+        and is not intended to be used directly.
+        The &lt;a href="https://github.com/lucaswerkmeister/m3api-query/"&gt;m3api-query&lt;/a&gt; extension package offers some more convenient methods
+        (assuming you’re using &lt;code&gt;action=query&lt;/code&gt;):
+        &lt;code&gt;queryFullPageByTitle()&lt;/code&gt;, &lt;code&gt;queryFullPageByPageId()&lt;/code&gt; and &lt;code&gt;queryFullRevisionByRevisionId()&lt;/code&gt;
+        return the full data for a single page or revision (even that can be split across multiple responses!),
+        while &lt;code&gt;queryFullPages()&lt;/code&gt; and &lt;code&gt;queryFullRevisions()&lt;/code&gt;
+        return async generators that yield full pages or revisions.
+      &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class="keyword"&gt;for&lt;/span&gt; &lt;span class="keyword"&gt;await&lt;/span&gt; ( &lt;span class="storage type"&gt;const&lt;/span&gt; page of &lt;span class="function call"&gt;queryFullPages&lt;/span&gt;( session, {
+	action: &lt;span class="string"&gt;'query'&lt;/span&gt;,
+	list: &lt;span class="string"&gt;'allpages'&lt;/span&gt;,
+} ) ) {
+	console.&lt;span class="function call"&gt;log&lt;/span&gt;( page );
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+        You get a simple, flat stream of pages,
+        and don’t have to care that some of them may have been returned in the same response,
+        others in a later response,
+        and some may even have been split across multiple responses.
+        The way in which pages from multiple responses are merged is configurable via the options,
+        but the default should work for most cases.
+        This is one of the parts of m3api I’m proudest of –
+        making it easy to correctly work with API continuation.
+      &lt;/p&gt;
+&lt;h2 id="combining-requests"&gt;Combining requests&lt;/h2&gt;
+&lt;p&gt;
+        Another m3api feature I’m proud of is automatically combining concurrent compatible requests.
+        The idea is taken from the &lt;a href="https://www.wikidata.org/wiki/Special:MyLanguage/Wikidata:Wikidata_Bridge"&gt;Wikidata Bridge&lt;/a&gt;
+        (an interface to edit Wikidata from Wikipedia),
+        where the Wikidata team at Wikimedia Germany (that I’m a part of) implemented something similar.
+        (I reimplemented the idea from scratch in m3api to avoid infringing any copyright.)
+      &lt;/p&gt;
+&lt;p&gt;
+        The Wikidata Bridge needs to load a lot of information from the API when it initializes itself:
+      &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://de.wikipedia.beta.wmflabs.org/w/api.php?action=query&amp;amp;format=json&amp;amp;titles=Data-Bridge&amp;amp;prop=info&amp;amp;intestactions=edit&amp;amp;intestactionsdetail=full&amp;amp;errorformat=raw&amp;amp;formatversion=2"&gt;Whether the user has permission to edit the Wikipedia article.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://de.wikipedia.beta.wmflabs.org/w/api.php?action=query&amp;amp;format=json&amp;amp;meta=siteinfo&amp;amp;siprop=restrictions&amp;amp;errorformat=raw&amp;amp;formatversion=2"&gt;The Wikipedia site’s restriction levels, to determine what kind of protection the article has.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wikidata.beta.wmflabs.org/w/api.php?action=query&amp;amp;format=json&amp;amp;errorformat=raw&amp;amp;formatversion=2&amp;amp;titles=Q11&amp;amp;prop=info&amp;amp;intestactions=edit&amp;amp;intestactionsdetail=full"&gt;Whether the user has permission to edit the Wikidata item.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wikidata.beta.wmflabs.org/w/api.php?action=query&amp;amp;format=json&amp;amp;meta=siteinfo&amp;amp;errorformat=raw&amp;amp;formatversion=2&amp;amp;siprop=restrictions"&gt;The Wikidata site’s restriction levels, to determine what kind of protection the item has.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wikidata.beta.wmflabs.org/w/api.php?action=query&amp;amp;format=json&amp;amp;meta=siteinfo&amp;amp;errorformat=raw&amp;amp;formatversion=2&amp;amp;siprop=autocreatetempuser"&gt;Whether the Wikidata site has temporary accounts enabled, to determine whether to show a “your IP address will be publicly visible” warning.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wikidata.beta.wmflabs.org/w/api.php?action=query&amp;amp;format=json&amp;amp;meta=wbdatabridgeconfig&amp;amp;errorformat=raw&amp;amp;formatversion=2"&gt;The bridge configuration on Wikidata.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wikidata.beta.wmflabs.org/w/api.php?action=wbgetentities&amp;amp;format=json&amp;amp;props=datatype&amp;amp;ids=P443&amp;amp;errorformat=raw&amp;amp;formatversion=2"&gt;The data type of the property of the statement being edited.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wikidata.beta.wmflabs.org/w/api.php?action=wbgetentities&amp;amp;format=json&amp;amp;props=info&amp;amp;ids=Q11&amp;amp;errorformat=raw&amp;amp;formatversion=2"&gt;The latest revision ID of the item being edited.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wikidata.beta.wmflabs.org/w/api.php?action=wbgetentities&amp;amp;format=json&amp;amp;props=claims&amp;amp;ids=Q11&amp;amp;errorformat=raw&amp;amp;formatversion=2"&gt;The statements of the item being edited.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wikidata.beta.wmflabs.org/w/api.php?action=wbgetentities&amp;amp;format=json&amp;amp;props=labels&amp;amp;ids=P443&amp;amp;languages=de&amp;amp;languagefallback=true&amp;amp;errorformat=raw&amp;amp;formatversion=2"&gt;The label of the property of the statement being edited.&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;
+        A naïve implementation would make up to ten separate API requests to get this information
+        (I’ve linked them above for the &lt;a href="https://de.wikipedia.beta.wmflabs.org/wiki/Data-Bridge"&gt;Beta Wikidata Bridge demo page&lt;/a&gt;).
+        However, due to how API modules are designed to be flexible in which data they return,
+        and how parameters that specify “I’d like &lt;em&gt;this&lt;/em&gt; piece of data” are often multi-valued,
+        you can also combine them into just three requests:
+        &lt;a href="https://de.wikipedia.beta.wmflabs.org/w/api.php?action=query&amp;amp;format=json&amp;amp;titles=Data-Bridge&amp;amp;prop=info&amp;amp;meta=siteinfo&amp;amp;intestactions=edit&amp;amp;intestactionsdetail=full&amp;amp;siprop=restrictions&amp;amp;errorformat=raw&amp;amp;formatversion=2"&gt;action=query on Wikipedia&lt;/a&gt; (1 and 2),
+        &lt;a href="https://wikidata.beta.wmflabs.org/w/api.php?action=query&amp;amp;format=json&amp;amp;meta=wbdatabridgeconfig|siteinfo&amp;amp;errorformat=raw&amp;amp;formatversion=2&amp;amp;titles=Q11&amp;amp;prop=info&amp;amp;intestactions=edit&amp;amp;intestactionsdetail=full&amp;amp;siprop=autocreatetempuser|restrictions"&gt;action=query on Wikidata&lt;/a&gt; (3 to 6),
+        and &lt;a href="https://wikidata.beta.wmflabs.org/w/api.php?action=wbgetentities&amp;amp;format=json&amp;amp;props=labels%7Cdatatype%7Cinfo%7Cclaims&amp;amp;ids=P443%7CQ11&amp;amp;languages=de&amp;amp;languagefallback=true&amp;amp;errorformat=raw&amp;amp;formatversion=2"&gt;action=wbgetentities on Wikidata&lt;/a&gt; (7 to 10).
+        The simple approach to implement the initialization with just three requests
+        would be to have one big blob of code that makes all the requests and extracts all the information from the responses,
+        but this wouldn’t be very readable or maintainable:
+        we’d rather have a bunch of &lt;a href="https://gerrit.wikimedia.org/g/mediawiki/extensions/Wikibase/+/a8f78a9456/client/data-bridge/src/data-access/ApiEntityLabelRepository.ts"&gt;smaller&lt;/a&gt;,
+        &lt;a href="https://gerrit.wikimedia.org/g/mediawiki/extensions/Wikibase/+/a8f78a9456/client/data-bridge/src/data-access/ApiPropertyDataTypeRepository.ts"&gt;self-contained&lt;/a&gt;
+&lt;a href="https://gerrit.wikimedia.org/g/mediawiki/extensions/Wikibase/+/a8f78a9456/client/data-bridge/src/data-access/ApiReadingEntityRepository.ts"&gt;services&lt;/a&gt;
+        that each just specify the request parameters they need and extract the parts of the response that concern them.
+        But how do we then combine those requests?
+      &lt;/p&gt;
+&lt;p&gt;
+        One approach I’ve used in the Wikidata Image Positions tool (written in Python)
+        is to explicitly split the API requests into three “phases”: assemble the parameters, make the request, process the response.
+        Then you can assemble the parameters from multiple requests, make only one request, and process the same response multiple times
+        (example based on &lt;a href="https://gitlab.wikimedia.org/toolforge-repos/wd-image-positions/-/blob/b8022cddca/app.py#L697"&gt;&lt;code&gt;load_image()&lt;/code&gt;&lt;/a&gt;):
+      &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;query_params &lt;span class="keyword operator"&gt;=&lt;/span&gt; &lt;span class="function call"&gt;query_default_params&lt;/span&gt;()
+&lt;span class="function call"&gt;image_attribution_query_add_params&lt;/span&gt;(
+    query_params,
+    image_title,
+)
+&lt;span class="function call"&gt;image_size_query_add_params&lt;/span&gt;(
+    query_params,
+    image_title,
+)
+
+query_response &lt;span class="keyword operator"&gt;=&lt;/span&gt; session.&lt;span class="function call"&gt;get&lt;/span&gt;(&lt;span class="keyword operator"&gt;*&lt;/span&gt;&lt;span class="keyword operator"&gt;*&lt;/span&gt;query_params)
+
+attribution &lt;span class="keyword operator"&gt;=&lt;/span&gt; &lt;span class="function call"&gt;image_attribution_query_process_response&lt;/span&gt;(
+    query_response,
+    image_title,
+)
+width, height &lt;span class="keyword operator"&gt;=&lt;/span&gt; &lt;span class="function call"&gt;image_size_query_process_response&lt;/span&gt;(
+    query_response,
+    image_title,
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+        But this is fairly cumbersome,
+        and also requires the calling code to know which requests can be combined and which can’t.
+        We can do better.
+      &lt;/p&gt;
+&lt;p&gt;
+        Because all requests are asynchronous in JavaScript, &lt;!-- please do not @ me about sync XHR --&gt;
+        our &lt;code&gt;request()&lt;/code&gt; function can return a &lt;code&gt;Promise&lt;/code&gt; without immediately making an underlying network request.
+        We can then wait for a very short period
+        (specifically, until the next &lt;a href="https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API/Microtask_guide"&gt;microtask&lt;/a&gt;),
+        and see if any other requests come in during that time;
+        if they do, we check if they’re compatible, and potentially merge them into the pending request.
+        Then, we send the pending request(s),
+        and resolve the associated promises with the response(s).
+      &lt;/p&gt;
+&lt;p&gt;
+        The effect of this is that,
+        when several compatible requests are made within the same JS event loop run,
+        then m3api can merge them automatically.
+        Most often, making several requests within the same JS event loop run looks like a call to &lt;code&gt;Promise.all()&lt;/code&gt; with several requests
+        (see the example below).
+      &lt;/p&gt;
+&lt;p&gt;
+        To determine whether requests are compatible,
+        we need to distinguish between list-type parameters that can be merged,
+        and ones that can’t be.
+        The convention we used in the Wikidata Bridge,
+        and which I reused for m3api,
+        is that mergeable parameters are specified as &lt;code&gt;Set&lt;/code&gt;s,
+        while unmergeable parameters are specified as &lt;code&gt;Array&lt;/code&gt;s.
+        (The reasoning behind this is that, in many other languages, sets are unordered,
+        and when a parameter is mergeable then you probably don’t care about the order the parameters are sent in;
+        conversely, when you care about the order, you probably don’t want another request’s values to be inserted in front of yours.
+        This doesn’t 100% apply in JavaScript because &lt;code&gt;Set&lt;/code&gt;s obey insertion order,
+        but I think it still makes some sense.)
+        So, two requests are compatible if all their parameters either only occur in one request
+        (e.g. one has &lt;code&gt;list=allpages&lt;/code&gt; while the other has &lt;code&gt;meta=siteinfo&lt;/code&gt;),
+        have the same value in both requests
+        (e.g. both have &lt;code&gt;action=query&lt;/code&gt;),
+        or are specified as &lt;code&gt;Set&lt;/code&gt; in both requests.
+        To make creating &lt;code&gt;Set&lt;/code&gt;s more convenient,
+        a &lt;code&gt;set()&lt;/code&gt; helper function is provided,
+        so that e.g. requests with &lt;code&gt;list: set( 'allpages' )&lt;/code&gt; and &lt;code&gt;list: set( 'allusers' )&lt;/code&gt; are compatible.
+      &lt;/p&gt;
+&lt;p&gt;
+        The upshot of this is that the following example code will only make one underlying network request,
+        with &lt;code&gt;siprop=general|statistics&lt;/code&gt;:
+      &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class="keyword"&gt;async&lt;/span&gt; &lt;span class="storage function"&gt;function&lt;/span&gt; &lt;span class="entity name function"&gt;getSiteName&lt;/span&gt;( session ) {
+	&lt;span class="storage type"&gt;const&lt;/span&gt; response &lt;span class="keyword operator"&gt;=&lt;/span&gt; &lt;span class="keyword"&gt;await&lt;/span&gt; session.&lt;span class="function call"&gt;request&lt;/span&gt;( {
+		action: &lt;span class="string"&gt;'query'&lt;/span&gt;,
+		meta: &lt;span class="function call"&gt;set&lt;/span&gt;( &lt;span class="string"&gt;'siteinfo'&lt;/span&gt; ),
+		siprop: &lt;span class="function call"&gt;set&lt;/span&gt;( &lt;span class="string"&gt;'general'&lt;/span&gt; ),
+	} );
+	&lt;span class="keyword"&gt;return&lt;/span&gt; response.query.general.sitename;
+}
+
+&lt;span class="keyword"&gt;async&lt;/span&gt; &lt;span class="storage function"&gt;function&lt;/span&gt; &lt;span class="entity name function"&gt;getSiteEdits&lt;/span&gt;( session ) {
+	&lt;span class="storage type"&gt;const&lt;/span&gt; response &lt;span class="keyword operator"&gt;=&lt;/span&gt; &lt;span class="keyword"&gt;await&lt;/span&gt; session.&lt;span class="function call"&gt;request&lt;/span&gt;( {
+		action: &lt;span class="string"&gt;'query'&lt;/span&gt;,
+		meta: &lt;span class="function call"&gt;set&lt;/span&gt;( &lt;span class="string"&gt;'siteinfo'&lt;/span&gt; ),
+		siprop: &lt;span class="function call"&gt;set&lt;/span&gt;( &lt;span class="string"&gt;'statistics'&lt;/span&gt; ),
+	} );
+	&lt;span class="keyword"&gt;return&lt;/span&gt; response.query.statistics.edits;
+}
+
+&lt;span class="storage type"&gt;const&lt;/span&gt; [ sitename, edits ] &lt;span class="keyword operator"&gt;=&lt;/span&gt; &lt;span class="keyword"&gt;await&lt;/span&gt; &lt;span class="support class promise"&gt;Promise&lt;/span&gt;.&lt;span class="function call"&gt;all&lt;/span&gt;( [
+	&lt;span class="function call"&gt;getSiteName&lt;/span&gt;( session ),
+	&lt;span class="function call"&gt;getSiteEdits&lt;/span&gt;( session ),
+] );&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+        In principle, it’s possible that automatically combining requests will cause bugs in code written by developers who aren’t aware of this m3api feature.
+        (For example, if someone doesn’t use m3api-query,
+        they might use code like &lt;code&gt;response.query.pages[ 0 ]&lt;/code&gt; to access the only page they expect to be present in the response,
+        without realizing that a merged request may have caused further pages to be returned.)
+        However, I hope that this will be rare,
+        thanks to the combination of requests only being combined if they happen within the same JS event loop run
+        and array-type parameters not being eligible for combining.
+        If I get a lot of bug reports about this feature,
+        I may reconsider it for the next major version.
+        (If you want to make absolutely sure that a particular request will not be combined with any other,
+        specify the &lt;code&gt;action&lt;/code&gt; as a single-element array,
+        e.g. &lt;code&gt;action: [ 'query' ]&lt;/code&gt; –
+        every other request will also specify the &lt;code&gt;action&lt;/code&gt; parameter,
+        and they’ll all be incompatible,
+        because arrays are not mergeable.)
+      &lt;/p&gt;
+&lt;h2 id="error-handling"&gt;Error handling&lt;/h2&gt;
+&lt;p&gt;
+        As you might expect, m3api detects errors in the response and throws them
+        (or, if you prefer, it rejects the promise, because all of this is async).
+        As you might also expect, any warnings in the response are detected and, by default, logged to the console via &lt;code&gt;console.warn()&lt;/code&gt;.
+        (I was actually surprised to discover the other day that MediaWiki’s own &lt;code&gt;mw.Api()&lt;/code&gt; doesn’t do this.
+        God knows how many on-wiki gadgets and user scripts use deprecated API parameters without realizing it because the warnings returned by the API go straight to &lt;code&gt;/dev/null&lt;/code&gt;…)
+      &lt;/p&gt;
+&lt;p&gt;
+        m3api also supports transparently handling errors without throwing them.
+        Several errors returned by the API can be handled by retrying the request in some form;
+        m3api’s approach is to retry requests until a certain time limit (by default, 65 seconds) after the initial request has passed –
+        I think this makes more sense than limiting the absolute number of retries, as some other libraries do.
+        (You can change the limit using the &lt;code&gt;maxRetriesSeconds&lt;/code&gt; request option –
+        bots may want to use a much longer limit than interactive applications.)
+        If the response by the API includes a &lt;code&gt;Retry-After&lt;/code&gt; header, m3api will obey it (as long as it’s within said time limit);
+        otherwise, error handlers for different error codes can be configured,
+        which may likewise retry the request.
+        m3api ships error handlers for &lt;code&gt;badtoken&lt;/code&gt; (update the token, then retry),
+        &lt;code&gt;maxlag&lt;/code&gt; and &lt;code&gt;readonly&lt;/code&gt; errors (sleep for an appropriate time period, then retry).
+        The &lt;a href="https://github.com/lucaswerkmeister/m3api-oauth2/"&gt;m3api-oauth2&lt;/a&gt; extension package
+        installs an error handler to refresh expired OAuth 2 access tokens
+        (on Wikimedia wikis, they expire after 4 hours)
+        and then retry the request.
+        These retries are always transparent to the code that made the request.
+      &lt;/p&gt;
+&lt;h2 id="why-you-should-use-it"&gt;Why you should use it&lt;/h2&gt;
+&lt;p&gt;
+        I’m of course biased, but I happen to think it’s a well-designed library, for various reasons including the ones detailed above ;)
+        but I’ll close by mentioning some of the recommendations in the &lt;a href="https://www.mediawiki.org/wiki/API:Etiquette"&gt;API Etiquette&lt;/a&gt;
+        (&lt;a href="https://www.mediawiki.org/w/index.php?title=API:Etiquette&amp;amp;oldid=7556535"&gt;permalink&lt;/a&gt;)
+        and outlining how m3api aligns with them:
+      &lt;/p&gt;
+&lt;dl&gt;
+&lt;dt&gt;request limit&lt;/dt&gt;
+&lt;dd&gt;
+          This is partially up to the developer using m3api, but m3api supports “ask[ing] for multiple items in one request”,
+          both manually by specifying parameters as lists or sets (e.g. &lt;code&gt;titles: set( 'PageA', 'PageB', 'PageC' )&lt;/code&gt;)
+          and automatically by combining requests as explained above.
+          Also, as mentioned in the error handling section,
+          &lt;code&gt;Retry-After&lt;/code&gt; response headers are respected;
+          this isn’t explicitly mentioned on the API Etiquette page, but I’ve heard it’s still considered good bot practice.
+        &lt;/dd&gt;
+&lt;dt&gt;maxlag&lt;/dt&gt;
+&lt;dd&gt;
+          Specifying the maxlag parameter is up to the developer using m3api,
+          but m3api &lt;a href="https://github.com/lucaswerkmeister/m3api/?tab=readme-ov-file#recommendations-for-bots"&gt;recommends it&lt;/a&gt; for bots,
+          and if it is used, then m3api will automatically wait and retry the request if the API returns a maxlag error.
+        &lt;/dd&gt;
+&lt;dt&gt;User-Agent header&lt;/dt&gt;
+&lt;dd&gt;
+          m3api sends a general User-Agent header for itself by default,
+          and also &lt;a href="https://github.com/lucaswerkmeister/m3api/?tab=readme-ov-file#usage-recommendations"&gt;encourages&lt;/a&gt; developers to specify a custom User-Agent header.
+          If developers neglect to specify the &lt;code&gt;userAgent&lt;/code&gt; request option,
+          a warning is logged (by default, to &lt;code&gt;console.warn()&lt;/code&gt;, where it should be relatively visible).
+        &lt;/dd&gt;
+&lt;dt&gt;data formats&lt;/dt&gt;
+&lt;dd&gt;
+          m3api uses the JSON format (of course).
+        &lt;/dd&gt;
+&lt;/dl&gt;
+&lt;p&gt;
+        If you’re already using a different API library or framework,
+        you’re free to continue using it, naturally.
+        But if you’re currently making network requests to the API directly,
+        or if you’re going to start a new project where you need to interact with the API,
+        I encourage you to give m3api a try.
+        And if you use it, please let me know how it’s working for you!
+      &lt;/p&gt;
+
+&lt;/article&gt;</description><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2025/04/12/introducing-m3api/</guid><pubDate>Sat, 12 Apr 2025 00:00:00 GMT</pubDate></item><item><title>Archiving my tweets</title><link>https://lucaswerkmeister.de/posts/2025/02/01/archiving-my-tweets/</link><description>&lt;article&gt;
+
+&lt;p&gt;
+        As you may be aware, Twitter has been going down the toilet for a while,
+        especially since noted asshole Jack Dorsey sold it to noted even bigger asshole Elon Musk.
+        As you may also be aware, I used to use Twitter quite a bit,
+        and I also generally enjoy referring back to my older social media posts.
+        So while I moved to Mastodon a while ago
+        (first the now-defunct mastodon.technology, then &lt;a href="https://wikis.world/"&gt;Wikis World&lt;/a&gt;),
+        I would still like to have access to my old tweets.
+      &lt;/p&gt;
+&lt;p&gt;
+        After opening tabs for several Twitter archivers and then not doing anything with them for ca. two years,
+        I’ve now finally tried them out, picked one I liked, and started setting it up.
+        My archiver of choice is &lt;a href="https://tinysubversions.com/twitter-archive/make-your-own/"&gt;Darius Kazemi aka Tiny Subversions’ simple Twitter archiver&lt;/a&gt;,
+        which is very easy to use (it runs in the browser: drop in your ZIP file, get a new ZIP file out),
+        fast, and produces output that I find useful and pleasing.
+        Its URL format also lends itself to supporting multiple archives next to each other,
+        which should be useful later;
+        I only had to tweak the &lt;code&gt;app.js&lt;/code&gt; and &lt;code&gt;index.html&lt;/code&gt; files slightly to make this work.
+      &lt;/p&gt;
+&lt;p&gt;
+        You can find the @LucasWerkmeistr Twitter archive at &lt;strong&gt;&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/"&gt;twitter.lucaswerkmeister.de/LucasWerkmeistr/&lt;/a&gt;&lt;/strong&gt;,
+        and individual tweets at URLs like &lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1154827181387898882/"&gt;twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1154827181387898882&lt;/a&gt;,
+        easily rewritable from the original URL &lt;a href="https://twitter.com/LucasWerkmeistr/status/1154827181387898882"&gt;twitter.com/LucasWerkmeistr/status/1154827181387898882&lt;/a&gt; –
+        just replace the &lt;code&gt;twitter.com&lt;/code&gt; domain with &lt;code&gt;twitter.lucaswerkmeister.de&lt;/code&gt;.
+        The archive also includes a search feature;
+        I’m &lt;em&gt;slightly&lt;/em&gt; nervous about someone using it to find stupid things I wrote years ago,
+        but I think on the whole it should be okay as long as people keep in mind that this is an archive of things I posted in the past,
+        not necessarily an enthusiastic endorsement that I would post all of it in exactly the same way again today.
+      &lt;/p&gt;
+&lt;p&gt;
+        The biggest shortcoming of this Twitter archiver, which it shares with the other options I tried,
+        is that it doesn’t include the alt text of the images I posted.
+        This is very unfortunate, as the alt text is important for accessibility,
+        and also I put a lot of work into those alt texts if you add it up and I don’t want to lose it.
+        (The alt text is not included in Twitter’s own exports / archives,
+        so any tool that’s based on them is going to have the same limitation.
+        I assume in principle it would be possible for someone to build a tool that fetches the alt text from Twitter now,
+        as long as the tweets haven’t been deleted yet,
+        but I don’t know if anyone’s done that and I’m certainly not interested in switching to a different archiver now.)
+        So I picked out my most popular tweets – using the command
+        &lt;code&gt;sed 's/^const searchDocuments = //' searchDocuments.js | jq '[.[] | select(.full_text | contains("tweets_media"))] | sort_by(.favorite_count | tonumber | - .) | .[]' | less&lt;/code&gt;
+        which picks them out of the search data – and manually copied the alt text for those,
+        as well as for plenty of other tweet threads where I wanted to keep the alt text,
+        just by copying it from the existing tweets (which I haven’t deleted yet)
+        and hand-editing it into the HTML files.
+        (Emacs’ syntax highlighting tells me when I need to switch between &lt;code&gt;alt=""&lt;/code&gt; and &lt;code&gt;alt=''&lt;/code&gt;, and/or HTML-escape individual single quotes as &lt;code&gt;&amp;amp;#39;&lt;/code&gt;, because of quote characters in the alt text.)
+        I expect I’ll keep doing this for a few more days after this blog post goes up,
+        and once I decide I’ve copied enough alt text,
+        then it will probably finally be time for me to, at long last, delete my account.
+      &lt;/p&gt;
+&lt;p&gt;
+        (Side note one: as the archive shows the full thread of a tweet on each page,
+        but still has a separate page per tweet,
+        threaded tweets are included in several copies – once per thread in the tweet.
+        I’ve generally only manually added the alt text to the page for the “top” tweet in the thread –
+        for instance, &lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1164116092882739200/"&gt;this page&lt;/a&gt; has the alt text for &lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1164145887381245952/"&gt;this tweet&lt;/a&gt; –
+        so if you ended up on a page in the middle of a thread, you might want to follow the link at the top.
+        If I can be bothered, maybe I’ll later write a little program that syncs the &lt;code&gt;alt=&lt;/code&gt; attributes between different pages.
+        [2025-02-09 update: I could be bothered. See below.])
+      &lt;/p&gt;
+&lt;p&gt;
+        (Side note two: in the original output of the archiver,
+        links to other tweets in the tweets themselves weren’t updated;
+        I fixed the links pointing to my own tweets using the command
+        &lt;code&gt;sed -i.sedbak -E 's|&amp;lt;a href="https://twitter.com/LucasWerkmeistr/status/([1-9][0-9]*)"&amp;gt;https://twitter.com/LucasWerkmeistr/status/\1&amp;lt;/a&amp;gt;|&amp;lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/\1"&amp;gt;https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/\1&amp;lt;/a&amp;gt;|g' */index.html&lt;/code&gt; –
+        i.e. making them point back to the archive rather than the original URL.
+        If anyone else I’ve interacted with has also archived their tweets in a similar way,
+        let me know and I can make my archived tweets point to your archive 🎉)
+      &lt;/p&gt;
+&lt;p&gt;
+        As part of copying the alt text, I also rediscovered many of my threads that I liked,
+        so here’s a selection of some of them –
+        some of my favorite tweets and threads:
+      &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1154826541588766726/"&gt;my coming out!&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/824357495397289991/"&gt;systemd tip of the day&lt;/a&gt; (&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/849377832866377730/"&gt;part 2&lt;/a&gt;), a series I did for a while (I assume most of the tips should still apply but do keep in mind they’re ca. eight years old 😄)&lt;/li&gt;
+&lt;li&gt;Wikimedia tools:
+          &lt;ul&gt;
+&lt;li&gt;&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1006863422569492481/"&gt;Wikidata Lexeme Forms&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1054066169907425280/"&gt;Wikidata Image Positions&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1211216978083491841/"&gt;SpeedPatrolling&lt;/a&gt; (&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1180579346966138880/"&gt;alternate post&lt;/a&gt;; see also the &lt;a href="https://lucaswerkmeister.de/posts/2019/01/04/speedpatrolling/"&gt;behind-the-scenes blog post&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1107400603649609729/"&gt;QuickCategories&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;AC/DC: no central thread, but see &lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1171886943375900672/"&gt;gadget announcement&lt;/a&gt;, &lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1441133597365358592/"&gt;easter egg&lt;/a&gt;, &lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1491556600561254404/"&gt;new features&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1355554819478532102/"&gt;Ranker&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Pride parades:
+          &lt;ul&gt;
+&lt;li&gt;&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1023258024079699968/"&gt;Berlin 2018&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1155071561105399808/"&gt;Berlin 2019&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1408749926356602889/"&gt;Berlin 2021 (June)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1418889315606749187/"&gt;Berlin 2021 (July)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1550780652072615938/"&gt;Berlin 2022&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Big holiday / travel threads:
+          &lt;ul&gt;
+&lt;li&gt;&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1161171648315367424/"&gt;Wikimania 2019&lt;/a&gt; – Berlin to Stockholm (see also Queryboo below)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1163655092400283649/"&gt;Wikimania 2019&lt;/a&gt; – Stockholm to Berlin [added 2025-02-13]&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1164116092882739200/"&gt;CCCamp 2019&lt;/a&gt; – Mildenberg&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1299260745583034368/"&gt;Summer 2020&lt;/a&gt; – Berlin to Fürth&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1432239389380337664/"&gt;Summer 2021&lt;/a&gt; – southern Germany round trip&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1555635275572940805/"&gt;Summer 2022&lt;/a&gt; – Alps, France, United Kingdom (including bike tour there); this one was split across multiple threads but they’re all linked to each other&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1161176506418249728/"&gt;Queryboo travel thread&lt;/a&gt; (concurrent with Wikimania 2019 linked above)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1395790502809804800/"&gt;Wikimedia Hackathon 2021&lt;/a&gt; (remote event)&lt;/li&gt;
+&lt;li&gt;Covid vaccine selfies:
+          &lt;ul&gt;
+&lt;li&gt;&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1405423730088624129/"&gt;June 2021&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1423263773499039749/"&gt;August 2021&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1473626033077301250/"&gt;December 2021&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1530110423302815744/"&gt;May 2022&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Shorter bike tours (for longer ones, see the travel threads above):
+          &lt;ul&gt;
+&lt;li&gt;&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1242396608656027648/"&gt;March 2020&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1267063408261763072/"&gt;May 2020&lt;/a&gt; (&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1267114176054525954/"&gt;part 2&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1284823454936715266/"&gt;July 2020&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1294963724609097728/"&gt;16 August 2020&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1297103431912558593/"&gt;22 August 2020&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1423980748374224897/"&gt;August 2021 (post-vaccine)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1516052902053396481/"&gt;April 2022&lt;/a&gt; (short but I still really like the joke in the second post ^^)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1530867014700519424/"&gt;May 2022 (post-vaccine)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1533747147673374720/"&gt;June 2022&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1351536421086121986/"&gt;first(?) appearance of the “fuck biphobia” sweater&lt;/a&gt; – this would turn out to be my most-faved tweet, heh&lt;/li&gt;
+&lt;li&gt;Painted nails / nail polish / #nailart:
+          &lt;ul&gt;
+&lt;li&gt;&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1187708195717943296/"&gt;25 October 2019&lt;/a&gt; (WikidataCon 2019)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1187747443959566339/"&gt;25 October 2019&lt;/a&gt; (WikidataCon 2019), feat. Harmonia Amanda&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1193900699177963520/"&gt;11 November 2019&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1201456320332881922/"&gt;2 December 2019&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1205113655647506432/"&gt;12 December 2019&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1210489539891998721/"&gt;19 December 2019&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1212075355156230147/"&gt;31 December 2019&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1219740069155745792/"&gt;21 January 2020&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1221489790589329408/"&gt;26 January 2020&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1226584679849000960/"&gt;9 February 2020&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1233715852077301762/"&gt;29 February 2020&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1244711490269204484/"&gt;30 March 2020&lt;/a&gt;, the first one under the influence of covid apparently&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1262716886036492289/"&gt;19 May 2020&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1405423730088624129/"&gt;17 June 2021&lt;/a&gt; (also linked under the vaccine selfies above)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1280271600147972102/"&gt;7 July 2020&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1293936669012504578/"&gt;13 August 2020&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1298959741775941633/"&gt;27 August 2020&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1320400758270021632/"&gt;25 October 2020&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1358145980177219588/"&gt;6 February 2021&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1454004321301970949/"&gt;29 October 2021&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1457338310758645763/"&gt;7 November 2021&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://twitter.lucaswerkmeister.de/LucasWerkmeistr/status/1381731582545911811/"&gt;gratuitous selfie thread&lt;/a&gt; (includes nail polish, 13 April 2021) – did you know I had a beard for a while during covid? wild&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+        As I mentioned, the archive’s URL format can accommodate multiple Twitter accounts’ archives on the same domain,
+        so I expect at some point (hopefully soon) I’ll also set up twitter.lucaswerkmeister.de/WikidataFacts/ and twitter.lucaswerkmeister.de/ItsBiNotHetero/ –
+        stay tuned 🙂
+      &lt;/p&gt;
+&lt;p&gt;
+&lt;strong&gt;2025-02-09 update:&lt;/strong&gt; I wrote the program to synchronize the alt texts:
+        it’s called &lt;a href="https://github.com/lucaswerkmeister/sync-alt"&gt;sync-alt&lt;/a&gt;
+        and I applied it to the Twitter archive,
+        so now all the posts where I copied the alt text over should have it,
+        regardless of where in the thread you’re viewing them.
+      &lt;/p&gt;
+&lt;p&gt;
+&lt;strong&gt;2025-03-10 update:&lt;/strong&gt; All my tweets should have their alt text copied now
+        (except for the ones that didn’t have alt text;
+        I sometimes left HTML comments about such cases but those aren’t synced between copies).
+        Also, the &lt;a href="https://twitter.lucaswerkmeister.de/ItsBiNotHetero/"&gt;@ItsBiNotHetero archive&lt;/a&gt; is now available,
+        and I updated my tweets that pointed to ItsBiNotHetero tweets to link to the archive instead
+        (using a similar &lt;code&gt;sed&lt;/code&gt; command as when updating the links to my own tweets, as mentioned above).
+      &lt;/p&gt;
+&lt;p&gt;
+&lt;strong&gt;2025-03-14 update:&lt;/strong&gt; The &lt;a href="https://twitter.lucaswerkmeister.de/WikidataFacts/"&gt;@WikidataFacts archive&lt;/a&gt; is now also available,
+        with copied alt texts (as long as the original tweets had alt text –
+        tweets before ca. June/July 2016 lacked them),
+        and I also updated cross-links between @LucasWerkmeistr and @WikidataFacts tweets to point to the archives.
+      &lt;/p&gt;
+&lt;p&gt;
+&lt;strong&gt;2025-03-15 update:&lt;/strong&gt; The &lt;a href="https://twitter.lucaswerkmeister.de/AfDimBundesrat/"&gt;@AfDimBundesrat archive&lt;/a&gt; is now also available.
+        This is a parody account – I noticed one day that the handle was free and grabbed it on a whim;
+        now, if (heaven forbid) the &lt;a href="https://en.wikipedia.org/wiki/Alternative_for_Germany"&gt;AfD&lt;/a&gt; should ever gain seats in the &lt;a href="https://en.wikipedia.org/wiki/German_Bundesrat"&gt;Bundesrat&lt;/a&gt;,
+        the most obvious handle for them won’t be available.
+        I occasionally posted variations of “the AfD isn’t in the Bundesrat” there just so nobody could usurp the account on the basis of it being unused,
+        and I might still keep doing that for the time being.
+        (I never moved this account to the fediverse, because it only makes sense in a single global namespace like Twitter.)
+      &lt;/p&gt;
+
+&lt;/article&gt;</description><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2025/02/01/archiving-my-tweets/</guid><pubDate>Sat, 01 Feb 2025 00:00:00 GMT</pubDate></item><item><title>Reduce The Size Of Your Tarsnap Backups With This One Weird Trick (the trick is “pay attention to the size of your backups”)</title><link>https://lucaswerkmeister.de/posts/2024/12/10/tarsnap-backup-size/</link><description>&lt;article&gt;
+
+&lt;p&gt;
+&lt;a href="https://www.tarsnap.com/"&gt;Tarsnap&lt;/a&gt; is an encrypted backup product.
+        The client software is gratis and source-available (but not FLOSS);
+        you pay for storage (US$ 0.25 / GB-month) and network traffic (US$ 0.25 / GB) on and with their service.
+        You get an email notification when your current account balance dips below 7 days’ worth of storage costs at your current size,
+        at which point you should increase your balance and/or delete some old backups.
+        (There’s no built-in auto-deletion of backups;
+        some third-party software exists but I just do it manually.)
+        My backups include &lt;code&gt;/etc&lt;/code&gt; and &lt;code&gt;/home&lt;/code&gt;,
+        with an exclude list of various files and directories that I don’t need backed up
+        which I put together when I first set up these backups.
+      &lt;/p&gt;
+&lt;p&gt;
+        When I most recently got this notification,
+        I was disturbed to see that the daily storage costs were higher than usual –
+        not exorbitant but bad enough to warrant inspection.
+        I could see in the account history on which day the storage cost had increased,
+        but I didn’t remember what happened on that day which might have triggered it.
+        I set out to extract the most recent backup so I could inspect it with &lt;code&gt;ncdu&lt;/code&gt; –
+        this seemed like the most practical way to find out what was taking up the most space inside.
+        The extraction process took much longer than I expected
+        (as of this writing, it’s been running for 10 days and hasn’t actually finished yet),
+        but partway through it became clear that I had inadvertently included a large SQL dump in the backup,
+        and failed to update the exclude list when renaming some previously-excluded ISO files.
+      &lt;/p&gt;
+&lt;p&gt;
+        Because waiting for days to extract the latest backup doesn’t sound like a great experience to go through regularly
+        (and remember, you’re paying for that network traffic to download it again!),
+        I started thinking about alternative solutions to find out what’s getting backed up.
+        I found out that &lt;code&gt;&lt;a href="https://en.wikipedia.org/wiki/Ncdu"&gt;ncdu&lt;/a&gt;&lt;/code&gt; (“ncurses disk usage”) has an option to exclude files from the disk usage report,
+        and its pattern syntax is (as far as I can tell) compatible with the one for Tarsnap.
+        So I put together a little shell script to run &lt;code&gt;ncdu&lt;/code&gt; with the exclude list from my Tarsnap config;
+        you can find the &lt;a href="https://github.com/lucaswerkmeister/home/blob/main/.bashrc.d/ncdu-tarsnap"&gt;latest version&lt;/a&gt; on GitHub (assuming I don’t rename the file),
+        or the current version as of this writing below:
+      &lt;/p&gt;
+&lt;details&gt;
+&lt;summary&gt;&lt;code&gt;ncdu-tarsnap&lt;/code&gt;&lt;/summary&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class="comment"&gt;# Show disk usage of tarsnap backups.&lt;/span&gt;
+&lt;span class="comment"&gt;#&lt;/span&gt;
+&lt;span class="comment"&gt;# You can delete files in ncdu,&lt;/span&gt;
+&lt;span class="comment"&gt;# but keep in mind that ncdu is operating on the local file system.&lt;/span&gt;
+&lt;span class="comment"&gt;# Don’t delete any files that you want to keep there,&lt;/span&gt;
+&lt;span class="comment"&gt;# and don’t assume that they will be removed from any existing backups.&lt;/span&gt;
+&lt;span class="comment"&gt;#&lt;/span&gt;
+&lt;span class="comment"&gt;# Assumptions that apply to my setup but may or may not apply to others’:&lt;/span&gt;
+&lt;span class="comment"&gt;# * the most relevant folder being backed up is ~&lt;/span&gt;
+&lt;span class="comment"&gt;#   (I actually back up /home and /etc but everything outside of ~ is negligible –&lt;/span&gt;
+&lt;span class="comment"&gt;#   ncdu doesn’t support inspecting multiple directories at once)&lt;/span&gt;
+&lt;span class="comment"&gt;# * some files below ~ are not $USER-readable, so running ncdu with sudo is useful&lt;/span&gt;
+&lt;span class="comment"&gt;# * the backup is being made as root&lt;/span&gt;
+&lt;span class="comment"&gt;#   (otherwise the non-$USER-readable files should not be counted after all)&lt;/span&gt;
+&lt;span class="comment"&gt;# * only /etc/tarsnap/tarsnap.conf is used&lt;/span&gt;
+&lt;span class="comment"&gt;#   (no ~/.tarsnaprc and also no --exclude on the command line)&lt;/span&gt;
+&lt;span class="keyword"&gt;function&lt;/span&gt; ncdu-tarsnap {
+    &lt;span class="comment"&gt;# bash -c is needed because sudo … &amp;lt;() doesn’t work properly (see -C in sudo(8))&lt;/span&gt;
+
+    &lt;span class="comment"&gt;# --apparent-size probably makes more sense for a backup than --disk-usage&lt;/span&gt;
+
+    &lt;span class="comment"&gt;# note that this will also show (with empty size)&lt;/span&gt;
+    &lt;span class="comment"&gt;# files that are excluded;&lt;/span&gt;
+    &lt;span class="comment"&gt;# unfortunately, ncdu’s --hide-hidden hides both hidden (.*) and excluded files,&lt;/span&gt;
+    &lt;span class="comment"&gt;# and there seems to be no option for hiding excluded but showing hidden files :(&lt;/span&gt;
+    sudo bash -c &lt;span class="string"&gt;"ncdu \"&lt;/span&gt;$HOME\" --apparent-size --exclude-from &lt;span class="keyword operator"&gt;&amp;lt;&lt;/span&gt;(sed -n &lt;span class="string"&gt;'/^exclude\s\+/ s///p'&lt;/span&gt; /etc/tarsnap/tarsnap.conf)"
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/details&gt;
+&lt;p&gt;
+        Looking through the data-that-would-be-backed-up in &lt;code&gt;ncdu-tarsnap&lt;/code&gt;,
+        I was able to identify several patterns that I should add to my exclude list,
+        and also some data that I could also just delete from my live file system.
+        So that’s the first part of my One Weird Trick (so sorry about that title):
+        &lt;strong&gt;adjust your exclude patterns based on your current file system contents.&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&gt;
+        That’s all nice and well, but what happens the next time I leave a large SQL dump in my home directory without thinking about the backups?
+        I realized I needed to set up a process to periodically check the total size of the data-that-would-be-backed-up and alert me if it got too large.
+        &lt;code&gt;ncdu&lt;/code&gt; isn’t useful for that,
+        but fortunately &lt;code&gt;&lt;a href="https://en.wikipedia.org/wiki/Du_(Unix)"&gt;du&lt;/a&gt;&lt;/code&gt; (“disk usage”) also has exclude-pattern support,
+        again with compatible syntax,
+        and is easy to use in a shell script.
+        Sending a desktop notification from a systemd system service
+        (I need it to run with privileges because not all the files in my home directory are readable by me)
+        isn’t pretty, but the following works:
+      &lt;/p&gt;
+&lt;details&gt;
+&lt;summary&gt;&lt;code&gt;tarsnap-size-check.service&lt;/code&gt;&lt;/summary&gt;
+&lt;pre&gt;&lt;code&gt;# /etc/systemd/system/tarsnap-size-check.service
+[Unit]
+Description=Warn Lucas if it appears that the next tarsnap backup would be bigger than 50 GB
+
+[Service]
+Type=oneshot
+ExecStart=bash -s
+StandardInputText=\
+  bytes=$(du --summarize --bytes /home /etc --exclude-from &amp;lt;(sed -n '/^exclude\\s\\+/ s///p' /etc/tarsnap/tarsnap.conf) | awk '{ total += $1 } END { print total }'); \
+  if (( bytes &amp;lt;= 50000000000 )); then exit 0; fi; \
+  gigabytes=$(bc &amp;lt;&amp;lt;&amp;lt; "scale=1; $bytes/1000000000"); \
+  DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$UID/bus notify-send -a 'Tarsnap size warning' -i dialog-warning 'Tarsnap backup too large' "The projected size of a new backup is $gigabytes GB ($bytes bytes), should be below 50 GB! Use ncdu-tarsnap to inspect the situation."; \
+  exit 1
+User=lucas
+AmbientCapabilities=CAP_DAC_READ_SEARCH
+
+CapabilityBoundingSet=CAP_DAC_READ_SEARCH
+IPAddressDeny=any
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+NoNewPrivileges=yes
+PrivateDevices=yes
+PrivateMounts=yes
+PrivateNetwork=yes
+PrivateTmp=yes
+ProtectClock=yes
+ProtectControlGroups=yes
+ProtectHome=read-only
+ProtectHostname=yes
+ProtectKernelLogs=yes
+ProtectKernelModules=yes
+ProtectKernelTunables=yes
+ProtectProc=invisible
+ProtectSystem=strict
+RestrictAddressFamilies=AF_UNIX
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged @resources
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/details&gt;
+&lt;details&gt;
+&lt;summary&gt;&lt;code&gt;tarsnap-size-check.timer&lt;/code&gt;&lt;/summary&gt;
+&lt;pre&gt;&lt;code&gt;# /etc/systemd/system/tarsnap-size-check.timer
+[Unit]
+Description=Regularly monitor the size of tarsnap backups according to the current configuration
+
+[Timer]
+OnCalendar=hourly
+AccuracySec=1h
+
+[Install]
+WantedBy=timers.target
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/details&gt;
+&lt;p&gt;
+        (Of course, you may want to adjust the hard-coded threshold to something other than 50 GB.
+        And maybe you prefer another notification setup as well.)
+        The timer is set up to run hourly, whereas my backups run weekly,
+        so that should give me enough time to act whenever it notifies me.
+        (I included a pointer to &lt;code&gt;ncdu-tarsnap&lt;/code&gt; in the notification text in case I forget what I called the script.)
+        And that’s the second part of my One Weird Trick:
+        &lt;strong&gt;Set up alerts if your projected backup size exceeds a preconfigured limit.&lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&gt;
+        Either of these could be built into Tarsnap,
+        but as far as I can tell, they aren’t.
+        But at least it’s not too difficult to build them around Tarsnap instead.
+        (The above scripts and units might even be applicable to other backup solutions,
+        as long as those solutions also use &lt;a href="https://en.wikipedia.org/wiki/Glob_(programming)"&gt;glob/fnmatch&lt;/a&gt;-like patterns.)
+      &lt;/p&gt;
+
+&lt;/article&gt;</description><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2024/12/10/tarsnap-backup-size/</guid><pubDate>Tue, 10 Dec 2024 00:00:00 GMT</pubDate></item><item><title>Declaration of partial email bankruptcy</title><link>https://lucaswerkmeister.de/posts/2024/11/26/email-bankruptcy/</link><description>&lt;article&gt;
+
+&lt;p&gt;
+        I hereby declare partial &lt;a href="https://en.wikipedia.org/wiki/Email_bankruptcy"&gt;email bankruptcy&lt;/a&gt;.
+      &lt;/p&gt;
+&lt;p&gt;
+        Due to an unfortunate accident on my mail server,
+        I have lost track of all my unread emails
+        (if I still have them, they’re marked as read now),
+        and I have probably also completely lost an unknown amount of emails in my inbox.
+      &lt;/p&gt;
+&lt;p&gt;
+        If you were waiting for anything from me,
+        please let me know and I’ll try to pick it up again.
+        (Although you are very much welcome, in fact encouraged,
+        to wait a bit before doing so!
+        I’m not going to be able to immediately react to
+        everything that was waiting for a response from me.)
+        This is not strictly limited to things you directly sent to me via email,
+        as some of the unread emails were probably notifications from various other platforms.
+      &lt;/p&gt;
+
+&lt;/article&gt;</description><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2024/11/26/email-bankruptcy/</guid><pubDate>Tue, 26 Nov 2024 00:00:00 GMT</pubDate></item><item><title>How To Invent Everything review</title><link>https://lucaswerkmeister.de/posts/2024/11/23/how-to-invent-everything-review/</link><description>&lt;article&gt;
+
+&lt;div&gt;
+&lt;p&gt;
+&lt;span&gt;
+
+ &lt;!-- no work/edition distinction in RDFa apparently 🤷 --&gt;
+
+&lt;i&gt;How To Invent Everything: A Survival Guide for the Stranded Time Traveler&lt;/i&gt;, &lt;!-- no title/subtitle distinction either --&gt;
+            by
+            &lt;span&gt;
+
+&lt;span&gt;Ryan North&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;,
+          is a fun book.
+          The basic premise is that this is a guide for rebuilding civilization from scratch,
+          if you should find yourself stranded in the past with nothing but this book.
+        &lt;/p&gt;
+&lt;p&gt;
+          More specifically, the conceit of the entire book is that it’s &lt;em&gt;actually&lt;/em&gt; a guide for a stranded time traveler,
+          and all of us reading the book in the 21st century aren’t really its intended target audience.
+          In the introductory “note to readers”,
+          the real author, Ryan North,
+          claims to have discovered a copy of the text embedded in bedrock billions of years old,
+          where it was presumably left by a real time traveler
+          (who, being stranded on a very early Earth,
+          would sadly have had little opportunity to make use of the guide);
+          the bulk of the book (everything except said introductory note and the endnotes and index)
+          was supposedly written by a fictional author (coincidentally &lt;em&gt;also&lt;/em&gt; named Ryan North),
+          who lives in a future version of our own world which possesses time travel technology.
+        &lt;/p&gt;
+&lt;p&gt;
+          I confess that at first I found this irritating.
+          Why am I being asked, I thought, to believe (or suspend disbelief for) this ridiculous and pointless framing device?
+          But as I kept reading, I came to appreciate it, and understood that it’s not pointless at all.
+          By writing from the perspective of a fictional future author from a society with access to time machines,
+          the real author gets to state all sorts of things with confidence which in reality we can only surmise or guess at,
+          and then slap on an endnote along the lines of
+          “my research has around two thousand years’ wiggle room on the date” or
+          “all the research I found suggests the date here is at best an educated guess”.
+          (And occasionally the fictional author can just directly describe a fun “temporal experiment”
+          and leave it to the endnotes to point out that obviously we can’t really know
+          what would happen if you dropped a functional wooden glider in Europe in 1000 CE.)
+          This greatly streamlines the text and makes for a book that’s simply more fun to read.
+        &lt;/p&gt;
+&lt;p&gt;
+          The actual guide part of the book is consistently interesting and entertaining.
+          The explanations or instructions are often by necessity somewhat terse –
+          it took me a while to understand what the point of the Bessemer process is,
+          and I’m &lt;em&gt;still&lt;/em&gt; not sure how the various parts of a spinning wheel work without running into each other –
+          but the writing style generally leaves me with the impression that I’d be able to figure things out somehow,
+          and eager to try it out.
+        &lt;/p&gt;
+&lt;p&gt;
+          A recurring theme of the book is how embarrassing the actual course of history and technological development is for humanity as a whole.
+          This most often refers to the sheer amount of time humans needed to figure things out when they had all the necessary prerequisites
+          (five fundamental technologies, all of which could have been invented at any point in humanity’s history,
+          are described in “a table any human should be embarrassed to even be in the same room with”;
+          on “non-sucky numbers”, the author remarks that
+          “&lt;i&gt;Homo sapiens sapiens&lt;/i&gt;, a species that considers itself so smart that it put ‘smart’ in its own name,
+          &lt;em&gt;twice&lt;/em&gt;, and in &lt;em&gt;Latin&lt;/em&gt;, took more than 40,000 years to figure [them] out”),
+          but also to various inventors’ incorrect understanding of their inventions
+          (on heavier-than-air flight: “for decades, every single person who flew managed to do so
+          without having a correct understanding of how and why their planes really worked”).
+          This makes for an amusing text
+          (unless you want to get offended on the dead people’s behalf, I suppose)
+          and also helps to reinforce the impression that,
+          if you were trapped in the past with no supporting technology except this book,
+          you &lt;em&gt;would&lt;/em&gt; be able to reinvent everything much faster than we managed in our real timeline.
+        &lt;/p&gt;
+&lt;p&gt;
+          This also makes for an (I think) interesting comparison with the &lt;i&gt;Civilization&lt;/i&gt; games –
+          when I first read the book, this wasn’t on my mind because it had been years since I’d played any,
+          but on my more recent reread (having played a bunch of Civ6 in the meantime) I started to think about it.
+          There are some superficial similarities between the two:
+          both like to introduce technologies with vaguely related quotations, for example,
+          and both feature a tech tree (Appendix A in the book).
+          But the overall goal is quite different.
+          The Civ tech tree is carefully balanced on gameplay grounds,
+          and the game tries to approximate the course of civilization development in our actual history.
+          Flight, for instance, has 21 prerequisite technologies (from animal husbandry to industrialization),
+          and no matter what you do, you’re not going to get it much earlier than the modern era.
+          &lt;i&gt;How To Invent Everything&lt;/i&gt;, on the other hand,
+          delights in pointing out that lighter-than-air flight (i.e., hot-air balloons)
+          requires nothing other than fabric and fire
+          and could have been invented thousands of years ago,
+          if only humans hadn’t been so insistent in trying to copy birds.
+          In some cases, the book completely skips over a technological development in our timeline
+          in favor of an alternative solution that is both simpler and better –
+          for example, instead of teaching you how to invent (massively complicated) marine chronometers,
+          it offers a totally different solution to the &lt;a href="https://en.wikipedia.org/wiki/Longitude_problem"&gt;longitude problem&lt;/a&gt;
+          (which I’m not going to spoil here 😛).
+        &lt;/p&gt;
+&lt;p&gt;
+          With all that said, I want to turn to my one major issue with the book.
+          As you may have gathered at this point, the book has a focus on technology:
+          there are sections on other subjects,
+          such as nutrition (section 9), medicine (section 14), music (section 16),
+          and a minimum of lip service is even paid to philosophy (section 12),
+          but the bulk of the book is taken up by section 10,
+          which lists various technologies, their prerequisites,
+          and how to invent them ahead of schedule.
+          For a popular science book aimed at geeks in the present day,
+          this is totally fine and sensible.
+        &lt;/p&gt;
+&lt;p&gt;
+          However, if you take the book’s conceit seriously,
+          and actually consider it as a manual for rebuilding civilization from scratch,
+          then I think the implications of this are frankly terrifying.
+          The book takes pride in being, on account of all the knowledge inside it,
+          “the most dangerous item on the planet” (section 3.2),
+          and yet its approach to managing that danger,
+          and ensuring that the knowledge is not misused,
+          amounts to simply assuming that the reader is a decent person
+          and hoping that this will result in a decent society with no major problems.
+          For instance, in section 10.12.1, the author asserts that the reader
+          “[won’t] have to labor under the hangover of thousands of years of patriarchy”;
+          even if you assume that the reader didn’t end up in a time period with an existing patriarchal society
+          (despite this being considered a possibility elsewhere in the book),
+          it strikes me as bold to assume that the reader won’t have any biases of their own, conscious or otherwise.
+        &lt;/p&gt;
+&lt;p&gt;
+          Topics which the book feels no need to even mention include:
+          human rights and civil rights;
+          democracy, representative democracy, and elected rather than hereditary heads of state (is this too much to ask of a Canadian author?);
+          how to run democratic elections (universal and equal suffrage, secret ballots, the right to stand for office, etc.);
+          constitutions, separation of powers, separation of church and state;
+          the rule of law, the state monopoly on violence, basic legal principles like the right to counsel;
+          why corporal punishment or the death penalty are bad ideas;
+          the paradox of tolerance.
+        &lt;/p&gt;
+&lt;p&gt;
+          I can think of some reasons not to include these things in the book, but none of them convince me.
+          Sure, there’s limited space available,
+          but surely a summary of the Universal Declaration of Human Rights would be more valuable
+          than three full pages of frequencies for musical notes (Appendix G).
+          Some of these things might seem obvious,
+          but the book doesn’t otherwise shy away from repeating obvious things
+          (if only to clown on humans for taking such a long time to figure them out anyway) –
+          section 10.8.2 spends a page and a half on the concept of buttons (the clothes kind).
+          And in any case, many of these ideas are far from obvious –
+          they took society centuries and millennia to work out in our timeline.
+          A book which lets the reader “fast forward” through technological progress
+          should aim to put them on at least equal footing in terms of societal progress.
+        &lt;/p&gt;
+&lt;p&gt;
+          Admittedly, some of these principles are harder to introduce to a civilization than technologies.
+          To introduce glass, you “just” have to invent it and then you can expect
+          that people will see that it’s useful and be interested in making more themselves;
+          to introduce social principles, you have to explain them to people and convince them of them.
+          But this should be all the more reason for a guide to civilization to prepare the reader with this information,
+          so that they can actually try to convince their fellow humans using the arguments from the guide,
+          rather than being left with nothing but a vague feeling of
+          “well I think the society I’m from used to follow this principle but I’m not even sure why let alone how to convince others of it”.
+        &lt;/p&gt;
+&lt;p&gt;
+          But as I said: this criticism mainly applies within the book’s fictional framework
+          of being an actual guide for real time-travelers.
+          For a reader in the real world, I’m still happy to recommend the book 🙂
+        &lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/article&gt;</description><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2024/11/23/how-to-invent-everything-review/</guid><pubDate>Sat, 23 Nov 2024 00:00:00 GMT</pubDate></item><item><title>JBL Quantum 810 wireless headset review</title><link>https://lucaswerkmeister.de/posts/2024/09/28/jbl-quantum-810-review/</link><description>&lt;article&gt;
+
+&lt;p&gt;
+        Quick review of the
+        &lt;span&gt;
+
+&lt;span&gt;
+            JBL Quantum 810 wireless headset&lt;/span&gt;&lt;/span&gt;,
+        which I recently got.
+        My main point of comparison is my previous headset (also wireless),
+        a HyperX Cloud Flight, whose charging port eventually broke down.
+      &lt;/p&gt;
+&lt;div&gt;
+&lt;p&gt;
+          I’ll start with some general characteristics.
+          I wasn’t dead set on an exact choice of headset model,
+          but I wanted it to have these features
+          (and then made my choice by looking around the store website,
+          checking a few reviews,
+          and then seeing what was in stock on site and in a sensible price range):
+        &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+            A headset, i.e. headphones with an integrated microphone.
+            I don’t want to subject the people I talk with to terrible webcam audio,
+            and I don’t want to have a separate microphone with a mic stand on my desk either.
+          &lt;/li&gt;
+&lt;li&gt;
+            Wireless.
+            I originally got a wireless headset to replace my old wired one early in the pandemic,
+            because coworkers were complaining about echo from me,
+            which I attributed to crosstalk between the speaker and microphone wires.
+            But it turns out a wireless headset (or headphones) is also massively convenient –
+            it’s just nice to be able to walk around the apartment with it,
+            or even just lean further back in my chair than I previously could.
+            I’d recommend it for anyone.
+          &lt;/li&gt;
+&lt;li&gt;
+            With a USB dongle.
+            This is quite important for me because it means I can plug it into my USB switch,
+            together with the mouse, keyboard, and webcam,
+            and then easily toggle all four peripherals between my work laptop and my private PC.
+            (The screens are on separate switches.
+            You can get devices that let you switch everything together –
+            the usual term seems to be “KVM” –
+            but they appear to be much more expensive,
+            so I’m happy to just press three buttons instead of one.)
+            The JBL Quantum 810 apparently also supports bluetooth,
+            but I haven’t had a reason to try that so far.
+            (It can also continue working while plugged in to charge,
+            which wasn’t the case for the HyperX Cloud Flight.)
+          &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+          And some specific points on the JBL Quantum 810:
+        &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+            Its microphone is attached permanently,
+            with a hinge to let you move it between your mouth (in use) and your temple (not in use).
+            The microphone is automatically muted while pointed upwards,
+            which is convenient, though I wouldn’t rely on it alone.
+            The HyperX Cloud Flight had a detachable microphone, which wasn’t bad,
+            but it certainly was a bit more fiddly to put it on my head and then attach the microphone each time.
+          &lt;/li&gt;
+&lt;li&gt;
+            The power switch is a switch (with on and off positions),
+            rather than a button you have to hold down for several seconds.
+            I find this much more convenient.
+            (It more than outweighs the minor disadvantage that,
+            if the headset turns itself off due to inactivity or low battery,
+            the button’s position no longer reflects the actual power state.)
+          &lt;/li&gt;
+&lt;li&gt;
+            The wireless range is longer than with my previous headset –
+            enough to pretty reliably reach my whole apartment.
+            (Which isn’t huge, but the HyperX Cloud Flight only reached part of it.)
+            I assume the previous headset used Bluetooth internally, or at least the 2.4 GHz frequency range;
+            the JBL Quantum 810, when used with its dongle, apparently uses the 5 GHz frequency range,
+            and I assume that helps with the range.
+            (If you want measurements, my guess would be that the range is at least 10 m,
+            probably closer to 15 m, and that’s with a concrete wall or two in the way.)
+          &lt;/li&gt;
+&lt;li&gt;
+            It works on Linux, at least using recent versions.
+            (I found some reports of issues around 2021 or so,
+            so if you’re on an older kernel you might want to look that up for yourself.)
+            It shows up as a sound output and a separate input for the microphone, as you’d expect.
+            Unlike with the HyperX Cloud Flight,
+            the volume wheel on the headset does &lt;em&gt;not&lt;/em&gt; affect the system volume – they’re separate.
+            Initially I had the wheel set to the max and the system volume around 50%,
+            but it turned out that this meant my system audio was very quiet on live streams
+            (i.e., my viewers couldn’t hear the game I was playing),
+            so now I instead have my system volume at max and the wheel somewhere around the middle.
+            I would prefer the wheel to adjust the system volume instead,
+            but I can live with this as well.
+          &lt;/li&gt;
+&lt;li&gt;
+            The JBL Quantum 810 has some features I’m not interested in –
+            I don’t remember the exact details,
+            but there was at least some form of RGB lighting,
+            and some kind of noise cancelling.
+            It was possible (and, following the manual, relatively straightforward)
+            to turn all of these off using the controls on the headset itself:
+            I did &lt;em&gt;not&lt;/em&gt; need some vendor-specific Windows-only app,
+            and I appreciate that.
+          &lt;/li&gt;
+&lt;li&gt;
+            Speaking of unused features:
+            the JBL Quantum 810 has a second “volume” wheel above the “real” one.
+            Apparently this is meant to let gamers adjust the relative volume of the game vs. voice chat –
+            if I understood correctly,
+            the headset is supposed to offer two sound outputs,
+            you configure your system to send the game to one and the voice chat to the other,
+            and then the wheel on the headset adjusts the mixing between the two.
+            I haven’t seen any trace of this on Linux,
+            but I also don’t need it anyway,
+            so I just keep that wheel turned all the way to the “game” end.
+            🤷
+          &lt;/li&gt;
+&lt;li&gt;
+            The battery life is quite remarkable compared to the HyperX Cloud Flight.
+            I haven’t kept close track of it,
+            but so far my guess would be that I’m recharging it slightly less than once per week,
+            and I would say I don’t exactly use it sparingly.
+            (2025-02-10 update: I seem to be recharging it every ten days or so.)
+            The manufacturer claims a battery life of 43 hours
+            (when using the dongle and with RGB turned off;
+            over Bluetooth it would apparently be 49 hours?),
+            and I have no reason to disbelieve that so far.
+            It also charges over USB-C, which is convenient at this point in my life
+            (the HyperX Cloud Flight charges over Micro-USB,
+            but I have barely any other devices left which require that plug).
+          &lt;/li&gt;
+&lt;li&gt;
+            The biggest downside:
+            when it’s not playing sound, the headset likes to turn its speakers off.
+            (I’m guessing this helps with the battery life?)
+            This sounds minor, but it gets pretty annoying after a while.
+            It means that, if I’m wearing the headset but not currently listening to anything,
+            any quick notification chime will either sound like it has a weird fade-in effect for no reason,
+            or I won’t even hear it at all.
+            And the headset’s threshold for “not playing sound” is high enough
+            that sometimes it turns itself off while I &lt;em&gt;am&lt;/em&gt; listening to some quiet audio,
+            and I’ll have to crank up the volume just to stop the headset from turning itself off,
+            even if my ears could hear the audio well enough at the previous volume.
+            I searched around a bit,
+            but it doesn’t seem like there’s anything you can do about this behavior.
+          &lt;/li&gt;
+&lt;li&gt;
+            And a less important downside for the end:
+            while the battery life is good,
+            there’s no way to see the current battery level,
+            and the first of the three (IIRC) “battery low” chimes comes a bit late for my taste –
+            only an hour or two, if memory serves, before the headset is totally dead.
+            (2025-02-10 update: three are three “battery low” chimes in total,
+            and today I got them all within 30-40 minutes,
+            and then the battery was totally dead within 15-30 minutes of the last chime.)
+            I wouldn’t mind having a bit more advance notice that I’ll have to charge the headset soon.
+            That said, the headset recharges pretty quickly,
+            so it doesn’t take too long to get it back into a usable state.
+          &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+          I think that’s all I have to say about it right now!
+          (If you were hoping for me to say something about the audio quality…
+          sorry, I don’t really have an insightful comment on that.
+          It sounds alright.)
+        &lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/article&gt;</description><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2024/09/28/jbl-quantum-810-review/</guid><pubDate>Sat, 28 Sep 2024 00:00:00 GMT</pubDate></item><item><title>Why MediaWiki permanent links aren’t fully permanent</title><link>https://lucaswerkmeister.de/posts/2024/08/14/mediawiki-permalinks/</link><description>&lt;article&gt;
+
+&lt;p&gt;
+&lt;a href="https://en.wikipedia.org/wiki/MediaWiki"&gt;MediaWiki&lt;/a&gt;,
+        the software behind &lt;a href="https://en.wikipedia.org/wiki/Wikipedia"&gt;Wikipedia&lt;/a&gt;
+        and &lt;a href="https://wikiapiary.com/wiki/Main_Page"&gt;many other wikis&lt;/a&gt;,
+        allows visitors to copy a “permanent link” (or “permalink”) of the article they are currently viewing.
+      &lt;/p&gt;
+&lt;p&gt;
+        As &lt;a href="https://en.wikipedia.org/wiki/Help:Permanent_link"&gt;English Wikipedia’s help page on permanent links&lt;/a&gt; notes,
+        these links aren’t fully “permanent”:
+        visiting these links later is not guaranteed to show the exact same content.
+        I thought it would be useful to list some of the different ways in which differences can appear.
+      &lt;/p&gt;
+&lt;aside&gt;
+&lt;p&gt;
+          Please note that I’m mainly focusing on Wikimedia wikis here,
+          and for examples will often refer to Wikipedias in particular;
+          many of these issues will also affect other MediaWiki sites,
+          but there are probably additional ways in which third-party wikis can have permalinks’ contents change
+          (e.g. Fandom / Wikia has tons of custom extensions),
+          and I’m generally not super interested in those.
+          (But if I forgot something relevant to Wikimedia or standard MediaWiki,
+          let me know and I might edit it in.)
+        &lt;/p&gt;
+&lt;/aside&gt;
+&lt;h2&gt;What a permalink is&lt;/h2&gt;
+&lt;p&gt;
+        While the permalink shown in the sidebar (or “tools” menu) contains both the &lt;code&gt;title=&lt;/code&gt; and &lt;code&gt;oldid=&lt;/code&gt; URL parameters
+        (example: &lt;a href="https://en.wikipedia.org/w/index.php?title=Wikimedia_Commons&amp;amp;oldid=1185477778"&gt;https://en.wikipedia.org/w/index.php?title=Wikimedia_Commons&amp;amp;oldid=1185477778&lt;/a&gt;),
+        only the &lt;code&gt;oldid=&lt;/code&gt; is actually required
+        (equivalent example: &lt;a href="https://en.wikipedia.org/w/index.php?oldid=1185477778"&gt;https://en.wikipedia.org/w/index.php?oldid=1185477778&lt;/a&gt;).
+        The value of this parameter is the revision ID of a page,
+        and it tells MediaWiki to use the content of this revision of that page instead of its latest revision.
+        For normal wiki articles, this content is the wikitext (the source code of the article),
+        which is then rendered and shown to the visitor;
+        you can also see the content unrendered by adding &lt;code&gt;&amp;amp;action=raw&lt;/code&gt; to the URL
+        (&lt;a href="https://en.wikipedia.org/w/index.php?oldid=1185477778&amp;amp;action=raw"&gt;example&lt;/a&gt;).
+      &lt;/p&gt;
+&lt;h2&gt;Changes in on-wiki content&lt;/h2&gt;
+&lt;p&gt;
+        Let’s start with the biggest one.
+        Visiting a permalink only loads the content of the page itself as of the revision specified in the URL.
+        Any other &lt;a href="https://en.wikipedia.org/wiki/Help:Template"&gt;templates&lt;/a&gt;,
+        &lt;a href="https://en.wikipedia.org/wiki/Wikipedia:Lua"&gt;Lua/Scribunto modules&lt;/a&gt;,
+        or &lt;a href="https://en.wikipedia.org/wiki/Help:Transclusion"&gt;other transcluded pages&lt;/a&gt;
+        are loaded, parsed / evaluated and shown using their latest revision,
+        not whatever was their latest revision when the permalink’s revision was created.
+        Templates may look and behave very differently from what they used to do;
+        their parameters also may or may not be compatible with the template invocation in the old revision,
+        depending on how the community edited the templates.
+      &lt;/p&gt;
+&lt;p&gt;
+        In fact, it’s not even guaranteed that the page will show the same templates at all.
+        Templates are looked up by their name according to the old revision’s wikitext,
+        but templates can be deleted, recreated, or renamed.
+        For instance, several wikis now have templates like &lt;code&gt;{{Q|Q123}}&lt;/code&gt; and/or &lt;code&gt;{{P|P123}}&lt;/code&gt;
+        to show Wikidata items and/or properties;
+        but in the past, “&lt;code&gt;Q&lt;/code&gt;” or “&lt;code&gt;P&lt;/code&gt;” may have referred to different templates that were later deleted,
+        as e.g. on &lt;a href="https://eo.wikipedia.org/wiki/Specialaĵo:Protokolo?page=Ŝablono%3AP"&gt;Esperanto&lt;/a&gt;,
+        &lt;a href="https://zh.wikipedia.org/wiki/Special:%E6%97%A5%E5%BF%97?page=Template%3AP"&gt;Chinese&lt;/a&gt; or
+        &lt;a href="https://es.wikipedia.org/wiki/Especial:Registro?page=Plantilla%3AQ"&gt;Spanish&lt;/a&gt; Wikipedia.
+        (These are conveniently short names, after all!
+        On English Wikipedia, &lt;code&gt;{{&lt;a href="https://en.wikipedia.org/wiki/Template:P"&gt;P&lt;/a&gt;}}&lt;/code&gt; is still a smiley 🙂)
+      &lt;/p&gt;
+&lt;p&gt;
+        A more niche phenomenon is redlinks (h/t &lt;a href="https://mamot.fr/@pintoch/112953410745774438"&gt;Antonin Delpeuch&lt;/a&gt; for this one).
+        MediaWiki shows internal links to existing pages in blue, and links to pages that don’t exist in red;
+        but when rendering a permalink, this refers to whether the page currently exists,
+        not whether it used to exist when the old revision was saved.
+        (You can actually see this in the &lt;a href="https://en.wikipedia.org/w/index.php?oldid=1185477778"&gt;example permalink from earlier&lt;/a&gt;,
+        where a “not to be confused with” &lt;a href="https://en.wikipedia.org/wiki/Wikipedia:Hatnote"&gt;hatnote&lt;/a&gt; points to a redlink that was evidently deleted in the meantime.)
+      &lt;/p&gt;
+&lt;p&gt;
+        Articles may also be affected by changes in the wiki’s default interface &lt;a href="https://en.wikipedia.org/wiki/Wikipedia:Common.js_and_common.css"&gt;JavaScript and CSS&lt;/a&gt;
+        and default &lt;a href="https://en.wikipedia.org/wiki/Wikipedia:Gadget"&gt;gadgets&lt;/a&gt;,
+        which may interact with page contents.
+        For example, styles for frequently used templates are sometimes moved into &lt;code&gt;common.css&lt;/code&gt; (or out of it),
+        and some templates may rely on gadgets for interactive functionality
+        (like – CW for some medical imagery in the next link – Wikimedia Commons’ &lt;a href="https://commons.wikimedia.org/wiki/Template:Imagestack"&gt;Imagestack&lt;/a&gt;).
+        As with templates, it’s ultimately up to the community whether changes here are backwards compatible or not.
+      &lt;/p&gt;
+&lt;h2&gt;Changes in content on other wikis&lt;/h2&gt;
+&lt;p&gt;
+        Articles can also use content from other wikis,
+        the most prominent example being Wikimedia Commons images
+        (which, thanks to &lt;a href="https://www.mediawiki.org/wiki/InstantCommons"&gt;InstantCommons&lt;/a&gt;,
+        are used not only on Wikimedia wikis but also &lt;em&gt;many&lt;/em&gt; other wikis using MediaWiki).
+        A permalink will show the latest version of an image on Commons,
+        which is not necessarily the same version as was shown when the old revision was saved –
+        although, due to Commons’ &lt;a href="https://commons.wikimedia.org/w/index.php?title=Commons:Don%27t_be_bold&amp;amp;rdfrom=commons:Commons:Be_bold"&gt;don’t be bold&lt;/a&gt; policy,
+        the differences should usually be minor
+        (e.g. a higher-quality version or a slightly improved crop).
+      &lt;/p&gt;
+&lt;p&gt;
+        The image on Commons may also have been deleted in the meantime,
+        e.g. because it turned out to be a copyright violation.
+        In this case, the permalink will show the image as a redlink.
+      &lt;/p&gt;
+&lt;p&gt;
+        There are also other ways for wikis to refer to Commons.
+        Prior to its &lt;a href="https://phabricator.wikimedia.org/T334940"&gt;undeployment due to security issues&lt;/a&gt;,
+        the Graph extension could load data from the Data: namespace on Commons,
+        and show it e.g. as a line chart.
+      &lt;/p&gt;
+&lt;p&gt;
+        And then there’s &lt;a href="https://en.wikipedia.org/wiki/Wikidata"&gt;Wikidata&lt;/a&gt;.
+        Wikipedia editors can, at their discretion, make an article read information from Wikidata;
+        this has a number of benefits,
+        but is also another case where visible parts of an article aren’t part of the article’s source code
+        and viewing old revisions will still pull the latest version from the referenced place.
+      &lt;/p&gt;
+&lt;h2&gt;Changes in the software&lt;/h2&gt;
+&lt;p&gt;
+        Finally, the software which actually renders the old revision’s content is also subject to changes.
+        MediaWiki sees roughly two thousand code changes per release, &lt;!-- git log --oneline --grep='Update git submodules\|Localisation updates\|^Merge' --invert-grep gerrit/REL1_41..gerrit/REL1_42 | wc -l # repeat for a few older REL branch pairs --&gt;
+        and any of them might affect the way an article looks.
+        While the parser is developed fairly conservatively
+        (as nobody wants to break millions of existing pages all at once),
+        there are sometimes breaking changes to it;
+        many of them may be preceded by on-wiki fixes to avoid the breakage
+        (e.g. using the &lt;a href="https://en.wikipedia.org/wiki/Wikipedia:Linter"&gt;Linter&lt;/a&gt; to locate problematic constructs whose behavior will change in future),
+        but this doesn’t help when looking at old revisions.
+      &lt;/p&gt;
+&lt;aside&gt;
+&lt;p&gt;
+          (Side note: Because the parser always produces &lt;em&gt;some&lt;/em&gt; output HTML,
+          and never returns an error like “invalid input wikitext”,
+          arguably any change to its output is a breaking change.
+          After all, even if some new wikitext syntax is intentionally introduced,
+          that syntax will previously have rendered in a different way,
+          and it’s theoretically possible that someone used that syntax and relies on its previous behavior.
+          This is also something that irritates me about Markdown “flavors”
+          that describe themselves as “compatible with” or “strict supersets of” CommonMark.)
+        &lt;/p&gt;
+&lt;/aside&gt;
+&lt;p&gt;
+        Also, similar to the earlier point about the wiki’s default CSS and JS,
+        the old revision may also have relied on CSS or JS included in MediaWiki, which is subject to change.
+        For example, many articles rely on &lt;a href="https://www.mediawiki.org/wiki/Manual:Collapsible_elements"&gt;collapsible elements&lt;/a&gt;
+        (which is an intentional feature offered by MediaWiki which has stayed very stable so far),
+        and many pages (help and project pages more so than articles, I believe)
+        rely or relied on styles from the OOUI or MediaWiki UI interface libraries,
+        a practice that is &lt;a href="https://phabricator.wikimedia.org/T360010"&gt;increasingly discouraged&lt;/a&gt;
+        as these libraries are being phased out in favor of Codex
+        (though &lt;a href="https://phabricator.wikimedia.org/T355242"&gt;the replacement is not yet clear&lt;/a&gt;).
+      &lt;/p&gt;
+&lt;h2&gt;Now what?&lt;/h2&gt;
+&lt;p&gt;
+        If you want to create a new link to some wiki content as you currently see it:
+        you can use a permalink as offered by MediaWiki (it’s a pretty “lightweight” solution),
+        but if you want to be absolutely sure that everyone else will see the same content,
+        I believe the only way to do that and avoid all the issues here
+        is to grab a snapshot of the &lt;em&gt;rendered&lt;/em&gt; wiki content and distribute that.
+        You can do this via a trusted intermediary,
+        such as the &lt;a href="https://en.wikipedia.org/wiki/Internet_Archive"&gt;Internet Archive&lt;/a&gt;’s &lt;a href="https://en.wikipedia.org/wiki/Wayback_Machine"&gt;Wayback Machine&lt;/a&gt;,
+        or you can save the page yourself.
+      &lt;/p&gt;
+&lt;p&gt;
+        If you’re looking at a permalink that you found somewhere else,
+        I think it’s worth keeping in mind that there are some caveats to it,
+        but 99% of the time it’s fine –
+        in practice, I think most of the issues listed here are more theoretical than practical concerns.
+        If you really want to be sure you’re seeing a page as it originally appeared,
+        you can try to find a snapshot on the Wayback Machine or another web archiving site.
+      &lt;/p&gt;
+&lt;p&gt;
+        There is also a proposal for a &lt;a href="https://www.mediawiki.org/wiki/User:Ainali/Wiki_Timeslicer"&gt;Wiki Timeslicer&lt;/a&gt; tool which would bypass some of these problems.
+        (Personally, I’m skeptical how feasible it is, to be honest.
+        But it probably is possible to improve on MediaWiki’s own functionality, at least.)
+      &lt;/p&gt;
+
+&lt;/article&gt;</description><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2024/08/14/mediawiki-permalinks/</guid><pubDate>Wed, 14 Aug 2024 00:00:00 GMT</pubDate></item><item><title>Wikimedia Hackathon 2024 recap</title><link>https://lucaswerkmeister.de/posts/2024/05/15/wikimedia-hackathon-2024/</link><description>&lt;article&gt;
+
+&lt;p&gt;
+        The &lt;a href="https://www.mediawiki.org/wiki/Special:MyLanguage/Wikimedia_Hackathon_2024"&gt;Wikimedia Hackathon 2024&lt;/a&gt;
+        took place from May 3 to 5 in Tallinn, Estonia,
+        and like &lt;a href="https://lucaswerkmeister.de/posts/2023/06/03/wikimedia-hackathon-2023/"&gt;last year&lt;/a&gt; I was one of the participants
+        and want to write a recap blog post.
+      &lt;/p&gt;
+&lt;h2&gt;Major projects&lt;/h2&gt;
+&lt;p&gt;
+        I came to the Hackathon with two “major” ideas for things to work on this year,
+        and switched between both of them frequently
+        (one on the work laptop, one on the private laptop).
+        I think this worked well for me:
+        if I got stuck on something in one project,
+        or had to wait for someone else to react / respond,
+        I could switch to the other project and continue working there.
+      &lt;/p&gt;
+&lt;p&gt;
+        The first project was &lt;a href="https://phabricator.wikimedia.org/T231755"&gt;T231755: Local language name should be translatable in translatewiki.net&lt;/a&gt;.
+        The cldr extension contains many language names in PHP files,
+        and while they’re theoretically open to contributions,
+        it’s difficult for volunteers to suggest changes to those files
+        (they have to find their way around Git and Gerrit).
+        It would be much more convenient if they were defined as i18n messages
+        that could be translated on &lt;a href="https://translatewiki.net/"&gt;translatewiki.net&lt;/a&gt; instead.
+        Progress on this project mainly consisted of discussing things with other people;
+        I also wrote some code to explore the existing data (which wasn’t merged),
+        and uploaded or reviewed some adjacent cldr patches.
+        I hope to be able to continue working on this project later.
+      &lt;/p&gt;
+&lt;p&gt;
+        The second project, &lt;a href="https://phabricator.wikimedia.org/T363626"&gt;T363626: Make Wikidata Image Positions tool translatable on translatewiki.net&lt;/a&gt;,
+        saw more tangible progress (in fact it’s mostly done).
+        I had already been working on extracting some i18n code from my Wikidata Lexeme Forms tool,
+        which has been translatable for a while,
+        into a library that other tools can use as well;
+        during the Hackathon I made enough progress that the Wikidata Image Positions tool can now use this code as well.
+        (It’s not a real library yet, I still need to finish that.)
+        The first set of translations in about half a dozen languages
+        was already exported from translatewiki.net and deployed on Toolforge during the Hackathon,
+        which was great; since then, even more translations have come in.
+      &lt;/p&gt;
+&lt;h2&gt;Minor projects&lt;/h2&gt;
+&lt;p&gt;
+        I helped Amir Aharoni write two Wikidata Lexeme Forms templates for Hebrew verbs,
+        and deployed them to the tool
+        (&lt;a href="https://lexeme-forms.toolforge.org/template/hebrew-verb-paal/"&gt;pa'al&lt;/a&gt;,
+        &lt;a href="https://lexeme-forms.toolforge.org/template/hebrew-verb-nifal/"&gt;nif'al&lt;/a&gt;).
+        Since then, we’ve brought the total number to seven,
+        adding &lt;a href="https://lexeme-forms.toolforge.org/template/hebrew-verb-piel/"&gt;pi'el&lt;/a&gt;,
+        &lt;a href="https://lexeme-forms.toolforge.org/template/hebrew-verb-pual/"&gt;pu'al&lt;/a&gt;,
+        &lt;a href="https://lexeme-forms.toolforge.org/template/hebrew-verb-hifil/"&gt;hif'il&lt;/a&gt;,
+        &lt;a href="https://lexeme-forms.toolforge.org/template/hebrew-verb-hufal/"&gt;huf'al&lt;/a&gt;,
+        and &lt;a href="https://lexeme-forms.toolforge.org/template/hebrew-verb-hitpael/"&gt;hitpa'el&lt;/a&gt;.
+      &lt;/p&gt;
+&lt;p&gt;
+        I fulfilled two edit requests by other Hackathon participants for gadgets on Wikimedia Commons:
+        one &lt;a href="https://commons.wikimedia.org/wiki/MediaWiki_talk:Gadget-Stockphoto.js#Some_updates"&gt;for Gadget-Stockphoto&lt;/a&gt;
+        and one &lt;a href="https://commons.wikimedia.org/wiki/MediaWiki_talk:Gadget-purgetab.js#Translated_label"&gt;for Gadget-purgetab&lt;/a&gt;.
+      &lt;/p&gt;
+&lt;p&gt;
+        There were probably some other minor projects as well,
+        but I don’t remember them anymore ^^
+      &lt;/p&gt;
+&lt;h2&gt;Social things&lt;/h2&gt;
+&lt;p&gt;
+        This is really the most important part of the hackathon –
+        talking to people, meeting folks you’ve never seen in person before,
+        hearing what’s going on in their lives, discussing upcoming projects,
+        all sorts of fun stuff.
+        I don’t really know what to write about it here, though.
+      &lt;/p&gt;
+&lt;p&gt;
+        One particular social event was the &lt;a href="https://phabricator.wikimedia.org/T363870"&gt;Wikimedia Cuteness Association meetup&lt;/a&gt;:
+        several people who had brought plushies, cute companions or similar things to the Hackathon
+        met up in one of the rooms and took some group photos
+        (&lt;a href="https://commons.wikimedia.org/wiki/Category:Wikimedia_Cuteness_Association_at_Wikimedia_Hackathon_2024"&gt;Commons category&lt;/a&gt;).
+        It didn’t take very long, but I’m glad we did it :)
+      &lt;/p&gt;
+&lt;p&gt;
+        Another social event was &lt;a href="https://phabricator.wikimedia.org/T364009"&gt;Juggling, Rubik’s cubes and other physical fun&lt;/a&gt;,
+        continuing a tradition from 2019 and 2023.
+        I couldn’t really explain to you why juggling and cubing fits together,
+        but it seems to work alright as a fun hour to hang out ^^
+      &lt;/p&gt;
+&lt;h2&gt;Travel&lt;/h2&gt;
+&lt;p&gt;
+        I’m very happy that this year
+        I was able to travel to and from the Hackathon without flying;
+        I took an overnight train from Berlin to Stockholm
+        (fun fact: in 2019, for Wikimania, just getting to Stockholm by train took over 24 hours with six changeovers)
+        and an overnight ferry from Stockholm to Tallinn (Tuesday evening to Thursday morning)
+        and then the reverse on the way back (Monday evening to Wednesday morning).
+        As usual, I wrote about my travel in &lt;a href="https://wikis.world/@LucasWerkmeister/112361884408412586"&gt;a Mastodon thread&lt;/a&gt;
+        (only one long thread for travel there + Hackathon + travel back this time).
+      &lt;/p&gt;
+
+&lt;/article&gt;</description><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2024/05/15/wikimedia-hackathon-2024/</guid><pubDate>Wed, 15 May 2024 00:00:00 GMT</pubDate></item><item><title>Chaos Communication Camp 2023 recap</title><link>https://lucaswerkmeister.de/posts/2023/08/28/cccamp23/</link><description>&lt;article&gt;
+
+&lt;p&gt;
+        Quick blog post to recap Chaos Communication Camp 2023,
+        so I have something to remember later,
+        beyond my &lt;a href="https://wikis.world/@LucasWerkmeister/tagged/CCCamp23"&gt;#CCCamp23 posts on Wikis World (Mastodon)&lt;/a&gt;
+        and &lt;a href="https://commons.wikimedia.org/w/index.php?title=Special:ListFiles&amp;amp;dir=prev&amp;amp;offset=20230722192641%7CCSD_Berlin_2023_-_Lucas_Werkmeister_-_42.jpg&amp;amp;limit=4&amp;amp;user=Lucas+Werkmeister"&gt;few photos on Wikimedia Commons&lt;/a&gt;.
+        This won’t be very structured, but hopefully it’s better than nothing :)
+      &lt;/p&gt;
+&lt;h2&gt;General camp experience&lt;/h2&gt;
+&lt;p&gt;
+        Overall, I had a quite relaxed time at camp.
+        I sat around, talked to some people, enjoyed myself.
+        I didn’t do as many “activities” as many others
+        (and in particular, I didn’t stay up late at all, actually going to bed earlier than I normally do :D),
+        and I’m fine with that. 😌
+      &lt;/p&gt;
+&lt;p&gt;
+        Last camp, I think I didn’t attend any talks at all,
+        never even entering the big talk tents.
+        This year, I attended a few
+        (I think it helped that they spread out the talks and didn’t have the central tents anymore –
+        this meant smaller crowds and more open air, both of which was good for covid reasons),
+        mostly as an angel (video mixing, camera, or translation).
+        I enjoyed angeling and would like to do it again.
+        The sessions I watched without angeling were
+        &lt;a href="https://media.ccc.de/v/camp2023-57571-jens_spahns_credit_score_is_very_good"&gt;Lilith Wittmann’s&lt;/a&gt;,
+        &lt;a href="https://media.ccc.de/v/rc3-2021-cbase-207-never-mind-the-gig-wo"&gt;the coffeebots&lt;/a&gt;,
+        and &lt;a href="https://media.ccc.de/v/camp2023-57534-hacken_dass"&gt;Hacken, dass…?&lt;/a&gt;,
+        all of which were cool.
+      &lt;/p&gt;
+&lt;p&gt;
+        My only real “project” at camp was writing the m3api 1.0.0 release announcement blog post.
+        (This is actually the biggest blocker left for the 1.0.0 release, I think.)
+        I made good progress there; stay tuned on this blog ^^
+      &lt;/p&gt;
+&lt;p&gt;
+        I also went to the nearby lakes about once per day on average,
+        and would fully recommend that.
+        (Although, if you’re not there by bike, your range is going to be a bit more limited.
+        But some are still reachable.)
+      &lt;/p&gt;
+&lt;h2&gt;Travel&lt;/h2&gt;
+&lt;p&gt;
+        I went to the Ziegeleipark Mildenberg and back by bike;
+        my tent, sleeping bag and sleeping mat were transported with the rest of the WMDE stuff,
+        so I only carried the rest of my stuff (clothes, laptop, etc.) by bike.
+        Having the bike at camp was definitely useful and I’d like to have it again next time.
+        If I want to carry &lt;em&gt;everything&lt;/em&gt; by bike,
+        I’ll need to look into some additional options to attach things to it,
+        and might also want to look into a lighter sleeping bag
+        (my current one was also rather warm anyways).
+      &lt;/p&gt;
+&lt;p&gt;
+        I wrote Mastodon threads on the &lt;a href="https://wikis.world/@LucasWerkmeister/110880932061768998"&gt;way there&lt;/a&gt;
+        and &lt;a href="https://wikis.world/@LucasWerkmeister/110926414608353250"&gt;back again&lt;/a&gt;,
+        though it wasn’t as many posts as during &lt;a href="https://nitter.net/LucasWerkmeistr/status/1164116092882739200"&gt;the way to CCCamp17&lt;/a&gt; four years ago.
+      &lt;/p&gt;
+&lt;h2&gt;DECT&lt;/h2&gt;
+&lt;p&gt;
+        This was my first chaos event where I brought a DECT phone.
+        I didn’t use it very much, but it was still useful a few times,
+        and I’m planning to bring it to future chaos events too (since I bought it anyways ^^).
+      &lt;/p&gt;
+&lt;p&gt;
+        I left the phone’s base station at home,
+        instead bringing a rechargeable battery charger,
+        so I could charge the phone’s AAA batteries as well as others
+        (some other things I brought also had AAA).
+        In the end, I didn’t end up charging anything else using that charger, so it was a wash.
+        (Curiously enough, although several other people brought other phone models from the same company,
+        my phone wasn’t able to charge from any of their base stations as far as I could tell.
+        I don’t know if Gigaset do anything weird with their phones where each model charges slightly differently and incompatibly or what.)
+      &lt;/p&gt;
+&lt;h2&gt;Packing / Inventory&lt;/h2&gt;
+&lt;p&gt;
+        A few months before camp, I started a google doc to list things I might want to bring.
+        I eventually turned this into a comprehensive list of &lt;em&gt;all&lt;/em&gt; the things I brought
+        (and some that I couldn’t fit after all, such as my blåhaj 😔),
+        and where I marked things that I had packed already.
+        Later, during and after camp, I added notes to my future self
+        about which things turned out to be useful and which things I should change or leave home next time.
+        I think this mode works pretty well for me (I’ve used it for a few other things too),
+        and I look forward to going over this list in four years ^^
+      &lt;/p&gt;
+&lt;p&gt;
+        Some things I brought that turned out to be quite useful:
+      &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;a rubber mallet for tent pegs (apparently I was the only one in our village to bring one, and it was quite popular)&lt;/li&gt;
+&lt;li&gt;insect spray (did its job)&lt;/li&gt;
+&lt;li&gt;work gloves (very useful for buildup, teardown, and the occasional angel shift)&lt;/li&gt;
+&lt;li&gt;small packages of shower gel, shampoo and toothpaste (i.e. instead of full-size ones)&lt;/li&gt;
+&lt;li&gt;earplugs (very useful at night)&lt;/li&gt;
+&lt;li&gt;nail polish (I liked having it and one other person also used it)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+        And some things that I needn’t have brought after all, or otherwise have some qualifying notes for next time:
+      &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+          I brought two lamps, and two power banks, but only used one of each, and that only during the last teardown night on Sunday
+          (i.e. depending on whether I plan to stay that long again or not, I could even skip them completely)
+        &lt;/li&gt;
+&lt;li&gt;I brought too many warm clothes (&lt;em&gt;some&lt;/em&gt; are good to have but I brought too many)&lt;/li&gt;
+&lt;li&gt;I brought too much food for the way there and back (this is a general problem I have on bike tours)&lt;/li&gt;
+&lt;li&gt;I didn’t use my swimming trunks (naturism is common in eastern Germany, and while I didn’t grow up with it, I now found it rather more convenient)&lt;/li&gt;
+&lt;li&gt;the previous camp’s badge also sat unused in my backpack the whole time&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;
+        I don’t have one, I just didn’t want to end the blog post on a bulleted list that doesn’t even end with a full stop.
+        Looking forward to the next Chaos Communication Camp in four years!
+      &lt;/p&gt;
+
+&lt;/article&gt;</description><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2023/08/28/cccamp23/</guid><pubDate>Mon, 28 Aug 2023 00:00:00 GMT</pubDate></item></channel></rss>

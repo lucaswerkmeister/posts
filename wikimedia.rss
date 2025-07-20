@@ -1,2 +1,1838 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Lucas’ Posts (#wikimedia)</title><link>https://lucaswerkmeister.de/posts/</link><description>I suppose this is a blog of sorts – or at least a place where I occasionally post stuff. Not necessarily about anything in particular.</description><lastBuildDate>Sun, 20 Jul 2025 11:05:04 GMT</lastBuildDate><generator>PyRSS2Gen-1.1.0</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Processing Wikidata JSON dumps in parallel on the command line with dgsh</title><link>https://lucaswerkmeister.de/posts/2017/09/03/wikidata+dgsh/</link><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2017/09/03/wikidata+dgsh/</guid><pubDate>Sun, 03 Sep 2017 00:00:00 GMT</pubDate></item><item><title>Adding command line support to the namescript user script</title><link>https://lucaswerkmeister.de/posts/2018/07/13/namescript/</link><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2018/07/13/namescript/</guid><pubDate>Fri, 13 Jul 2018 00:00:00 GMT</pubDate></item><item><title>Building a Wikidata Tool – Behind the Scenes</title><link>https://lucaswerkmeister.de/posts/2019/01/04/speedpatrolling/</link><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2019/01/04/speedpatrolling/</guid><pubDate>Fri, 04 Jan 2019 00:00:00 GMT</pubDate></item><item><title>MediaWiki Lua for non-Lua programmers</title><link>https://lucaswerkmeister.de/posts/2022/03/20/mw-lua-for-non-lua-programmers/</link><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2022/03/20/mw-lua-for-non-lua-programmers/</guid><pubDate>Sun, 20 Mar 2022 00:00:00 GMT</pubDate></item><item><title>Wikimedia Hackathon 2023 recap</title><link>https://lucaswerkmeister.de/posts/2023/06/03/wikimedia-hackathon-2023/</link><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2023/06/03/wikimedia-hackathon-2023/</guid><pubDate>Sat, 03 Jun 2023 00:00:00 GMT</pubDate></item><item><title>Wikimedia Hackathon 2024 recap</title><link>https://lucaswerkmeister.de/posts/2024/05/15/wikimedia-hackathon-2024/</link><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2024/05/15/wikimedia-hackathon-2024/</guid><pubDate>Wed, 15 May 2024 00:00:00 GMT</pubDate></item><item><title>Why MediaWiki permanent links aren’t fully permanent</title><link>https://lucaswerkmeister.de/posts/2024/08/14/mediawiki-permalinks/</link><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2024/08/14/mediawiki-permalinks/</guid><pubDate>Wed, 14 Aug 2024 00:00:00 GMT</pubDate></item><item><title>Introducing m3api</title><link>https://lucaswerkmeister.de/posts/2025/04/12/introducing-m3api/</link><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2025/04/12/introducing-m3api/</guid><pubDate>Sat, 12 Apr 2025 00:00:00 GMT</pubDate></item><item><title>Wikimedia Hackathon 2025 recap</title><link>https://lucaswerkmeister.de/posts/2025/05/10/wikimedia-hackathon-2025/</link><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2025/05/10/wikimedia-hackathon-2025/</guid><pubDate>Sat, 10 May 2025 00:00:00 GMT</pubDate></item></channel></rss>
+<rss version="2.0"><channel><title>Lucas’ Posts (#wikimedia)</title><link>https://lucaswerkmeister.de/posts/</link><description>I suppose this is a blog of sorts – or at least a place where I occasionally post stuff. Not necessarily about anything in particular.</description><lastBuildDate>Sun, 20 Jul 2025 17:34:33 GMT</lastBuildDate><generator>PyRSS2Gen-1.1.0</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Wikimedia Hackathon 2025 recap</title><link>https://lucaswerkmeister.de/posts/2025/05/10/wikimedia-hackathon-2025/</link><description>&lt;article&gt;
+
+&lt;p&gt;
+        A week ago, I took part in the &lt;a href="https://www.mediawiki.org/wiki/Wikimedia_Hackathon_2025"&gt;Wikimedia Hackathon 2025&lt;/a&gt;,
+        which took place on 2–4 May (Friday–Sunday) in Istanbul, Turkey.
+        Just like &lt;a href="https://lucaswerkmeister.de/posts/2024/05/15/wikimedia-hackathon-2024/"&gt;last year&lt;/a&gt;
+        and &lt;a href="https://lucaswerkmeister.de/posts/2023/06/03/wikimedia-hackathon-2023/"&gt;the year before&lt;/a&gt;,
+        I want to write a bit about the experience.
+      &lt;/p&gt;
+&lt;p&gt;
+        I had come into the hackathon with two vague project ideas:
+        work on the migration of m3api to Wikimedia GitLab (&lt;a href="https://phabricator.wikimedia.org/T392290"&gt;T392290&lt;/a&gt;),
+        especially the documentation (&lt;a href="https://phabricator.wikimedia.org/T392716"&gt;T392716&lt;/a&gt;),
+        and continue making local language names translatable on translatewiki.net (&lt;a href="https://phabricator.wikimedia.org/T231755"&gt;T231755&lt;/a&gt;).
+        But as sometimes happens at such events, things turned out otherwise.
+      &lt;/p&gt;
+&lt;p&gt;
+        During the travel to the hackathon (i.e. at the airport) and on Thursday evening,
+        I got a decent amount of work on m3api in:
+        I mostly managed to port the documentation-building release CI to GitLab actions
+        (though I’ll still need to get access to push it to doc.wikimedia.org).
+        However, also during that evening, in a dinner conversatiaon with &lt;a href="https://www.mediawiki.org/wiki/User:HNordeen_(WMF)"&gt;Haley Nordeen&lt;/a&gt;,
+        we came across the idea of “Redactle for Wikidata” on the venerable
+        &lt;a href="https://phabricator.wikimedia.org/T165167"&gt;building more games using Wikidata’s data&lt;/a&gt; task.
+        During the &lt;a href="https://phabricator.wikimedia.org/T392540"&gt;game ideas session&lt;/a&gt; the next morning,
+        I decided to try this out, and it ended up becoming my main project of the hackathon.
+        (I didn’t end up working on the local language names at all in the end.)
+      &lt;/p&gt;
+&lt;p&gt;
+        What I had by the time of the showcase on Sunday was not a finished product,
+        but at least a playable version of the game,
+        called &lt;a href="https://wdactle.toolforge.org/"&gt;WDactle&lt;/a&gt; (&lt;a href="https://gitlab.wikimedia.org/toolforge-repos/wdactle/"&gt;source code&lt;/a&gt;).
+        There’s no “puzzle of the day” yet (like in Wordle or Redactle),
+        just a random puzzle each time you load the page (cached for five minutes).
+        And despite the missing features, the game seems to be feasible in principle,
+        and more fun than I expected,
+        both according to my own experience and what I’m hearing from others 🙂
+        so I’ll definitely continue working on it.
+        (Special thanks to &lt;a href="https://meta.wikimedia.org/wiki/User:SSanchez-WMF"&gt;Sarai Sánchez&lt;/a&gt;
+        for talking through the design with me on Saturday evening!)
+      &lt;/p&gt;
+&lt;p&gt;
+        Of course, the hackathon isn’t just about hacking on your own projects.
+        I don’t think I directly worked on anyone else’s project,
+        but I was at least able to give some useful pointers and advice to several people.
+        I had also announced in the opening session that I could hand out some invite codes to &lt;a href="https://meta.wikimedia.org/wiki/Wikis_World"&gt;Wikis World&lt;/a&gt;,
+        and I’m happy to report that one invite code was successfully exchanged and used!
+        And I joined some sessions on the program, including several related to Wikimedia Toolforge and tool development,
+        and one on the future of the MediaWiki Action API.
+      &lt;/p&gt;
+&lt;p&gt;
+        On the more social side, I talked to or hung out with a fair amount of people,
+        ranging from an impromptu meeting of the &lt;a href="https://wikitech.wikimedia.org/wiki/Help:Toolforge/Toolforge_standards_committee"&gt;Toolforge Standards Committee&lt;/a&gt;
+        to a spontaneous magic show (yes!).
+        The “juggling + rubik’s cubes” session from the last two years didn’t really happen again,
+        but we still had some social time before the Kahoot session on Saturday afternoon.
+        I also restocked the sweets table with chocolate several times.
+        Sadly, although Taavi and I brought our blåhajar,
+        we didn’t have a proper Wikimedia Cuteness Association meetup this year 😔
+      &lt;/p&gt;
+&lt;p&gt;
+        As usual, I posted about my hackathon experience on Mastodon,
+        this time with separate threads for &lt;a href="https://wikis.world/@LucasWerkmeister/114430682133543886"&gt;Thursday&lt;/a&gt;,
+        &lt;a href="https://wikis.world/@LucasWerkmeister/114436950287170418"&gt;Friday&lt;/a&gt;,
+        &lt;a href="https://wikis.world/@LucasWerkmeister/114442409903718033"&gt;Saturday&lt;/a&gt;,
+        &lt;a href="https://wikis.world/@LucasWerkmeister/114447994481484488"&gt;Sunday&lt;/a&gt; and
+        &lt;a href="https://wikis.world/@LucasWerkmeister/114453519361216347"&gt;Monday&lt;/a&gt;.
+        As you can see there, I traveled to and from the hackathon by plane this year;
+        I looked into other options (ever heard of this thing called the “orient express”??),
+        but didn’t think that any of them looked feasible to me.
+        (Clearly I should’ve coordinated with Pintoch, who apparently found a way after all!)
+        I hope next year will be a little bit closer to Berlin again 🙂
+      &lt;/p&gt;
+
+&lt;/article&gt;</description><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2025/05/10/wikimedia-hackathon-2025/</guid><pubDate>Sat, 10 May 2025 00:00:00 GMT</pubDate></item><item><title>Introducing m3api</title><link>https://lucaswerkmeister.de/posts/2025/04/12/introducing-m3api/</link><description>&lt;article&gt;
+
+&lt;p&gt;
+        For the past couple of years, I’ve been working on a new JavaScript library for the MediaWiki Action API, called &lt;strong&gt;m3api&lt;/strong&gt;.
+        On the occasion of its 1.0.0 release today,
+        I want to talk about why I wrote it, what it does, and why I think you should use it :)
+      &lt;/p&gt;
+&lt;h2 id="quick-links"&gt;Quick links&lt;/h2&gt;
+&lt;p&gt;
+&lt;a href="https://www.npmjs.com/package/m3api"&gt;npm package&lt;/a&gt;,
+        &lt;a href="https://github.com/lucaswerkmeister/m3api/"&gt;GitHub repository&lt;/a&gt;,
+        &lt;a href="https://lucaswerkmeister.github.io/m3api/"&gt;documentation&lt;/a&gt;,
+        &lt;a href="https://github.com/lucaswerkmeister/m3api-examples/"&gt;examples&lt;/a&gt;.
+      &lt;/p&gt;
+&lt;h2 id="why-a-new-library"&gt;Why a new JS library for the MediaWiki API?&lt;/h2&gt;
+&lt;p&gt;
+        So why did I write a new library for the MediaWiki API at all?
+        Aren’t there &lt;a href="https://www.mediawiki.org/wiki/API:Client_code/All#JavaScript"&gt;enough of them&lt;/a&gt; already?
+      &lt;/p&gt;
+&lt;p&gt;
+        I was looking for a library fulfilling two criteria,
+        and didn’t find any that fulfilled both:
+      &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+          Cross-platform: I want to be able to use the same interface to the API whether I’m writing code for the browser or for Node.js.
+          (Small differences in setup are acceptable, but once setup is done, the interface should be uniform.)
+          This apparently rules out virtually all the libraries;
+          the only known exception on the list of libraries linked above (apart from m3api itself)
+          is &lt;a href="https://github.com/kanasimi/CeJS"&gt;CeJS&lt;/a&gt;, which is a mystery to me.
+          &lt;!-- This phrasing is kind of ambiguous: it could mean “CeJS is a mystery” or “the fact that no other library is cross-platform is a mystery”. But I agree with both ^^ --&gt;
+&lt;/li&gt;
+&lt;li&gt;
+          Reasonably modern: at a minimum, this means promises rather than callbacks.
+          (As far as I can tell, this rules out CeJS, along with many other libraries.)
+          Additional modern things that would be nice to have
+          are &lt;a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/AsyncGenerator"&gt;async generators&lt;/a&gt; as the interface for API continuation
+          and &lt;a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules"&gt;ES6 modules&lt;/a&gt; instead of Node.js &lt;code&gt;require()&lt;/code&gt; / UMD / etc.
+        &lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;
+        Since I couldn’t find a library matching my needs, I wrote it :)
+      &lt;/p&gt;
+&lt;h2 id="main-characteristics"&gt;Main characteristics&lt;/h2&gt;
+&lt;p&gt;
+&lt;a href="https://www.martinfowler.com/bliki/TwoHardThings.html"&gt;Naming things is hard&lt;/a&gt;;
+        m3api stands for “&lt;strong&gt;minimal, modern MediaWiki API [client]&lt;/strong&gt;” (three ‘m’s, you see).
+        I’ve already mentioned “modern” above –
+        m3api uses promises, async generators, ES6 modules,
+        but also &lt;code&gt;fetch()&lt;/code&gt; (even in Node – yay for &lt;a href="https://nodejs.org/en/learn/getting-started/fetch"&gt;undici&lt;/a&gt;),
+        &lt;code&gt;class&lt;/code&gt; syntax, object spreading and destructuring,
+        &lt;code&gt;FormData&lt;/code&gt; / &lt;code&gt;Blob&lt;/code&gt; / &lt;code&gt;File&lt;/code&gt; for file parameters, and more.
+        (Some of this felt fairly “bleeding edge” when I started working on m3api,
+        but keep in mind that this was almost five years ago.
+        m3api may not support all the &lt;a href="https://www.mediawiki.org/wiki/Compatibility#Browsers"&gt;browsers supported by MediaWiki&lt;/a&gt;,
+        but it does support the Node.js version that was shipped in stable Debian 12 (Bookworm) two years ago.)
+      &lt;/p&gt;
+&lt;p&gt;
+        I want to elaborate on the “minimal” term a bit more.
+        Basically, the point is that I’m familiar with the MediaWiki Action API,
+        and I don’t like libraries that aim to hide the API from me.
+        I’m wary of basic &lt;a href="https://en.wikipedia.org/wiki/Create,_read,_update_and_delete"&gt;&lt;abbr title="create, read, update, delete"&gt;CRUD&lt;/abbr&gt;&lt;/a&gt; abstraction methods;
+        the &lt;code&gt;action=edit&lt;/code&gt; API has plenty of useful options,
+        many of which a higher-level method probably doesn’t make available.
+        I want a library that helps me to work with the API directly.
+        (I don’t mind if it &lt;em&gt;also&lt;/em&gt; offers abstraction methods, but they’re not a high priority for me when writing my own library.
+        Also, some other libraries seem to make it relatively hard to make direct API requests.)
+      &lt;/p&gt;
+&lt;p&gt;
+        However, “minimal” doesn’t mean that the library doesn’t have any features.
+        There are plenty of features designed to make it easier to use the API;
+        my basic rule of thumb is that the feature should be useful with more than one API action.
+        For example, API continuation is present in several API actions, and somewhat tedious to use “manually”,
+        so m3api offers support for it.
+      &lt;/p&gt;
+&lt;p&gt;
+        In addition to that, there are also several extension packages for m3api,
+        as well as &lt;a href="https://github.com/lucaswerkmeister/m3api/#creating-extension-packages"&gt;guidelines&lt;/a&gt;
+        for others to implement additional extension packages.
+        These implement support for specific API modules
+        (&lt;a href="https://github.com/lucaswerkmeister/m3api-query/"&gt;m3api-query&lt;/a&gt; for &lt;code&gt;action=query&lt;/code&gt;,
+        &lt;a href="https://github.com/lucaswerkmeister/m3api-botpassword/"&gt;m3api-botpassword&lt;/a&gt; for &lt;code&gt;action=login&lt;/code&gt;)
+        or other functionality that doesn’t belong in m3api itself
+        (&lt;a href="https://github.com/lucaswerkmeister/m3api-oauth2/"&gt;m3api-oauth2&lt;/a&gt; for the OAuth 2.0 authorization flow).
+        In combination, these libraries are intended to provide,
+        if not a full API framework,
+        then at least a powerful and flexible toolkit for working with the API.
+      &lt;/p&gt;
+&lt;h2 id="basic-interface"&gt;Basic interface&lt;/h2&gt;
+&lt;p&gt;
+        The simplest way to make an API request with m3api looks like this:
+      &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class="keyword"&gt;import&lt;/span&gt; Session &lt;span class="keyword"&gt;from&lt;/span&gt; &lt;span class="string"&gt;'m3api/node.js'&lt;/span&gt;;
+&lt;span class="storage type"&gt;const&lt;/span&gt; session &lt;span class="keyword operator"&gt;=&lt;/span&gt; &lt;span class="keyword"&gt;new&lt;/span&gt; &lt;span class="variable type"&gt;Session&lt;/span&gt;( &lt;span class="string"&gt;'en.wikipedia.org'&lt;/span&gt; );
+&lt;span class="storage type"&gt;const&lt;/span&gt; response &lt;span class="keyword operator"&gt;=&lt;/span&gt; &lt;span class="keyword"&gt;await&lt;/span&gt; session.&lt;span class="function call"&gt;request&lt;/span&gt;(
+	{ action: &lt;span class="string"&gt;'query'&lt;/span&gt;, meta: &lt;span class="string"&gt;'siteinfo'&lt;/span&gt; },
+);&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+        You can also specify default parameters that should apply to every request of a session when creating it:
+      &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class="keyword"&gt;import&lt;/span&gt; Session &lt;span class="keyword"&gt;from&lt;/span&gt; &lt;span class="string"&gt;'m3api/node.js'&lt;/span&gt;;
+&lt;span class="storage type"&gt;const&lt;/span&gt; session &lt;span class="keyword operator"&gt;=&lt;/span&gt; &lt;span class="keyword"&gt;new&lt;/span&gt; &lt;span class="variable type"&gt;Session&lt;/span&gt;(
+	&lt;span class="string"&gt;'en.wikipedia.org'&lt;/span&gt;,
+	{ formatversion: &lt;span class="constant numeric"&gt;2&lt;/span&gt; },
+);
+&lt;span class="storage type"&gt;const&lt;/span&gt; response &lt;span class="keyword operator"&gt;=&lt;/span&gt; &lt;span class="keyword"&gt;await&lt;/span&gt; session.&lt;span class="function call"&gt;request&lt;/span&gt;(
+	{ action: &lt;span class="string"&gt;'query'&lt;/span&gt;, meta: &lt;span class="string"&gt;'siteinfo'&lt;/span&gt; },
+);&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+        These examples specify &lt;em&gt;parameters&lt;/em&gt; to send to the API (&lt;code&gt;action=query&lt;/code&gt;, &lt;code&gt;meta=siteinfo&lt;/code&gt;, &lt;code&gt;formatversion=2&lt;/code&gt;).
+        Additionally, you can specify &lt;em&gt;options&lt;/em&gt; as another object after the parameters,
+        which instead influence how m3api sends the request.
+        One option that you should always set is the &lt;code&gt;userAgent&lt;/code&gt;, which controls the &lt;code&gt;User-Agent&lt;/code&gt; HTTP header
+        (see the &lt;a href="https://meta.wikimedia.org/wiki/Special:MyLanguage/User-Agent_policy"&gt;User-Agent policy&lt;/a&gt;).
+        Usually, you would set this option for all requests when creating the session:
+      &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class="keyword"&gt;import&lt;/span&gt; Session &lt;span class="keyword"&gt;from&lt;/span&gt; &lt;span class="string"&gt;'m3api/node.js'&lt;/span&gt;;
+&lt;span class="storage type"&gt;const&lt;/span&gt; session &lt;span class="keyword operator"&gt;=&lt;/span&gt; &lt;span class="keyword"&gt;new&lt;/span&gt; &lt;span class="variable type"&gt;Session&lt;/span&gt;(
+	&lt;span class="string"&gt;'en.wikipedia.org'&lt;/span&gt;,
+	{ formatversion: &lt;span class="constant numeric"&gt;2&lt;/span&gt; },
+	{ userAgent: &lt;span class="string"&gt;'introducing-m3api-blog-post'&lt;/span&gt; },
+);
+&lt;span class="storage type"&gt;const&lt;/span&gt; response &lt;span class="keyword operator"&gt;=&lt;/span&gt; &lt;span class="keyword"&gt;await&lt;/span&gt; session.&lt;span class="function call"&gt;request&lt;/span&gt;(
+	{ action: &lt;span class="string"&gt;'query'&lt;/span&gt;, meta: &lt;span class="string"&gt;'siteinfo'&lt;/span&gt; },
+);&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+        But you could also set it on the individual request, if you wanted:
+      &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class="keyword"&gt;import&lt;/span&gt; Session &lt;span class="keyword"&gt;from&lt;/span&gt; &lt;span class="string"&gt;'m3api/node.js'&lt;/span&gt;;
+&lt;span class="storage type"&gt;const&lt;/span&gt; session &lt;span class="keyword operator"&gt;=&lt;/span&gt; &lt;span class="keyword"&gt;new&lt;/span&gt; &lt;span class="variable type"&gt;Session&lt;/span&gt;(
+	&lt;span class="string"&gt;'en.wikipedia.org'&lt;/span&gt;,
+	{ formatversion: &lt;span class="constant numeric"&gt;2&lt;/span&gt; },
+);
+&lt;span class="storage type"&gt;const&lt;/span&gt; response &lt;span class="keyword operator"&gt;=&lt;/span&gt; &lt;span class="keyword"&gt;await&lt;/span&gt; session.&lt;span class="function call"&gt;request&lt;/span&gt;(
+	{ action: &lt;span class="string"&gt;'query'&lt;/span&gt;, meta: &lt;span class="string"&gt;'siteinfo'&lt;/span&gt; },
+	{ userAgent: &lt;span class="string"&gt;'introducing-m3api-blog-post'&lt;/span&gt; },
+);&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+        (It doesn’t make much sense to set the &lt;code&gt;userAgent&lt;/code&gt; per request,
+        but there are other options where it’s more useful,
+        e.g. &lt;code&gt;method: 'POST'&lt;/code&gt; and &lt;code&gt;tokenType: 'csrf'&lt;/code&gt;.)
+      &lt;/p&gt;
+&lt;p&gt;
+        Other functions generally also follow this pattern of taking parameters followed by options,
+        with the options being, well, optional.
+        Both the parameters and options are merged with the defaults from the constructor,
+        making for a convenient and uniform interface.
+      &lt;/p&gt;
+&lt;p&gt;
+        In addition to strings, parameter values can also be numbers, booleans, and arrays, for example:
+      &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class="storage type"&gt;const&lt;/span&gt; response &lt;span class="keyword operator"&gt;=&lt;/span&gt; &lt;span class="keyword"&gt;await&lt;/span&gt; session.&lt;span class="function call"&gt;request&lt;/span&gt;( {
+	action: &lt;span class="string"&gt;'query'&lt;/span&gt;,
+	meta: [ &lt;span class="string"&gt;'siteinfo'&lt;/span&gt;, &lt;span class="string"&gt;'userinfo'&lt;/span&gt; ],
+	curtimestamp: &lt;span class="constant language"&gt;true&lt;/span&gt;,
+	formatversion: &lt;span class="constant numeric"&gt;2&lt;/span&gt;,
+} );&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+        List parameters can also be sets instead of arrays; more on that &lt;a href="https://lucaswerkmeister.de/posts/2025/04/12/introducing-m3api/#combining-requests"&gt;below&lt;/a&gt;.
+      &lt;/p&gt;
+&lt;h2 id="api-continuation"&gt;API continuation&lt;/h2&gt;
+&lt;p&gt;
+        As mentioned above, m3api includes support for API continuation.
+        I’m not aware of a great explanation of this feature in the API,
+        so I’ll just use this section to talk about it in general as well as how m3api supports it ^^
+      &lt;/p&gt;
+&lt;p&gt;
+&lt;em&gt;Continuation&lt;/em&gt; is the mechanism by which the API returns a limited set of data
+        while enabling you to make further requests to fetch additional data.
+        The MediaWiki Action API’s continuation mechanism is highly flexible;
+        a single API request can use many different modules, each of which contributes to continuation,
+        and it all works out.
+      &lt;/p&gt;
+&lt;p&gt;
+        The basic principle is that the API may return,
+        as part of the response,
+        a &lt;code&gt;continue&lt;/code&gt; object with parameters you should send with your next request.
+        For instance, if you make an API request with &lt;code&gt;action=query&lt;/code&gt; and &lt;code&gt;list=allpages&lt;/code&gt;,
+        the response may include &lt;code&gt;"continue": { "apcontinue": "!important" }&lt;/code&gt;;
+        your next request should then use the parameters
+        &lt;code&gt;action=query&lt;/code&gt;, &lt;code&gt;list=allpages&lt;/code&gt; and &lt;code&gt;apcontinue=!important&lt;/code&gt;.
+        Continuation is finished when there is no &lt;code&gt;continue&lt;/code&gt; object in a response.
+      &lt;/p&gt;
+&lt;p&gt;
+        In m3api, the main interface to continuation is the &lt;code&gt;requestAndContinue()&lt;/code&gt; method,
+        which returns an async generator.
+        It’s typically used in a &lt;a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for-await...of"&gt;&lt;code&gt;for await&lt;/code&gt; loop&lt;/a&gt; like this:
+      &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class="keyword"&gt;for&lt;/span&gt; &lt;span class="keyword"&gt;await&lt;/span&gt; ( &lt;span class="storage type"&gt;const&lt;/span&gt; response of session.&lt;span class="function call"&gt;requestAndContinue&lt;/span&gt;( {
+	action: &lt;span class="string"&gt;'query'&lt;/span&gt;,
+	list: &lt;span class="string"&gt;'allpages'&lt;/span&gt;,
+} ) ) {
+	console.&lt;span class="function call"&gt;log&lt;/span&gt;( response );
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+        Each &lt;code&gt;response&lt;/code&gt; is a response object like would be returned from a normal &lt;code&gt;request()&lt;/code&gt; call.
+        You can &lt;code&gt;break;&lt;/code&gt; out of the loop at any time to stop making additional requests.
+      &lt;/p&gt;
+&lt;p&gt;
+        The above example shows a “simple” case of continuation:
+        each request produces one “batch” of pages (or, for some modules, revisions),
+        and the next request continues with the next batch of different pages.
+        However, it’s possible for a response to not contain the full data of one batch of pages.
+        (An extreme example of this would be
+        &lt;code&gt;action=query&lt;/code&gt;, &lt;code&gt;generator=querypage&lt;/code&gt;, &lt;code&gt;gqppage=Longpages&lt;/code&gt;, &lt;code&gt;gqplimit=500&lt;/code&gt;,
+        &lt;code&gt;prop=revisions&lt;/code&gt;, &lt;code&gt;rvprop=text&lt;/code&gt; –
+        that is, the text content of the 500 longest pages on the wiki.
+        This will run into the response size limit very quickly,
+        but the batch still contains all 500 longest pages,
+        even though not all 500 are returned with their text in the same response.)
+        In this case, continuation will first proceed &lt;em&gt;within&lt;/em&gt; one batch of pages
+        (i.e., requests will return additional data for the same set of pages),
+        and only proceed to the next batch after the full data for the previous batch has been returned,
+        spread across multiple API responses.
+        (It’s the caller’s responsibility to merge those responses back together again in a way that makes sense.)
+        You can distinguish between these cases by the &lt;code&gt;batchcomplete&lt;/code&gt; member in the response:
+        if it’s present (set to &lt;code&gt;""&lt;/code&gt; in &lt;code&gt;formatversion=1&lt;/code&gt; or &lt;code&gt;true&lt;/code&gt; in &lt;code&gt;formatversion=2&lt;/code&gt;),
+        then the request returned the full set of data for the current batch of pages,
+        and following continuation will proceed to the next batch;
+        if it’s not present, then the request didn’t return the full data yet,
+        and following continuation will yield additional data for the same batch of pages.
+      &lt;/p&gt;
+&lt;p&gt;
+        m3api supports this distinction too, using the &lt;code&gt;requestAndContinueReducingBatch()&lt;/code&gt; method.
+        It also returns an async generator,
+        but follows continuation internally until the end of a batch has been reached,
+        yielding a value that represents the combined result of all the responses for that batch.
+        If you continue iterating over the async generator, it will continue with the next batch, and so on.
+        When you use this method, you have to provide a &lt;code&gt;reducer()&lt;/code&gt; callback,
+        which somehow merges the latest API response into the current accumulated value.
+        The initial value for each batch can be specified via another callable,
+        and otherwise defaults to &lt;code&gt;{}&lt;/code&gt; (empty object).
+        This interface is similar to &lt;a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce"&gt;&lt;code&gt;Array.reduce()&lt;/code&gt;&lt;/a&gt;
+        (hence the name; elsewhere this operation is also known as &lt;a href="https://www.wikidata.org/wiki/Special:GoToLinkedPage/enwiki/Q951651"&gt;fold&lt;/a&gt;),
+        but with a separate “reduction” taking place for each batch of pages returned by the API.
+      &lt;/p&gt;
+&lt;p&gt;
+&lt;code&gt;requestAndContinueReducingBatch()&lt;/code&gt; is a fairly low-level method,
+        and is not intended to be used directly.
+        The &lt;a href="https://github.com/lucaswerkmeister/m3api-query/"&gt;m3api-query&lt;/a&gt; extension package offers some more convenient methods
+        (assuming you’re using &lt;code&gt;action=query&lt;/code&gt;):
+        &lt;code&gt;queryFullPageByTitle()&lt;/code&gt;, &lt;code&gt;queryFullPageByPageId()&lt;/code&gt; and &lt;code&gt;queryFullRevisionByRevisionId()&lt;/code&gt;
+        return the full data for a single page or revision (even that can be split across multiple responses!),
+        while &lt;code&gt;queryFullPages()&lt;/code&gt; and &lt;code&gt;queryFullRevisions()&lt;/code&gt;
+        return async generators that yield full pages or revisions.
+      &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class="keyword"&gt;for&lt;/span&gt; &lt;span class="keyword"&gt;await&lt;/span&gt; ( &lt;span class="storage type"&gt;const&lt;/span&gt; page of &lt;span class="function call"&gt;queryFullPages&lt;/span&gt;( session, {
+	action: &lt;span class="string"&gt;'query'&lt;/span&gt;,
+	list: &lt;span class="string"&gt;'allpages'&lt;/span&gt;,
+} ) ) {
+	console.&lt;span class="function call"&gt;log&lt;/span&gt;( page );
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+        You get a simple, flat stream of pages,
+        and don’t have to care that some of them may have been returned in the same response,
+        others in a later response,
+        and some may even have been split across multiple responses.
+        The way in which pages from multiple responses are merged is configurable via the options,
+        but the default should work for most cases.
+        This is one of the parts of m3api I’m proudest of –
+        making it easy to correctly work with API continuation.
+      &lt;/p&gt;
+&lt;h2 id="combining-requests"&gt;Combining requests&lt;/h2&gt;
+&lt;p&gt;
+        Another m3api feature I’m proud of is automatically combining concurrent compatible requests.
+        The idea is taken from the &lt;a href="https://www.wikidata.org/wiki/Special:MyLanguage/Wikidata:Wikidata_Bridge"&gt;Wikidata Bridge&lt;/a&gt;
+        (an interface to edit Wikidata from Wikipedia),
+        where the Wikidata team at Wikimedia Germany (that I’m a part of) implemented something similar.
+        (I reimplemented the idea from scratch in m3api to avoid infringing any copyright.)
+      &lt;/p&gt;
+&lt;p&gt;
+        The Wikidata Bridge needs to load a lot of information from the API when it initializes itself:
+      &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://de.wikipedia.beta.wmflabs.org/w/api.php?action=query&amp;amp;format=json&amp;amp;titles=Data-Bridge&amp;amp;prop=info&amp;amp;intestactions=edit&amp;amp;intestactionsdetail=full&amp;amp;errorformat=raw&amp;amp;formatversion=2"&gt;Whether the user has permission to edit the Wikipedia article.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://de.wikipedia.beta.wmflabs.org/w/api.php?action=query&amp;amp;format=json&amp;amp;meta=siteinfo&amp;amp;siprop=restrictions&amp;amp;errorformat=raw&amp;amp;formatversion=2"&gt;The Wikipedia site’s restriction levels, to determine what kind of protection the article has.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wikidata.beta.wmflabs.org/w/api.php?action=query&amp;amp;format=json&amp;amp;errorformat=raw&amp;amp;formatversion=2&amp;amp;titles=Q11&amp;amp;prop=info&amp;amp;intestactions=edit&amp;amp;intestactionsdetail=full"&gt;Whether the user has permission to edit the Wikidata item.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wikidata.beta.wmflabs.org/w/api.php?action=query&amp;amp;format=json&amp;amp;meta=siteinfo&amp;amp;errorformat=raw&amp;amp;formatversion=2&amp;amp;siprop=restrictions"&gt;The Wikidata site’s restriction levels, to determine what kind of protection the item has.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wikidata.beta.wmflabs.org/w/api.php?action=query&amp;amp;format=json&amp;amp;meta=siteinfo&amp;amp;errorformat=raw&amp;amp;formatversion=2&amp;amp;siprop=autocreatetempuser"&gt;Whether the Wikidata site has temporary accounts enabled, to determine whether to show a “your IP address will be publicly visible” warning.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wikidata.beta.wmflabs.org/w/api.php?action=query&amp;amp;format=json&amp;amp;meta=wbdatabridgeconfig&amp;amp;errorformat=raw&amp;amp;formatversion=2"&gt;The bridge configuration on Wikidata.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wikidata.beta.wmflabs.org/w/api.php?action=wbgetentities&amp;amp;format=json&amp;amp;props=datatype&amp;amp;ids=P443&amp;amp;errorformat=raw&amp;amp;formatversion=2"&gt;The data type of the property of the statement being edited.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wikidata.beta.wmflabs.org/w/api.php?action=wbgetentities&amp;amp;format=json&amp;amp;props=info&amp;amp;ids=Q11&amp;amp;errorformat=raw&amp;amp;formatversion=2"&gt;The latest revision ID of the item being edited.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wikidata.beta.wmflabs.org/w/api.php?action=wbgetentities&amp;amp;format=json&amp;amp;props=claims&amp;amp;ids=Q11&amp;amp;errorformat=raw&amp;amp;formatversion=2"&gt;The statements of the item being edited.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wikidata.beta.wmflabs.org/w/api.php?action=wbgetentities&amp;amp;format=json&amp;amp;props=labels&amp;amp;ids=P443&amp;amp;languages=de&amp;amp;languagefallback=true&amp;amp;errorformat=raw&amp;amp;formatversion=2"&gt;The label of the property of the statement being edited.&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;
+        A naïve implementation would make up to ten separate API requests to get this information
+        (I’ve linked them above for the &lt;a href="https://de.wikipedia.beta.wmflabs.org/wiki/Data-Bridge"&gt;Beta Wikidata Bridge demo page&lt;/a&gt;).
+        However, due to how API modules are designed to be flexible in which data they return,
+        and how parameters that specify “I’d like &lt;em&gt;this&lt;/em&gt; piece of data” are often multi-valued,
+        you can also combine them into just three requests:
+        &lt;a href="https://de.wikipedia.beta.wmflabs.org/w/api.php?action=query&amp;amp;format=json&amp;amp;titles=Data-Bridge&amp;amp;prop=info&amp;amp;meta=siteinfo&amp;amp;intestactions=edit&amp;amp;intestactionsdetail=full&amp;amp;siprop=restrictions&amp;amp;errorformat=raw&amp;amp;formatversion=2"&gt;action=query on Wikipedia&lt;/a&gt; (1 and 2),
+        &lt;a href="https://wikidata.beta.wmflabs.org/w/api.php?action=query&amp;amp;format=json&amp;amp;meta=wbdatabridgeconfig|siteinfo&amp;amp;errorformat=raw&amp;amp;formatversion=2&amp;amp;titles=Q11&amp;amp;prop=info&amp;amp;intestactions=edit&amp;amp;intestactionsdetail=full&amp;amp;siprop=autocreatetempuser|restrictions"&gt;action=query on Wikidata&lt;/a&gt; (3 to 6),
+        and &lt;a href="https://wikidata.beta.wmflabs.org/w/api.php?action=wbgetentities&amp;amp;format=json&amp;amp;props=labels%7Cdatatype%7Cinfo%7Cclaims&amp;amp;ids=P443%7CQ11&amp;amp;languages=de&amp;amp;languagefallback=true&amp;amp;errorformat=raw&amp;amp;formatversion=2"&gt;action=wbgetentities on Wikidata&lt;/a&gt; (7 to 10).
+        The simple approach to implement the initialization with just three requests
+        would be to have one big blob of code that makes all the requests and extracts all the information from the responses,
+        but this wouldn’t be very readable or maintainable:
+        we’d rather have a bunch of &lt;a href="https://gerrit.wikimedia.org/g/mediawiki/extensions/Wikibase/+/a8f78a9456/client/data-bridge/src/data-access/ApiEntityLabelRepository.ts"&gt;smaller&lt;/a&gt;,
+        &lt;a href="https://gerrit.wikimedia.org/g/mediawiki/extensions/Wikibase/+/a8f78a9456/client/data-bridge/src/data-access/ApiPropertyDataTypeRepository.ts"&gt;self-contained&lt;/a&gt;
+&lt;a href="https://gerrit.wikimedia.org/g/mediawiki/extensions/Wikibase/+/a8f78a9456/client/data-bridge/src/data-access/ApiReadingEntityRepository.ts"&gt;services&lt;/a&gt;
+        that each just specify the request parameters they need and extract the parts of the response that concern them.
+        But how do we then combine those requests?
+      &lt;/p&gt;
+&lt;p&gt;
+        One approach I’ve used in the Wikidata Image Positions tool (written in Python)
+        is to explicitly split the API requests into three “phases”: assemble the parameters, make the request, process the response.
+        Then you can assemble the parameters from multiple requests, make only one request, and process the same response multiple times
+        (example based on &lt;a href="https://gitlab.wikimedia.org/toolforge-repos/wd-image-positions/-/blob/b8022cddca/app.py#L697"&gt;&lt;code&gt;load_image()&lt;/code&gt;&lt;/a&gt;):
+      &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;query_params &lt;span class="keyword operator"&gt;=&lt;/span&gt; &lt;span class="function call"&gt;query_default_params&lt;/span&gt;()
+&lt;span class="function call"&gt;image_attribution_query_add_params&lt;/span&gt;(
+    query_params,
+    image_title,
+)
+&lt;span class="function call"&gt;image_size_query_add_params&lt;/span&gt;(
+    query_params,
+    image_title,
+)
+
+query_response &lt;span class="keyword operator"&gt;=&lt;/span&gt; session.&lt;span class="function call"&gt;get&lt;/span&gt;(&lt;span class="keyword operator"&gt;*&lt;/span&gt;&lt;span class="keyword operator"&gt;*&lt;/span&gt;query_params)
+
+attribution &lt;span class="keyword operator"&gt;=&lt;/span&gt; &lt;span class="function call"&gt;image_attribution_query_process_response&lt;/span&gt;(
+    query_response,
+    image_title,
+)
+width, height &lt;span class="keyword operator"&gt;=&lt;/span&gt; &lt;span class="function call"&gt;image_size_query_process_response&lt;/span&gt;(
+    query_response,
+    image_title,
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+        But this is fairly cumbersome,
+        and also requires the calling code to know which requests can be combined and which can’t.
+        We can do better.
+      &lt;/p&gt;
+&lt;p&gt;
+        Because all requests are asynchronous in JavaScript, &lt;!-- please do not @ me about sync XHR --&gt;
+        our &lt;code&gt;request()&lt;/code&gt; function can return a &lt;code&gt;Promise&lt;/code&gt; without immediately making an underlying network request.
+        We can then wait for a very short period
+        (specifically, until the next &lt;a href="https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API/Microtask_guide"&gt;microtask&lt;/a&gt;),
+        and see if any other requests come in during that time;
+        if they do, we check if they’re compatible, and potentially merge them into the pending request.
+        Then, we send the pending request(s),
+        and resolve the associated promises with the response(s).
+      &lt;/p&gt;
+&lt;p&gt;
+        The effect of this is that,
+        when several compatible requests are made within the same JS event loop run,
+        then m3api can merge them automatically.
+        Most often, making several requests within the same JS event loop run looks like a call to &lt;code&gt;Promise.all()&lt;/code&gt; with several requests
+        (see the example below).
+      &lt;/p&gt;
+&lt;p&gt;
+        To determine whether requests are compatible,
+        we need to distinguish between list-type parameters that can be merged,
+        and ones that can’t be.
+        The convention we used in the Wikidata Bridge,
+        and which I reused for m3api,
+        is that mergeable parameters are specified as &lt;code&gt;Set&lt;/code&gt;s,
+        while unmergeable parameters are specified as &lt;code&gt;Array&lt;/code&gt;s.
+        (The reasoning behind this is that, in many other languages, sets are unordered,
+        and when a parameter is mergeable then you probably don’t care about the order the parameters are sent in;
+        conversely, when you care about the order, you probably don’t want another request’s values to be inserted in front of yours.
+        This doesn’t 100% apply in JavaScript because &lt;code&gt;Set&lt;/code&gt;s obey insertion order,
+        but I think it still makes some sense.)
+        So, two requests are compatible if all their parameters either only occur in one request
+        (e.g. one has &lt;code&gt;list=allpages&lt;/code&gt; while the other has &lt;code&gt;meta=siteinfo&lt;/code&gt;),
+        have the same value in both requests
+        (e.g. both have &lt;code&gt;action=query&lt;/code&gt;),
+        or are specified as &lt;code&gt;Set&lt;/code&gt; in both requests.
+        To make creating &lt;code&gt;Set&lt;/code&gt;s more convenient,
+        a &lt;code&gt;set()&lt;/code&gt; helper function is provided,
+        so that e.g. requests with &lt;code&gt;list: set( 'allpages' )&lt;/code&gt; and &lt;code&gt;list: set( 'allusers' )&lt;/code&gt; are compatible.
+      &lt;/p&gt;
+&lt;p&gt;
+        The upshot of this is that the following example code will only make one underlying network request,
+        with &lt;code&gt;siprop=general|statistics&lt;/code&gt;:
+      &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class="keyword"&gt;async&lt;/span&gt; &lt;span class="storage function"&gt;function&lt;/span&gt; &lt;span class="entity name function"&gt;getSiteName&lt;/span&gt;( session ) {
+	&lt;span class="storage type"&gt;const&lt;/span&gt; response &lt;span class="keyword operator"&gt;=&lt;/span&gt; &lt;span class="keyword"&gt;await&lt;/span&gt; session.&lt;span class="function call"&gt;request&lt;/span&gt;( {
+		action: &lt;span class="string"&gt;'query'&lt;/span&gt;,
+		meta: &lt;span class="function call"&gt;set&lt;/span&gt;( &lt;span class="string"&gt;'siteinfo'&lt;/span&gt; ),
+		siprop: &lt;span class="function call"&gt;set&lt;/span&gt;( &lt;span class="string"&gt;'general'&lt;/span&gt; ),
+	} );
+	&lt;span class="keyword"&gt;return&lt;/span&gt; response.query.general.sitename;
+}
+
+&lt;span class="keyword"&gt;async&lt;/span&gt; &lt;span class="storage function"&gt;function&lt;/span&gt; &lt;span class="entity name function"&gt;getSiteEdits&lt;/span&gt;( session ) {
+	&lt;span class="storage type"&gt;const&lt;/span&gt; response &lt;span class="keyword operator"&gt;=&lt;/span&gt; &lt;span class="keyword"&gt;await&lt;/span&gt; session.&lt;span class="function call"&gt;request&lt;/span&gt;( {
+		action: &lt;span class="string"&gt;'query'&lt;/span&gt;,
+		meta: &lt;span class="function call"&gt;set&lt;/span&gt;( &lt;span class="string"&gt;'siteinfo'&lt;/span&gt; ),
+		siprop: &lt;span class="function call"&gt;set&lt;/span&gt;( &lt;span class="string"&gt;'statistics'&lt;/span&gt; ),
+	} );
+	&lt;span class="keyword"&gt;return&lt;/span&gt; response.query.statistics.edits;
+}
+
+&lt;span class="storage type"&gt;const&lt;/span&gt; [ sitename, edits ] &lt;span class="keyword operator"&gt;=&lt;/span&gt; &lt;span class="keyword"&gt;await&lt;/span&gt; &lt;span class="support class promise"&gt;Promise&lt;/span&gt;.&lt;span class="function call"&gt;all&lt;/span&gt;( [
+	&lt;span class="function call"&gt;getSiteName&lt;/span&gt;( session ),
+	&lt;span class="function call"&gt;getSiteEdits&lt;/span&gt;( session ),
+] );&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+        In principle, it’s possible that automatically combining requests will cause bugs in code written by developers who aren’t aware of this m3api feature.
+        (For example, if someone doesn’t use m3api-query,
+        they might use code like &lt;code&gt;response.query.pages[ 0 ]&lt;/code&gt; to access the only page they expect to be present in the response,
+        without realizing that a merged request may have caused further pages to be returned.)
+        However, I hope that this will be rare,
+        thanks to the combination of requests only being combined if they happen within the same JS event loop run
+        and array-type parameters not being eligible for combining.
+        If I get a lot of bug reports about this feature,
+        I may reconsider it for the next major version.
+        (If you want to make absolutely sure that a particular request will not be combined with any other,
+        specify the &lt;code&gt;action&lt;/code&gt; as a single-element array,
+        e.g. &lt;code&gt;action: [ 'query' ]&lt;/code&gt; –
+        every other request will also specify the &lt;code&gt;action&lt;/code&gt; parameter,
+        and they’ll all be incompatible,
+        because arrays are not mergeable.)
+      &lt;/p&gt;
+&lt;h2 id="error-handling"&gt;Error handling&lt;/h2&gt;
+&lt;p&gt;
+        As you might expect, m3api detects errors in the response and throws them
+        (or, if you prefer, it rejects the promise, because all of this is async).
+        As you might also expect, any warnings in the response are detected and, by default, logged to the console via &lt;code&gt;console.warn()&lt;/code&gt;.
+        (I was actually surprised to discover the other day that MediaWiki’s own &lt;code&gt;mw.Api()&lt;/code&gt; doesn’t do this.
+        God knows how many on-wiki gadgets and user scripts use deprecated API parameters without realizing it because the warnings returned by the API go straight to &lt;code&gt;/dev/null&lt;/code&gt;…)
+      &lt;/p&gt;
+&lt;p&gt;
+        m3api also supports transparently handling errors without throwing them.
+        Several errors returned by the API can be handled by retrying the request in some form;
+        m3api’s approach is to retry requests until a certain time limit (by default, 65 seconds) after the initial request has passed –
+        I think this makes more sense than limiting the absolute number of retries, as some other libraries do.
+        (You can change the limit using the &lt;code&gt;maxRetriesSeconds&lt;/code&gt; request option –
+        bots may want to use a much longer limit than interactive applications.)
+        If the response by the API includes a &lt;code&gt;Retry-After&lt;/code&gt; header, m3api will obey it (as long as it’s within said time limit);
+        otherwise, error handlers for different error codes can be configured,
+        which may likewise retry the request.
+        m3api ships error handlers for &lt;code&gt;badtoken&lt;/code&gt; (update the token, then retry),
+        &lt;code&gt;maxlag&lt;/code&gt; and &lt;code&gt;readonly&lt;/code&gt; errors (sleep for an appropriate time period, then retry).
+        The &lt;a href="https://github.com/lucaswerkmeister/m3api-oauth2/"&gt;m3api-oauth2&lt;/a&gt; extension package
+        installs an error handler to refresh expired OAuth 2 access tokens
+        (on Wikimedia wikis, they expire after 4 hours)
+        and then retry the request.
+        These retries are always transparent to the code that made the request.
+      &lt;/p&gt;
+&lt;h2 id="why-you-should-use-it"&gt;Why you should use it&lt;/h2&gt;
+&lt;p&gt;
+        I’m of course biased, but I happen to think it’s a well-designed library, for various reasons including the ones detailed above ;)
+        but I’ll close by mentioning some of the recommendations in the &lt;a href="https://www.mediawiki.org/wiki/API:Etiquette"&gt;API Etiquette&lt;/a&gt;
+        (&lt;a href="https://www.mediawiki.org/w/index.php?title=API:Etiquette&amp;amp;oldid=7556535"&gt;permalink&lt;/a&gt;)
+        and outlining how m3api aligns with them:
+      &lt;/p&gt;
+&lt;dl&gt;
+&lt;dt&gt;request limit&lt;/dt&gt;
+&lt;dd&gt;
+          This is partially up to the developer using m3api, but m3api supports “ask[ing] for multiple items in one request”,
+          both manually by specifying parameters as lists or sets (e.g. &lt;code&gt;titles: set( 'PageA', 'PageB', 'PageC' )&lt;/code&gt;)
+          and automatically by combining requests as explained above.
+          Also, as mentioned in the error handling section,
+          &lt;code&gt;Retry-After&lt;/code&gt; response headers are respected;
+          this isn’t explicitly mentioned on the API Etiquette page, but I’ve heard it’s still considered good bot practice.
+        &lt;/dd&gt;
+&lt;dt&gt;maxlag&lt;/dt&gt;
+&lt;dd&gt;
+          Specifying the maxlag parameter is up to the developer using m3api,
+          but m3api &lt;a href="https://github.com/lucaswerkmeister/m3api/?tab=readme-ov-file#recommendations-for-bots"&gt;recommends it&lt;/a&gt; for bots,
+          and if it is used, then m3api will automatically wait and retry the request if the API returns a maxlag error.
+        &lt;/dd&gt;
+&lt;dt&gt;User-Agent header&lt;/dt&gt;
+&lt;dd&gt;
+          m3api sends a general User-Agent header for itself by default,
+          and also &lt;a href="https://github.com/lucaswerkmeister/m3api/?tab=readme-ov-file#usage-recommendations"&gt;encourages&lt;/a&gt; developers to specify a custom User-Agent header.
+          If developers neglect to specify the &lt;code&gt;userAgent&lt;/code&gt; request option,
+          a warning is logged (by default, to &lt;code&gt;console.warn()&lt;/code&gt;, where it should be relatively visible).
+        &lt;/dd&gt;
+&lt;dt&gt;data formats&lt;/dt&gt;
+&lt;dd&gt;
+          m3api uses the JSON format (of course).
+        &lt;/dd&gt;
+&lt;/dl&gt;
+&lt;p&gt;
+        If you’re already using a different API library or framework,
+        you’re free to continue using it, naturally.
+        But if you’re currently making network requests to the API directly,
+        or if you’re going to start a new project where you need to interact with the API,
+        I encourage you to give m3api a try.
+        And if you use it, please let me know how it’s working for you!
+      &lt;/p&gt;
+
+&lt;/article&gt;</description><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2025/04/12/introducing-m3api/</guid><pubDate>Sat, 12 Apr 2025 00:00:00 GMT</pubDate></item><item><title>Why MediaWiki permanent links aren’t fully permanent</title><link>https://lucaswerkmeister.de/posts/2024/08/14/mediawiki-permalinks/</link><description>&lt;article&gt;
+
+&lt;p&gt;
+&lt;a href="https://en.wikipedia.org/wiki/MediaWiki"&gt;MediaWiki&lt;/a&gt;,
+        the software behind &lt;a href="https://en.wikipedia.org/wiki/Wikipedia"&gt;Wikipedia&lt;/a&gt;
+        and &lt;a href="https://wikiapiary.com/wiki/Main_Page"&gt;many other wikis&lt;/a&gt;,
+        allows visitors to copy a “permanent link” (or “permalink”) of the article they are currently viewing.
+      &lt;/p&gt;
+&lt;p&gt;
+        As &lt;a href="https://en.wikipedia.org/wiki/Help:Permanent_link"&gt;English Wikipedia’s help page on permanent links&lt;/a&gt; notes,
+        these links aren’t fully “permanent”:
+        visiting these links later is not guaranteed to show the exact same content.
+        I thought it would be useful to list some of the different ways in which differences can appear.
+      &lt;/p&gt;
+&lt;aside&gt;
+&lt;p&gt;
+          Please note that I’m mainly focusing on Wikimedia wikis here,
+          and for examples will often refer to Wikipedias in particular;
+          many of these issues will also affect other MediaWiki sites,
+          but there are probably additional ways in which third-party wikis can have permalinks’ contents change
+          (e.g. Fandom / Wikia has tons of custom extensions),
+          and I’m generally not super interested in those.
+          (But if I forgot something relevant to Wikimedia or standard MediaWiki,
+          let me know and I might edit it in.)
+        &lt;/p&gt;
+&lt;/aside&gt;
+&lt;h2&gt;What a permalink is&lt;/h2&gt;
+&lt;p&gt;
+        While the permalink shown in the sidebar (or “tools” menu) contains both the &lt;code&gt;title=&lt;/code&gt; and &lt;code&gt;oldid=&lt;/code&gt; URL parameters
+        (example: &lt;a href="https://en.wikipedia.org/w/index.php?title=Wikimedia_Commons&amp;amp;oldid=1185477778"&gt;https://en.wikipedia.org/w/index.php?title=Wikimedia_Commons&amp;amp;oldid=1185477778&lt;/a&gt;),
+        only the &lt;code&gt;oldid=&lt;/code&gt; is actually required
+        (equivalent example: &lt;a href="https://en.wikipedia.org/w/index.php?oldid=1185477778"&gt;https://en.wikipedia.org/w/index.php?oldid=1185477778&lt;/a&gt;).
+        The value of this parameter is the revision ID of a page,
+        and it tells MediaWiki to use the content of this revision of that page instead of its latest revision.
+        For normal wiki articles, this content is the wikitext (the source code of the article),
+        which is then rendered and shown to the visitor;
+        you can also see the content unrendered by adding &lt;code&gt;&amp;amp;action=raw&lt;/code&gt; to the URL
+        (&lt;a href="https://en.wikipedia.org/w/index.php?oldid=1185477778&amp;amp;action=raw"&gt;example&lt;/a&gt;).
+      &lt;/p&gt;
+&lt;h2&gt;Changes in on-wiki content&lt;/h2&gt;
+&lt;p&gt;
+        Let’s start with the biggest one.
+        Visiting a permalink only loads the content of the page itself as of the revision specified in the URL.
+        Any other &lt;a href="https://en.wikipedia.org/wiki/Help:Template"&gt;templates&lt;/a&gt;,
+        &lt;a href="https://en.wikipedia.org/wiki/Wikipedia:Lua"&gt;Lua/Scribunto modules&lt;/a&gt;,
+        or &lt;a href="https://en.wikipedia.org/wiki/Help:Transclusion"&gt;other transcluded pages&lt;/a&gt;
+        are loaded, parsed / evaluated and shown using their latest revision,
+        not whatever was their latest revision when the permalink’s revision was created.
+        Templates may look and behave very differently from what they used to do;
+        their parameters also may or may not be compatible with the template invocation in the old revision,
+        depending on how the community edited the templates.
+      &lt;/p&gt;
+&lt;p&gt;
+        In fact, it’s not even guaranteed that the page will show the same templates at all.
+        Templates are looked up by their name according to the old revision’s wikitext,
+        but templates can be deleted, recreated, or renamed.
+        For instance, several wikis now have templates like &lt;code&gt;{{Q|Q123}}&lt;/code&gt; and/or &lt;code&gt;{{P|P123}}&lt;/code&gt;
+        to show Wikidata items and/or properties;
+        but in the past, “&lt;code&gt;Q&lt;/code&gt;” or “&lt;code&gt;P&lt;/code&gt;” may have referred to different templates that were later deleted,
+        as e.g. on &lt;a href="https://eo.wikipedia.org/wiki/Specialaĵo:Protokolo?page=Ŝablono%3AP"&gt;Esperanto&lt;/a&gt;,
+        &lt;a href="https://zh.wikipedia.org/wiki/Special:%E6%97%A5%E5%BF%97?page=Template%3AP"&gt;Chinese&lt;/a&gt; or
+        &lt;a href="https://es.wikipedia.org/wiki/Especial:Registro?page=Plantilla%3AQ"&gt;Spanish&lt;/a&gt; Wikipedia.
+        (These are conveniently short names, after all!
+        On English Wikipedia, &lt;code&gt;{{&lt;a href="https://en.wikipedia.org/wiki/Template:P"&gt;P&lt;/a&gt;}}&lt;/code&gt; is still a smiley 🙂)
+      &lt;/p&gt;
+&lt;p&gt;
+        A more niche phenomenon is redlinks (h/t &lt;a href="https://mamot.fr/@pintoch/112953410745774438"&gt;Antonin Delpeuch&lt;/a&gt; for this one).
+        MediaWiki shows internal links to existing pages in blue, and links to pages that don’t exist in red;
+        but when rendering a permalink, this refers to whether the page currently exists,
+        not whether it used to exist when the old revision was saved.
+        (You can actually see this in the &lt;a href="https://en.wikipedia.org/w/index.php?oldid=1185477778"&gt;example permalink from earlier&lt;/a&gt;,
+        where a “not to be confused with” &lt;a href="https://en.wikipedia.org/wiki/Wikipedia:Hatnote"&gt;hatnote&lt;/a&gt; points to a redlink that was evidently deleted in the meantime.)
+      &lt;/p&gt;
+&lt;p&gt;
+        Articles may also be affected by changes in the wiki’s default interface &lt;a href="https://en.wikipedia.org/wiki/Wikipedia:Common.js_and_common.css"&gt;JavaScript and CSS&lt;/a&gt;
+        and default &lt;a href="https://en.wikipedia.org/wiki/Wikipedia:Gadget"&gt;gadgets&lt;/a&gt;,
+        which may interact with page contents.
+        For example, styles for frequently used templates are sometimes moved into &lt;code&gt;common.css&lt;/code&gt; (or out of it),
+        and some templates may rely on gadgets for interactive functionality
+        (like – CW for some medical imagery in the next link – Wikimedia Commons’ &lt;a href="https://commons.wikimedia.org/wiki/Template:Imagestack"&gt;Imagestack&lt;/a&gt;).
+        As with templates, it’s ultimately up to the community whether changes here are backwards compatible or not.
+      &lt;/p&gt;
+&lt;h2&gt;Changes in content on other wikis&lt;/h2&gt;
+&lt;p&gt;
+        Articles can also use content from other wikis,
+        the most prominent example being Wikimedia Commons images
+        (which, thanks to &lt;a href="https://www.mediawiki.org/wiki/InstantCommons"&gt;InstantCommons&lt;/a&gt;,
+        are used not only on Wikimedia wikis but also &lt;em&gt;many&lt;/em&gt; other wikis using MediaWiki).
+        A permalink will show the latest version of an image on Commons,
+        which is not necessarily the same version as was shown when the old revision was saved –
+        although, due to Commons’ &lt;a href="https://commons.wikimedia.org/w/index.php?title=Commons:Don%27t_be_bold&amp;amp;rdfrom=commons:Commons:Be_bold"&gt;don’t be bold&lt;/a&gt; policy,
+        the differences should usually be minor
+        (e.g. a higher-quality version or a slightly improved crop).
+      &lt;/p&gt;
+&lt;p&gt;
+        The image on Commons may also have been deleted in the meantime,
+        e.g. because it turned out to be a copyright violation.
+        In this case, the permalink will show the image as a redlink.
+      &lt;/p&gt;
+&lt;p&gt;
+        There are also other ways for wikis to refer to Commons.
+        Prior to its &lt;a href="https://phabricator.wikimedia.org/T334940"&gt;undeployment due to security issues&lt;/a&gt;,
+        the Graph extension could load data from the Data: namespace on Commons,
+        and show it e.g. as a line chart.
+      &lt;/p&gt;
+&lt;p&gt;
+        And then there’s &lt;a href="https://en.wikipedia.org/wiki/Wikidata"&gt;Wikidata&lt;/a&gt;.
+        Wikipedia editors can, at their discretion, make an article read information from Wikidata;
+        this has a number of benefits,
+        but is also another case where visible parts of an article aren’t part of the article’s source code
+        and viewing old revisions will still pull the latest version from the referenced place.
+      &lt;/p&gt;
+&lt;h2&gt;Changes in the software&lt;/h2&gt;
+&lt;p&gt;
+        Finally, the software which actually renders the old revision’s content is also subject to changes.
+        MediaWiki sees roughly two thousand code changes per release, &lt;!-- git log --oneline --grep='Update git submodules\|Localisation updates\|^Merge' --invert-grep gerrit/REL1_41..gerrit/REL1_42 | wc -l # repeat for a few older REL branch pairs --&gt;
+        and any of them might affect the way an article looks.
+        While the parser is developed fairly conservatively
+        (as nobody wants to break millions of existing pages all at once),
+        there are sometimes breaking changes to it;
+        many of them may be preceded by on-wiki fixes to avoid the breakage
+        (e.g. using the &lt;a href="https://en.wikipedia.org/wiki/Wikipedia:Linter"&gt;Linter&lt;/a&gt; to locate problematic constructs whose behavior will change in future),
+        but this doesn’t help when looking at old revisions.
+      &lt;/p&gt;
+&lt;aside&gt;
+&lt;p&gt;
+          (Side note: Because the parser always produces &lt;em&gt;some&lt;/em&gt; output HTML,
+          and never returns an error like “invalid input wikitext”,
+          arguably any change to its output is a breaking change.
+          After all, even if some new wikitext syntax is intentionally introduced,
+          that syntax will previously have rendered in a different way,
+          and it’s theoretically possible that someone used that syntax and relies on its previous behavior.
+          This is also something that irritates me about Markdown “flavors”
+          that describe themselves as “compatible with” or “strict supersets of” CommonMark.)
+        &lt;/p&gt;
+&lt;/aside&gt;
+&lt;p&gt;
+        Also, similar to the earlier point about the wiki’s default CSS and JS,
+        the old revision may also have relied on CSS or JS included in MediaWiki, which is subject to change.
+        For example, many articles rely on &lt;a href="https://www.mediawiki.org/wiki/Manual:Collapsible_elements"&gt;collapsible elements&lt;/a&gt;
+        (which is an intentional feature offered by MediaWiki which has stayed very stable so far),
+        and many pages (help and project pages more so than articles, I believe)
+        rely or relied on styles from the OOUI or MediaWiki UI interface libraries,
+        a practice that is &lt;a href="https://phabricator.wikimedia.org/T360010"&gt;increasingly discouraged&lt;/a&gt;
+        as these libraries are being phased out in favor of Codex
+        (though &lt;a href="https://phabricator.wikimedia.org/T355242"&gt;the replacement is not yet clear&lt;/a&gt;).
+      &lt;/p&gt;
+&lt;h2&gt;Now what?&lt;/h2&gt;
+&lt;p&gt;
+        If you want to create a new link to some wiki content as you currently see it:
+        you can use a permalink as offered by MediaWiki (it’s a pretty “lightweight” solution),
+        but if you want to be absolutely sure that everyone else will see the same content,
+        I believe the only way to do that and avoid all the issues here
+        is to grab a snapshot of the &lt;em&gt;rendered&lt;/em&gt; wiki content and distribute that.
+        You can do this via a trusted intermediary,
+        such as the &lt;a href="https://en.wikipedia.org/wiki/Internet_Archive"&gt;Internet Archive&lt;/a&gt;’s &lt;a href="https://en.wikipedia.org/wiki/Wayback_Machine"&gt;Wayback Machine&lt;/a&gt;,
+        or you can save the page yourself.
+      &lt;/p&gt;
+&lt;p&gt;
+        If you’re looking at a permalink that you found somewhere else,
+        I think it’s worth keeping in mind that there are some caveats to it,
+        but 99% of the time it’s fine –
+        in practice, I think most of the issues listed here are more theoretical than practical concerns.
+        If you really want to be sure you’re seeing a page as it originally appeared,
+        you can try to find a snapshot on the Wayback Machine or another web archiving site.
+      &lt;/p&gt;
+&lt;p&gt;
+        There is also a proposal for a &lt;a href="https://www.mediawiki.org/wiki/User:Ainali/Wiki_Timeslicer"&gt;Wiki Timeslicer&lt;/a&gt; tool which would bypass some of these problems.
+        (Personally, I’m skeptical how feasible it is, to be honest.
+        But it probably is possible to improve on MediaWiki’s own functionality, at least.)
+      &lt;/p&gt;
+
+&lt;/article&gt;</description><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2024/08/14/mediawiki-permalinks/</guid><pubDate>Wed, 14 Aug 2024 00:00:00 GMT</pubDate></item><item><title>Wikimedia Hackathon 2024 recap</title><link>https://lucaswerkmeister.de/posts/2024/05/15/wikimedia-hackathon-2024/</link><description>&lt;article&gt;
+
+&lt;p&gt;
+        The &lt;a href="https://www.mediawiki.org/wiki/Special:MyLanguage/Wikimedia_Hackathon_2024"&gt;Wikimedia Hackathon 2024&lt;/a&gt;
+        took place from May 3 to 5 in Tallinn, Estonia,
+        and like &lt;a href="https://lucaswerkmeister.de/posts/2023/06/03/wikimedia-hackathon-2023/"&gt;last year&lt;/a&gt; I was one of the participants
+        and want to write a recap blog post.
+      &lt;/p&gt;
+&lt;h2&gt;Major projects&lt;/h2&gt;
+&lt;p&gt;
+        I came to the Hackathon with two “major” ideas for things to work on this year,
+        and switched between both of them frequently
+        (one on the work laptop, one on the private laptop).
+        I think this worked well for me:
+        if I got stuck on something in one project,
+        or had to wait for someone else to react / respond,
+        I could switch to the other project and continue working there.
+      &lt;/p&gt;
+&lt;p&gt;
+        The first project was &lt;a href="https://phabricator.wikimedia.org/T231755"&gt;T231755: Local language name should be translatable in translatewiki.net&lt;/a&gt;.
+        The cldr extension contains many language names in PHP files,
+        and while they’re theoretically open to contributions,
+        it’s difficult for volunteers to suggest changes to those files
+        (they have to find their way around Git and Gerrit).
+        It would be much more convenient if they were defined as i18n messages
+        that could be translated on &lt;a href="https://translatewiki.net/"&gt;translatewiki.net&lt;/a&gt; instead.
+        Progress on this project mainly consisted of discussing things with other people;
+        I also wrote some code to explore the existing data (which wasn’t merged),
+        and uploaded or reviewed some adjacent cldr patches.
+        I hope to be able to continue working on this project later.
+      &lt;/p&gt;
+&lt;p&gt;
+        The second project, &lt;a href="https://phabricator.wikimedia.org/T363626"&gt;T363626: Make Wikidata Image Positions tool translatable on translatewiki.net&lt;/a&gt;,
+        saw more tangible progress (in fact it’s mostly done).
+        I had already been working on extracting some i18n code from my Wikidata Lexeme Forms tool,
+        which has been translatable for a while,
+        into a library that other tools can use as well;
+        during the Hackathon I made enough progress that the Wikidata Image Positions tool can now use this code as well.
+        (It’s not a real library yet, I still need to finish that.)
+        The first set of translations in about half a dozen languages
+        was already exported from translatewiki.net and deployed on Toolforge during the Hackathon,
+        which was great; since then, even more translations have come in.
+      &lt;/p&gt;
+&lt;h2&gt;Minor projects&lt;/h2&gt;
+&lt;p&gt;
+        I helped Amir Aharoni write two Wikidata Lexeme Forms templates for Hebrew verbs,
+        and deployed them to the tool
+        (&lt;a href="https://lexeme-forms.toolforge.org/template/hebrew-verb-paal/"&gt;pa'al&lt;/a&gt;,
+        &lt;a href="https://lexeme-forms.toolforge.org/template/hebrew-verb-nifal/"&gt;nif'al&lt;/a&gt;).
+        Since then, we’ve brought the total number to seven,
+        adding &lt;a href="https://lexeme-forms.toolforge.org/template/hebrew-verb-piel/"&gt;pi'el&lt;/a&gt;,
+        &lt;a href="https://lexeme-forms.toolforge.org/template/hebrew-verb-pual/"&gt;pu'al&lt;/a&gt;,
+        &lt;a href="https://lexeme-forms.toolforge.org/template/hebrew-verb-hifil/"&gt;hif'il&lt;/a&gt;,
+        &lt;a href="https://lexeme-forms.toolforge.org/template/hebrew-verb-hufal/"&gt;huf'al&lt;/a&gt;,
+        and &lt;a href="https://lexeme-forms.toolforge.org/template/hebrew-verb-hitpael/"&gt;hitpa'el&lt;/a&gt;.
+      &lt;/p&gt;
+&lt;p&gt;
+        I fulfilled two edit requests by other Hackathon participants for gadgets on Wikimedia Commons:
+        one &lt;a href="https://commons.wikimedia.org/wiki/MediaWiki_talk:Gadget-Stockphoto.js#Some_updates"&gt;for Gadget-Stockphoto&lt;/a&gt;
+        and one &lt;a href="https://commons.wikimedia.org/wiki/MediaWiki_talk:Gadget-purgetab.js#Translated_label"&gt;for Gadget-purgetab&lt;/a&gt;.
+      &lt;/p&gt;
+&lt;p&gt;
+        There were probably some other minor projects as well,
+        but I don’t remember them anymore ^^
+      &lt;/p&gt;
+&lt;h2&gt;Social things&lt;/h2&gt;
+&lt;p&gt;
+        This is really the most important part of the hackathon –
+        talking to people, meeting folks you’ve never seen in person before,
+        hearing what’s going on in their lives, discussing upcoming projects,
+        all sorts of fun stuff.
+        I don’t really know what to write about it here, though.
+      &lt;/p&gt;
+&lt;p&gt;
+        One particular social event was the &lt;a href="https://phabricator.wikimedia.org/T363870"&gt;Wikimedia Cuteness Association meetup&lt;/a&gt;:
+        several people who had brought plushies, cute companions or similar things to the Hackathon
+        met up in one of the rooms and took some group photos
+        (&lt;a href="https://commons.wikimedia.org/wiki/Category:Wikimedia_Cuteness_Association_at_Wikimedia_Hackathon_2024"&gt;Commons category&lt;/a&gt;).
+        It didn’t take very long, but I’m glad we did it :)
+      &lt;/p&gt;
+&lt;p&gt;
+        Another social event was &lt;a href="https://phabricator.wikimedia.org/T364009"&gt;Juggling, Rubik’s cubes and other physical fun&lt;/a&gt;,
+        continuing a tradition from 2019 and 2023.
+        I couldn’t really explain to you why juggling and cubing fits together,
+        but it seems to work alright as a fun hour to hang out ^^
+      &lt;/p&gt;
+&lt;h2&gt;Travel&lt;/h2&gt;
+&lt;p&gt;
+        I’m very happy that this year
+        I was able to travel to and from the Hackathon without flying;
+        I took an overnight train from Berlin to Stockholm
+        (fun fact: in 2019, for Wikimania, just getting to Stockholm by train took over 24 hours with six changeovers)
+        and an overnight ferry from Stockholm to Tallinn (Tuesday evening to Thursday morning)
+        and then the reverse on the way back (Monday evening to Wednesday morning).
+        As usual, I wrote about my travel in &lt;a href="https://wikis.world/@LucasWerkmeister/112361884408412586"&gt;a Mastodon thread&lt;/a&gt;
+        (only one long thread for travel there + Hackathon + travel back this time).
+      &lt;/p&gt;
+
+&lt;/article&gt;</description><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2024/05/15/wikimedia-hackathon-2024/</guid><pubDate>Wed, 15 May 2024 00:00:00 GMT</pubDate></item><item><title>Wikimedia Hackathon 2023 recap</title><link>https://lucaswerkmeister.de/posts/2023/06/03/wikimedia-hackathon-2023/</link><description>&lt;article&gt;
+
+&lt;p&gt;
+        Two weeks ago, I participated in the &lt;a href="https://www.mediawiki.org/wiki/Wikimedia_Hackathon_2023"&gt;Wikimedia Hackathon 2023&lt;/a&gt;.
+        I had a wonderful time, and in this blog post I’m trying to capture some of the experience.
+      &lt;/p&gt;
+&lt;p&gt;
+        As is usual for me, the hackathon went fairly haphazardly:
+        I had come with some vague ideas for topics I could potentially work on,
+        which I didn’t end up touching in the slightest,
+        and instead interacted with lots of people and did various larger and smaller things along the way.
+        I like it this way, but it means you’ll just have to live with this blog post not having a lot of structure :)
+      &lt;/p&gt;
+&lt;p&gt;
+        One of my first achievements was to get a Gerrit change merged:
+        I had uploaded &lt;a href="https://gerrit.wikimedia.org/r/c/mediawiki/core/+/919386"&gt;Add &lt;code&gt;Authorization&lt;/code&gt; to default &lt;code&gt;$wgAllowedCorsHeaders&lt;/code&gt;&lt;/a&gt; the previous week,
+        and found some people at the hackathon to review it:
+        &lt;a href="https://en.wikipedia.org/wiki/User:Reedy"&gt;Reedy&lt;/a&gt; and &lt;a href="https://www.mediawiki.org/wiki/User:Legoktm"&gt;Legoktm&lt;/a&gt;.
+        The intention here was to make it possible to have purely client-side (in-browser) web apps
+        that interact with Wikimedia wikis using OAuth 2.0 (e.g. making edits),
+        which requires making CORS-enabled authenticated requests.
+        Unfortunately, this still doesn’t work;
+        in addition to the Gerrit change mentioned above,
+        we probably need to tweak the way the API processes the &lt;code&gt;origin&lt;/code&gt; parameter a little bit –
+        I’ll keep looking into &lt;a href="https://phabricator.wikimedia.org/T322944"&gt;this issue&lt;/a&gt;.
+        (You can find the &lt;a href="https://github.com/lucaswerkmeister/m3api-examples/tree/main/webapp-clientside-vite-guestbook"&gt;example web app&lt;/a&gt; I’m trying to make work on GitHub already.)
+      &lt;/p&gt;
+&lt;p&gt;
+        This interaction also had an unexpected additional outcome.
+        Both Reedy and Legoktm were reviewing the change in person, not from their own laptops,
+        so Legoktm wanted to +2 it from my account – but my volunteer account didn’t have +2 rights yet.
+        He suggested / asked that I make a request to get those rights, which I did,
+        and &lt;a href="https://phabricator.wikimedia.org/T337014"&gt;+2 in mediawiki/ for Lucas Werkmeister [volunteer]&lt;/a&gt; quickly started to rack up support tokens.
+        A week and a half later, Taavi made the change, so I can now merge MediaWiki changes as volunteer \o/
+      &lt;/p&gt;
+&lt;p&gt;
+        Another thing I did was play with the new Toolforge build service, or build packs beta (&lt;a href="https://phabricator.wikimedia.org/T337040"&gt;T337040&lt;/a&gt;).
+        This is a promising new way to deploy Toolforge tools, in a way that doesn’t rely on the shared NFS file system, &lt;!-- no, this isn’t RAS syndrome. it’s a particular instance of the file system using the NFS technology --&gt;
+        and with more flexibility for developers.
+        (The main reason I’m interested in it is that it should let me finally move the
+        &lt;a href="https://wd-shex-infer.toolforge.org/"&gt;Wikidata Shape Expressions Inference tool&lt;/a&gt; away from the Grid Engine,
+        but that will require support for multiple languages in the same image first,
+        which the build service doesn’t have yet.)
+        I made a &lt;a href="https://gitlab.wikimedia.org/toolforge-repos/lucaswerkmeister-wmde-test"&gt;simple Python/Flask tool&lt;/a&gt;
+        and then experimented with how to move it to the build service without losing the configuration file;
+        I also filed some related bugs and updated the documentation along the way.
+        The &lt;a href="https://phabricator.wikimedia.org/T336055"&gt;build service session&lt;/a&gt; later at the hackathon was also very interesting.
+        (At that session, I realized that some of my earlier documentation edits might have been a bit misguided:
+        I was working under the assumption that you’d still have the tool’s source code cloned in &lt;code&gt;~/www/python/src/&lt;/code&gt;,
+        only realizing at the session on Sunday that a tool that’s fully migrated to build packs doesn’t really need this at all –
+        the source code is cloned from version control at image build time, it doesn’t need to exist on NFS at runtime –
+        so the config file should maybe be somewhere else, e.g. directly in the tool’s home directory.)
+      &lt;/p&gt;
+&lt;p&gt;
+        I also unexpectedly worked on two issues where Wikibase was broken:
+        &lt;a href="https://phabricator.wikimedia.org/T336956"&gt;the mobile version of Wikidata was unintentionally loading desktop-only modules&lt;/a&gt;,
+        and &lt;a href="https://phabricator.wikimedia.org/T337081"&gt;interlanguage links couldn’t be added from client wikis&lt;/a&gt;.
+      &lt;/p&gt;
+&lt;p&gt;
+        I contributed some very minor fixes to tools where I noticed tiny issues as they were mentioned in sessions:
+        &lt;a href="https://phabricator.wikimedia.org/T337118"&gt;Toolhub had some HTTP links&lt;/a&gt;,
+        and &lt;a href="https://gitlab.wikimedia.org/toolforge-repos/versions/-/merge_requests/3"&gt;Versions was linking to its source code in the wrong place&lt;/a&gt;.
+      &lt;/p&gt;
+&lt;p&gt;
+        I held two presentations:
+        &lt;a href="https://phabricator.wikimedia.org/T331276"&gt;Cool new things in MediaWiki code&lt;/a&gt;
+        and &lt;a href="https://phabricator.wikimedia.org/T331275"&gt;Cool new things in PHP&lt;/a&gt;.
+        In both cases, the idea is basically that, as a developer working on MediaWiki code,
+        you might have missed some of the cool things that happened recently,
+        so here’s a summary to catch you up.
+        I designed the slides
+        (&lt;a href="https://upload.wikimedia.org/wikipedia/commons/5/54/Cool_new_things_in_MediaWiki_code_%E2%80%93_Wikimedia_Hackathon_2023.pdf"&gt;MediaWiki&lt;/a&gt;,
+        &lt;a href="https://upload.wikimedia.org/wikipedia/commons/b/b1/Cool_new_things_in_PHP_%E2%80%93_Wikimedia_Hackathon_2023.pdf"&gt;PHP&lt;/a&gt;)
+        so that they’re useful on their own
+        (with additional slides to summarize what I was saying on the day),
+        so feel free to take a look :)
+      &lt;/p&gt;
+&lt;p&gt;
+        (Side note on the presentations:
+        I had thought about doing a practice run before the first presentation, but decided against it.
+        It turned out that it probably would’ve helped a lot –
+        I talked way too fast and was done in half the time I had been given, which was quite unfortunate.
+        I did a few practice runs for the second presentation and that one went much better.)
+      &lt;/p&gt;
+&lt;p&gt;
+        (Second side note: given that we recently &lt;a href="https://phabricator.wikimedia.org/T178356"&gt;raised the JS syntax requirement from ES5 to ES6&lt;/a&gt;,
+        I’d really love to have a similar presentation or overview of all the new things we can now use in JS:
+        I know a lot of the features, but I don’t know which can be used now (e.g. &lt;code&gt;class&lt;/code&gt; syntax)
+        and which still can’t be used (e.g. &lt;code&gt;async&lt;/code&gt;/&lt;code&gt;await&lt;/code&gt;).
+        But as far as I know, nobody’s put anything like this together yet.)
+      &lt;p&gt;
+        Of course, a huge part of the hackathon is meeting and getting to know people
+        (whether it’s people I’ve met before, people I’ve only interacted with online but never met in person, or people I didn’t know at all),
+        but I don’t know how to put that into this blog post:
+        if I started to list them, I’d worry about forgetting anyone.
+        One thing I can mention, because it was closer to a planned session than just a random hallway meetup,
+        is that I sat together with &lt;a href="https://en.wikipedia.org/wiki/User:Novem_Linguae"&gt;Novem Linguae&lt;/a&gt; and &lt;a href="https://meta.wikimedia.org/wiki/User:Gopavasanth"&gt;Gopa Vasanth&lt;/a&gt;
+        to play with some Rubik’s cubes and juggling equipment.
+        Otherwise, please know that if we talked at the hackathon, I was very happy to meet you!
+      &lt;/p&gt;
+&lt;p&gt;
+        Towards the end of the hackathon,
+        because the topic of Kubernetes probes on Toolforge had been mentioned in a session,
+        I started to work again on a project I’d tried to do a few years ago already:
+        &lt;a href="https://phabricator.wikimedia.org/T337182"&gt;make &lt;code&gt;webservice restart&lt;/code&gt; do a graceful restart&lt;/a&gt;.
+        My &lt;a href="https://gerrit.wikimedia.org/r/c/operations/software/tools-webservice/+/721989/"&gt;previous patch for this&lt;/a&gt;
+        had been rejected due to excessive complexity,
+        and the underlying code had also changed in the meantime,
+        so I tried to find a new approach to implement the same overall behavior.
+        Happily, my &lt;a href="https://gerrit.wikimedia.org/r/c/operations/software/tools-webservice/+/921620/"&gt;new implementation&lt;/a&gt;
+        let us remove a lot more code than was added,
+        and was merged soon afterwards;
+        once it’s deployed on Toolforge,
+        I can finally go back from running &lt;code&gt;kubectl rollout restart deployment &lt;var&gt;lexeme-forms&lt;/var&gt;&lt;/code&gt; to just &lt;code&gt;webservice restart&lt;/code&gt;.
+      &lt;/p&gt;
+&lt;p&gt;
+        I’ve also &lt;a href="https://wikis.world/@LucasWerkmeister/110317538243683824"&gt;posted extensively on Mastodon&lt;/a&gt;
+        about my travel surrounding the hackathon, if you’re interested in that.
+        (You can click the little “eye” icon in the upper right corner to expand all the content warnings.
+        Note that Mastodon is apparently not always loading the full thread,
+        so you might have to click on the “last” post a few times to load more.
+        The thread isn’t over until you reach the &lt;a href="https://wikis.world/@LucasWerkmeister/110426553321621250"&gt;recap posts&lt;/a&gt;.)
+        Otherwise, I think that’s it!
+      &lt;/p&gt;
+
+&lt;/p&gt;&lt;/article&gt;</description><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2023/06/03/wikimedia-hackathon-2023/</guid><pubDate>Sat, 03 Jun 2023 00:00:00 GMT</pubDate></item><item><title>MediaWiki Lua for non-Lua programmers</title><link>https://lucaswerkmeister.de/posts/2022/03/20/mw-lua-for-non-lua-programmers/</link><description>&lt;article&gt;
+
+&lt;p&gt;
+        This is a blog post to “onboard” people to Lua programming for MediaWiki
+        (e.g. on Wikipedias or Wikimedia Commons).
+        The target audience is people who already know some programming,
+        but aren’t very familiar with Lua specifically.
+        The goal is not that you’ll be a professional Lua programmer,
+        but that you’ll be aware of some of the more important aspects,
+        and be able to write some useful Lua code with a good portion of trial-and-error and some googling.
+        I’ll be comparing Lua to several other programming languages,
+        in the hope that you’re familiar enough with at least some of them to understand what I mean.
+      &lt;/p&gt;
+&lt;h2&gt;Some syntax&lt;/h2&gt;
+&lt;p&gt;
+        No semicolons.
+        No braces – blocks are usually introduced by a relevant keyword
+        (e.g. &lt;code&gt;function name(args)&lt;/code&gt;, &lt;code&gt;if cond then&lt;/code&gt;)
+        and always end with the keyword &lt;code&gt;end&lt;/code&gt;.
+        Strings concatenate with &lt;code class="example"&gt;..&lt;/code&gt;,
+        not &lt;code class="counterexample"&gt;.&lt;/code&gt; like in PHP/Perl or &lt;code class="counterexample"&gt;+&lt;/code&gt; like in Java(Script)/Python.
+        The not-equal operator is &lt;code class="example"&gt;~=&lt;/code&gt;,
+        not &lt;code class="counterexample"&gt;!=&lt;/code&gt; like in most other languages.
+        Comments begin with &lt;code class="example"&gt;--&lt;/code&gt;, like in Haskell;
+        &lt;code class="counterexample"&gt;#&lt;/code&gt; (PHP, Perl, Python) is the length operator instead,
+        &lt;code class="counterexample"&gt;//&lt;/code&gt; and &lt;code class="counterexample"&gt;/* */&lt;/code&gt; (C, C++, Java, JS) are syntax errors.
+      &lt;/p&gt;
+&lt;p&gt;
+        Local variables are declared with the keyword &lt;code&gt;local&lt;/code&gt;,
+        otherwise all variables are global (even inside a function!) –
+        in other words, you’ll want to write &lt;code&gt;local&lt;/code&gt; a lot of the time.
+        (If you test your module using &lt;a href="https://en.wikipedia.org/wiki/Module:ScribuntoUnit"&gt;ScribuntoUnit&lt;/a&gt;,
+        it will yell at you if you forgot a &lt;code&gt;local&lt;/code&gt; somewhere and accidentally leaked a global variable.)
+      &lt;/p&gt;
+&lt;h2&gt;Tables&lt;/h2&gt;
+&lt;p&gt;
+&lt;strong&gt;Tables&lt;/strong&gt; are a fairly fundamental data structure in Lua.
+        They’re similar to arrays in PHP,
+        in that they’re a single data structure that fulfills two purposes which many other languages have as separate data structures:
+        &lt;strong&gt;lists&lt;/strong&gt;/arrays/vectors, and &lt;strong&gt;maps&lt;/strong&gt;/dictionaries/hashes.
+        In Lua as in PHP, a list is just a map with sequential integer keys;
+        unlike in PHP and most other languages, though, &lt;strong&gt;list indexes start from 1&lt;/strong&gt;, not 0.
+        (Nothing stops you from using 0 as an index manually, but it will make everything more confusing.
+        The syntax &lt;code&gt;{ "first", "last" }&lt;/code&gt; creates a table using indexes 1 and 2, not 0 and 1.)
+      &lt;/p&gt;
+&lt;p&gt;
+        Unlike in JavaScript and PHP, and more like in Python and some other languages,
+        table keys (indexes) are not limited to strings or numbers:
+        any other value, including a table, can be used as a key.
+        That said, numbers and strings are more common, and strings have shortcut syntax:
+        &lt;code&gt;someTable.someKey&lt;/code&gt; is equivalent to &lt;code&gt;someTable["someKey"]&lt;/code&gt;.
+      &lt;/p&gt;
+&lt;p&gt;
+        Tables also fulfill the role of &lt;strong&gt;objects&lt;/strong&gt;,
+        including methods, which we’ll talk about later.
+        There’s no special syntax to define classes or create instances of a class.
+        There are “metatables”, which can customize various behavior of a table,
+        kind of like the prototype of an object in JavaScript,
+        but I’ll just mention that here and let you look it up if you think you need it,
+        since I don’t think it usually comes up in normal module programming.
+      &lt;/p&gt;
+&lt;p&gt;Here’s an example table:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class="keyword"&gt;local&lt;/span&gt; someTable &lt;span class="keyword operator"&gt;=&lt;/span&gt; {
+    &lt;span class="comment"&gt;-- normalKey: "normalValue" in JavaScript,&lt;/span&gt;
+    &lt;span class="comment"&gt;-- i.e. uses the string "normalKey" as the key&lt;/span&gt;
+    normalKey &lt;span class="keyword operator"&gt;=&lt;/span&gt; &lt;span class="string"&gt;"normalValue"&lt;/span&gt;,
+    &lt;span class="comment"&gt;-- "otherKey": "otherValue" in Python&lt;/span&gt;
+    &lt;span class="comment"&gt;-- [ "otherKey" ]: "otherValue" in JavaScript&lt;/span&gt;
+    &lt;span class="comment"&gt;-- ("otherKey" can be any expression)&lt;/span&gt;
+    [ &lt;span class="string"&gt;"otherKey"&lt;/span&gt; ] &lt;span class="keyword operator"&gt;=&lt;/span&gt; &lt;span class="string"&gt;"otherValue"&lt;/span&gt;,
+    &lt;span class="comment"&gt;-- [ "a", "b", "c" ] in Python, JavaScript, etc.&lt;/span&gt;
+    &lt;span class="string"&gt;"a"&lt;/span&gt;, &lt;span class="string"&gt;"b"&lt;/span&gt;, &lt;span class="string"&gt;"c"&lt;/span&gt;, &lt;span class="comment"&gt;-- implicit indexes 1, 2, 3&lt;/span&gt;
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+        For more information on tables, including a longer syntax example (scroll down a bit),
+        see the &lt;a href="https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Scribunto/Lua_reference_manual#table"&gt;Scribunto Lua reference manual § table&lt;/a&gt;.
+      &lt;/p&gt;
+&lt;h2&gt;nil&lt;/h2&gt;
+&lt;p&gt;
+&lt;code&gt;nil&lt;/code&gt; is Lua’s version of “null/none/nothing”. (Like in Lisp!)
+        For example, it’s what you get when accessing a table key that doesn’t exist.
+        (Incidentally, there’s actually no syntax to delete a table entry –
+        you just set it to &lt;code&gt;nil&lt;/code&gt; instead: &lt;code&gt;someTable.someKey = nil&lt;/code&gt;.)
+      &lt;/p&gt;
+&lt;h2&gt;Functions&lt;/h2&gt;
+&lt;p&gt;
+        Unlike in most other languages, &lt;strong&gt;functions can return multiple values&lt;/strong&gt;.
+        A function can &lt;code&gt;return "first", "second", "third"&lt;/code&gt;,
+        and a caller can assign &lt;code&gt;local a, b, c = someFunction()&lt;/code&gt;,
+        and &lt;code&gt;a&lt;/code&gt; will be &lt;code&gt;"first"&lt;/code&gt;, &lt;code&gt;b&lt;/code&gt; will be &lt;code&gt;"second"&lt;/code&gt;, and &lt;code&gt;c&lt;/code&gt; will be &lt;code&gt;"third"&lt;/code&gt;.
+        (Yes, you can emulate this in other languages by returning a list, don’t @ me.)
+        If you’re just writing your own code, you can of course ignore this,
+        but you should be aware of it when interacting with other people’s code,
+        and you may also find that it’s useful for you.
+      &lt;/p&gt;
+&lt;p&gt;
+        If a function returns more values than a caller is interested in, the extra values are dropped.
+        This means that you can use this feature to return additional / auxiliary information,
+        and callers who aren’t interested in it can just write &lt;code&gt;local mainResult = yourFunction()&lt;/code&gt;
+        and ignore whatever else it happens to return.
+        If a function returns &lt;em&gt;fewer&lt;/em&gt; values than a caller asked for –
+        &lt;code&gt;local first, second, third = functionReturningOneValue()&lt;/code&gt; –
+        then the other values are set to &lt;code&gt;nil&lt;/code&gt;.
+      &lt;/p&gt;
+&lt;p&gt;
+        You can also define functions in a table,
+        in a way that I haven’t seen in a lot of other languages,
+        but actually find very natural and convenient:
+      &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class="storage function"&gt;function&lt;/span&gt; &lt;span class="entity name function"&gt;someTable.someFunction&lt;/span&gt;() ... &lt;span class="keyword"&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This is exactly the same as:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;someTable.someFunction &lt;span class="keyword operator"&gt;=&lt;/span&gt; &lt;span class="keyword"&gt;function&lt;/span&gt;() ... &lt;span class="keyword"&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+        But nicer to read, since &lt;code&gt;someTable.someFunction()&lt;/code&gt; matches how the function will be called.
+        This also leads us nicely into our next topic.
+      &lt;/p&gt;
+&lt;h2&gt;Methods&lt;/h2&gt;
+&lt;p&gt;
+        As we’ve just seen, you can have functions inside a table,
+        and call those functions using the &lt;code&gt;.&lt;/code&gt; syntax familiar from many other languages.
+        However, these functions don’t automatically have access to the surrounding table.
+        For that, Lua has a mechanism kind of reminiscent of Python,
+        in that you’ll use the name &lt;code&gt;self&lt;/code&gt; to identify that surrounding table
+        (what many other languages call &lt;code&gt;this&lt;/code&gt;).
+        However, you don’t define &lt;code&gt;self&lt;/code&gt; as the first parameter of the method,
+        like you would in Python (&lt;code&gt;def some_method(self, other_param)&lt;/code&gt;);
+        instead, &lt;em&gt;you define and call the method with a colon instead of a period&lt;/em&gt;:
+      &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class="storage function"&gt;function&lt;/span&gt; &lt;span class="entity name function"&gt;someTable:someMethod&lt;/span&gt;(param1, param2)
+    &lt;span class="keyword"&gt;return&lt;/span&gt; self.something &lt;span class="keyword operator"&gt;+&lt;/span&gt; param1 &lt;span class="keyword operator"&gt;+&lt;/span&gt; param2
+&lt;span class="keyword"&gt;end&lt;/span&gt;
+
+&lt;span class="keyword"&gt;local&lt;/span&gt; result &lt;span class="keyword operator"&gt;=&lt;/span&gt; someTable:someMethod(arg1, arg2)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This is exactly equivalent to:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class="comment"&gt;-- do not write code like this, this is for demonstration only&lt;/span&gt;
+&lt;span class="storage function"&gt;function&lt;/span&gt; &lt;span class="entity name function"&gt;someTable.someMethod&lt;/span&gt;(self, param1, param2)
+    &lt;span class="keyword"&gt;return&lt;/span&gt; self.something &lt;span class="keyword operator"&gt;+&lt;/span&gt; param1 &lt;span class="keyword operator"&gt;+&lt;/span&gt; param2
+&lt;span class="keyword"&gt;end&lt;/span&gt;
+
+&lt;span class="keyword"&gt;local&lt;/span&gt; result &lt;span class="keyword operator"&gt;=&lt;/span&gt; someTable.someMethod(someTable, arg1, arg2)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+        When defining a method, the colon is syntactic sugar for a first &lt;code&gt;self&lt;/code&gt; parameter;
+        when calling it, it’s syntactic sugar for passing in the table as the first argument.
+        (In theory, you can mix and match this,
+        and colon-call non-colon-defined methods or vice versa,
+        but that will probably just result in confusion.)
+        When writing Lua, it’s important to get into a habit of using table members the right way,
+        which is usually indicated in the relevant documentation.
+        For instance, &lt;a href="https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Scribunto/Lua_reference_manual#Frame_object"&gt;frame objects&lt;/a&gt;
+        have &lt;code&gt;frame&lt;strong&gt;.&lt;/strong&gt;args&lt;/code&gt; but &lt;code&gt;frame&lt;strong&gt;:&lt;/strong&gt;getParent()&lt;/code&gt; –
+        the arguments are a normal table member, the parent frame is a method.
+        &lt;code class="example"&gt;frame&lt;strong&gt;:&lt;/strong&gt;getParent()&lt;strong&gt;.&lt;/strong&gt;args&lt;/code&gt; correctly gets the parent frame args (assuming there is a parent frame!);
+        &lt;code class="counterexample"&gt;frame&lt;strong&gt;.&lt;/strong&gt;getParent()&lt;/code&gt; is wrong,
+        and &lt;code class="counterexample"&gt;frame&lt;strong&gt;:&lt;/strong&gt;getParent()&lt;strong&gt;:&lt;/strong&gt;args&lt;/code&gt; is a syntax error.
+      &lt;/p&gt;
+&lt;h2&gt;Named arguments&lt;/h2&gt;
+&lt;p&gt;
+        When calling a function with a single table literal argument,
+        you can omit the surrounding parentheses:
+        &lt;code&gt;func{...}&lt;/code&gt; means the same as &lt;code&gt;func({...})&lt;/code&gt;.
+        Some methods in MediaWiki are intended to be called like this,
+        emulating named arguments in some other languages:
+      &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class="keyword"&gt;local&lt;/span&gt; wikitext &lt;span class="keyword operator"&gt;=&lt;/span&gt; frame:expandTemplate{
+    title &lt;span class="keyword operator"&gt;=&lt;/span&gt; &lt;span class="string"&gt;'Some template'&lt;/span&gt;,
+    args &lt;span class="keyword operator"&gt;=&lt;/span&gt; {
+        &lt;span class="string"&gt;'first'&lt;/span&gt;,
+        &lt;span class="string"&gt;'second'&lt;/span&gt;,
+        other &lt;span class="keyword operator"&gt;=&lt;/span&gt; &lt;span class="string"&gt;'named'&lt;/span&gt;,
+    },
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This would be equivalent to &lt;code&gt;{{Some template |first |second |other=named}}&lt;/code&gt;.&lt;/p&gt;
+&lt;h2&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;
+        This was just an overview of some more noteworthy aspects of Lua.
+        For a more thorough introduction,
+        including more details on using Lua in MediaWiki specifically,
+        see the &lt;a href="https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Scribunto/Lua_reference_manual"&gt;Scribunto Lua reference manual&lt;/a&gt;:
+        it has a lot of information, and is also available in several other languages.
+      &lt;/p&gt;
+
+&lt;/article&gt;</description><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2022/03/20/mw-lua-for-non-lua-programmers/</guid><pubDate>Sun, 20 Mar 2022 00:00:00 GMT</pubDate></item><item><title>Building a Wikidata Tool – Behind the Scenes</title><link>https://lucaswerkmeister.de/posts/2019/01/04/speedpatrolling/</link><description>&lt;article&gt;
+
+&lt;p&gt;
+        At &lt;a href="http://www.wikidata.org/entity/Q60178200"&gt;35C3&lt;/a&gt;, I held a one-hour presentation
+        (&lt;a href="https://cfp.verschwoerhaus.de/35c3/talk/XRQNHR/"&gt;talk page&lt;/a&gt;, &lt;a href="https://commons.wikimedia.org/wiki/File:35c3_WikipakaWG_-_Building_a_Wikidata_tool_(eng).webm"&gt;recording&lt;/a&gt;)
+        where I built a simple Wikidata tool from scratch and deployed it on Wikimedia Toolforge.
+        To avoid giving the impression that I can just churn out tools like it’s no big deal,
+        this blog post describes how I practiced the presentation
+        and which problems I encountered at the time
+        (so that I wouldn’t have to encounter them live during the presentation),
+        as well as the problems that still occurred during the presentation despite my practice.
+      &lt;/p&gt;
+&lt;aside&gt;
+        The tool isn’t really in a finished state yet –
+        as of this writing, I have to clean it up some more before properly announcing it –
+        but you can already try it out at &lt;a href="https://tools.wmflabs.org/speedpatrolling/"&gt;tools.wmflabs.org/speedpatrolling&lt;/a&gt; if you want.
+      &lt;/aside&gt;
+&lt;h2&gt;Basic idea&lt;/h2&gt;
+&lt;p&gt;
+        The general idea for this tool was suggested by &lt;a href="https://twitter.com/Jokrates"&gt;Jonas&lt;/a&gt; during some conversations a while ago:
+        while &lt;a href="https://phabricator.wikimedia.org/T95878"&gt;Wikidata’s mobile interface currently doesn’t let you edit&lt;/a&gt;,
+        and fixing that will probably be a lot of work,
+        one way for people to contribute while mobile,
+        e. g. on the train to work or in similar situations,
+        would be a kind of “patrolling &lt;a href="https://www.wikidata.org/wiki/Special:GoToLinkedPage/enwiki/Q15078152"&gt;Tinder&lt;/a&gt;” –
+        swipe right to mark an edit as patrolled,
+        swipe left to undo it or roll it back,
+        or something like that.
+      &lt;/p&gt;
+&lt;p&gt;
+        Since I don’t have any experience working with touch devices or gesture inputs,
+        I decided to go with three simple buttons for the first version:
+        skip an edit (very important – never force users to make a contribution just to move forward when they might not understand the current task!),
+        mark as patrolled,
+        or rollback.
+        People without rollback rights would simply not have the option to rollback –
+        undoing one edit is not very helpful,
+        since vandalism often happens in series of edits,
+        and I didn’t want to reimplement rollback functionality for people without proper rollback rights.
+        (Also, I couldn’t use “Tinder” in the name, so it was unimaginatively to be called “SpeedPatrolling”.)
+      &lt;/p&gt;
+&lt;p&gt;
+        I also asked &lt;a href="https://www.wikidata.org/wiki/User:Lydia_Pintscher_(WMDE)"&gt;Lydia&lt;/a&gt; if she was okay with this idea
+        (all this was going to be a private activity, but still,
+        I don’t want to do things that she thinks are a bad idea,
+        probably for good reasons that I can’t think of).
+        We looked through the &lt;a href="https://phabricator.wikimedia.org/T90870"&gt;list of self-contained tasks around Wikidata&lt;/a&gt; for something else to do,
+        but couldn’t find much that fit the bill of this presentation
+        (Toolforge tool, uses OAuth, can be built in one hour),
+        so she said I could go ahead with this project.
+      &lt;/p&gt;
+&lt;h2&gt;Preparation&lt;/h2&gt;
+&lt;p&gt;
+        Lots of things changed during the preparation phase.
+        I didn’t keep track of all of them,
+        so the following list, recalled from memory, is likely incomplete.
+      &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;
+            The first problem arrived as soon as I tried to start working on the tool.
+            I was going to use the &lt;a href="https://github.com/lucaswerkmeister/cookiecutter-toolforge"&gt;cookiecutter-toolforge&lt;/a&gt; template to get started with the tool,
+            which includes a hook to check that the tool name you provided is actually a legal tool name.
+            The hook was originally only compatible with Python 3;
+            however, I was going to hold this presentation on my work laptop, which has Ubuntu installed,
+            where Cookiecutter is only available for Python 2.
+            In order to be able to use the template, I first needed to &lt;a href="https://github.com/lucaswerkmeister/cookiecutter-toolforge/commit/62429fb8c50fb8c889495cb13a47b378cbbd1a5a"&gt;update the hook to support Python 2&lt;/a&gt;.
+          &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;
+            When I originally planned the outline of the code I was going to write
+            (before I even started actually writing any code),
+            I intended to get at least as far as the “diff” page,
+            including the buttons to skip, patrol or rollback an edit,
+            before getting started with OAuth.
+            However, as soon as I actually started programming the tool
+            (first step: get a list of unpatrolled recent changes),
+            I noticed that this didn’t work:
+            the information whether an edit is patrolled or not isn’t public,
+            so to even get a list of unpatrolled changes
+            you need to make an API request as a user with the &lt;code&gt;patrol&lt;/code&gt; right.
+            This meant that I had to move the registration of the OAuth consumer to the very beginning of the presentation,
+            just after the introductory remarks and the tool template setup,
+            before I could even start to write a single line of code.
+          &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;
+            Then, when figuring out how to get a list of unpatrolled changes via the API,
+            I found that the values for the &lt;a href="https://www.wikidata.org/w/api.php?action=help&amp;amp;modules=query%2Brecentchanges"&gt;&lt;code&gt;rcshow&lt;/code&gt; parameter&lt;/a&gt; were insufficiently documented;
+            specifically, I was unsure whether I needed &lt;code&gt;!patrolled&lt;/code&gt; or &lt;code&gt;unpatrolled&lt;/code&gt; changes,
+            and the difference between them wasn’t documented anywhere
+            (&lt;code&gt;unpatrolled&lt;/code&gt; was &lt;a href="https://www.mediawiki.org/wiki/Special:PermanentLink/2985437#Parameters"&gt;completely missing&lt;/a&gt;).
+            To understand the relationship between patrolled, autopatrolled and unpatrolled edits,
+            I first had to look through the MediaWiki code
+            and then tried to &lt;a href="https://www.mediawiki.org/wiki/Special:Diff/3013350"&gt;update the documentation&lt;/a&gt; to the best of my ability.
+          &lt;/p&gt;
+&lt;p&gt;
+            While looking at the code,
+            I also found a (very minor) security bug,
+            which I reported as &lt;a href="https://phabricator.wikimedia.org/T212118"&gt;T212118&lt;/a&gt;.
+            It hasn’t been fixed yet (and as such is not yet publicly visible),
+            but should hopefully be resolved soon.
+          &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;
+            When writing the handler for the &lt;code&gt;/diff/&lt;/code&gt; route,
+            I originally intended to have it redirect to &lt;code&gt;/diff/&lt;var&gt;id&lt;/var&gt;/&lt;/code&gt;,
+            without implementing that route
+            (so the browser would display a 404 page after handling the redirect).
+            However, Flask’s &lt;code&gt;url_for()&lt;/code&gt; function requires a function name,
+            so to implement the redirect,
+            a stub &lt;code&gt;/diff/&lt;var&gt;id&lt;/var&gt;/&lt;/code&gt; is also necessary.
+          &lt;/p&gt;
+&lt;aside&gt;
+&lt;p&gt;
+              I also briefly struggled to find good names for these functions,
+              since they can’t very well both be called &lt;code&gt;diff()&lt;/code&gt;,
+              even though that’s the only constant part in both routes.
+              In the end I settled on &lt;code&gt;any_diff()&lt;/code&gt; and &lt;code&gt;diff()&lt;/code&gt;.
+            &lt;/p&gt;
+&lt;/aside&gt;
+&lt;/li&gt;
+&lt;li id="embed"&gt;
+&lt;p&gt;
+            My original plan for the “diff” page was to directly embed the mobile diff page,
+            since it’s a nicely compact representation of the diff, with not too much clutter on the page
+            (no sidebar, header bar, etc., which would look weird when embedded on another page).
+            However, during the first practice round, I discovered that MediaWiki would not let me do that:
+            since I was logged in, and the diff page included a “mark as patrolled” link,
+            MediaWiki sent an &lt;code&gt;X-Frame-Options: deny&lt;/code&gt; header to prevent &lt;a href="https://www.wikidata.org/wiki/Special:GoToLinkedPage/enwiki/Q163231"&gt;clickjacking&lt;/a&gt;,
+            so the browser only displayed a blank iframe on the tool page.
+          &lt;/p&gt;
+&lt;p&gt;
+            I tried to make embedding the diff page work –
+            for example, if I could somehow instruct the iframe to load anonymously,
+            as in a private window (that is, without cookie headers),
+            so that the user would not be logged in and MediaWiki would not prevent the embedding –
+            but ultimately found no working solution for that.
+            Instead, I decided to download the diff page from the tool’s code (anonymously),
+            serve it under a certain route,
+            and then embed that page (from my own tool) in the tool’s full diff page.
+            This was implemented using the following Python code:
+          &lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;@app.route('/diff/&amp;lt;int:id&amp;gt;/embed')
+def diff_embed(id):
+    with urllib.request.urlopen('https://m.wikidata.org/wiki/Special:MobileDiff/%d' % id) as r:
+        html = r.read().decode('utf-8')
+    html = html.replace('"/w/', '"https://m.wikidata.org/w/')
+    html = html.replace('"/wiki/', '"https://m.wikidata.org/wiki/')
+    return html
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+            The two &lt;code&gt;replace()&lt;/code&gt; calls try to turn some relative URLs into absolute ones,
+            e. g. in hyperlinks or when loading JavaScript/CSS.
+            It’s a hack, of course, but it more or less worked and would be good enough for the presentation.
+            (A proper version of this would presumably better be implemented using the &lt;a href="https://www.wikidata.org/wiki/Special:GoToLinkedPage/enwiki/Q2893296"&gt;Beautiful Soup&lt;/a&gt; library.)
+            In the second practice run, I didn’t even bother embedding Wikidata and went straight for this hack instead;
+            however, I afterwards decided that it would be nicer for the presentation to first show the error when embedding Wikidata,
+            and then introduce the hack,
+            since it looked like there would be enough time for this.
+          &lt;/p&gt;
+&lt;p&gt;
+            To my great surprise, though, during the presentation embedding Wikidata suddenly worked, with no error.
+            I only later figured out what happened:
+            in the first practice run, I planned to first embed &lt;code&gt;https://&lt;strong&gt;www&lt;/strong&gt;.wikidata.org/wiki/Special:MobileDiff/&lt;var&gt;id&lt;/var&gt;&lt;/code&gt;,
+            and then briefly mention how the mobile diff page on the main domain still has some clutter on it,
+            and that we need to use the mobile domain instead, embedding &lt;code&gt;https://&lt;strong&gt;m&lt;/strong&gt;.wikidata.org/wiki/Special:MobileDiff/&lt;var&gt;id&lt;/var&gt;&lt;/code&gt;.
+            As I then ran into the &lt;code&gt;X-Frame-Options&lt;/code&gt; header, I never got as far as the &lt;code&gt;m.wikidata.org&lt;/code&gt; domain.
+            However, during the presentation, I skipped the &lt;code&gt;www.wikidata.org&lt;/code&gt; step and went straight to &lt;code&gt;m.wikidata.org&lt;/code&gt;,
+            and since I’m not logged in there,
+            there’s no “mark as patrolled” link and MediaWiki lets me embed this page.
+          &lt;/p&gt;
+&lt;p&gt;
+            Of course, I can’t rely on the fact that all tool users would never be logged in on &lt;code&gt;m.wikidata.org&lt;/code&gt;
+            (this tool is, in fact, meant to be especially useful on mobile),
+            so I’ll still have to work around this somehow;
+            however, in the meantime, I also learned that the &lt;a href="https://labels.wmflabs.org/"&gt;Wiki Labels tool&lt;/a&gt;
+            (&lt;a href="https://github.com/wikimedia/wikilabels"&gt;source code&lt;/a&gt;)
+            also includes pretty diffs in its output, without embedding anything,
+            so I’ll look into how that is implemented instead of resurrecting my ugly hack.
+            (Fortunately, Wiki Labels is also a Flask app and published under a permissive source code license,
+            so it should be possible to borrow the relevant code from it.)
+          &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;
+            When I first started adding buttons to the diff page,
+            I discovered that clicking the “skip” button
+            unexpectedly sent a POST request to &lt;code&gt;/diff/skip&lt;/code&gt; instead of &lt;code&gt;/diff/&lt;var&gt;id&lt;/var&gt;/skip&lt;/code&gt;.
+            I eventually figured out that this was
+            because had written the “diff” route as &lt;code&gt;/diff/&lt;var&gt;id&lt;/var&gt;&lt;/code&gt; instead of &lt;code&gt;/diff/&lt;var&gt;id&lt;/var&gt;&lt;strong&gt;/&lt;/strong&gt;&lt;/code&gt;;
+            without the trailing slash, the relative URL in &lt;code&gt;formaction="skip"&lt;/code&gt; replaced the last URL component instead of appending to it.
+          &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;
+            The cookiecutter-toolforge template includes some sample code for protection against
+            &lt;abbr title="cross-site request forgery"&gt;&lt;a href="https://www.wikidata.org/wiki/Special:GoToLinkedPage/enwiki/Q15401472"&gt;CSRF&lt;/a&gt;&lt;/abbr&gt; attacks,
+            which I had recently strengthened after discovering that the original version was not completely effective.
+            However, I hadn’t tested this strengthened version properly,
+            and as a result all POSTs were rejected as invalid until I fixed it.
+          &lt;/p&gt;
+&lt;p&gt;
+            Specifically, the CSRF protection included the following code (abbreviated):
+          &lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;def full_url(endpoint, **kwargs):
+    schema=flask.request.headers.get('X-Forwarded-Proto', 'http')
+    return flask.url_for(endpoint, _external=True, _schema=schema, **kwargs)
+
+def submitted_request_valid():
+    # ...
+    if not flask.request.referrer.startswith(full_url('index')):
+        return False
+    return True&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+            This was intended to check that the referrer started with &lt;code&gt;https://tools.wmflabs.org/&lt;var&gt;tool-name&lt;/var&gt;/&lt;/code&gt;;
+            the HTTP/HTTPS tweaking in &lt;code&gt;full_url()&lt;/code&gt; is necessary because Flask on Toolforge sits behind a proxy,
+            and so it doesn’t know that absolute URLs to it should actually use HTTPS, not HTTP.
+          &lt;/p&gt;
+&lt;p&gt;
+            However, the parameter to communicate this to &lt;code&gt;flask.url_for()&lt;/code&gt; is called &lt;code&gt;_schem&lt;strong&gt;e&lt;/strong&gt;&lt;/code&gt;,
+            not &lt;code&gt;_schem&lt;strong&gt;a&lt;/strong&gt;&lt;/code&gt;.
+            Since &lt;code&gt;_schema&lt;/code&gt; is not a recognized paramater for &lt;code&gt;flask.url_for()&lt;/code&gt; nor for &lt;code&gt;index()&lt;/code&gt;,
+            it was appended to the URL as a query parameter,
+            resulting in &lt;code&gt;submitted_request_valid()&lt;/code&gt; rejecting all requests
+            because their referrers would not begin with &lt;code&gt;http://tools.wmflabs.org/&lt;var&gt;tool-name&lt;/var&gt;/?_schema=https&lt;/code&gt;.
+            To make POSTs work, I had to &lt;a href="https://github.com/lucaswerkmeister/cookiecutter-toolforge/commit/6500426f479074a8426c665cdd176da0d721eb07"&gt;fix the &lt;code&gt;full_url()&lt;/code&gt; function&lt;/a&gt; in the template.
+            (I hope no one created a new tool between the bug being introduced and fixed in the template,
+            otherwise that tool would have to be fixed as well.)
+          &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;
+            When trying to make the API request to mark an edit as patrolled,
+            I originally tried to use a regular MediaWiki API CSRF token as the &lt;code&gt;token&lt;/code&gt; parameter for &lt;code&gt;action='patrol'&lt;/code&gt;.
+            However, that action requires a &lt;code&gt;patrol&lt;/code&gt;-type token.
+            (Likewike, there is a dedicated token type for rollback.)
+          &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;
+            When I started adding the handler for the “rollback” button,
+            I envisioned it as rolling back the specified revision,
+            just like the “patrol” handler.
+            But that’s just not how rollback works:
+            you don’t rollback a revision, you rollback all edits by a user on a page.
+            So I had to write some more code to query for the page ID and user name of that revision,
+            and then submit that to the rollback API.
+            If the request failed – for example, because someone else had edited the page after our user –
+            I was going to cop out and tell the user to please resolve the situation manually.
+          &lt;/p&gt;
+&lt;p&gt;
+            However, it turned out that the MediaWiki API would not let me rollback edits,
+            instead throwing a “permission denied” error:
+          &lt;/p&gt;
+&lt;blockquote&gt;
+            mwapi.errors.APIError: permissiondenied: The action you have requested is limited to users in one of the groups: *, [[Wikidata:Users|Users]].
+          &lt;/blockquote&gt;
+&lt;p&gt;
+            This greatly confused me at the time:
+            my OAuth consumer had the “rollback” grant, I was a rollbacker,
+            and neither “*” (any?) nor “users” are generally allowed to rollback edits
+            (that’s restricted to rollbackers and even more privileged groups).
+            I &lt;a href="https://discourse-mediawiki.wmflabs.org/t/permissiondenied-on-rollback-api/1005"&gt;asked for help on the Wikimedia Developer Support forum&lt;/a&gt;,
+            but we were unable to figure out a solution or workaround before the presentation.
+            Since rollback support wasn’t critical to me
+            (depending on the time of day, it can take a bit to find edits that should be rolled back anyways, to test the feature),
+            I took this as a ready-made excuse to just not implement rollback support during the presentation
+            (not even the version that would throw the MediaWiki error),
+            which gave me about five extra minutes of time.
+            It turned out I didn’t need that extra time, but I wasn’t sure about that until the presentation was done.
+          &lt;/p&gt;
+&lt;p&gt;
+            Afterwards, Gergő Tisza figured out what was wrong:
+            rollback requires both edit and rollback rights, and I didn’t request edit rights for my consumer.
+            This is now being discussed in &lt;a href="https://phabricator.wikimedia.org/T212851"&gt;T212851&lt;/a&gt;;
+            for the time being, I haven’t implemented rollback support in the tool yet.
+          &lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;During the presentation&lt;/h2&gt;
+&lt;p&gt;
+        Despite my practice, some things went wrong during the presentation as well.
+        You can watch those in the recording, of course, but I might as well list them here, too:
+      &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;
+            When I started to write the tool,
+            the Toolforge API reported that the “speedpatrolling” tool name was not available for a new tool.
+            I think this must have been a temporary hiccup,
+            since no such tool existed at the time,
+            the same error was also reported for other tool names,
+            and I was later able to create the tool under that name without a problem.
+            However, to proceed during the presentation,
+            I eventually had to disable the hook in the cookiecutter-toolforge template
+            which usually checks if a name is available before proceeding with the template,
+            by moving its file in my local copy of the template.
+          &lt;/p&gt;
+&lt;p&gt;
+            Unfortunately, this confusion also led me to call the tool “speed-patrolling” instead of “speedpatrolling” during the presentation,
+            even though that name didn’t work either;
+            after the presentation, I had to do some cleanup to create the “speedpatrolling” tool,
+            update all references in the source code,
+            and then finally &lt;a href="https://phabricator.wikimedia.org/T212968"&gt;requested that “speed-patrolling” be deleted&lt;/a&gt;.
+          &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;
+            As mentioned &lt;a href="https://lucaswerkmeister.de/posts/2019/01/04/speedpatrolling/#embed"&gt;above&lt;/a&gt;,
+            embedding the diff worked right away even though I didn’t expect it to.
+          &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;
+            Although this presentation and tool are private projects,
+            and I worked on them using my private accounts,
+            I did this on my work laptop,
+            because it was easier to practice it there
+            (and also, I guess, because my private laptop needs an adapter to emit HDMI).
+            However, this meant that when I was SSHing into Toolforge,
+            I was using my work account instead of my private account,
+            so I couldn’t deploy the tool, to which only my private account had access.
+            To fix this, I had to SSH into my home PC
+            (I’m &lt;em&gt;very&lt;/em&gt; glad I left it running over the holidays
+            &lt;small&gt;(and yes, my electricity plan is green, why do you ask)&lt;/small&gt;)
+            so I could SSH from there into Toolforge, using my private account.
+            (Note that this is not the same as tunneling my SSH traffic through that PC (&lt;code&gt;ssh -J host&lt;/code&gt;),
+            in which case I would still authenticate against Toolforge using my work credentials.)
+          &lt;/p&gt;
+&lt;aside&gt;
+            This means that in the recording, you can see which hostname I use to refer to my home PC.
+            I’ve been meaning to write a blog post about my machine names for a while now…
+            &lt;del&gt;I’ll do it eventually™&lt;/del&gt;
+&lt;ins&gt;&lt;a href="https://lucaswerkmeister.de/posts/2019/01/11/system-naming-scheme/"&gt;it’s online now&lt;/a&gt;&lt;/ins&gt;.
+          &lt;/aside&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+        And there we go!
+        I hope this makes me seem less like, I don’t know, some kind of wizard?
+        It’s completely normal to run into problems while building a tool
+        (or doing any kind of software development, I suppose) –
+        what matters is that you can find ways overcome those problems
+        (including but not limited to solving them),
+        and get help when you need it.
+        Try it out, it’s a lot of fun!
+      &lt;/p&gt;
+
+&lt;/article&gt;</description><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2019/01/04/speedpatrolling/</guid><pubDate>Fri, 04 Jan 2019 00:00:00 GMT</pubDate></item><item><title>Adding command line support to the namescript user script</title><link>https://lucaswerkmeister.de/posts/2018/07/13/namescript/</link><description>&lt;article&gt;
+
+&lt;p&gt;
+        One of the projects I worked on at &lt;a href="http://www.wikidata.org/entity/Q30087264"&gt;Wikimedia Hackathon 2018&lt;/a&gt;
+        was adding support for running the &lt;a href="https://www.wikidata.org/wiki/User:Harmonia_Amanda/namescript.js"&gt;namescript&lt;/a&gt; user script on the command line.
+        Since the general process I used could be useful for other user scripts as well too, I’m going to describe it here.
+      &lt;/p&gt;
+&lt;h2&gt;Situation / requirements&lt;/h2&gt;
+&lt;p&gt;
+        namescript is a Wikidata user script to add labels, descriptions and aliases to Wikidata items for names.
+        It is usually run when the user visits an item page and clicks a link on it,
+        and only updates data that is not already there
+        (for example, an existing description will not be replaced).
+      &lt;/p&gt;
+&lt;p&gt;
+        Recently, Harmonia Amanda, the script’s maintainer,
+        wanted to fix a list of names with the script
+        (initially 2000, then over 10000, by now more than 200000).
+        These names all had incorrect descriptions,
+        so the script should in this case delete all descriptions before adding new ones
+        (alternatively, this could be done with the &lt;a href="https://www.wikidata.org/wiki/User:Ash_Crow/dataDrainer.js"&gt;dataDrainer&lt;/a&gt; script as well),
+        and ideally it would be possible to do this without visiting all the thousands of items individually.
+      &lt;/p&gt;
+&lt;p&gt;
+        To make it possible to batch-edit items using the script,
+        I decided to turn it into a script that could be run on the command line using Node.js.
+        However, the script is sometimes updated on Wikidata,
+        e. g. to add new translations (either of the user interface or of the descriptions),
+        so I wanted to avoid having a second codebase for the &lt;abbr title="command-line interface"&gt;CLI&lt;/abbr&gt; version
+        which would slowly fall behind the user script version, or even diverge from it.
+        To avoid this, the script was rewritten in a way such that it supports both modes of operation:
+        in the browser and on the command line.
+      &lt;/p&gt;
+&lt;h2&gt;New source code layout&lt;/h2&gt;
+&lt;p&gt;
+        The main functionality of namescript now lives in &lt;dfn&gt;&lt;a href="https://www.wikidata.org/wiki/User:Harmonia_Amanda/namescript-lib.js"&gt;&lt;code&gt;namescript-lib.js&lt;/code&gt;&lt;/a&gt;&lt;/dfn&gt;,
+        which “exports” a single &lt;var&gt;namescript&lt;/var&gt; global that the other scripts work with.
+        (We’re ignoring any actual module system here because I’m not sure how to make that work.
+        Just one global seems acceptable to me.)
+        It uses some environment-dependent functions which are not directly implemented in it,
+        but should be filled in at &lt;code&gt;namescript.config&lt;/code&gt; (see below).
+      &lt;/p&gt;
+&lt;p&gt;
+        Some large datasets belonging to the script (e. g. translations)
+        are moved to &lt;dfn&gt;&lt;a href="https://www.wikidata.org/wiki/User:Harmonia_Amanda/namescript-data.json"&gt;&lt;code&gt;namescript-data.json&lt;/code&gt;&lt;/a&gt;&lt;/dfn&gt;.
+        I initially did this just out of a sense of aesthetics,
+        but it turns out ot be mildly useful as well because MediaWiki has some special support for JSON files,
+        ensuring that they are well-formed and consistently formatted.
+      &lt;/p&gt;
+&lt;p&gt;
+        Two entrypoints then are responsible for loading &lt;code&gt;namescript-lib.js&lt;/code&gt; and &lt;code&gt;namescript-data.json&lt;/code&gt;,
+        configuring &lt;code&gt;namescript-lib.js&lt;/code&gt;,
+        storing the data inside the &lt;var&gt;namescript&lt;/var&gt; global,
+        and starting the process.
+        &lt;dfn&gt;&lt;a href="https://www.wikidata.org/wiki/User:Harmonia_Amanda/namescript-browser.js"&gt;&lt;code&gt;namescript-browser.js&lt;/code&gt;&lt;/a&gt;&lt;/dfn&gt; does this in a browser environment,
+        loading the files via jQuery and adding a link to the page which, when clicked, will trigger the necessary edits using &lt;a href="https://doc.wikimedia.org/mediawiki-core/master/js/#!/api/mw.Api"&gt;&lt;code&gt;mw.Api&lt;/code&gt;&lt;/a&gt;.
+        &lt;dfn&gt;&lt;a href="https://github.com/lucaswerkmeister/namescript/blob/master/namescript-cli.js"&gt;&lt;code&gt;namescript-cli.js&lt;/code&gt;&lt;/a&gt;&lt;/dfn&gt; is the Node.js CLI counterpart, running the necessary edits directly using &lt;a href="https://www.npmjs.com/package/mwbot"&gt;mwbot&lt;/a&gt; according to command line arguments.
+        Both register various functions (how to log messages, how to make API requests, etc.) in &lt;code&gt;namescript.config&lt;/code&gt;,
+        where they are used by &lt;code&gt;namescript-lib.js&lt;/code&gt;.
+      &lt;/p&gt;
+&lt;p&gt;
+        Finally, a convenience entrypoint &lt;dfn&gt;&lt;a href="https://www.wikidata.org/wiki/User:Harmonia_Amanda/namescript.js"&gt;&lt;code&gt;namescript.js&lt;/code&gt;&lt;/a&gt;&lt;/dfn&gt; detects the current environment (browser or Node.js)
+        and loads the correct real entrypoint.
+        You can also load the correct entrypoint directly,
+        but users of the user script were already referencing &lt;code&gt;namescript.js&lt;/code&gt;,
+        and it’s also more convenient to use from the CLI.
+      &lt;/p&gt;
+&lt;h2&gt;Further development&lt;/h2&gt;
+&lt;p&gt;
+        As I mentioned, the goal of this reorganization was to have a single code-base power the Wikidata user script and the command line script.
+        This means that the canonical source for the script’s code is still Harmonia Amanda’s user namespace on Wikidata;
+        however, since I don’t have permission to edit that (and I like working with Git anyways),
+        I’m also mirroring the code &lt;a href="https://github.com/lucaswerkmeister/namescript"&gt;on GitHub&lt;/a&gt;.
+        The process to make any changes usually goes something like this:
+      &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Harmonia Amanda contacts me with a feature request, e. g. it would be nice if the command-line version supported reading item IDs from files.&lt;/li&gt;
+&lt;li&gt;I run &lt;dfn&gt;&lt;a href="https://github.com/lucaswerkmeister/namescript/blob/master/namescript-download.js"&gt;&lt;code&gt;namescript-download.js&lt;/code&gt;&lt;/a&gt;&lt;/dfn&gt; to update my local copy with any changes made on-wiki (e. g. in &lt;code&gt;namescript-data.json&lt;/code&gt;) and commit any outstanding changes.&lt;/li&gt;
+&lt;li&gt;I implement the feature locally, testing it on the sandbox item and checking with Harmonia if the edits made there look correct.&lt;/li&gt;
+&lt;li&gt;I commit my changes, push everything to GitHub, and tell Harmonia that they’re ready.&lt;/li&gt;
+&lt;li&gt;She pulls the changes and tests the script locally as well, e. g. with a large batch edit which motivated the feature request in the first place.&lt;/li&gt;
+&lt;li&gt;If everything is fine, she runs &lt;dfn&gt;&lt;a href="https://github.com/lucaswerkmeister/namescript/blob/master/namescript-upload.js"&gt;&lt;code&gt;namescript-upload.js&lt;/code&gt;&lt;/a&gt;&lt;/dfn&gt; to upload all the changes back to Wikidata.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;/article&gt;</description><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2018/07/13/namescript/</guid><pubDate>Fri, 13 Jul 2018 00:00:00 GMT</pubDate></item><item><title>Processing Wikidata JSON dumps in parallel on the command line with dgsh</title><link>https://lucaswerkmeister.de/posts/2017/09/03/wikidata+dgsh/</link><description>&lt;article&gt;
+
+&lt;h2&gt;Motivation&lt;/h2&gt;
+&lt;p&gt;A few weeks ago, I &lt;a href="https://twitter.lucaswerkmeister.de/WikidataFacts/status/888785983663112192"&gt;wondered&lt;/a&gt; what the most common descriptions on Wikidata were.
+I usually use the Wikidata Query Service to answer any questions about Wikidata I have,
+but this time that didn’t work,
+since there are too many descriptions on Wikidata to check
+without running into the query service’s timeout.
+At first, I was left at guessing a description
+and checking how many times it was used
+(counting the occurrences of a single description &lt;em&gt;is&lt;/em&gt; possible in the query service).
+However, after a quick chat on IRC,
+&lt;a href="https://www.wikidata.org/wiki/User:Nikki"&gt;Nikki&lt;/a&gt; produced a script that went through a recent JSON dump of Wikidata
+and collected the most common descriptions –
+first, for just a handful of languages (&lt;a href="https://pastebin.com/raw/0mBBSwDE"&gt;pastebin&lt;/a&gt;),
+then for some more (&lt;a href="https://pastebin.com/raw/DhR3358T"&gt;pastebin&lt;/a&gt;).&lt;/p&gt;
+&lt;h2&gt;First version&lt;/h2&gt;
+&lt;p&gt;I liked the idea of going through the dump to collect these statistics,
+and I wanted to see if it was feasible to do this from a shell script,
+so I put together a quick pipeline and let it run on my laptop.
+I posted the result &lt;a href="https://gist.github.com/lucaswerkmeister/a5b02cda1ce9ea14874dd2828ce57e79"&gt;in a GitHub Gist&lt;/a&gt;,
+and the pipeline I used was:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-shell"&gt;time pv latest-all-20170718.json |
+    head -n-1 |
+    tail -n+2 |
+    sed 's/,$//' |
+    jq -r '
+      .descriptions |
+      .[] |
+      (.language + "\t" + .value)
+    ' |
+    awk '
+      {
+        a[$0]++
+      }
+      END {
+        for (k in a)
+          if (a[k] &amp;gt;= 1000)
+            print a[k] "\t" k
+      }
+    ' |
+    sort -nr \
+    &amp;gt; common-descriptions
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Here’s the breakdown (feel free to skip any part you feel you already understand ☺):&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;time&lt;/code&gt;: I wanted to know how much wall‑clock time and CPU time the entire pipeline consumed.
+(&lt;code&gt;pv&lt;/code&gt; prints wall‑clock time, but not CPU time.)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;pv latest-all-20170718.json&lt;/code&gt;: &lt;code&gt;latest-all-20170718.json&lt;/code&gt; was the dump I had downloaded and extracted.
+&lt;code&gt;pv&lt;/code&gt; is a tool that is functionally equivalent to &lt;code&gt;cat&lt;/code&gt;
+(writes the file to standard output),
+but also prints a progress bar with estimated time left to standard error,
+based on how much of the file(s) was already written to standard output.
+(Since the pipe buffer is fairly small,
+the amount of data written by &lt;code&gt;pv&lt;/code&gt; corresponds fairly well
+to the amount of data consumed by the rest of the pipeline.)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;head -n-1&lt;/code&gt;: Remove the last line.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;tail -n+2&lt;/code&gt;: Remove the first line.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;sed 's/,$//'&lt;/code&gt;: Remove a trailing comma from each line.&lt;/p&gt;
+&lt;p&gt;Together, the last three steps transform the JSON dump from a single array&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-json"&gt;[
+{...},
+{...},
+{...}
+]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;into a stream&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-json"&gt;{...}
+{...}
+{...}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;which is more suitable for ingestion with &lt;code&gt;jq&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;jq&lt;/code&gt;: &lt;a href="https://github.com/stedolan/jq"&gt;jq&lt;/a&gt; is an amazing tool for working with JSON on the command line.
+Here’s what it does in this pipeline:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-r&lt;/code&gt;: &lt;b&gt;R&lt;/b&gt;aw output.
+Our output is strings, so this means that the string isn’t printed quoted or escaped.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;.descriptions&lt;/code&gt;: This selects the &lt;code&gt;descriptions&lt;/code&gt; member of each value in the input stream.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;.[]&lt;/code&gt;: This flattens an array (in this case, of descriptions) into a stream.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;(.language + "\t" + .value)&lt;/code&gt;: This prints the language and value of each description,
+separated by a tab.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Together, this prints a stream of all descriptions with language code to standard output.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;awk&lt;/code&gt;: A classic UNIX tool for processing data line by line. Breakdown:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;{ a[$0]++ }&lt;/code&gt;: This block runs for each input line.
+&lt;code&gt;$0&lt;/code&gt; refers to the entire input line,
+and &lt;code&gt;a[$0]++&lt;/code&gt; takes that as the key into the &lt;code&gt;a&lt;/code&gt; associative array
+and increments the corresponding value.
+In other words, &lt;code&gt;a&lt;/code&gt; is an associative array counting how often each input line occurs.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;END { ... }&lt;/code&gt;: This block runs after standard input is exhausted, just before the program ends.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;for (k in a)&lt;/code&gt;: Runs the following command for each key in the &lt;code&gt;a&lt;/code&gt; array, where &lt;code&gt;k&lt;/code&gt; holds the key.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;if (a[k] &amp;gt;= 1000)&lt;/code&gt;: &lt;code&gt;a[k]&lt;/code&gt; is the count of how often the line &lt;code&gt;k&lt;/code&gt; appeared in the input.
+Runs the following command if that count is greater than or equal to one thousand.
+(This is where we filter for only the most common descriptions.)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;print a[k] "\t" k&lt;/code&gt;: Print the count and the input
+(which is a language code and a description),
+separated by a tab.
+The three arguments to &lt;code&gt;print&lt;/code&gt; are implicitly concatenated without any separator characters.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;sort -nr&lt;/code&gt;: Sort &lt;b&gt;n&lt;/b&gt;umerically in &lt;b&gt;r&lt;/b&gt;everse order.
+The input begins with the count for each description,
+so this prints the most common descriptions first.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;&amp;gt; common-descriptions&lt;/code&gt;: Store the entire result in the &lt;code&gt;common-descriptions&lt;/code&gt; file.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Complaints&lt;/h2&gt;
+&lt;p&gt;This pipeline works, but I wasn’t entirely happy with it, for two reasons:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;We’re using three different commands just to convert the input array to a more convenient form,
+none of which is very efficient for this task,
+and one of which does regex processing!&lt;/li&gt;
+&lt;li&gt;The entire pipeline is CPU‑bound by &lt;code&gt;jq&lt;/code&gt;,
+and that part is not parallelized,
+so we’re only using one CPU core.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Enter ja2l&lt;/h2&gt;
+&lt;p&gt;To fix the first problem, I wrote a tiny C program to do the task of the three commands instead:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-c"&gt;#include &amp;lt;stdio.h&amp;gt;
+#include &amp;lt;stdlib.h&amp;gt;
+
+int main() {
+  char *line = NULL;
+  size_t len = 0;
+  ssize_t read;
+
+  while ((read = getline(&amp;amp;line, &amp;amp;len, stdin)) != -1) {
+    line[read-2] = 0;
+    printf("%s\n", line);
+  }
+
+  free(line);
+  exit(EXIT_SUCCESS);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;It’s simple, but it does its job and is much more efficient than the three‑command pipeline.
+I eventually cleaned it up a bit
+(bugfixes, add command line options, error handling, license, …)
+and published it as &lt;a href="https://github.com/lucaswerkmeister/ja2l"&gt;ja2l&lt;/a&gt; (&lt;b&gt;J&lt;/b&gt;SON &lt;b&gt;a&lt;/b&gt;rray &lt;b&gt;to&lt;/b&gt; &lt;b&gt;l&lt;/b&gt;ines).&lt;/p&gt;
+&lt;h2&gt;Adding dgsh support&lt;/h2&gt;
+&lt;p&gt;To fix the second problem, I had the idea of using &lt;a href="https://www.spinellis.gr/sw/dgsh/"&gt;dgsh&lt;/a&gt; to parallelize the processing.
+dgsh stands for “&lt;b&gt;d&lt;/b&gt;irected &lt;b&gt;g&lt;/b&gt;raph &lt;b&gt;sh&lt;/b&gt;ell”
+and is an alternative shell
+(technically, a fork of &lt;a href="https://www.gnu.org/software/bash/"&gt;bash&lt;/a&gt;)
+that extends the notion of pipelines to be directed acyclic graphs instead of just a single string.
+Each command can have any number of inputs and outputs,
+and when a pipeline is started,
+the programs negotiate the input/output file descriptors between them
+before starting to execute.
+This means that we can &lt;em&gt;scatter&lt;/em&gt; the JSON lines of the Wikidata dump across several &lt;code&gt;jq&lt;/code&gt; processes
+and then &lt;em&gt;gather&lt;/em&gt; the results of those processes
+before summarizing the description counts and printing the most common descriptions.&lt;/p&gt;
+&lt;p&gt;That is, we transform the traditional pipeline shown in &lt;a href="https://lucaswerkmeister.de/posts/2017/09/03/wikidata+dgsh/#pipeline-bash"&gt;figure one&lt;/a&gt;
+into the parallelized version shown in &lt;a href="https://lucaswerkmeister.de/posts/2017/09/03/wikidata+dgsh/#pipeline-dgsh"&gt;figure two&lt;/a&gt;.&lt;/p&gt;
+&lt;figure id="pipeline-bash"&gt;
+&lt;img src="pipeline-bash.svg"/&gt;
+&lt;figcaption&gt;
+&lt;i&gt;Figure one:&lt;/i&gt;
+The traditional shell pipeline.
+&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;figure id="pipeline-dgsh"&gt;
+&lt;img src="pipeline-dgsh.svg"/&gt;
+&lt;figcaption&gt;
+&lt;i&gt;Figure two:&lt;/i&gt;
+The parallelized pipeline.
+&lt;code&gt;dgsh-tee&lt;/code&gt; is another name for &lt;code&gt;cat&lt;/code&gt;,
+which simply concatenates the four output streams into one;
+the extra &lt;code&gt;awk&lt;/code&gt; is needed to sum up the partial counts of each &lt;code&gt;jq | awk&lt;/code&gt; sub‑pipeline.
+&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;The version of &lt;code&gt;tee&lt;/code&gt; included with dgsh
+can do this scattering with the &lt;code&gt;-s&lt;/code&gt; option,
+but I wanted to add support for this to &lt;code&gt;ja2l&lt;/code&gt; as well:
+partly because it’s ever so slightly more efficient
+(&lt;code&gt;ja2l&lt;/code&gt; already knows where the line breaks are
+because it has to remove trailing commas,
+&lt;code&gt;tee&lt;/code&gt; has to look for them in the input stream),
+partly just to play with &lt;code&gt;dgsh&lt;/code&gt;.
+It turns out that the extra code in &lt;code&gt;ja2l&lt;/code&gt; is fairly small,
+and building with dgsh support is as simple
+as adding a preprocessor flag and a linker library.&lt;/p&gt;
+&lt;h2&gt;Result&lt;/h2&gt;
+&lt;p&gt;I am very happy to report that on a system with two physical processor cores (hyperthreaded),
+using &lt;code&gt;ja2l&lt;/code&gt; and &lt;code&gt;dgsh&lt;/code&gt; reports in a 2.16× speedup (wall‑clock time) over the original script,
+with a &lt;code&gt;pv&lt;/code&gt;‑reported throughput of 69.1 MiB/s instead of 31.2 MiB/s (2.21×).
+I tested this with the following polyglot script:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-shell"&gt;function countDescriptions {
+    jq -r '
+      .descriptions |
+      .[] |
+      (.language + "\t" + .value)
+    ' | awk '
+      {
+        a[$0]++
+      }
+      END {
+        for (k in a)
+          print a[k] "\036" k
+      }
+    '
+}
+
+function summarizeDescriptions {
+    awk -F$'\036' '
+      {
+        a[$2] += $1
+      }
+      END {
+          for (k in a)
+            if (a[k] &amp;gt;= 1000)
+              print a[k] "\t" k
+      }
+    ' |
+    sort -nr
+}
+
+file=~/Downloads/latest-all-20170718/latest-100000-20170718.json
+
+if {{ : ; }} ; then dgsh=true; else dgsh=false; fi 2&amp;gt;/dev/null
+
+time if $dgsh; then
+    pv -- "$file" |
+        ./ja2l |
+        {{
+            countDescriptions &amp;amp;
+            countDescriptions &amp;amp;
+            countDescriptions &amp;amp;
+            countDescriptions &amp;amp;
+        }} |
+        cat |
+        summarizeDescriptions &amp;gt; common-descriptions-dgsh
+else
+    pv -- "$file" |
+        head -n-1 |
+        tail -n+2 |
+        sed 's/,$//' |
+        countDescriptions |
+        summarizeDescriptions &amp;gt; common-descriptions-bash
+fi
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The script tests if it’s running under dgsh or bash,
+and chooses the parallel or non-parallel pipeline to run accordingly.
+It should be possible to write similar scripts for many other data processing tasks across a Wikidata dump
+that can be expressed in &lt;code&gt;jq&lt;/code&gt;, &lt;code&gt;awk&lt;/code&gt; and other Unix command line tools,
+and speed them up similarly.&lt;/p&gt;
+
+&lt;/article&gt;</description><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2017/09/03/wikidata+dgsh/</guid><pubDate>Sun, 03 Sep 2017 00:00:00 GMT</pubDate></item></channel></rss>
