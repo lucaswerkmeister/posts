@@ -1,5 +1,241 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Lucas’ Posts (#wikimedia)</title><link>https://lucaswerkmeister.de/posts/</link><description>I suppose this is a blog of sorts – or at least a place where I occasionally post stuff. Not necessarily about anything in particular.</description><lastBuildDate>Sun, 20 Jul 2025 18:31:10 GMT</lastBuildDate><generator>PyRSS2Gen-1.1.0</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Wikimedia Hackathon 2025 recap</title><link>https://lucaswerkmeister.de/posts/2025/05/10/wikimedia-hackathon-2025/</link><description>&lt;article&gt;
+<rss version="2.0"><channel><title>Lucas’ Posts (#wikimedia)</title><link>https://lucaswerkmeister.de/posts/</link><description>I suppose this is a blog of sorts – or at least a place where I occasionally post stuff. Not necessarily about anything in particular.</description><lastBuildDate>Tue, 29 Jul 2025 20:42:35 GMT</lastBuildDate><generator>PyRSS2Gen-1.1.0</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Migrating my tools to the Toolforge Build Service</title><link>https://lucaswerkmeister.de/posts/2025/07/29/migrating-tools-to-buildservice/</link><description>&lt;article&gt;
+
+&lt;p&gt;
+        Over the past few weeks, I migrated almost all of my &lt;a href="https://meta.wikimedia.org/wiki/User:Lucas_Werkmeister#Tools"&gt;tools&lt;/a&gt;
+        to the &lt;a href="https://wikitech.wikimedia.org/wiki/Help:Toolforge/Building_container_images"&gt;Toolforge Build Service&lt;/a&gt;,
+        and I thought it would be useful to write a bit about the process and my motivation for doing it.
+      &lt;/p&gt;
+&lt;h2&gt;Why I did it&lt;/h2&gt;
+&lt;p&gt;
+        Recently, the Wikimedia Cloud Services team announced the
+        &lt;a href="https://lists.wikimedia.org/hyperkitty/list/cloud-announce@lists.wikimedia.org/thread/5D7NK7Z7KMWQPWQC23453YB7FV555Q5R/"&gt;Toolforge push-to-deploy beta&lt;/a&gt;,
+        which makes it possible to set up integration with a code forge such as Wikimedia Gitlab
+        that will cause newly pushed versions of a tool’s code to be deployed to Toolforge automatically.
+        This has the potential to significantly simplify the development of tools:
+        instead of having to log into a Toolforge bastion server and deploy every update to the tool manually,
+        one can just run &lt;code&gt;git push&lt;/code&gt; and everything else happens automatically.
+      &lt;/p&gt;
+&lt;p&gt;
+        Currently, the beta has some limitations:
+        most importantly, web services are not supported yet,
+        which means the feature is actually useless to me in its current state because all of my tools are web services.
+        (It should already useful for bots, though it’s not clear to me if any bots already use it in practice;
+        at least I couldn’t find any relevant-looking push-to-deploy config on &lt;a href="https://codesearch.wmcloud.org/"&gt;MediaWiki Codesearch&lt;/a&gt;.)
+        However, I’m hopeful that support for web service will be added soon.
+        In the meantime, because it already seems clear that this support will only include tools based on the build service
+        (but not tools using the various other web service types supported by Toolforge),
+        now seems like a good time to migrate my tools to the build service,
+        so that I’ll have less work to do to set up push-to-deploy once it becomes available.
+      &lt;/p&gt;
+&lt;h2&gt;What I did&lt;/h2&gt;
+&lt;p&gt;
+        I also used this as an opportunity to adopt some best practices in my tools in general,
+        even if not all of them were related to the build service migration.
+        I’ll go through them here in roughly the order in which I did them in most tools.
+      &lt;/p&gt;
+&lt;h3&gt;Add health check&lt;/h3&gt;
+&lt;p&gt;
+        A &lt;a href="https://wikitech.wikimedia.org/wiki/Help:Toolforge/Web#Health_checks"&gt;health check&lt;/a&gt;
+        is a way for the Toolforge infrastructure to detect if a tool is running (“healthy”) or not.
+        This is useful, for instance, to enable restarts of a tool (including deploying new versions) with no downtime:
+        the infrastructure (Kubernetes) will bring up a container with the new version of the tool,
+        wait for it to become ready according to the health check,
+        switch traffic from the old container to the new one,
+        and only then tear down the old container.
+      &lt;/p&gt;
+&lt;p&gt;
+        Since 2024, Toolforge installs a TCP health check by default:
+        the tool is considered healthy if it accepts connections on the web service port.
+        However, this doesn’t guarantee that the server is actually ready to handle requests;
+        we can do better by defining a &lt;code&gt;health-check-path&lt;/code&gt; in the
+        &lt;a href="https://wikitech.wikimedia.org/wiki/Help:Toolforge/Web#Webservice_templates"&gt;&lt;code&gt;service.template&lt;/code&gt; file&lt;/a&gt;,
+        at which point Toolforge will instead use an HTTP health check and test if the tool successfully responds to HTTP requests to this path.
+        It’s apparently conventional to call this path &lt;code&gt;/healthz&lt;/code&gt;
+        (though last I looked, nobody seemed to know what the “z” stands for),
+        and as it doesn’t need to return anything special,
+        the Python code for this endpoint looks very simple:
+      &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;span class="entity name function decorator"&gt;@app.route&lt;/span&gt;(&lt;span class="string"&gt;'/healthz'&lt;/span&gt;)
+&lt;span class="storage function"&gt;def&lt;/span&gt; &lt;span class="entity name function"&gt;health&lt;/span&gt;():
+    &lt;span class="keyword"&gt;return&lt;/span&gt; &lt;span class="string"&gt;''&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+        (Plus a &lt;a href="https://github.com/pallets/flask/blob/3.1.1/src/flask/typing.py#L37"&gt;return type&lt;/a&gt;,
+        import-aliased to &lt;abbr title="ResponseReturnValue"&gt;RRV&lt;/abbr&gt;,
+        in those tools where I use mypy.)
+        And it’s configured in the &lt;code&gt;service.template&lt;/code&gt; file like this:
+      &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;health-check-path: /healthz&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+        I usually did this improvement first (unless I forgot or it was already set up)
+        because it meant that most of the following improvements could be deployed without downtime for users.
+      &lt;/p&gt;
+&lt;h3&gt;Splitting prod and dev dependencies&lt;/h3&gt;
+&lt;p&gt;
+        In most of my tools, I previously had only one &lt;code&gt;requirements.txt&lt;/code&gt; file
+        (compiled using &lt;a href="https://pip-tools.readthedocs.io/en/latest/"&gt;pip-tools&lt;/a&gt; from &lt;code&gt;requirements.in&lt;/code&gt;).
+        This means that the tool’s installation on Toolforge included
+        not just the packages required to run the tool (Flask, Werkzeug, mwapi, etc.)
+        but also the packages required to test it (Flake8, mypy, pytest, etc.).
+        This is wasteful (mypy is big!),
+        and a build service based tool would install its dependencies more often than before
+        (each time a new image is built, i.e. during every deployment),
+        so I took an improvement I’d already done years ago in the Wikidata Lexeme Forms tool
+        and followed through with it in my other tools:
+        split the testing packages into a separate file
+        (&lt;code&gt;dev-requirements.txt&lt;/code&gt;, compiled from &lt;code&gt;dev-requirements.in&lt;/code&gt;).
+        The dev packages are installed locally (&lt;code&gt;pip-sync *requirements.txt&lt;/code&gt;)
+        and in CI (&lt;code&gt;pip install -r requirements.txt -r dev-requirements.txt&lt;/code&gt;),
+        but not on Toolforge.
+        In most tools, this shrunk the installed venv roughly by 50%, which is pretty neat!
+      &lt;/p&gt;
+&lt;p&gt;
+        I also added a CI job that verifies that I didn’t accidentally put a prod dependency into the dev requirements,
+        by only installing the prod requirements and checking that &lt;code&gt;python app.py&lt;/code&gt; runs through without crashing on a missing import.
+        This isn’t perfect,
+        but since I know that I’m not doing any advanced lazy-import stuff in my own code,
+        it’s good enough for me.
+        (I guess an alternative would be to reuse the health check for this.)
+      &lt;/p&gt;
+&lt;h3&gt;Configuration from environment variables&lt;/h3&gt;
+&lt;p&gt;
+        All of my Flask tool read the &lt;a href="https://flask.palletsprojects.com/en/stable/config/"&gt;Flask configuration&lt;/a&gt;
+        from a (user-only-readable) &lt;code&gt;config.yaml&lt;/code&gt; file in the source code directory;
+        this contains, at a minimum, the &lt;a href="https://flask.palletsprojects.com/en/stable/quickstart/#sessions"&gt;secret key&lt;/a&gt; used to sign the session,
+        and sometimes more information, such as the OAuth consumer key and secret.
+        This is still possible on the build service (by specifying the &lt;code&gt;mount: all&lt;/code&gt; option),
+        but it means the tool will rely on NFS, which is generally undesirable.
+        A more forward-looking option is to store the config in &lt;a href="https://wikitech.wikimedia.org/wiki/Help:Toolforge/Envvars"&gt;environment variables&lt;/a&gt;,
+        which Toolforge added support for two years ago.
+      &lt;/p&gt;
+&lt;p&gt;
+        It turns out that Flask has a method, &lt;a href="https://flask.palletsprojects.com/en/stable/api/#flask.Config.from_prefixed_env"&gt;&lt;code&gt;app.config.from_prefixed_env()&lt;/code&gt;&lt;/a&gt;,
+        which will automatically load all environment variables whose name starts with a certain prefix (I use &lt;code&gt;TOOL_&lt;/code&gt;) into the config.
+        It even has support for nested objects (using double underscores in the name),
+        so that configuration like &lt;code&gt;app.config['OAUTH']['consumer_key']&lt;/code&gt;
+        can be represented as the environment variable named &lt;code&gt;TOOL_OAUTH__consumer_key&lt;/code&gt;.
+      &lt;/p&gt;
+&lt;p&gt;
+        However, there’s one problem with this:
+        Toolforge &lt;a href="https://phabricator.wikimedia.org/T374780"&gt;requires environment variables to have all-uppercase names&lt;/a&gt;,
+        but my existing code was expecting lowercase names inside the &lt;code&gt;OAUTH&lt;/code&gt; config dict.
+        I worked around this by first converting the configuration keys to all-uppercase
+        (initially, still inside the &lt;code&gt;config.yaml&lt;/code&gt; file);
+        then, I moved the configuration to envvars,
+        and finally commented out the contents of the &lt;code&gt;config.yaml&lt;/code&gt; file
+        (&lt;a href="https://sal.toolforge.org/tools.speedpatrolling?d=2025-07-16"&gt;example &lt;abbr title="Server Admin Log"&gt;SAL&lt;/abbr&gt;&lt;/a&gt;).
+        All of this was possible while the tools were still running on the legacy web service types.
+        (The code reading the &lt;code&gt;config.yaml&lt;/code&gt; file is still there, by the way –
+        it’s much more convenient for local development, even if it’s not used on Toolforge anymore.)
+      &lt;/p&gt;
+&lt;h3&gt;Move CI from GitHub to GitLab&lt;/h3&gt;
+&lt;p&gt;
+        The CI for most of my tools was on GitHub,
+        mainly because many of them predated Wikimedia GitLab (or the availability of GitLab CI there).
+        However, I don’t really fancy giving Microsoft deploy access to my tools,
+        so I moved the CI over to GitLab CI.
+        For most tools, this was very straightforward,
+        to the point where I just copy+pasted the &lt;code&gt;.gitlab-ci.yml&lt;/code&gt; file between tools.
+        (In QuickCategories, setting up a MariaDB service for CI required a little bit more work.)
+      &lt;/p&gt;
+&lt;h3&gt;Actual build service migration&lt;/h3&gt;
+&lt;p&gt;
+        The migration to the build service starts with the &lt;a href="https://wikitech.wikimedia.org/wiki/Help:Toolforge/Building_container_images#Procfile"&gt;&lt;code&gt;Procfile&lt;/code&gt;&lt;/a&gt;,
+        which tells the infrastructure how to run the tool.
+        I used the same &lt;code&gt;Procfile&lt;/code&gt; for all my Python tools:
+      &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;web: gunicorn --workers=4 app:app&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+        This defines an entrypoint called &lt;code&gt;web&lt;/code&gt;
+        which will run &lt;a href="https://gunicorn.org/"&gt;Gunicorn&lt;/a&gt;,
+        with four worker processes, importing &lt;code&gt;app.py&lt;/code&gt; and running the &lt;code&gt;app&lt;/code&gt; WSGI app from it.
+        Toolforge specifies the &lt;code&gt;$PORT&lt;/code&gt; environment variable to tell the tool where to listen for connections,
+        and Gunicorn will &lt;a href="https://docs.gunicorn.org/en/stable/settings.html#bind"&gt;bind to that port by default&lt;/a&gt; if the environment variable is defined,
+        so no explicit &lt;code&gt;--bind&lt;/code&gt; option is necessary.
+        Of course, this also requires adding &lt;code&gt;gunicorn&lt;/code&gt; to &lt;code&gt;requirements.in&lt;/code&gt; / &lt;code&gt;requirements.txt&lt;/code&gt;,
+        so that it will be installed inside the image.
+        Also, don’t forget to &lt;code&gt;git add Procfile&lt;/code&gt;…
+      &lt;/p&gt;
+&lt;p&gt;
+        A significant benefit of the build service is that it gives us early access to newer Python versions.
+        By writing &lt;code&gt;3.13&lt;/code&gt; in a file called &lt;code&gt;.python-version&lt;/code&gt;
+        (don’t forget to &lt;code&gt;git add&lt;/code&gt; this one either!),
+        and specifying &lt;code&gt;--use-latest-versions&lt;/code&gt; when running &lt;code&gt;toolforge build start&lt;/code&gt;
+        (presumably this will become the default at some point),
+        our tool will run on Python 3.13,
+        whereas the latest version available outside of the build service is currently Python 3.11
+        (&lt;a href="https://phabricator.wikimedia.org/T381899#11027628"&gt;until two weeks or so from now&lt;/a&gt;).
+        I didn’t actually notice any Python 3.13 features I wanted to use in my tools
+        (except for one tool where I was able to replace a &lt;code&gt;TypeAlias&lt;/code&gt; annotation with a &lt;code&gt;type&lt;/code&gt; statement),
+        but it’s still nice to use the same version in production as the one I develop on locally.
+        (Of course, I also bumped the Python version in CI from 3.11 to 3.13.)
+      &lt;/p&gt;
+&lt;p&gt;
+        That said, there is one issue with Python 3.13 that I had to work around.
+        All of my Python tools use the &lt;a href="https://python-toolforge.readthedocs.io/en/latest/"&gt;&lt;code&gt;toolforge&lt;/code&gt; library&lt;/a&gt;
+        for its &lt;a href="https://python-toolforge.readthedocs.io/en/latest/usage.html#set-policy-compliant-user-agent"&gt;&lt;code&gt;set_user_agent()&lt;/code&gt; function&lt;/a&gt;
+        (it has other features but I mostly don’t use them);
+        this library imports &lt;a href="https://pypi.org/project/PyMySQL/"&gt;PyMySQL&lt;/a&gt; as soon as it is imported.
+        PyMySQL, in turn, immediately tries to initialize a default user name for database connections from the environment
+        (even if the tool is never going to open a database connection),
+        via the Python &lt;code&gt;getpass.getuser()&lt;/code&gt; function.
+        However, inside a build service container, no user name is set, and so this function raises an error.
+        This was fine in earlier Python versions, because PyMySQL catches the error;
+        however, Python 3.13 changed the error being thrown from &lt;code&gt;KeyError&lt;/code&gt; to &lt;code&gt;OSError&lt;/code&gt;,
+        which PyMySQL didn’t catch.
+        PyMySQL subsequently &lt;a href="https://github.com/PyMySQL/PyMySQL/commit/a1ac8239c8"&gt;added this error to the &lt;code&gt;except&lt;/code&gt; clause&lt;/a&gt;;
+        however, they haven’t published a new release since that commit.
+        Due to this bizarre confluence of edge cases,
+        it’s impossible to import &lt;code&gt;toolforge&lt;/code&gt; or &lt;code&gt;pymysql&lt;/code&gt; in a Toolforge Build Service tool on Python 3.13 or later when using the latest released version of PyMySQL.
+        My workaround is to install PyMySQL from Git, using this &lt;code&gt;requirements.in&lt;/code&gt; entry:
+      &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;pymysql @ git+https://github.com/PyMySQL/PyMySQL@main&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+        I look forward to the day when I’ll be able to remove this again.
+      &lt;/p&gt;
+&lt;p&gt;
+        The remaining part of the build service migration is the &lt;code&gt;service.template&lt;/code&gt; file,
+        which contains default arguments for calling &lt;code&gt;webservice&lt;/code&gt; commands.
+        I changed the &lt;code&gt;type&lt;/code&gt; from &lt;code&gt;python3.11&lt;/code&gt; to &lt;code&gt;buildservice&lt;/code&gt;,
+        and also added &lt;code&gt;mount: none&lt;/code&gt; to specify that the tool doesn’t need NFS mounted.
+        Then, after pushing the changes to GitLab and building a new container image,
+        I deployed the build service version with commands like this:
+      &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;webservice stop &lt;span class="keyword operator"&gt;&amp;amp;&lt;/span&gt;&lt;span class="keyword operator"&gt;&amp;amp;&lt;/span&gt;
+mv www{,-unused-tool-now-runs-on-buildservice} &lt;span class="keyword operator"&gt;&amp;amp;&lt;/span&gt;&lt;span class="keyword operator"&gt;&amp;amp;&lt;/span&gt;
+wget https://gitlab.wikimedia.org/toolforge-repos/translate-link/-/raw/2e2349a9fb/service.template &lt;span class="keyword operator"&gt;&amp;amp;&lt;/span&gt;&lt;span class="keyword operator"&gt;&amp;amp;&lt;/span&gt;
+webservice start&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+        This stops the webservice (using the old defaults in &lt;code&gt;www/python/src/service.template&lt;/code&gt;),
+        moves the old source code directory away so I don’t get confused by it later (I’ll remove it eventually™),
+        downloads the new &lt;code&gt;service.template&lt;/code&gt; file right into the home directory,
+        and then starts the webservice again using the defaults from that file.
+        And last but not least, I updated the instructions in the &lt;code&gt;README.md&lt;/code&gt;
+        (initially as a separate commit,
+        later in the same big migration commit because I couldn’t be bothered to separate it anymore).
+      &lt;/p&gt;
+&lt;h2&gt;More details&lt;/h2&gt;
+&lt;p&gt;
+        If you want to follow the migrations in more detail,
+        you can look at the relevant Git commit ranges and &lt;abbr title="Server Admin Log"&gt;SAL&lt;/abbr&gt; entries:
+      &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Wikidata Lexeme Forms: &lt;a href="https://gitlab.wikimedia.org/toolforge-repos/lexeme-forms/-/compare/8c32f8b90c...3c977ccc7b"&gt;Git&lt;/a&gt;, &lt;a href="https://sal.toolforge.org/tools.lexeme-forms?d=2025-07-13"&gt;SAL&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Wikidata Image Positions: &lt;a href="https://gitlab.wikimedia.org/toolforge-repos/wd-image-positions/-/compare/b2bc6237f0...256e149618"&gt;Git&lt;/a&gt;, &lt;a href="https://sal.toolforge.org/tools.wd-image-positions?d=2025-07-15"&gt;SAL&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;QuickCategories (was mostly already migrated to the build service from &lt;a href="https://phabricator.wikimedia.org/T374152"&gt;T374152&lt;/a&gt;): &lt;a href="https://gitlab.wikimedia.org/toolforge-repos/quickcategories/-/compare/1be5ca731c...75b652fb6e"&gt;Git&lt;/a&gt;, &lt;a href="https://sal.toolforge.org/tools.quickcategories?d=2025-07-15"&gt;SAL&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;SpeedPatrolling: &lt;a href="https://gitlab.wikimedia.org/toolforge-repos/speedpatrolling/-/compare/9d8920826c...5c34e3284f"&gt;Git&lt;/a&gt;, &lt;a href="https://sal.toolforge.org/tools.speedpatrolling?d=2025-07-26"&gt;SAL&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;PagePile Visual Filter: &lt;a href="https://gitlab.wikimedia.org/toolforge-repos/pagepile-visual-filter/-/compare/975e4e6800...ed716e5378"&gt;Git&lt;/a&gt;, &lt;a href="https://sal.toolforge.org/tools.pagepile-visual-filter?d=2025-07-26"&gt;SAL&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Ranker: &lt;a href="https://gitlab.wikimedia.org/toolforge-repos/ranker/-/compare/e059817c66...60cc18c07b"&gt;Git&lt;/a&gt;, &lt;a href="https://sal.toolforge.org/tools.ranker?d=2025-07-23"&gt;SAL&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Translate Link: &lt;a href="https://gitlab.wikimedia.org/toolforge-repos/translate-link/-/compare/02b7a10a31...e1efca1601"&gt;Git&lt;/a&gt;, &lt;a href="https://sal.toolforge.org/tools.translate-link?d=2025-07-25"&gt;SAL&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+        At some point, I should also apply most of these improvements to &lt;a href="https://github.com/lucaswerkmeister/cookiecutter-toolforge"&gt;cookiecutter-toolforge&lt;/a&gt;,
+        though I’m not so sure about the split-requirements part
+        (I feel like it might overcomplicate the dev setup for other developers for little benefit).
+        Let me know what you think :)
+      &lt;/p&gt;
+
+&lt;/article&gt;</description><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2025/07/29/migrating-tools-to-buildservice/</guid><pubDate>Tue, 29 Jul 2025 00:00:00 GMT</pubDate></item><item><title>Wikimedia Hackathon 2025 recap</title><link>https://lucaswerkmeister.de/posts/2025/05/10/wikimedia-hackathon-2025/</link><description>&lt;article&gt;
 
 &lt;p&gt;
         A week ago, I took part in the &lt;a href="https://www.mediawiki.org/wiki/Wikimedia_Hackathon_2025"&gt;Wikimedia Hackathon 2025&lt;/a&gt;,
