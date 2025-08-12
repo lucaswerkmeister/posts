@@ -1,5 +1,176 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Lucas’ Posts (#wikimedia)</title><link>https://lucaswerkmeister.de/posts/</link><description>I suppose this is a blog of sorts – or at least a place where I occasionally post stuff. Not necessarily about anything in particular.</description><lastBuildDate>Tue, 29 Jul 2025 20:42:35 GMT</lastBuildDate><generator>PyRSS2Gen-1.1.0</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Migrating my tools to the Toolforge Build Service</title><link>https://lucaswerkmeister.de/posts/2025/07/29/migrating-tools-to-buildservice/</link><description>&lt;article&gt;
+<rss version="2.0"><channel><title>Lucas’ Posts (#wikimedia)</title><link>https://lucaswerkmeister.de/posts/</link><description>I suppose this is a blog of sorts – or at least a place where I occasionally post stuff. Not necessarily about anything in particular.</description><lastBuildDate>Tue, 12 Aug 2025 19:23:45 GMT</lastBuildDate><generator>PyRSS2Gen-1.1.0</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Falsehoods Wikimedians Believe About Gadgets</title><link>https://lucaswerkmeister.de/posts/2025/08/12/falsehoods-wikimedians-believe-about-gadgets/</link><description>&lt;article&gt;
+
+&lt;p&gt;
+&lt;a href="https://www.mediawiki.org/wiki/Extension:Gadgets"&gt;Gadgets&lt;/a&gt; are a popular way to improve the user experience on MediaWiki wikis,
+        including &lt;a href="https://meta.wikimedia.org/wiki/Gadgets"&gt;Wikimedia wikis&lt;/a&gt;.
+        This humorous list contains misconceptions that some of us, consciously or unconsciously,
+        may hold about various aspects of gadgets,
+        based on my own experience as an interface administrator on Wikimedia Commons.
+      &lt;/p&gt;
+&lt;p&gt;
+        For some of the falsehoods, I’ve included some extra text that you can read if you like
+        (click the headings to collapse/expand them&lt;script src="orExpandCollapseAll.js"&gt;&lt;/script&gt;).
+        But I’d suggest first reading through the whole list once,
+        as I think the text flows better this way :)
+      &lt;/p&gt;
+&lt;p&gt;
+        (With thanks to Ash_Crow, Sukkoria and Brooke Vibber for proofreading and suggestions!)
+      &lt;/p&gt;
+&lt;h2&gt;The list&lt;/h2&gt;
+&lt;h3 id="1"&gt;1. The user who created this gadget is its maintainer&lt;/h3&gt;
+&lt;h3 id="2"&gt;2. The user who most often edited this gadget is its maintainer&lt;/h3&gt;
+&lt;h3 id="3"&gt;3. The user who last edited this gadget is its maintainer&lt;/h3&gt;
+&lt;details&gt;
+&lt;summary&gt;
+&lt;h3 id="4"&gt;4. This gadget’s maintainer uses it regularly&lt;/h3&gt;
+&lt;/summary&gt;
+&lt;p&gt;I maintain &lt;a href="https://commons.wikimedia.org/wiki/Help:Gadget-ACDC"&gt;AC/DC&lt;/a&gt;, but use it &lt;a href="https://commons.wikimedia.org/w/index.php?title=Special:Contributions/Lucas_Werkmeister&amp;amp;tagfilter=ACDC&amp;amp;limit=500"&gt;only sporadically&lt;/a&gt;.&lt;/p&gt;
+&lt;/details&gt;
+&lt;details&gt;
+&lt;summary&gt;
+&lt;h3 id="5"&gt;5. This gadget’s maintainer is able to edit its code&lt;/h3&gt;
+&lt;/summary&gt;
+&lt;p&gt;
+          If a gadget started out as a user script, the author of the user script may not have the permissions required to edit it after the conversion to a gadget.
+          For example, this was the case for AC/DC, until I &lt;a href="https://commons.wikimedia.org/wiki/Commons:Administrators/Requests/Lucas_Werkmeister_(interface_administrator)"&gt;became an interface administrator&lt;/a&gt;.
+        &lt;/p&gt;
+&lt;/details&gt;
+&lt;h3 id="6"&gt;6. Gadgets should only have one maintainer&lt;/h3&gt;
+&lt;h3 id="7"&gt;7. This gadget has enough maintainers&lt;/h3&gt;
+&lt;h3 id="8"&gt;8. This gadget is maintained&lt;/h3&gt;
+&lt;h3 id="9"&gt;9. This gadget works&lt;/h3&gt;
+&lt;h3 id="10"&gt;10. If this gadget was broken, somebody would have noticed it&lt;/h3&gt;
+&lt;h3 id="11"&gt;11. This gadget has users&lt;/h3&gt;
+&lt;details&gt;
+&lt;summary&gt;
+&lt;h3 id="12"&gt;12. This gadget has active users&lt;/h3&gt;
+&lt;/summary&gt;
+&lt;p&gt;
+          Special:GadgetUsage
+          (e.g. &lt;a href="https://en.wikipedia.org/wiki/Special:GadgetUsage"&gt;English Wikipedia&lt;/a&gt;,
+          &lt;a href="https://commons.wikimedia.org/wiki/Special:GadgetUsage"&gt;Wikimedia Commons&lt;/a&gt;,
+          &lt;a href="https://www.wikidata.org/wiki/Special:GadgetUsage"&gt;Wikidata&lt;/a&gt;)
+          shows the number of users and active users (ones who’ve made an edit in the past 30 days) who have a gadget enabled
+          (which doesn’t necessarily mean they’re actively using the gadget).
+          Some gadgets can have thousands of users;
+          others, even on large wikis, may only have a handful, and it’s possible that few of those users are still active.
+          On test wikis you can easily find gadgets with no active users at all
+          (though I’ve yet to find a gadget without even inactive users).
+        &lt;/p&gt;
+&lt;/details&gt;
+&lt;h3 id="13"&gt;13. This gadget is used more widely than this similar user script&lt;/h3&gt;
+&lt;h3 id="14"&gt;14. This gadget has no bugs&lt;/h3&gt;
+&lt;h3 id="15"&gt;15. This gadget has no security vulnerabilities&lt;/h3&gt;
+&lt;details&gt;
+&lt;summary&gt;
+&lt;h3 id="16"&gt;16.Surely no gadget on Wikimedia wikis uses &lt;code&gt;eval()&lt;/code&gt;&lt;/h3&gt;
+&lt;/summary&gt;
+&lt;p&gt;
+          Don’t look at &lt;a href="https://global-search.toolforge.org/?q=eval&amp;amp;namespaces=8&amp;amp;title=Gadget-.*%5C.js"&gt;this global search&lt;/a&gt; if you want to keep believing that.
+        &lt;/p&gt;
+&lt;/details&gt;
+&lt;details&gt;
+&lt;summary&gt;
+&lt;h3 id="17"&gt;17. This MediaWiki:Gadget-* page is part of a gadget&lt;/h3&gt;
+&lt;/summary&gt;
+&lt;p&gt;
+          It’s worth checking the &lt;a href="https://www.mediawiki.org/wiki/Extension:Gadgets#Definition_format"&gt;gadgets definition page&lt;/a&gt;;
+          maybe the page author never finished the gadget,
+          or it became obsolete and was removed from the gadget definitions again
+          (&lt;a href="https://commons.wikimedia.org/wiki/Commons:Deletion_requests/MediaWiki:Gadget-site-HideFilterBar.js"&gt;example&lt;/a&gt;).
+        &lt;/p&gt;
+&lt;/details&gt;
+&lt;h3 id="18"&gt;18. This gadget uses a consistent coding style&lt;/h3&gt;
+&lt;h3 id="19"&gt;19. This gadget’s code is written this way for a good reason, it shouldn’t be changed&lt;/h3&gt;
+&lt;details&gt;
+&lt;summary&gt;
+&lt;h3 id="20"&gt;20. This gadget’s code is written this way for no reason, it’s fine to change it&lt;/h3&gt;
+&lt;/summary&gt;
+&lt;p&gt;
+          Both of these refer to &lt;a href="https://en.wikipedia.org/wiki/Chesterton's_fence"&gt;Chesterton’s fence&lt;/a&gt;,
+          the idea that you shouldn’t change an existing system without understanding the reason for its current state.
+          If you’re looking at an unfamiliar gadget and something in the code seems pointless and confusing,
+          it’s a good idea to look into why it was written like that before changing it.
+          Once you understand it, it may still be legitimate to change the code,
+          e.g. if the code is working around quirks in an ancient browser version that’s no longer supported,
+          or if the original developer just liked the code this way and didn’t realize that it would cause some specific bug.
+          If you can’t figure out the reason,
+          you’ll have to apply your own judgment whether you still want to risk changing the gadget.
+        &lt;/p&gt;
+&lt;/details&gt;
+&lt;h3 id="21"&gt;21. Edits suggested or made by this gadget, by necessity, represent currently accepted best practices on this wiki&lt;/h3&gt;
+&lt;h3 id="22"&gt;22. If this gadget was discouraged, deprecated, unmaintained, or abandoned in some way, the gadget description and/or documentation would say so&lt;/h3&gt;
+&lt;h3 id="23"&gt;23. This gadget’s code is only used on this wiki&lt;/h3&gt;
+&lt;details&gt;
+&lt;summary&gt;
+&lt;h3 id="24"&gt;24. This gadget’s code is only used on Wikimedia wikis&lt;/h3&gt;
+&lt;/summary&gt;
+&lt;p&gt;
+          For example, HotCat can be (and is) &lt;a href="https://commons.wikimedia.org/wiki/Help:Gadget-HotCat#Installing_HotCat_on_another_wiki"&gt;installed on many other wikis&lt;/a&gt;.
+          Many of them are set up to always load the latest code straight from Wikimedia Commons,
+          so we need to be extra careful when making any changes there.
+        &lt;/p&gt;
+&lt;/details&gt;
+&lt;h3 id="25"&gt;25. This gadget is usable&lt;/h3&gt;
+&lt;h3 id="26"&gt;26. This gadget’s user interface is well designed&lt;/h3&gt;
+&lt;h3 id="27"&gt;27. This gadget is self-explanatory&lt;/h3&gt;
+&lt;h3 id="28"&gt;28. This gadget has a documentation page&lt;/h3&gt;
+&lt;h3 id="29"&gt;29. This gadget’s documentation page is up to date&lt;/h3&gt;
+&lt;h3 id="30"&gt;30. This gadget’s documentation page is correct&lt;/h3&gt;
+&lt;details&gt;
+&lt;summary&gt;
+&lt;h3 id="31"&gt;31. Every part of this gadget is protected against vandalism&lt;/h3&gt;
+&lt;/summary&gt;
+&lt;p&gt;
+          Translations may be less protected than the gadget’s code proper, for instance.
+        &lt;/p&gt;
+&lt;/details&gt;
+&lt;h3 id="32"&gt;32. Any user who edited this gadget, by necessity, understood how the whole gadget worked then and still understands it now&lt;/h3&gt;
+&lt;h3 id="33"&gt;33. If an issue with this gadget is reported on its talk page, somebody will respond to it&lt;/h3&gt;
+&lt;h3 id="34"&gt;34. If an issue with this gadget is reported on its talk page, nobody will respond to it&lt;/h3&gt;
+&lt;h3 id="35"&gt;35. An edit request to update this gadget will be processed speedily&lt;/h3&gt;
+&lt;h3 id="36"&gt;36. An edit request to update this gadget will never be processed&lt;/h3&gt;
+&lt;h3 id="37"&gt;37. This wiki has an edit request template&lt;/h3&gt;
+&lt;details&gt;
+&lt;summary&gt;
+&lt;h3 id="38"&gt;38. This wiki has a technical village pump or interface administrators’ noticeboard&lt;/h3&gt;
+&lt;/summary&gt;
+&lt;p&gt;
+          From Wikimedia Commons, I’m mostly familiar with the &lt;a href="https://commons.wikimedia.org/wiki/Template:Edit_request"&gt;edit request&lt;/a&gt; workflow
+          (a template you put on the talk page of the page you want edited),
+          but e.g. German Wikipedia has no such template and instead collects all edit requests on a &lt;a href="https://de.wikipedia.org/wiki/Wikipedia:Technik/Skin/MediaWiki/%C3%84nderungen"&gt;central noticeboard&lt;/a&gt;.
+          Other wikis may have neither
+          (&lt;a href="https://query.wikidata.org/embed.html#SELECT%20%3Fwiki%20WHERE%20%7B%0A%20%20hint%3AQuery%20hint%3Aoptimizer%20%22None%22.%0A%20%20%3Fwiki%20wikibase%3AwikiGroup%20%22wikipedia%22.%0A%20%20MINUS%20%7B%0A%20%20%20%20%3FtemplateEditFullyProtected%20schema%3Aabout%20wd%3AQ6578653%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20schema%3AisPartOf%20%3Fwiki.%0A%20%20%7D%0A%20%20MINUS%20%7B%0A%20%20%20%20%3FtemplateEditProtected%20schema%3Aabout%20wd%3AQ131313714%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20schema%3AisPartOf%20%3Fwiki.%0A%20%20%7D%0A%20%20MINUS%20%7B%0A%20%20%20%20%3FinterfaceAdminNoticeboard%20schema%3Aabout%20wd%3AQ14720036%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20schema%3AisPartOf%20%3Fwiki.%0A%20%20%7D%0A%20%20MINUS%20%7B%0A%20%20%20%20%3FtechnicalVillagePump%20schema%3Aabout%20wd%3AQ4582194%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20schema%3AisPartOf%20%3Fwiki.%0A%20%20%7D%0A%7D"&gt;Wikidata query&lt;/a&gt;).
+        &lt;/p&gt;
+&lt;/details&gt;
+&lt;h3 id="39"&gt;39. This gadget’s messages are translatable&lt;/h3&gt;
+&lt;h3 id="40"&gt;40. Everyone can update this gadget’s translations&lt;/h3&gt;
+&lt;h3 id="41"&gt;41. Everyone knows how to update this gadget’s translations&lt;/h3&gt;
+&lt;h3 id="42"&gt;42. Someone knows how to update this gadget’s translations&lt;/h3&gt;
+&lt;h3 id="43"&gt;43. This gadget’s source code and comments are written in English&lt;/h3&gt;
+&lt;h3 id="44"&gt;44. This gadget’s source code is commented&lt;/h3&gt;
+&lt;h3 id="45"&gt;45. This user script should be a gadget&lt;/h3&gt;
+&lt;h3 id="46"&gt;46. This user script shouldn’t be a gadget&lt;/h3&gt;
+&lt;h3 id="47"&gt;47. This user script could’ve been made a gadget already&lt;/h3&gt;
+&lt;h3 id="48"&gt;48. There’s a good reason why this user script wasn’t already made a gadget&lt;/h3&gt;
+&lt;h3 id="49"&gt;49. When it’s agreed that this user script should be made a gadget, it’s clear which user’s version of the user script should be adopted&lt;/h3&gt;
+&lt;h3 id="50"&gt;50. This useful functionality already exists as a gadget&lt;/h3&gt;
+&lt;h3 id="51"&gt;51. There must be a reason why there’s no gadget for this useful functionality yet&lt;/h3&gt;
+&lt;h3 id="52"&gt;52. This gadget would be really easy to create&lt;/h3&gt;
+&lt;details open=""&gt;
+&lt;summary&gt;
+&lt;h3 id="53"&gt;53. This gadget would be really hard to create&lt;/h3&gt;
+&lt;/summary&gt;
+&lt;p&gt;
+          You won’t know until you try it.
+          If you know how to write JavaScript,
+          and you want a certain gadget or user script to exist,
+          go ahead and try it out :)
+        &lt;/p&gt;
+&lt;/details&gt;
+
+&lt;/article&gt;</description><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2025/08/12/falsehoods-wikimedians-believe-about-gadgets/</guid><pubDate>Tue, 12 Aug 2025 00:00:00 GMT</pubDate></item><item><title>Migrating my tools to the Toolforge Build Service</title><link>https://lucaswerkmeister.de/posts/2025/07/29/migrating-tools-to-buildservice/</link><description>&lt;article&gt;
 
 &lt;p&gt;
         Over the past few weeks, I migrated almost all of my &lt;a href="https://meta.wikimedia.org/wiki/User:Lucas_Werkmeister#Tools"&gt;tools&lt;/a&gt;
@@ -1807,268 +1978,4 @@ def submitted_request_valid():
 &lt;li&gt;If everything is fine, she runs &lt;dfn&gt;&lt;a href="https://github.com/lucaswerkmeister/namescript/blob/master/namescript-upload.js"&gt;&lt;code&gt;namescript-upload.js&lt;/code&gt;&lt;/a&gt;&lt;/dfn&gt; to upload all the changes back to Wikidata.&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;/article&gt;</description><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2018/07/13/namescript/</guid><pubDate>Fri, 13 Jul 2018 00:00:00 GMT</pubDate></item><item><title>Processing Wikidata JSON dumps in parallel on the command line with dgsh</title><link>https://lucaswerkmeister.de/posts/2017/09/03/wikidata+dgsh/</link><description>&lt;article&gt;
-
-&lt;h2&gt;Motivation&lt;/h2&gt;
-&lt;p&gt;A few weeks ago, I &lt;a href="https://twitter.lucaswerkmeister.de/WikidataFacts/status/888785983663112192"&gt;wondered&lt;/a&gt; what the most common descriptions on Wikidata were.
-I usually use the Wikidata Query Service to answer any questions about Wikidata I have,
-but this time that didn’t work,
-since there are too many descriptions on Wikidata to check
-without running into the query service’s timeout.
-At first, I was left at guessing a description
-and checking how many times it was used
-(counting the occurrences of a single description &lt;em&gt;is&lt;/em&gt; possible in the query service).
-However, after a quick chat on IRC,
-&lt;a href="https://www.wikidata.org/wiki/User:Nikki"&gt;Nikki&lt;/a&gt; produced a script that went through a recent JSON dump of Wikidata
-and collected the most common descriptions –
-first, for just a handful of languages (&lt;a href="https://pastebin.com/raw/0mBBSwDE"&gt;pastebin&lt;/a&gt;),
-then for some more (&lt;a href="https://pastebin.com/raw/DhR3358T"&gt;pastebin&lt;/a&gt;).&lt;/p&gt;
-&lt;h2&gt;First version&lt;/h2&gt;
-&lt;p&gt;I liked the idea of going through the dump to collect these statistics,
-and I wanted to see if it was feasible to do this from a shell script,
-so I put together a quick pipeline and let it run on my laptop.
-I posted the result &lt;a href="https://gist.github.com/lucaswerkmeister/a5b02cda1ce9ea14874dd2828ce57e79"&gt;in a GitHub Gist&lt;/a&gt;,
-and the pipeline I used was:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-shell"&gt;time pv latest-all-20170718.json |
-    head -n-1 |
-    tail -n+2 |
-    sed 's/,$//' |
-    jq -r '
-      .descriptions |
-      .[] |
-      (.language + "\t" + .value)
-    ' |
-    awk '
-      {
-        a[$0]++
-      }
-      END {
-        for (k in a)
-          if (a[k] &amp;gt;= 1000)
-            print a[k] "\t" k
-      }
-    ' |
-    sort -nr \
-    &amp;gt; common-descriptions
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Here’s the breakdown (feel free to skip any part you feel you already understand ☺):&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;time&lt;/code&gt;: I wanted to know how much wall‑clock time and CPU time the entire pipeline consumed.
-(&lt;code&gt;pv&lt;/code&gt; prints wall‑clock time, but not CPU time.)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;pv latest-all-20170718.json&lt;/code&gt;: &lt;code&gt;latest-all-20170718.json&lt;/code&gt; was the dump I had downloaded and extracted.
-&lt;code&gt;pv&lt;/code&gt; is a tool that is functionally equivalent to &lt;code&gt;cat&lt;/code&gt;
-(writes the file to standard output),
-but also prints a progress bar with estimated time left to standard error,
-based on how much of the file(s) was already written to standard output.
-(Since the pipe buffer is fairly small,
-the amount of data written by &lt;code&gt;pv&lt;/code&gt; corresponds fairly well
-to the amount of data consumed by the rest of the pipeline.)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;head -n-1&lt;/code&gt;: Remove the last line.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;tail -n+2&lt;/code&gt;: Remove the first line.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;sed 's/,$//'&lt;/code&gt;: Remove a trailing comma from each line.&lt;/p&gt;
-&lt;p&gt;Together, the last three steps transform the JSON dump from a single array&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-json"&gt;[
-{...},
-{...},
-{...}
-]
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;into a stream&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-json"&gt;{...}
-{...}
-{...}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;which is more suitable for ingestion with &lt;code&gt;jq&lt;/code&gt;.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;jq&lt;/code&gt;: &lt;a href="https://github.com/stedolan/jq"&gt;jq&lt;/a&gt; is an amazing tool for working with JSON on the command line.
-Here’s what it does in this pipeline:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;-r&lt;/code&gt;: &lt;b&gt;R&lt;/b&gt;aw output.
-Our output is strings, so this means that the string isn’t printed quoted or escaped.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;.descriptions&lt;/code&gt;: This selects the &lt;code&gt;descriptions&lt;/code&gt; member of each value in the input stream.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;.[]&lt;/code&gt;: This flattens an array (in this case, of descriptions) into a stream.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;(.language + "\t" + .value)&lt;/code&gt;: This prints the language and value of each description,
-separated by a tab.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Together, this prints a stream of all descriptions with language code to standard output.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;awk&lt;/code&gt;: A classic UNIX tool for processing data line by line. Breakdown:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;{ a[$0]++ }&lt;/code&gt;: This block runs for each input line.
-&lt;code&gt;$0&lt;/code&gt; refers to the entire input line,
-and &lt;code&gt;a[$0]++&lt;/code&gt; takes that as the key into the &lt;code&gt;a&lt;/code&gt; associative array
-and increments the corresponding value.
-In other words, &lt;code&gt;a&lt;/code&gt; is an associative array counting how often each input line occurs.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;END { ... }&lt;/code&gt;: This block runs after standard input is exhausted, just before the program ends.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;for (k in a)&lt;/code&gt;: Runs the following command for each key in the &lt;code&gt;a&lt;/code&gt; array, where &lt;code&gt;k&lt;/code&gt; holds the key.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;if (a[k] &amp;gt;= 1000)&lt;/code&gt;: &lt;code&gt;a[k]&lt;/code&gt; is the count of how often the line &lt;code&gt;k&lt;/code&gt; appeared in the input.
-Runs the following command if that count is greater than or equal to one thousand.
-(This is where we filter for only the most common descriptions.)&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;print a[k] "\t" k&lt;/code&gt;: Print the count and the input
-(which is a language code and a description),
-separated by a tab.
-The three arguments to &lt;code&gt;print&lt;/code&gt; are implicitly concatenated without any separator characters.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;sort -nr&lt;/code&gt;: Sort &lt;b&gt;n&lt;/b&gt;umerically in &lt;b&gt;r&lt;/b&gt;everse order.
-The input begins with the count for each description,
-so this prints the most common descriptions first.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;&amp;gt; common-descriptions&lt;/code&gt;: Store the entire result in the &lt;code&gt;common-descriptions&lt;/code&gt; file.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;Complaints&lt;/h2&gt;
-&lt;p&gt;This pipeline works, but I wasn’t entirely happy with it, for two reasons:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;We’re using three different commands just to convert the input array to a more convenient form,
-none of which is very efficient for this task,
-and one of which does regex processing!&lt;/li&gt;
-&lt;li&gt;The entire pipeline is CPU‑bound by &lt;code&gt;jq&lt;/code&gt;,
-and that part is not parallelized,
-so we’re only using one CPU core.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2&gt;Enter ja2l&lt;/h2&gt;
-&lt;p&gt;To fix the first problem, I wrote a tiny C program to do the task of the three commands instead:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-c"&gt;#include &amp;lt;stdio.h&amp;gt;
-#include &amp;lt;stdlib.h&amp;gt;
-
-int main() {
-  char *line = NULL;
-  size_t len = 0;
-  ssize_t read;
-
-  while ((read = getline(&amp;amp;line, &amp;amp;len, stdin)) != -1) {
-    line[read-2] = 0;
-    printf("%s\n", line);
-  }
-
-  free(line);
-  exit(EXIT_SUCCESS);
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;It’s simple, but it does its job and is much more efficient than the three‑command pipeline.
-I eventually cleaned it up a bit
-(bugfixes, add command line options, error handling, license, …)
-and published it as &lt;a href="https://github.com/lucaswerkmeister/ja2l"&gt;ja2l&lt;/a&gt; (&lt;b&gt;J&lt;/b&gt;SON &lt;b&gt;a&lt;/b&gt;rray &lt;b&gt;to&lt;/b&gt; &lt;b&gt;l&lt;/b&gt;ines).&lt;/p&gt;
-&lt;h2&gt;Adding dgsh support&lt;/h2&gt;
-&lt;p&gt;To fix the second problem, I had the idea of using &lt;a href="https://www.spinellis.gr/sw/dgsh/"&gt;dgsh&lt;/a&gt; to parallelize the processing.
-dgsh stands for “&lt;b&gt;d&lt;/b&gt;irected &lt;b&gt;g&lt;/b&gt;raph &lt;b&gt;sh&lt;/b&gt;ell”
-and is an alternative shell
-(technically, a fork of &lt;a href="https://www.gnu.org/software/bash/"&gt;bash&lt;/a&gt;)
-that extends the notion of pipelines to be directed acyclic graphs instead of just a single string.
-Each command can have any number of inputs and outputs,
-and when a pipeline is started,
-the programs negotiate the input/output file descriptors between them
-before starting to execute.
-This means that we can &lt;em&gt;scatter&lt;/em&gt; the JSON lines of the Wikidata dump across several &lt;code&gt;jq&lt;/code&gt; processes
-and then &lt;em&gt;gather&lt;/em&gt; the results of those processes
-before summarizing the description counts and printing the most common descriptions.&lt;/p&gt;
-&lt;p&gt;That is, we transform the traditional pipeline shown in &lt;a href="https://lucaswerkmeister.de/posts/2017/09/03/wikidata+dgsh/#pipeline-bash"&gt;figure one&lt;/a&gt;
-into the parallelized version shown in &lt;a href="https://lucaswerkmeister.de/posts/2017/09/03/wikidata+dgsh/#pipeline-dgsh"&gt;figure two&lt;/a&gt;.&lt;/p&gt;
-&lt;figure id="pipeline-bash"&gt;
-&lt;img src="pipeline-bash.svg"/&gt;
-&lt;figcaption&gt;
-&lt;i&gt;Figure one:&lt;/i&gt;
-The traditional shell pipeline.
-&lt;/figcaption&gt;
-&lt;/figure&gt;
-&lt;figure id="pipeline-dgsh"&gt;
-&lt;img src="pipeline-dgsh.svg"/&gt;
-&lt;figcaption&gt;
-&lt;i&gt;Figure two:&lt;/i&gt;
-The parallelized pipeline.
-&lt;code&gt;dgsh-tee&lt;/code&gt; is another name for &lt;code&gt;cat&lt;/code&gt;,
-which simply concatenates the four output streams into one;
-the extra &lt;code&gt;awk&lt;/code&gt; is needed to sum up the partial counts of each &lt;code&gt;jq | awk&lt;/code&gt; sub‑pipeline.
-&lt;/figcaption&gt;
-&lt;/figure&gt;
-&lt;p&gt;The version of &lt;code&gt;tee&lt;/code&gt; included with dgsh
-can do this scattering with the &lt;code&gt;-s&lt;/code&gt; option,
-but I wanted to add support for this to &lt;code&gt;ja2l&lt;/code&gt; as well:
-partly because it’s ever so slightly more efficient
-(&lt;code&gt;ja2l&lt;/code&gt; already knows where the line breaks are
-because it has to remove trailing commas,
-&lt;code&gt;tee&lt;/code&gt; has to look for them in the input stream),
-partly just to play with &lt;code&gt;dgsh&lt;/code&gt;.
-It turns out that the extra code in &lt;code&gt;ja2l&lt;/code&gt; is fairly small,
-and building with dgsh support is as simple
-as adding a preprocessor flag and a linker library.&lt;/p&gt;
-&lt;h2&gt;Result&lt;/h2&gt;
-&lt;p&gt;I am very happy to report that on a system with two physical processor cores (hyperthreaded),
-using &lt;code&gt;ja2l&lt;/code&gt; and &lt;code&gt;dgsh&lt;/code&gt; reports in a 2.16× speedup (wall‑clock time) over the original script,
-with a &lt;code&gt;pv&lt;/code&gt;‑reported throughput of 69.1 MiB/s instead of 31.2 MiB/s (2.21×).
-I tested this with the following polyglot script:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-shell"&gt;function countDescriptions {
-    jq -r '
-      .descriptions |
-      .[] |
-      (.language + "\t" + .value)
-    ' | awk '
-      {
-        a[$0]++
-      }
-      END {
-        for (k in a)
-          print a[k] "\036" k
-      }
-    '
-}
-
-function summarizeDescriptions {
-    awk -F$'\036' '
-      {
-        a[$2] += $1
-      }
-      END {
-          for (k in a)
-            if (a[k] &amp;gt;= 1000)
-              print a[k] "\t" k
-      }
-    ' |
-    sort -nr
-}
-
-file=~/Downloads/latest-all-20170718/latest-100000-20170718.json
-
-if {{ : ; }} ; then dgsh=true; else dgsh=false; fi 2&amp;gt;/dev/null
-
-time if $dgsh; then
-    pv -- "$file" |
-        ./ja2l |
-        {{
-            countDescriptions &amp;amp;
-            countDescriptions &amp;amp;
-            countDescriptions &amp;amp;
-            countDescriptions &amp;amp;
-        }} |
-        cat |
-        summarizeDescriptions &amp;gt; common-descriptions-dgsh
-else
-    pv -- "$file" |
-        head -n-1 |
-        tail -n+2 |
-        sed 's/,$//' |
-        countDescriptions |
-        summarizeDescriptions &amp;gt; common-descriptions-bash
-fi
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The script tests if it’s running under dgsh or bash,
-and chooses the parallel or non-parallel pipeline to run accordingly.
-It should be possible to write similar scripts for many other data processing tasks across a Wikidata dump
-that can be expressed in &lt;code&gt;jq&lt;/code&gt;, &lt;code&gt;awk&lt;/code&gt; and other Unix command line tools,
-and speed them up similarly.&lt;/p&gt;
-
-&lt;/article&gt;</description><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2017/09/03/wikidata+dgsh/</guid><pubDate>Sun, 03 Sep 2017 00:00:00 GMT</pubDate></item></channel></rss>
+&lt;/article&gt;</description><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2018/07/13/namescript/</guid><pubDate>Fri, 13 Jul 2018 00:00:00 GMT</pubDate></item></channel></rss>

@@ -1,5 +1,176 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Lucas’ Posts</title><link>https://lucaswerkmeister.de/posts/</link><description>I suppose this is a blog of sorts – or at least a place where I occasionally post stuff. Not necessarily about anything in particular.</description><lastBuildDate>Tue, 29 Jul 2025 20:42:33 GMT</lastBuildDate><generator>PyRSS2Gen-1.1.0</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Migrating my tools to the Toolforge Build Service</title><link>https://lucaswerkmeister.de/posts/2025/07/29/migrating-tools-to-buildservice/</link><description>&lt;article&gt;
+<rss version="2.0"><channel><title>Lucas’ Posts</title><link>https://lucaswerkmeister.de/posts/</link><description>I suppose this is a blog of sorts – or at least a place where I occasionally post stuff. Not necessarily about anything in particular.</description><lastBuildDate>Tue, 12 Aug 2025 19:23:44 GMT</lastBuildDate><generator>PyRSS2Gen-1.1.0</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Falsehoods Wikimedians Believe About Gadgets</title><link>https://lucaswerkmeister.de/posts/2025/08/12/falsehoods-wikimedians-believe-about-gadgets/</link><description>&lt;article&gt;
+
+&lt;p&gt;
+&lt;a href="https://www.mediawiki.org/wiki/Extension:Gadgets"&gt;Gadgets&lt;/a&gt; are a popular way to improve the user experience on MediaWiki wikis,
+        including &lt;a href="https://meta.wikimedia.org/wiki/Gadgets"&gt;Wikimedia wikis&lt;/a&gt;.
+        This humorous list contains misconceptions that some of us, consciously or unconsciously,
+        may hold about various aspects of gadgets,
+        based on my own experience as an interface administrator on Wikimedia Commons.
+      &lt;/p&gt;
+&lt;p&gt;
+        For some of the falsehoods, I’ve included some extra text that you can read if you like
+        (click the headings to collapse/expand them&lt;script src="orExpandCollapseAll.js"&gt;&lt;/script&gt;).
+        But I’d suggest first reading through the whole list once,
+        as I think the text flows better this way :)
+      &lt;/p&gt;
+&lt;p&gt;
+        (With thanks to Ash_Crow, Sukkoria and Brooke Vibber for proofreading and suggestions!)
+      &lt;/p&gt;
+&lt;h2&gt;The list&lt;/h2&gt;
+&lt;h3 id="1"&gt;1. The user who created this gadget is its maintainer&lt;/h3&gt;
+&lt;h3 id="2"&gt;2. The user who most often edited this gadget is its maintainer&lt;/h3&gt;
+&lt;h3 id="3"&gt;3. The user who last edited this gadget is its maintainer&lt;/h3&gt;
+&lt;details&gt;
+&lt;summary&gt;
+&lt;h3 id="4"&gt;4. This gadget’s maintainer uses it regularly&lt;/h3&gt;
+&lt;/summary&gt;
+&lt;p&gt;I maintain &lt;a href="https://commons.wikimedia.org/wiki/Help:Gadget-ACDC"&gt;AC/DC&lt;/a&gt;, but use it &lt;a href="https://commons.wikimedia.org/w/index.php?title=Special:Contributions/Lucas_Werkmeister&amp;amp;tagfilter=ACDC&amp;amp;limit=500"&gt;only sporadically&lt;/a&gt;.&lt;/p&gt;
+&lt;/details&gt;
+&lt;details&gt;
+&lt;summary&gt;
+&lt;h3 id="5"&gt;5. This gadget’s maintainer is able to edit its code&lt;/h3&gt;
+&lt;/summary&gt;
+&lt;p&gt;
+          If a gadget started out as a user script, the author of the user script may not have the permissions required to edit it after the conversion to a gadget.
+          For example, this was the case for AC/DC, until I &lt;a href="https://commons.wikimedia.org/wiki/Commons:Administrators/Requests/Lucas_Werkmeister_(interface_administrator)"&gt;became an interface administrator&lt;/a&gt;.
+        &lt;/p&gt;
+&lt;/details&gt;
+&lt;h3 id="6"&gt;6. Gadgets should only have one maintainer&lt;/h3&gt;
+&lt;h3 id="7"&gt;7. This gadget has enough maintainers&lt;/h3&gt;
+&lt;h3 id="8"&gt;8. This gadget is maintained&lt;/h3&gt;
+&lt;h3 id="9"&gt;9. This gadget works&lt;/h3&gt;
+&lt;h3 id="10"&gt;10. If this gadget was broken, somebody would have noticed it&lt;/h3&gt;
+&lt;h3 id="11"&gt;11. This gadget has users&lt;/h3&gt;
+&lt;details&gt;
+&lt;summary&gt;
+&lt;h3 id="12"&gt;12. This gadget has active users&lt;/h3&gt;
+&lt;/summary&gt;
+&lt;p&gt;
+          Special:GadgetUsage
+          (e.g. &lt;a href="https://en.wikipedia.org/wiki/Special:GadgetUsage"&gt;English Wikipedia&lt;/a&gt;,
+          &lt;a href="https://commons.wikimedia.org/wiki/Special:GadgetUsage"&gt;Wikimedia Commons&lt;/a&gt;,
+          &lt;a href="https://www.wikidata.org/wiki/Special:GadgetUsage"&gt;Wikidata&lt;/a&gt;)
+          shows the number of users and active users (ones who’ve made an edit in the past 30 days) who have a gadget enabled
+          (which doesn’t necessarily mean they’re actively using the gadget).
+          Some gadgets can have thousands of users;
+          others, even on large wikis, may only have a handful, and it’s possible that few of those users are still active.
+          On test wikis you can easily find gadgets with no active users at all
+          (though I’ve yet to find a gadget without even inactive users).
+        &lt;/p&gt;
+&lt;/details&gt;
+&lt;h3 id="13"&gt;13. This gadget is used more widely than this similar user script&lt;/h3&gt;
+&lt;h3 id="14"&gt;14. This gadget has no bugs&lt;/h3&gt;
+&lt;h3 id="15"&gt;15. This gadget has no security vulnerabilities&lt;/h3&gt;
+&lt;details&gt;
+&lt;summary&gt;
+&lt;h3 id="16"&gt;16.Surely no gadget on Wikimedia wikis uses &lt;code&gt;eval()&lt;/code&gt;&lt;/h3&gt;
+&lt;/summary&gt;
+&lt;p&gt;
+          Don’t look at &lt;a href="https://global-search.toolforge.org/?q=eval&amp;amp;namespaces=8&amp;amp;title=Gadget-.*%5C.js"&gt;this global search&lt;/a&gt; if you want to keep believing that.
+        &lt;/p&gt;
+&lt;/details&gt;
+&lt;details&gt;
+&lt;summary&gt;
+&lt;h3 id="17"&gt;17. This MediaWiki:Gadget-* page is part of a gadget&lt;/h3&gt;
+&lt;/summary&gt;
+&lt;p&gt;
+          It’s worth checking the &lt;a href="https://www.mediawiki.org/wiki/Extension:Gadgets#Definition_format"&gt;gadgets definition page&lt;/a&gt;;
+          maybe the page author never finished the gadget,
+          or it became obsolete and was removed from the gadget definitions again
+          (&lt;a href="https://commons.wikimedia.org/wiki/Commons:Deletion_requests/MediaWiki:Gadget-site-HideFilterBar.js"&gt;example&lt;/a&gt;).
+        &lt;/p&gt;
+&lt;/details&gt;
+&lt;h3 id="18"&gt;18. This gadget uses a consistent coding style&lt;/h3&gt;
+&lt;h3 id="19"&gt;19. This gadget’s code is written this way for a good reason, it shouldn’t be changed&lt;/h3&gt;
+&lt;details&gt;
+&lt;summary&gt;
+&lt;h3 id="20"&gt;20. This gadget’s code is written this way for no reason, it’s fine to change it&lt;/h3&gt;
+&lt;/summary&gt;
+&lt;p&gt;
+          Both of these refer to &lt;a href="https://en.wikipedia.org/wiki/Chesterton's_fence"&gt;Chesterton’s fence&lt;/a&gt;,
+          the idea that you shouldn’t change an existing system without understanding the reason for its current state.
+          If you’re looking at an unfamiliar gadget and something in the code seems pointless and confusing,
+          it’s a good idea to look into why it was written like that before changing it.
+          Once you understand it, it may still be legitimate to change the code,
+          e.g. if the code is working around quirks in an ancient browser version that’s no longer supported,
+          or if the original developer just liked the code this way and didn’t realize that it would cause some specific bug.
+          If you can’t figure out the reason,
+          you’ll have to apply your own judgment whether you still want to risk changing the gadget.
+        &lt;/p&gt;
+&lt;/details&gt;
+&lt;h3 id="21"&gt;21. Edits suggested or made by this gadget, by necessity, represent currently accepted best practices on this wiki&lt;/h3&gt;
+&lt;h3 id="22"&gt;22. If this gadget was discouraged, deprecated, unmaintained, or abandoned in some way, the gadget description and/or documentation would say so&lt;/h3&gt;
+&lt;h3 id="23"&gt;23. This gadget’s code is only used on this wiki&lt;/h3&gt;
+&lt;details&gt;
+&lt;summary&gt;
+&lt;h3 id="24"&gt;24. This gadget’s code is only used on Wikimedia wikis&lt;/h3&gt;
+&lt;/summary&gt;
+&lt;p&gt;
+          For example, HotCat can be (and is) &lt;a href="https://commons.wikimedia.org/wiki/Help:Gadget-HotCat#Installing_HotCat_on_another_wiki"&gt;installed on many other wikis&lt;/a&gt;.
+          Many of them are set up to always load the latest code straight from Wikimedia Commons,
+          so we need to be extra careful when making any changes there.
+        &lt;/p&gt;
+&lt;/details&gt;
+&lt;h3 id="25"&gt;25. This gadget is usable&lt;/h3&gt;
+&lt;h3 id="26"&gt;26. This gadget’s user interface is well designed&lt;/h3&gt;
+&lt;h3 id="27"&gt;27. This gadget is self-explanatory&lt;/h3&gt;
+&lt;h3 id="28"&gt;28. This gadget has a documentation page&lt;/h3&gt;
+&lt;h3 id="29"&gt;29. This gadget’s documentation page is up to date&lt;/h3&gt;
+&lt;h3 id="30"&gt;30. This gadget’s documentation page is correct&lt;/h3&gt;
+&lt;details&gt;
+&lt;summary&gt;
+&lt;h3 id="31"&gt;31. Every part of this gadget is protected against vandalism&lt;/h3&gt;
+&lt;/summary&gt;
+&lt;p&gt;
+          Translations may be less protected than the gadget’s code proper, for instance.
+        &lt;/p&gt;
+&lt;/details&gt;
+&lt;h3 id="32"&gt;32. Any user who edited this gadget, by necessity, understood how the whole gadget worked then and still understands it now&lt;/h3&gt;
+&lt;h3 id="33"&gt;33. If an issue with this gadget is reported on its talk page, somebody will respond to it&lt;/h3&gt;
+&lt;h3 id="34"&gt;34. If an issue with this gadget is reported on its talk page, nobody will respond to it&lt;/h3&gt;
+&lt;h3 id="35"&gt;35. An edit request to update this gadget will be processed speedily&lt;/h3&gt;
+&lt;h3 id="36"&gt;36. An edit request to update this gadget will never be processed&lt;/h3&gt;
+&lt;h3 id="37"&gt;37. This wiki has an edit request template&lt;/h3&gt;
+&lt;details&gt;
+&lt;summary&gt;
+&lt;h3 id="38"&gt;38. This wiki has a technical village pump or interface administrators’ noticeboard&lt;/h3&gt;
+&lt;/summary&gt;
+&lt;p&gt;
+          From Wikimedia Commons, I’m mostly familiar with the &lt;a href="https://commons.wikimedia.org/wiki/Template:Edit_request"&gt;edit request&lt;/a&gt; workflow
+          (a template you put on the talk page of the page you want edited),
+          but e.g. German Wikipedia has no such template and instead collects all edit requests on a &lt;a href="https://de.wikipedia.org/wiki/Wikipedia:Technik/Skin/MediaWiki/%C3%84nderungen"&gt;central noticeboard&lt;/a&gt;.
+          Other wikis may have neither
+          (&lt;a href="https://query.wikidata.org/embed.html#SELECT%20%3Fwiki%20WHERE%20%7B%0A%20%20hint%3AQuery%20hint%3Aoptimizer%20%22None%22.%0A%20%20%3Fwiki%20wikibase%3AwikiGroup%20%22wikipedia%22.%0A%20%20MINUS%20%7B%0A%20%20%20%20%3FtemplateEditFullyProtected%20schema%3Aabout%20wd%3AQ6578653%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20schema%3AisPartOf%20%3Fwiki.%0A%20%20%7D%0A%20%20MINUS%20%7B%0A%20%20%20%20%3FtemplateEditProtected%20schema%3Aabout%20wd%3AQ131313714%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20schema%3AisPartOf%20%3Fwiki.%0A%20%20%7D%0A%20%20MINUS%20%7B%0A%20%20%20%20%3FinterfaceAdminNoticeboard%20schema%3Aabout%20wd%3AQ14720036%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20schema%3AisPartOf%20%3Fwiki.%0A%20%20%7D%0A%20%20MINUS%20%7B%0A%20%20%20%20%3FtechnicalVillagePump%20schema%3Aabout%20wd%3AQ4582194%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20schema%3AisPartOf%20%3Fwiki.%0A%20%20%7D%0A%7D"&gt;Wikidata query&lt;/a&gt;).
+        &lt;/p&gt;
+&lt;/details&gt;
+&lt;h3 id="39"&gt;39. This gadget’s messages are translatable&lt;/h3&gt;
+&lt;h3 id="40"&gt;40. Everyone can update this gadget’s translations&lt;/h3&gt;
+&lt;h3 id="41"&gt;41. Everyone knows how to update this gadget’s translations&lt;/h3&gt;
+&lt;h3 id="42"&gt;42. Someone knows how to update this gadget’s translations&lt;/h3&gt;
+&lt;h3 id="43"&gt;43. This gadget’s source code and comments are written in English&lt;/h3&gt;
+&lt;h3 id="44"&gt;44. This gadget’s source code is commented&lt;/h3&gt;
+&lt;h3 id="45"&gt;45. This user script should be a gadget&lt;/h3&gt;
+&lt;h3 id="46"&gt;46. This user script shouldn’t be a gadget&lt;/h3&gt;
+&lt;h3 id="47"&gt;47. This user script could’ve been made a gadget already&lt;/h3&gt;
+&lt;h3 id="48"&gt;48. There’s a good reason why this user script wasn’t already made a gadget&lt;/h3&gt;
+&lt;h3 id="49"&gt;49. When it’s agreed that this user script should be made a gadget, it’s clear which user’s version of the user script should be adopted&lt;/h3&gt;
+&lt;h3 id="50"&gt;50. This useful functionality already exists as a gadget&lt;/h3&gt;
+&lt;h3 id="51"&gt;51. There must be a reason why there’s no gadget for this useful functionality yet&lt;/h3&gt;
+&lt;h3 id="52"&gt;52. This gadget would be really easy to create&lt;/h3&gt;
+&lt;details open=""&gt;
+&lt;summary&gt;
+&lt;h3 id="53"&gt;53. This gadget would be really hard to create&lt;/h3&gt;
+&lt;/summary&gt;
+&lt;p&gt;
+          You won’t know until you try it.
+          If you know how to write JavaScript,
+          and you want a certain gadget or user script to exist,
+          go ahead and try it out :)
+        &lt;/p&gt;
+&lt;/details&gt;
+
+&lt;/article&gt;</description><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2025/08/12/falsehoods-wikimedians-believe-about-gadgets/</guid><pubDate>Tue, 12 Aug 2025 00:00:00 GMT</pubDate></item><item><title>Migrating my tools to the Toolforge Build Service</title><link>https://lucaswerkmeister.de/posts/2025/07/29/migrating-tools-to-buildservice/</link><description>&lt;article&gt;
 
 &lt;p&gt;
         Over the past few weeks, I migrated almost all of my &lt;a href="https://meta.wikimedia.org/wiki/User:Lucas_Werkmeister#Tools"&gt;tools&lt;/a&gt;
@@ -1678,102 +1849,4 @@ WantedBy=timers.target
         But it probably is possible to improve on MediaWiki’s own functionality, at least.)
       &lt;/p&gt;
 
-&lt;/article&gt;</description><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2024/08/14/mediawiki-permalinks/</guid><pubDate>Wed, 14 Aug 2024 00:00:00 GMT</pubDate></item><item><title>Wikimedia Hackathon 2024 recap</title><link>https://lucaswerkmeister.de/posts/2024/05/15/wikimedia-hackathon-2024/</link><description>&lt;article&gt;
-
-&lt;p&gt;
-        The &lt;a href="https://www.mediawiki.org/wiki/Special:MyLanguage/Wikimedia_Hackathon_2024"&gt;Wikimedia Hackathon 2024&lt;/a&gt;
-        took place from May 3 to 5 in Tallinn, Estonia,
-        and like &lt;a href="https://lucaswerkmeister.de/posts/2023/06/03/wikimedia-hackathon-2023/"&gt;last year&lt;/a&gt; I was one of the participants
-        and want to write a recap blog post.
-      &lt;/p&gt;
-&lt;h2&gt;Major projects&lt;/h2&gt;
-&lt;p&gt;
-        I came to the Hackathon with two “major” ideas for things to work on this year,
-        and switched between both of them frequently
-        (one on the work laptop, one on the private laptop).
-        I think this worked well for me:
-        if I got stuck on something in one project,
-        or had to wait for someone else to react / respond,
-        I could switch to the other project and continue working there.
-      &lt;/p&gt;
-&lt;p&gt;
-        The first project was &lt;a href="https://phabricator.wikimedia.org/T231755"&gt;T231755: Local language name should be translatable in translatewiki.net&lt;/a&gt;.
-        The cldr extension contains many language names in PHP files,
-        and while they’re theoretically open to contributions,
-        it’s difficult for volunteers to suggest changes to those files
-        (they have to find their way around Git and Gerrit).
-        It would be much more convenient if they were defined as i18n messages
-        that could be translated on &lt;a href="https://translatewiki.net/"&gt;translatewiki.net&lt;/a&gt; instead.
-        Progress on this project mainly consisted of discussing things with other people;
-        I also wrote some code to explore the existing data (which wasn’t merged),
-        and uploaded or reviewed some adjacent cldr patches.
-        I hope to be able to continue working on this project later.
-      &lt;/p&gt;
-&lt;p&gt;
-        The second project, &lt;a href="https://phabricator.wikimedia.org/T363626"&gt;T363626: Make Wikidata Image Positions tool translatable on translatewiki.net&lt;/a&gt;,
-        saw more tangible progress (in fact it’s mostly done).
-        I had already been working on extracting some i18n code from my Wikidata Lexeme Forms tool,
-        which has been translatable for a while,
-        into a library that other tools can use as well;
-        during the Hackathon I made enough progress that the Wikidata Image Positions tool can now use this code as well.
-        (It’s not a real library yet, I still need to finish that.)
-        The first set of translations in about half a dozen languages
-        was already exported from translatewiki.net and deployed on Toolforge during the Hackathon,
-        which was great; since then, even more translations have come in.
-      &lt;/p&gt;
-&lt;h2&gt;Minor projects&lt;/h2&gt;
-&lt;p&gt;
-        I helped Amir Aharoni write two Wikidata Lexeme Forms templates for Hebrew verbs,
-        and deployed them to the tool
-        (&lt;a href="https://lexeme-forms.toolforge.org/template/hebrew-verb-paal/"&gt;pa'al&lt;/a&gt;,
-        &lt;a href="https://lexeme-forms.toolforge.org/template/hebrew-verb-nifal/"&gt;nif'al&lt;/a&gt;).
-        Since then, we’ve brought the total number to seven,
-        adding &lt;a href="https://lexeme-forms.toolforge.org/template/hebrew-verb-piel/"&gt;pi'el&lt;/a&gt;,
-        &lt;a href="https://lexeme-forms.toolforge.org/template/hebrew-verb-pual/"&gt;pu'al&lt;/a&gt;,
-        &lt;a href="https://lexeme-forms.toolforge.org/template/hebrew-verb-hifil/"&gt;hif'il&lt;/a&gt;,
-        &lt;a href="https://lexeme-forms.toolforge.org/template/hebrew-verb-hufal/"&gt;huf'al&lt;/a&gt;,
-        and &lt;a href="https://lexeme-forms.toolforge.org/template/hebrew-verb-hitpael/"&gt;hitpa'el&lt;/a&gt;.
-      &lt;/p&gt;
-&lt;p&gt;
-        I fulfilled two edit requests by other Hackathon participants for gadgets on Wikimedia Commons:
-        one &lt;a href="https://commons.wikimedia.org/wiki/MediaWiki_talk:Gadget-Stockphoto.js#Some_updates"&gt;for Gadget-Stockphoto&lt;/a&gt;
-        and one &lt;a href="https://commons.wikimedia.org/wiki/MediaWiki_talk:Gadget-purgetab.js#Translated_label"&gt;for Gadget-purgetab&lt;/a&gt;.
-      &lt;/p&gt;
-&lt;p&gt;
-        There were probably some other minor projects as well,
-        but I don’t remember them anymore ^^
-      &lt;/p&gt;
-&lt;h2&gt;Social things&lt;/h2&gt;
-&lt;p&gt;
-        This is really the most important part of the hackathon –
-        talking to people, meeting folks you’ve never seen in person before,
-        hearing what’s going on in their lives, discussing upcoming projects,
-        all sorts of fun stuff.
-        I don’t really know what to write about it here, though.
-      &lt;/p&gt;
-&lt;p&gt;
-        One particular social event was the &lt;a href="https://phabricator.wikimedia.org/T363870"&gt;Wikimedia Cuteness Association meetup&lt;/a&gt;:
-        several people who had brought plushies, cute companions or similar things to the Hackathon
-        met up in one of the rooms and took some group photos
-        (&lt;a href="https://commons.wikimedia.org/wiki/Category:Wikimedia_Cuteness_Association_at_Wikimedia_Hackathon_2024"&gt;Commons category&lt;/a&gt;).
-        It didn’t take very long, but I’m glad we did it :)
-      &lt;/p&gt;
-&lt;p&gt;
-        Another social event was &lt;a href="https://phabricator.wikimedia.org/T364009"&gt;Juggling, Rubik’s cubes and other physical fun&lt;/a&gt;,
-        continuing a tradition from 2019 and 2023.
-        I couldn’t really explain to you why juggling and cubing fits together,
-        but it seems to work alright as a fun hour to hang out ^^
-      &lt;/p&gt;
-&lt;h2&gt;Travel&lt;/h2&gt;
-&lt;p&gt;
-        I’m very happy that this year
-        I was able to travel to and from the Hackathon without flying;
-        I took an overnight train from Berlin to Stockholm
-        (fun fact: in 2019, for Wikimania, just getting to Stockholm by train took over 24 hours with six changeovers)
-        and an overnight ferry from Stockholm to Tallinn (Tuesday evening to Thursday morning)
-        and then the reverse on the way back (Monday evening to Wednesday morning).
-        As usual, I wrote about my travel in &lt;a href="https://wikis.world/@LucasWerkmeister/112361884408412586"&gt;a Mastodon thread&lt;/a&gt;
-        (only one long thread for travel there + Hackathon + travel back this time).
-      &lt;/p&gt;
-
-&lt;/article&gt;</description><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2024/05/15/wikimedia-hackathon-2024/</guid><pubDate>Wed, 15 May 2024 00:00:00 GMT</pubDate></item></channel></rss>
+&lt;/article&gt;</description><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2024/08/14/mediawiki-permalinks/</guid><pubDate>Wed, 14 Aug 2024 00:00:00 GMT</pubDate></item></channel></rss>

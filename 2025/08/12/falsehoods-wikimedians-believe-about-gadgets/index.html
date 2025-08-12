@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Falsehoods Wikimedians Believe About Gadgets</title>
+    <link rel="stylesheet" href="/basic.css"/>
+    <link rel="alternate" type="application/rss+xml" href="/posts/index.rss"/>
+    <style>
+      h3 {
+          margin-block: 1em;
+      }
+      details {
+          margin-block: 1em;
+      }
+      details summary h3 {
+          margin-block: 0;
+          display: inline-block;
+      }
+      /* CSS based on https://stackoverflow.com/a/56758842/1420237 + https://stackoverflow.com/a/56759251/1420237 */
+      details summary h3::after {
+          content: " ▶";
+          /* margin-left: 1em;
+            display: inline-block;
+            transform: rotate(0deg);
+            transition: transform 0.5s ease; */
+      }
+      details[open] summary h3::after {
+          /* transform: rotate(90deg); */
+          content: " ▼";
+      }
+      details summary {
+          list-style-type: none;
+      }
+      details summary::marker {
+          content: "";
+      }
+      details summary::-webkit-details-marker {
+          display: none;
+      }
+    </style>
+  </head>
+  <body vocab="http://schema.org/">
+    <article resource="https://lucaswerkmeister.de/posts/2025/08/12/falsehoods-wikimedians-believe-about-gadgets/" typeof="BlogPosting">
+      <header>
+        <h1 property="name headline">Falsehoods Wikimedians Believe About Gadgets</h1>
+        <address><a rel="author" href="https://lucaswerkmeister.de" typeof="Person"><span property="name" lang="de-DE">Lucas Werkmeister</span></a></address>,
+        <time property="datePublished" datetime="2025-08-12">2025-08-12</time>.
+        <link property="publisher" href="https://lucaswerkmeister.de" typeof="Person"/>
+        <meta property="isAccessibleForFree" content="true"/>
+        <meta property="keywords" content="wikimedia"/>
+      </header>
+      <p>
+        <a href="https://www.mediawiki.org/wiki/Extension:Gadgets">Gadgets</a> are a popular way to improve the user experience on MediaWiki wikis,
+        including <a href="https://meta.wikimedia.org/wiki/Gadgets">Wikimedia wikis</a>.
+        This humorous list contains misconceptions that some of us, consciously or unconsciously,
+        may hold about various aspects of gadgets,
+        based on my own experience as an interface administrator on Wikimedia Commons.
+      </p>
+      <p>
+        For some of the falsehoods, I’ve included some extra text that you can read if you like
+        (click the headings to collapse/expand them<script src="orExpandCollapseAll.js"></script>).
+        But I’d suggest first reading through the whole list once,
+        as I think the text flows better this way :)
+      </p>
+      <p>
+        (With thanks to Ash_Crow, Sukkoria and Brooke Vibber for proofreading and suggestions!)
+      </p>
+      <h2>The list</h2>
+      <h3 id=1>1. The user who created this gadget is its maintainer</h3>
+      <h3 id=2>2. The user who most often edited this gadget is its maintainer</h3>
+      <h3 id=3>3. The user who last edited this gadget is its maintainer</h3>
+      <details>
+        <summary>
+          <h3 id=4>4. This gadget’s maintainer uses it regularly</h3>
+        </summary>
+        <p>I maintain <a href="https://commons.wikimedia.org/wiki/Help:Gadget-ACDC">AC/DC</a>, but use it <a href="https://commons.wikimedia.org/w/index.php?title=Special:Contributions/Lucas_Werkmeister&tagfilter=ACDC&limit=500">only sporadically</a>.</p>
+      </details>
+      <details>
+        <summary>
+          <h3 id=5>5. This gadget’s maintainer is able to edit its code</h3>
+        </summary>
+        <p>
+          If a gadget started out as a user script, the author of the user script may not have the permissions required to edit it after the conversion to a gadget.
+          For example, this was the case for AC/DC, until I <a href="https://commons.wikimedia.org/wiki/Commons:Administrators/Requests/Lucas_Werkmeister_(interface_administrator)">became an interface administrator</a>.
+        </p>
+      </details>
+      <h3 id=6>6. Gadgets should only have one maintainer</h3>
+      <h3 id=7>7. This gadget has enough maintainers</h3>
+      <h3 id=8>8. This gadget is maintained</h3>
+      <h3 id=9>9. This gadget works</h3>
+      <h3 id=10>10. If this gadget was broken, somebody would have noticed it</h3>
+      <h3 id=11>11. This gadget has users</h3>
+      <details>
+        <summary>
+          <h3 id=12>12. This gadget has active users</h3>
+        </summary>
+        <p>
+          Special:GadgetUsage
+          (e.g. <a href="https://en.wikipedia.org/wiki/Special:GadgetUsage">English Wikipedia</a>,
+          <a href="https://commons.wikimedia.org/wiki/Special:GadgetUsage">Wikimedia Commons</a>,
+          <a href="https://www.wikidata.org/wiki/Special:GadgetUsage">Wikidata</a>)
+          shows the number of users and active users (ones who’ve made an edit in the past 30 days) who have a gadget enabled
+          (which doesn’t necessarily mean they’re actively using the gadget).
+          Some gadgets can have thousands of users;
+          others, even on large wikis, may only have a handful, and it’s possible that few of those users are still active.
+          On test wikis you can easily find gadgets with no active users at all
+          (though I’ve yet to find a gadget without even inactive users).
+        </p>
+      </details>
+      <h3 id=13>13. This gadget is used more widely than this similar user script</h3>
+      <h3 id=14>14. This gadget has no bugs</h3>
+      <h3 id=15>15. This gadget has no security vulnerabilities</h3>
+      <details>
+        <summary>
+          <h3 id=16>16.Surely no gadget on Wikimedia wikis uses <code>eval()</code></h3>
+        </summary>
+        <p>
+          Don’t look at <a href="https://global-search.toolforge.org/?q=eval&namespaces=8&title=Gadget-.*%5C.js">this global search</a> if you want to keep believing that.
+        </p>
+      </details>
+      <details>
+        <summary>
+          <h3 id=17>17. This MediaWiki:Gadget-* page is part of a gadget</h3>
+        </summary>
+        <p>
+          It’s worth checking the <a href="https://www.mediawiki.org/wiki/Extension:Gadgets#Definition_format">gadgets definition page</a>;
+          maybe the page author never finished the gadget,
+          or it became obsolete and was removed from the gadget definitions again
+          (<a href="https://commons.wikimedia.org/wiki/Commons:Deletion_requests/MediaWiki:Gadget-site-HideFilterBar.js">example</a>).
+        </p>
+      </details>
+      <h3 id=18>18. This gadget uses a consistent coding style</h3>
+      <h3 id=19>19. This gadget’s code is written this way for a good reason, it shouldn’t be changed</h3>
+      <details>
+        <summary>
+          <h3 id=20>20. This gadget’s code is written this way for no reason, it’s fine to change it</h3>
+        </summary>
+        <p>
+          Both of these refer to <a href="https://en.wikipedia.org/wiki/Chesterton's_fence">Chesterton’s fence</a>,
+          the idea that you shouldn’t change an existing system without understanding the reason for its current state.
+          If you’re looking at an unfamiliar gadget and something in the code seems pointless and confusing,
+          it’s a good idea to look into why it was written like that before changing it.
+          Once you understand it, it may still be legitimate to change the code,
+          e.g. if the code is working around quirks in an ancient browser version that’s no longer supported,
+          or if the original developer just liked the code this way and didn’t realize that it would cause some specific bug.
+          If you can’t figure out the reason,
+          you’ll have to apply your own judgment whether you still want to risk changing the gadget.
+        </p>
+      </details>
+      <h3 id=21>21. Edits suggested or made by this gadget, by necessity, represent currently accepted best practices on this wiki</h3>
+      <h3 id=22>22. If this gadget was discouraged, deprecated, unmaintained, or abandoned in some way, the gadget description and/or documentation would say so</h3>
+      <h3 id=23>23. This gadget’s code is only used on this wiki</h3>
+      <details>
+        <summary>
+          <h3 id=24>24. This gadget’s code is only used on Wikimedia wikis</h3>
+        </summary>
+        <p>
+          For example, HotCat can be (and is) <a href="https://commons.wikimedia.org/wiki/Help:Gadget-HotCat#Installing_HotCat_on_another_wiki">installed on many other wikis</a>.
+          Many of them are set up to always load the latest code straight from Wikimedia Commons,
+          so we need to be extra careful when making any changes there.
+        </p>
+      </details>
+      <h3 id=25>25. This gadget is usable</h3>
+      <h3 id=26>26. This gadget’s user interface is well designed</h3>
+      <h3 id=27>27. This gadget is self-explanatory</h3>
+      <h3 id=28>28. This gadget has a documentation page</h3>
+      <h3 id=29>29. This gadget’s documentation page is up to date</h3>
+      <h3 id=30>30. This gadget’s documentation page is correct</h3>
+      <details>
+        <summary>
+          <h3 id=31>31. Every part of this gadget is protected against vandalism</h3>
+        </summary>
+        <p>
+          Translations may be less protected than the gadget’s code proper, for instance.
+        </p>
+      </details>
+      <h3 id=32>32. Any user who edited this gadget, by necessity, understood how the whole gadget worked then and still understands it now</h3>
+      <h3 id=33>33. If an issue with this gadget is reported on its talk page, somebody will respond to it</h3>
+      <h3 id=34>34. If an issue with this gadget is reported on its talk page, nobody will respond to it</h3>
+      <h3 id=35>35. An edit request to update this gadget will be processed speedily</h3>
+      <h3 id=36>36. An edit request to update this gadget will never be processed</h3>
+      <h3 id=37>37. This wiki has an edit request template</h3>
+      <details>
+        <summary>
+          <h3 id=38>38. This wiki has a technical village pump or interface administrators’ noticeboard</h3>
+        </summary>
+        <p>
+          From Wikimedia Commons, I’m mostly familiar with the <a href="https://commons.wikimedia.org/wiki/Template:Edit_request">edit request</a> workflow
+          (a template you put on the talk page of the page you want edited),
+          but e.g. German Wikipedia has no such template and instead collects all edit requests on a <a href="https://de.wikipedia.org/wiki/Wikipedia:Technik/Skin/MediaWiki/%C3%84nderungen">central noticeboard</a>.
+          Other wikis may have neither
+          (<a href="https://query.wikidata.org/embed.html#SELECT%20%3Fwiki%20WHERE%20%7B%0A%20%20hint%3AQuery%20hint%3Aoptimizer%20%22None%22.%0A%20%20%3Fwiki%20wikibase%3AwikiGroup%20%22wikipedia%22.%0A%20%20MINUS%20%7B%0A%20%20%20%20%3FtemplateEditFullyProtected%20schema%3Aabout%20wd%3AQ6578653%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20schema%3AisPartOf%20%3Fwiki.%0A%20%20%7D%0A%20%20MINUS%20%7B%0A%20%20%20%20%3FtemplateEditProtected%20schema%3Aabout%20wd%3AQ131313714%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20schema%3AisPartOf%20%3Fwiki.%0A%20%20%7D%0A%20%20MINUS%20%7B%0A%20%20%20%20%3FinterfaceAdminNoticeboard%20schema%3Aabout%20wd%3AQ14720036%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20schema%3AisPartOf%20%3Fwiki.%0A%20%20%7D%0A%20%20MINUS%20%7B%0A%20%20%20%20%3FtechnicalVillagePump%20schema%3Aabout%20wd%3AQ4582194%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20schema%3AisPartOf%20%3Fwiki.%0A%20%20%7D%0A%7D">Wikidata query</a>).
+        </p>
+      </details>
+      <h3 id=39>39. This gadget’s messages are translatable</h3>
+      <h3 id=40>40. Everyone can update this gadget’s translations</h3>
+      <h3 id=41>41. Everyone knows how to update this gadget’s translations</h3>
+      <h3 id=42>42. Someone knows how to update this gadget’s translations</h3>
+      <h3 id=43>43. This gadget’s source code and comments are written in English</h3>
+      <h3 id=44>44. This gadget’s source code is commented</h3>
+      <h3 id=45>45. This user script should be a gadget</h3>
+      <h3 id=46>46. This user script shouldn’t be a gadget</h3>
+      <h3 id=47>47. This user script could’ve been made a gadget already</h3>
+      <h3 id=48>48. There’s a good reason why this user script wasn’t already made a gadget</h3>
+      <h3 id=49>49. When it’s agreed that this user script should be made a gadget, it’s clear which user’s version of the user script should be adopted</h3>
+      <h3 id=50>50. This useful functionality already exists as a gadget</h3>
+      <h3 id=51>51. There must be a reason why there’s no gadget for this useful functionality yet</h3>
+      <h3 id=52>52. This gadget would be really easy to create</h3>
+      <details open>
+        <summary>
+          <h3 id=53>53. This gadget would be really hard to create</h3>
+        </summary>
+        <p>
+          You won’t know until you try it.
+          If you know how to write JavaScript,
+          and you want a certain gadget or user script to exist,
+          go ahead and try it out :)
+        </p>
+      </details>
+      <footer>
+        <div class="license-info">
+          <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+            <img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png"/>
+          </a><br/>
+          This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+        </div>
+      </footer>
+    </article>
+  </body>
+</html>
