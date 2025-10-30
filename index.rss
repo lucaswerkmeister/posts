@@ -1,5 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Lucas’ Posts</title><link>https://lucaswerkmeister.de/posts/</link><description>I suppose this is a blog of sorts – or at least a place where I occasionally post stuff. Not necessarily about anything in particular.</description><lastBuildDate>Tue, 12 Aug 2025 19:23:44 GMT</lastBuildDate><generator>PyRSS2Gen-1.1.0</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Falsehoods Wikimedians Believe About Gadgets</title><link>https://lucaswerkmeister.de/posts/2025/08/12/falsehoods-wikimedians-believe-about-gadgets/</link><description>&lt;article&gt;
+<rss version="2.0"><channel><title>Lucas’ Posts</title><link>https://lucaswerkmeister.de/posts/</link><description>I suppose this is a blog of sorts – or at least a place where I occasionally post stuff. Not necessarily about anything in particular.</description><lastBuildDate>Thu, 30 Oct 2025 19:58:26 GMT</lastBuildDate><generator>PyRSS2Gen-1.1.0</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Wikimedia Netherlands Mini Hackathon 2025 recap</title><link>https://lucaswerkmeister.de/posts/2025/10/30/wmnl-mini-hackathon-2025/</link><description>&lt;article&gt;
+
+&lt;p&gt;
+        Last weekend, I participated in the &lt;a href="https://nl.wikimedia.org/wiki/Mini_Hackathon_October_2025"&gt;Wikimedia Netherlands Mini Hackathon 2025&lt;/a&gt;
+        (&lt;a href="https://commons.wikimedia.org/wiki/Category:2025_Wikimedia_Netherlands_Mini_Hackathon"&gt;Commons category&lt;/a&gt;),
+        a one-day event for ca. 25 people at the Wikimedia Netherlands office in Utrecht.
+        This was the fourth time it took place, and also the fourth time I attended;
+        it’s a really nice little event, and also a good opportunity for me to visit some folks along the way.
+        This time, I thought I’d write a little bit about what I did there.
+      &lt;/p&gt;
+&lt;p&gt;
+        My first major project was moving the documentation for m3api from GitHub pages to doc.wikimedia.org (&lt;a href="https://phabricator.wikimedia.org/T392716"&gt;T392716&lt;/a&gt;).
+        As you may recall, earlier this year I &lt;a href="https://lucaswerkmeister.de/posts/2025/04/12/introducing-m3api/"&gt;released m3api&lt;/a&gt;,
+        a library for using the MediaWiki Action API.
+        more recently, I moved its code hosting from GitHub to Wikimedia GitLab (&lt;a href="https://phabricator.wikimedia.org/T392290"&gt;T392290&lt;/a&gt;),
+        but wasn’t able to move the documentation away from GitHub Pages at the time.
+        At the hackathon, I managed to &lt;a href="https://gitlab.wikimedia.org/repos/m3api/ci-templates/-/commit/3b13ff6501"&gt;put together a build process&lt;/a&gt;,
+        and get approval from someone with the right access,
+        to publish documentation for &lt;a href="https://gitlab.wikimedia.org/repos/releng/docpub/-/merge_requests/33"&gt;a temporary test package&lt;/a&gt;
+        and &lt;a href="https://gitlab.wikimedia.org/repos/releng/docpub/-/merge_requests/34"&gt;the real m3api packages&lt;/a&gt;
+        to publish their documentation to &lt;a href="https://doc.wikimedia.org/"&gt;doc.wikimedia.org&lt;/a&gt;.
+        The process worked for the test package (&lt;a href="https://web.archive.org/web/20251025142728/https://doc.wikimedia.org/m3api/tmp-m3api-example/"&gt;archived snapshot&lt;/a&gt;);
+        I’ll finish the process for the real m3api packages later (hopefully soon).
+        Many thanks to Reedy for advice and Bryan for merging those requests!
+      &lt;/p&gt;
+&lt;p&gt;
+        My other major project was part of something I’ve been tinkering with, on and off, for several years now (and in a grey zone between my staff and volunteer accounts, meh):
+        making language names translatable on translatewiki.net (&lt;a href="https://phabricator.wikimedia.org/T231755"&gt;T231755&lt;/a&gt;).
+        The &lt;a href="https://www.mediawiki.org/wiki/Extension:CLDR"&gt;CLDR extension&lt;/a&gt; contains a lot of names of languages in other languages
+        (e.g. the German name for Arabic is &lt;q lang="de"&gt;Arabisch&lt;/q&gt;, the Arabic name for Japanese is &lt;q dir="rtl" lang="ar"&gt;اليابانية&lt;/q&gt;,
+        the Japanese name for Tarantino is &lt;q lang="ja"&gt;バニュマス語&lt;/q&gt;, etc.).
+        Some of these names come from the &lt;a href="https://en.wikipedia.org/wiki/Common_Locale_Data_Repository"&gt;CLDR database&lt;/a&gt;,
+        while others are defined within this extension (called local names);
+        reasons for local names might included that MediaWiki is using a nonstandard language code
+        (as with Tarantino, &lt;code&gt;roa-tara&lt;/code&gt;, above – it has no standard language code),
+        or that the proces to contribute language name translations to CLDR is slow and cumbersome
+        (so even if a language name will be added to CLDR eventually, we may want to include it as a local name temporarily).
+        However, the process to manage these local names is also cumbersome:
+        they’re defined in PHP files in the extension,
+        and to add or update them, you either need a &lt;a href="https://www.mediawiki.org/wiki/Developer_account"&gt;developer account&lt;/a&gt; to upload a change to the Gerrit code review system,
+        or ask someone else who has a developer account (typically a translatewiki.net volunteer, I gather) to port your changes to Gerrit for review.
+        Instead, we would like to make these names translatable on &lt;a href="https://translatewiki.net/"&gt;translatewiki.net&lt;/a&gt;,
+        just like other messages can be translated there.
+        A necessary requirement for this is that we have English versions of all local names, which was not previously true –
+        several local names only existed in other languages, such as Norwegian (&lt;code&gt;no&lt;/code&gt;).
+        So during the hackathon I went through the list of language codes that were lacking an English name,
+        and added one for all of them.
+        The &lt;a href="https://gerrit.wikimedia.org/r/c/mediawiki/extensions/cldr/+/1054902"&gt;resulting Gerrit change&lt;/a&gt; isn’t ready for merging yet,
+        but it hopefully will be soon.
+        Many thanks to Nikki for advice on these languages and their names!
+      &lt;/p&gt;
+&lt;p&gt;
+        Besides those two projects, I also assisted some other people with their own projects,
+        including some OpenRefine work which was a nice opportunity for me to get a bit more acquainted with it again
+        (and &lt;a href="https://wikis.world/@LucasWerkmeister/115435031813365329"&gt;learn some new things about it&lt;/a&gt; too!).
+        And of course, as is tradition at Wikimedia Hackathon events,
+        copious amounts of sweets were exchanged and consumed :)
+        I look forward to my next hackathon in the Netherlands,
+        whether it’s next year’s edition of the mini hackathon
+        or the &lt;a href="https://www.mediawiki.org/wiki/Wikimedia_Northwestern_European_Hackathon_2026"&gt;Wikimedia Northwestern European Hackathon 2026&lt;/a&gt; 🎉
+      &lt;/p&gt;
+
+&lt;style&gt;
+        :lang(ar) {
+            quotes: "«" "»";
+        }
+        :lang(de) {
+            quotes: "„" "“";
+        }
+        :lang(ja) {
+            quotes: "「" "」";
+        }
+      &lt;/style&gt;
+&lt;/article&gt;</description><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2025/10/30/wmnl-mini-hackathon-2025/</guid><pubDate>Thu, 30 Oct 2025 00:00:00 GMT</pubDate></item><item><title>Falsehoods Wikimedians Believe About Gadgets</title><link>https://lucaswerkmeister.de/posts/2025/08/12/falsehoods-wikimedians-believe-about-gadgets/</link><description>&lt;article&gt;
 
 &lt;p&gt;
 &lt;a href="https://www.mediawiki.org/wiki/Extension:Gadgets"&gt;Gadgets&lt;/a&gt; are a popular way to improve the user experience on MediaWiki wikis,
@@ -363,7 +436,8 @@
 &lt;pre&gt;&lt;code&gt;pymysql @ git+https://github.com/PyMySQL/PyMySQL@main&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;
         I look forward to the day when I’ll be able to remove this again.
-      &lt;/p&gt;
+        &lt;ins&gt;2025-08-25 update: that day was today (around 1AM, so arguably still 24 August), after the release of &lt;a href="https://github.com/PyMySQL/PyMySQL/releases/tag/v1.1.2"&gt;PyMySQL 1.1.2&lt;/a&gt; earlier.&lt;/ins&gt;
+&lt;/p&gt;
 &lt;p&gt;
         The remaining part of the build service migration is the &lt;code&gt;service.template&lt;/code&gt; file,
         which contains default arguments for calling &lt;code&gt;webservice&lt;/code&gt; commands.
@@ -1677,176 +1751,4 @@ WantedBy=timers.target
         &lt;/p&gt;
 &lt;/div&gt;
 
-&lt;/article&gt;</description><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2024/09/28/jbl-quantum-810-review/</guid><pubDate>Sat, 28 Sep 2024 00:00:00 GMT</pubDate></item><item><title>Why MediaWiki permanent links aren’t fully permanent</title><link>https://lucaswerkmeister.de/posts/2024/08/14/mediawiki-permalinks/</link><description>&lt;article&gt;
-
-&lt;p&gt;
-&lt;a href="https://en.wikipedia.org/wiki/MediaWiki"&gt;MediaWiki&lt;/a&gt;,
-        the software behind &lt;a href="https://en.wikipedia.org/wiki/Wikipedia"&gt;Wikipedia&lt;/a&gt;
-        and &lt;a href="https://wikiapiary.com/wiki/Main_Page"&gt;many other wikis&lt;/a&gt;,
-        allows visitors to copy a “permanent link” (or “permalink”) of the article they are currently viewing.
-      &lt;/p&gt;
-&lt;p&gt;
-        As &lt;a href="https://en.wikipedia.org/wiki/Help:Permanent_link"&gt;English Wikipedia’s help page on permanent links&lt;/a&gt; notes,
-        these links aren’t fully “permanent”:
-        visiting these links later is not guaranteed to show the exact same content.
-        I thought it would be useful to list some of the different ways in which differences can appear.
-      &lt;/p&gt;
-&lt;aside&gt;
-&lt;p&gt;
-          Please note that I’m mainly focusing on Wikimedia wikis here,
-          and for examples will often refer to Wikipedias in particular;
-          many of these issues will also affect other MediaWiki sites,
-          but there are probably additional ways in which third-party wikis can have permalinks’ contents change
-          (e.g. Fandom / Wikia has tons of custom extensions),
-          and I’m generally not super interested in those.
-          (But if I forgot something relevant to Wikimedia or standard MediaWiki,
-          let me know and I might edit it in.)
-        &lt;/p&gt;
-&lt;/aside&gt;
-&lt;h2&gt;What a permalink is&lt;/h2&gt;
-&lt;p&gt;
-        While the permalink shown in the sidebar (or “tools” menu) contains both the &lt;code&gt;title=&lt;/code&gt; and &lt;code&gt;oldid=&lt;/code&gt; URL parameters
-        (example: &lt;a href="https://en.wikipedia.org/w/index.php?title=Wikimedia_Commons&amp;amp;oldid=1185477778"&gt;https://en.wikipedia.org/w/index.php?title=Wikimedia_Commons&amp;amp;oldid=1185477778&lt;/a&gt;),
-        only the &lt;code&gt;oldid=&lt;/code&gt; is actually required
-        (equivalent example: &lt;a href="https://en.wikipedia.org/w/index.php?oldid=1185477778"&gt;https://en.wikipedia.org/w/index.php?oldid=1185477778&lt;/a&gt;).
-        The value of this parameter is the revision ID of a page,
-        and it tells MediaWiki to use the content of this revision of that page instead of its latest revision.
-        For normal wiki articles, this content is the wikitext (the source code of the article),
-        which is then rendered and shown to the visitor;
-        you can also see the content unrendered by adding &lt;code&gt;&amp;amp;action=raw&lt;/code&gt; to the URL
-        (&lt;a href="https://en.wikipedia.org/w/index.php?oldid=1185477778&amp;amp;action=raw"&gt;example&lt;/a&gt;).
-      &lt;/p&gt;
-&lt;h2&gt;Changes in on-wiki content&lt;/h2&gt;
-&lt;p&gt;
-        Let’s start with the biggest one.
-        Visiting a permalink only loads the content of the page itself as of the revision specified in the URL.
-        Any other &lt;a href="https://en.wikipedia.org/wiki/Help:Template"&gt;templates&lt;/a&gt;,
-        &lt;a href="https://en.wikipedia.org/wiki/Wikipedia:Lua"&gt;Lua/Scribunto modules&lt;/a&gt;,
-        or &lt;a href="https://en.wikipedia.org/wiki/Help:Transclusion"&gt;other transcluded pages&lt;/a&gt;
-        are loaded, parsed / evaluated and shown using their latest revision,
-        not whatever was their latest revision when the permalink’s revision was created.
-        Templates may look and behave very differently from what they used to do;
-        their parameters also may or may not be compatible with the template invocation in the old revision,
-        depending on how the community edited the templates.
-      &lt;/p&gt;
-&lt;p&gt;
-        In fact, it’s not even guaranteed that the page will show the same templates at all.
-        Templates are looked up by their name according to the old revision’s wikitext,
-        but templates can be deleted, recreated, or renamed.
-        For instance, several wikis now have templates like &lt;code&gt;{{Q|Q123}}&lt;/code&gt; and/or &lt;code&gt;{{P|P123}}&lt;/code&gt;
-        to show Wikidata items and/or properties;
-        but in the past, “&lt;code&gt;Q&lt;/code&gt;” or “&lt;code&gt;P&lt;/code&gt;” may have referred to different templates that were later deleted,
-        as e.g. on &lt;a href="https://eo.wikipedia.org/wiki/Specialaĵo:Protokolo?page=Ŝablono%3AP"&gt;Esperanto&lt;/a&gt;,
-        &lt;a href="https://zh.wikipedia.org/wiki/Special:%E6%97%A5%E5%BF%97?page=Template%3AP"&gt;Chinese&lt;/a&gt; or
-        &lt;a href="https://es.wikipedia.org/wiki/Especial:Registro?page=Plantilla%3AQ"&gt;Spanish&lt;/a&gt; Wikipedia.
-        (These are conveniently short names, after all!
-        On English Wikipedia, &lt;code&gt;{{&lt;a href="https://en.wikipedia.org/wiki/Template:P"&gt;P&lt;/a&gt;}}&lt;/code&gt; is still a smiley 🙂)
-      &lt;/p&gt;
-&lt;p&gt;
-        A more niche phenomenon is redlinks (h/t &lt;a href="https://mamot.fr/@pintoch/112953410745774438"&gt;Antonin Delpeuch&lt;/a&gt; for this one).
-        MediaWiki shows internal links to existing pages in blue, and links to pages that don’t exist in red;
-        but when rendering a permalink, this refers to whether the page currently exists,
-        not whether it used to exist when the old revision was saved.
-        (You can actually see this in the &lt;a href="https://en.wikipedia.org/w/index.php?oldid=1185477778"&gt;example permalink from earlier&lt;/a&gt;,
-        where a “not to be confused with” &lt;a href="https://en.wikipedia.org/wiki/Wikipedia:Hatnote"&gt;hatnote&lt;/a&gt; points to a redlink that was evidently deleted in the meantime.)
-      &lt;/p&gt;
-&lt;p&gt;
-        Articles may also be affected by changes in the wiki’s default interface &lt;a href="https://en.wikipedia.org/wiki/Wikipedia:Common.js_and_common.css"&gt;JavaScript and CSS&lt;/a&gt;
-        and default &lt;a href="https://en.wikipedia.org/wiki/Wikipedia:Gadget"&gt;gadgets&lt;/a&gt;,
-        which may interact with page contents.
-        For example, styles for frequently used templates are sometimes moved into &lt;code&gt;common.css&lt;/code&gt; (or out of it),
-        and some templates may rely on gadgets for interactive functionality
-        (like – CW for some medical imagery in the next link – Wikimedia Commons’ &lt;a href="https://commons.wikimedia.org/wiki/Template:Imagestack"&gt;Imagestack&lt;/a&gt;).
-        As with templates, it’s ultimately up to the community whether changes here are backwards compatible or not.
-      &lt;/p&gt;
-&lt;h2&gt;Changes in content on other wikis&lt;/h2&gt;
-&lt;p&gt;
-        Articles can also use content from other wikis,
-        the most prominent example being Wikimedia Commons images
-        (which, thanks to &lt;a href="https://www.mediawiki.org/wiki/InstantCommons"&gt;InstantCommons&lt;/a&gt;,
-        are used not only on Wikimedia wikis but also &lt;em&gt;many&lt;/em&gt; other wikis using MediaWiki).
-        A permalink will show the latest version of an image on Commons,
-        which is not necessarily the same version as was shown when the old revision was saved –
-        although, due to Commons’ &lt;a href="https://commons.wikimedia.org/w/index.php?title=Commons:Don%27t_be_bold&amp;amp;rdfrom=commons:Commons:Be_bold"&gt;don’t be bold&lt;/a&gt; policy,
-        the differences should usually be minor
-        (e.g. a higher-quality version or a slightly improved crop).
-      &lt;/p&gt;
-&lt;p&gt;
-        The image on Commons may also have been deleted in the meantime,
-        e.g. because it turned out to be a copyright violation.
-        In this case, the permalink will show the image as a redlink.
-      &lt;/p&gt;
-&lt;p&gt;
-        There are also other ways for wikis to refer to Commons.
-        Prior to its &lt;a href="https://phabricator.wikimedia.org/T334940"&gt;undeployment due to security issues&lt;/a&gt;,
-        the Graph extension could load data from the Data: namespace on Commons,
-        and show it e.g. as a line chart.
-      &lt;/p&gt;
-&lt;p&gt;
-        And then there’s &lt;a href="https://en.wikipedia.org/wiki/Wikidata"&gt;Wikidata&lt;/a&gt;.
-        Wikipedia editors can, at their discretion, make an article read information from Wikidata;
-        this has a number of benefits,
-        but is also another case where visible parts of an article aren’t part of the article’s source code
-        and viewing old revisions will still pull the latest version from the referenced place.
-      &lt;/p&gt;
-&lt;h2&gt;Changes in the software&lt;/h2&gt;
-&lt;p&gt;
-        Finally, the software which actually renders the old revision’s content is also subject to changes.
-        MediaWiki sees roughly two thousand code changes per release, &lt;!-- git log --oneline --grep='Update git submodules\|Localisation updates\|^Merge' --invert-grep gerrit/REL1_41..gerrit/REL1_42 | wc -l # repeat for a few older REL branch pairs --&gt;
-        and any of them might affect the way an article looks.
-        While the parser is developed fairly conservatively
-        (as nobody wants to break millions of existing pages all at once),
-        there are sometimes breaking changes to it;
-        many of them may be preceded by on-wiki fixes to avoid the breakage
-        (e.g. using the &lt;a href="https://en.wikipedia.org/wiki/Wikipedia:Linter"&gt;Linter&lt;/a&gt; to locate problematic constructs whose behavior will change in future),
-        but this doesn’t help when looking at old revisions.
-      &lt;/p&gt;
-&lt;aside&gt;
-&lt;p&gt;
-          (Side note: Because the parser always produces &lt;em&gt;some&lt;/em&gt; output HTML,
-          and never returns an error like “invalid input wikitext”,
-          arguably any change to its output is a breaking change.
-          After all, even if some new wikitext syntax is intentionally introduced,
-          that syntax will previously have rendered in a different way,
-          and it’s theoretically possible that someone used that syntax and relies on its previous behavior.
-          This is also something that irritates me about Markdown “flavors”
-          that describe themselves as “compatible with” or “strict supersets of” CommonMark.)
-        &lt;/p&gt;
-&lt;/aside&gt;
-&lt;p&gt;
-        Also, similar to the earlier point about the wiki’s default CSS and JS,
-        the old revision may also have relied on CSS or JS included in MediaWiki, which is subject to change.
-        For example, many articles rely on &lt;a href="https://www.mediawiki.org/wiki/Manual:Collapsible_elements"&gt;collapsible elements&lt;/a&gt;
-        (which is an intentional feature offered by MediaWiki which has stayed very stable so far),
-        and many pages (help and project pages more so than articles, I believe)
-        rely or relied on styles from the OOUI or MediaWiki UI interface libraries,
-        a practice that is &lt;a href="https://phabricator.wikimedia.org/T360010"&gt;increasingly discouraged&lt;/a&gt;
-        as these libraries are being phased out in favor of Codex
-        (though &lt;a href="https://phabricator.wikimedia.org/T355242"&gt;the replacement is not yet clear&lt;/a&gt;).
-      &lt;/p&gt;
-&lt;h2&gt;Now what?&lt;/h2&gt;
-&lt;p&gt;
-        If you want to create a new link to some wiki content as you currently see it:
-        you can use a permalink as offered by MediaWiki (it’s a pretty “lightweight” solution),
-        but if you want to be absolutely sure that everyone else will see the same content,
-        I believe the only way to do that and avoid all the issues here
-        is to grab a snapshot of the &lt;em&gt;rendered&lt;/em&gt; wiki content and distribute that.
-        You can do this via a trusted intermediary,
-        such as the &lt;a href="https://en.wikipedia.org/wiki/Internet_Archive"&gt;Internet Archive&lt;/a&gt;’s &lt;a href="https://en.wikipedia.org/wiki/Wayback_Machine"&gt;Wayback Machine&lt;/a&gt;,
-        or you can save the page yourself.
-      &lt;/p&gt;
-&lt;p&gt;
-        If you’re looking at a permalink that you found somewhere else,
-        I think it’s worth keeping in mind that there are some caveats to it,
-        but 99% of the time it’s fine –
-        in practice, I think most of the issues listed here are more theoretical than practical concerns.
-        If you really want to be sure you’re seeing a page as it originally appeared,
-        you can try to find a snapshot on the Wayback Machine or another web archiving site.
-      &lt;/p&gt;
-&lt;p&gt;
-        There is also a proposal for a &lt;a href="https://www.mediawiki.org/wiki/User:Ainali/Wiki_Timeslicer"&gt;Wiki Timeslicer&lt;/a&gt; tool which would bypass some of these problems.
-        (Personally, I’m skeptical how feasible it is, to be honest.
-        But it probably is possible to improve on MediaWiki’s own functionality, at least.)
-      &lt;/p&gt;
-
-&lt;/article&gt;</description><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2024/08/14/mediawiki-permalinks/</guid><pubDate>Wed, 14 Aug 2024 00:00:00 GMT</pubDate></item></channel></rss>
+&lt;/article&gt;</description><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2024/09/28/jbl-quantum-810-review/</guid><pubDate>Sat, 28 Sep 2024 00:00:00 GMT</pubDate></item></channel></rss>

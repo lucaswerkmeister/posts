@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Wikimedia Netherlands Mini Hackathon 2025 recap</title>
+    <link rel="stylesheet" href="/basic.css"/>
+    <link rel="alternate" type="application/rss+xml" href="/posts/index.rss"/>
+  </head>
+  <body vocab="http://schema.org/">
+    <article resource="https://lucaswerkmeister.de/posts/2025/10/30/wmnl-mini-hackathon-2025/" typeof="BlogPosting">
+      <header>
+        <h1 property="name headline">Wikimedia Netherlands Mini Hackathon 2025 recap</h1>
+        <address><a rel="author" href="https://lucaswerkmeister.de" typeof="Person"><span property="name" lang="de-DE">Lucas Werkmeister</span></a></address>,
+        <time property="datePublished" datetime="2025-10-30">2025-10-30</time>.
+        <link property="publisher" href="https://lucaswerkmeister.de" typeof="Person"/>
+        <meta property="isAccessibleForFree" content="true"/>
+        <meta property="keywords" content="wikimedia"/>
+      </header>
+      <p>
+        Last weekend, I participated in the <a href="https://nl.wikimedia.org/wiki/Mini_Hackathon_October_2025">Wikimedia Netherlands Mini Hackathon 2025</a>
+        (<a href="https://commons.wikimedia.org/wiki/Category:2025_Wikimedia_Netherlands_Mini_Hackathon">Commons category</a>),
+        a one-day event for ca. 25 people at the Wikimedia Netherlands office in Utrecht.
+        This was the fourth time it took place, and also the fourth time I attended;
+        it’s a really nice little event, and also a good opportunity for me to visit some folks along the way.
+        This time, I thought I’d write a little bit about what I did there.
+      </p>
+      <p>
+        My first major project was moving the documentation for m3api from GitHub pages to doc.wikimedia.org (<a href="https://phabricator.wikimedia.org/T392716">T392716</a>).
+        As you may recall, earlier this year I <a href="https://lucaswerkmeister.de/posts/2025/04/12/introducing-m3api/">released m3api</a>,
+        a library for using the MediaWiki Action API.
+        more recently, I moved its code hosting from GitHub to Wikimedia GitLab (<a href="https://phabricator.wikimedia.org/T392290">T392290</a>),
+        but wasn’t able to move the documentation away from GitHub Pages at the time.
+        At the hackathon, I managed to <a href="https://gitlab.wikimedia.org/repos/m3api/ci-templates/-/commit/3b13ff6501">put together a build process</a>,
+        and get approval from someone with the right access,
+        to publish documentation for <a href="https://gitlab.wikimedia.org/repos/releng/docpub/-/merge_requests/33">a temporary test package</a>
+        and <a href="https://gitlab.wikimedia.org/repos/releng/docpub/-/merge_requests/34">the real m3api packages</a>
+        to publish their documentation to <a href="https://doc.wikimedia.org/">doc.wikimedia.org</a>.
+        The process worked for the test package (<a href="https://web.archive.org/web/20251025142728/https://doc.wikimedia.org/m3api/tmp-m3api-example/">archived snapshot</a>);
+        I’ll finish the process for the real m3api packages later (hopefully soon).
+        Many thanks to Reedy for advice and Bryan for merging those requests!
+      </p>
+      <p>
+        My other major project was part of something I’ve been tinkering with, on and off, for several years now (and in a grey zone between my staff and volunteer accounts, meh):
+        making language names translatable on translatewiki.net (<a href="https://phabricator.wikimedia.org/T231755">T231755</a>).
+        The <a href="https://www.mediawiki.org/wiki/Extension:CLDR">CLDR extension</a> contains a lot of names of languages in other languages
+        (e.g. the German name for Arabic is <q lang=de>Arabisch</q>, the Arabic name for Japanese is <q lang=ar dir=rtl>اليابانية</q>,
+        the Japanese name for Tarantino is <q lang=ja>バニュマス語</q>, etc.).
+        Some of these names come from the <a href="https://en.wikipedia.org/wiki/Common_Locale_Data_Repository">CLDR database</a>,
+        while others are defined within this extension (called local names);
+        reasons for local names might included that MediaWiki is using a nonstandard language code
+        (as with Tarantino, <code>roa-tara</code>, above – it has no standard language code),
+        or that the proces to contribute language name translations to CLDR is slow and cumbersome
+        (so even if a language name will be added to CLDR eventually, we may want to include it as a local name temporarily).
+        However, the process to manage these local names is also cumbersome:
+        they’re defined in PHP files in the extension,
+        and to add or update them, you either need a <a href="https://www.mediawiki.org/wiki/Developer_account">developer account</a> to upload a change to the Gerrit code review system,
+        or ask someone else who has a developer account (typically a translatewiki.net volunteer, I gather) to port your changes to Gerrit for review.
+        Instead, we would like to make these names translatable on <a href="https://translatewiki.net/">translatewiki.net</a>,
+        just like other messages can be translated there.
+        A necessary requirement for this is that we have English versions of all local names, which was not previously true –
+        several local names only existed in other languages, such as Norwegian (<code>no</code>).
+        So during the hackathon I went through the list of language codes that were lacking an English name,
+        and added one for all of them.
+        The <a href="https://gerrit.wikimedia.org/r/c/mediawiki/extensions/cldr/+/1054902">resulting Gerrit change</a> isn’t ready for merging yet,
+        but it hopefully will be soon.
+        Many thanks to Nikki for advice on these languages and their names!
+      </p>
+      <p>
+        Besides those two projects, I also assisted some other people with their own projects,
+        including some OpenRefine work which was a nice opportunity for me to get a bit more acquainted with it again
+        (and <a href="https://wikis.world/@LucasWerkmeister/115435031813365329">learn some new things about it</a> too!).
+        And of course, as is tradition at Wikimedia Hackathon events,
+        copious amounts of sweets were exchanged and consumed :)
+        I look forward to my next hackathon in the Netherlands,
+        whether it’s next year’s edition of the mini hackathon
+        or the <a href="https://www.mediawiki.org/wiki/Wikimedia_Northwestern_European_Hackathon_2026">Wikimedia Northwestern European Hackathon 2026</a> 🎉
+      </p>
+      <footer>
+        <div class="license-info">
+          <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+            <img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png"/>
+          </a><br/>
+          This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+        </div>
+      </footer>
+      <style>
+        :lang(ar) {
+            quotes: "«" "»";
+        }
+        :lang(de) {
+            quotes: "„" "“";
+        }
+        :lang(ja) {
+            quotes: "「" "」";
+        }
+      </style>
+    </article>
+  </body>
+</html>
