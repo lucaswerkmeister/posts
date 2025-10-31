@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Lucas’ Posts (#wikimedia)</title><link>https://lucaswerkmeister.de/posts/</link><description>I suppose this is a blog of sorts – or at least a place where I occasionally post stuff. Not necessarily about anything in particular.</description><lastBuildDate>Thu, 30 Oct 2025 19:58:27 GMT</lastBuildDate><generator>PyRSS2Gen-1.1.0</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Wikimedia Netherlands Mini Hackathon 2025 recap</title><link>https://lucaswerkmeister.de/posts/2025/10/30/wmnl-mini-hackathon-2025/</link><description>&lt;article&gt;
+<rss version="2.0"><channel><title>Lucas’ Posts (#wikimedia)</title><link>https://lucaswerkmeister.de/posts/</link><description>I suppose this is a blog of sorts – or at least a place where I occasionally post stuff. Not necessarily about anything in particular.</description><lastBuildDate>Fri, 31 Oct 2025 17:23:00 GMT</lastBuildDate><generator>PyRSS2Gen-1.1.0</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Wikimedia Netherlands Mini Hackathon 2025 recap</title><link>https://lucaswerkmeister.de/posts/2025/10/30/wmnl-mini-hackathon-2025/</link><description>&lt;article&gt;
 
 &lt;p&gt;
         Last weekend, I participated in the &lt;a href="https://nl.wikimedia.org/wiki/Mini_Hackathon_October_2025"&gt;Wikimedia Netherlands Mini Hackathon 2025&lt;/a&gt;
@@ -29,12 +29,12 @@
         making language names translatable on translatewiki.net (&lt;a href="https://phabricator.wikimedia.org/T231755"&gt;T231755&lt;/a&gt;).
         The &lt;a href="https://www.mediawiki.org/wiki/Extension:CLDR"&gt;CLDR extension&lt;/a&gt; contains a lot of names of languages in other languages
         (e.g. the German name for Arabic is &lt;q lang="de"&gt;Arabisch&lt;/q&gt;, the Arabic name for Japanese is &lt;q dir="rtl" lang="ar"&gt;اليابانية&lt;/q&gt;,
-        the Japanese name for Tarantino is &lt;q lang="ja"&gt;バニュマス語&lt;/q&gt;, etc.).
+        the Japanese name for Tarantino is &lt;q lang="ja"&gt;タラント語&lt;/q&gt;, etc.).
         Some of these names come from the &lt;a href="https://en.wikipedia.org/wiki/Common_Locale_Data_Repository"&gt;CLDR database&lt;/a&gt;,
         while others are defined within this extension (called local names);
         reasons for local names might included that MediaWiki is using a nonstandard language code
         (as with Tarantino, &lt;code&gt;roa-tara&lt;/code&gt;, above – it has no standard language code),
-        or that the proces to contribute language name translations to CLDR is slow and cumbersome
+        or that the process to contribute language name translations to CLDR is slow and cumbersome
         (so even if a language name will be added to CLDR eventually, we may want to include it as a local name temporarily).
         However, the process to manage these local names is also cumbersome:
         they’re defined in PHP files in the extension,

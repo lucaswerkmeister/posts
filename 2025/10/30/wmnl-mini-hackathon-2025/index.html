@@ -44,12 +44,12 @@
         making language names translatable on translatewiki.net (<a href="https://phabricator.wikimedia.org/T231755">T231755</a>).
         The <a href="https://www.mediawiki.org/wiki/Extension:CLDR">CLDR extension</a> contains a lot of names of languages in other languages
         (e.g. the German name for Arabic is <q lang=de>Arabisch</q>, the Arabic name for Japanese is <q lang=ar dir=rtl>اليابانية</q>,
-        the Japanese name for Tarantino is <q lang=ja>バニュマス語</q>, etc.).
+        the Japanese name for Tarantino is <q lang=ja>タラント語</q>, etc.).
         Some of these names come from the <a href="https://en.wikipedia.org/wiki/Common_Locale_Data_Repository">CLDR database</a>,
         while others are defined within this extension (called local names);
         reasons for local names might included that MediaWiki is using a nonstandard language code
         (as with Tarantino, <code>roa-tara</code>, above – it has no standard language code),
-        or that the proces to contribute language name translations to CLDR is slow and cumbersome
+        or that the process to contribute language name translations to CLDR is slow and cumbersome
         (so even if a language name will be added to CLDR eventually, we may want to include it as a local name temporarily).
         However, the process to manage these local names is also cumbersome:
         they’re defined in PHP files in the extension,
