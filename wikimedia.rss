@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Lucas’ Posts (#wikimedia)</title><link>https://lucaswerkmeister.de/posts/</link><description>I suppose this is a blog of sorts – or at least a place where I occasionally post stuff. Not necessarily about anything in particular.</description><lastBuildDate>Fri, 31 Oct 2025 17:23:00 GMT</lastBuildDate><generator>PyRSS2Gen-1.1.0</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Wikimedia Netherlands Mini Hackathon 2025 recap</title><link>https://lucaswerkmeister.de/posts/2025/10/30/wmnl-mini-hackathon-2025/</link><description>&lt;article&gt;
+<rss version="2.0"><channel><title>Lucas’ Posts (#wikimedia)</title><link>https://lucaswerkmeister.de/posts/</link><description>I suppose this is a blog of sorts – or at least a place where I occasionally post stuff. Not necessarily about anything in particular.</description><lastBuildDate>Thu, 13 Nov 2025 13:42:31 GMT</lastBuildDate><generator>PyRSS2Gen-1.1.0</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Wikimedia Netherlands Mini Hackathon 2025 recap</title><link>https://lucaswerkmeister.de/posts/2025/10/30/wmnl-mini-hackathon-2025/</link><description>&lt;article&gt;
 
 &lt;p&gt;
         Last weekend, I participated in the &lt;a href="https://nl.wikimedia.org/wiki/Mini_Hackathon_October_2025"&gt;Wikimedia Netherlands Mini Hackathon 2025&lt;/a&gt;
@@ -565,7 +565,7 @@ webservice start&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;
 &lt;a href="https://www.npmjs.com/package/m3api"&gt;npm package&lt;/a&gt;,
         &lt;a href="https://github.com/lucaswerkmeister/m3api/"&gt;GitHub repository&lt;/a&gt;,
-        &lt;a href="https://lucaswerkmeister.github.io/m3api/"&gt;documentation&lt;/a&gt;,
+        &lt;a href="https://doc.wikimedia.org/m3api/m3api/"&gt;documentation&lt;/a&gt;,
         &lt;a href="https://github.com/lucaswerkmeister/m3api-examples/"&gt;examples&lt;/a&gt;.
       &lt;/p&gt;
 &lt;h2 id="why-a-new-library"&gt;Why a new JS library for the MediaWiki API?&lt;/h2&gt;
