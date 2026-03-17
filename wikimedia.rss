@@ -1,5 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Lucas’ Posts (#wikimedia)</title><link>https://lucaswerkmeister.de/posts/</link><description>I suppose this is a blog of sorts – or at least a place where I occasionally post stuff. Not necessarily about anything in particular.</description><lastBuildDate>Sun, 01 Mar 2026 13:46:44 GMT</lastBuildDate><generator>PyRSS2Gen-1.1.0</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Wikimedia Netherlands Mini Hackathon 2025 recap</title><link>https://lucaswerkmeister.de/posts/2025/10/30/wmnl-mini-hackathon-2025/</link><description>&lt;article&gt;
+<rss version="2.0"><channel><title>Lucas’ Posts (#wikimedia)</title><link>https://lucaswerkmeister.de/posts/</link><description>I suppose this is a blog of sorts – or at least a place where I occasionally post stuff. Not necessarily about anything in particular.</description><lastBuildDate>Tue, 17 Mar 2026 00:26:09 GMT</lastBuildDate><generator>PyRSS2Gen-1.1.0</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Wikimedia Hackathon Northwestern Europe 2026 recap</title><link>https://lucaswerkmeister.de/posts/2026/03/17/wikimedia-hackathon-northwestern-europe-2026/</link><description>&lt;article&gt;
+
+&lt;p&gt;
+        Last weekend, I participated in the &lt;a href="https://www.mediawiki.org/wiki/Wikimedia_Hackathon_Northwestern_Europe_2026"&gt;Wikimedia Hackathon Northwestern Europe 2026&lt;/a&gt;,
+        which took place in Arnhem from 13 to 14 March 2026,
+        ca. seven weeks before the “big” &lt;a href="https://www.mediawiki.org/wiki/Wikimedia_Hackathon_2026"&gt;Wikimedia Hackathon 2026&lt;/a&gt; in Milan.
+        Just like for &lt;a href="https://lucaswerkmeister.de/posts/2025/10/30/wmnl-mini-hackathon-2025/"&gt;previous&lt;/a&gt;
+&lt;a href="https://lucaswerkmeister.de/posts/2025/05/10/wikimedia-hackathon-2025/"&gt;Wikimedia&lt;/a&gt;
+&lt;a href="https://lucaswerkmeister.de/posts/2024/05/15/wikimedia-hackathon-2024/"&gt;Hackathon&lt;/a&gt;
+&lt;a href="https://lucaswerkmeister.de/posts/2023/06/03/wikimedia-hackathon-2023/"&gt;events&lt;/a&gt;,
+        I want to write a bit about the experience.
+      &lt;/p&gt;
+&lt;p&gt;
+        As is traditional for the Dutch (mini) hackathons, there was an informal meetup the evening before which involved a variety of beer options.
+        I’m usually not great in this type of setting,
+        but I had a somewhat better experience this time than at the mini hackathons,
+        in that there were more non-Dutch speakers present;
+        the evening further improved once I stepped outside and talked to folks there instead of inside the place.
+        I had the opportunity to chat with several people, including meeting &lt;a href="https://phabricator.wikimedia.org/p/SomeRandomDeveloper/"&gt;SomeRandomDeveloper&lt;/a&gt; for the first time, which was great.
+        (On my way back to the hotel there was an &lt;a href="https://wikis.world/@LucasWerkmeister/116218552009879904"&gt;unfortunate incident&lt;/a&gt; which we need not dwell on further.)
+      &lt;/p&gt;
+&lt;p&gt;
+        The hackathon properly started the next morning, when &lt;a href="https://meta.wikimedia.org/wiki/User:Multichill"&gt;Multichill&lt;/a&gt; asked me on Telegram if I wanted to play the piano;
+        I rushed to the venue, was ushered into the auditorium, and started playing some Scott Joplin to lure the rest of the crowd into the room so the opening ceremony could start.
+        (To my ears, the piano was fine and well tuned, though some other folks seemed to think it was a bit out of tune ^^)
+        People seemed to enjoy this, which was nice; also, to jump a bit ahead in the chronology,
+        this resulted in &lt;a href="https://meta.wikimedia.org/wiki/User:Egezort"&gt;Ege&lt;/a&gt; reaching out to me and asking if we wanted to do a song together!
+        He suggested &lt;i&gt;The House of the Rising Sun&lt;/i&gt;, and I managed to get a key to the auditorium so we could practice on the second day;
+        once I listened to the reference recording to get the tempo right (I had it in my head twice as fast as it actually is, oops),
+        the rehearsal went well, so we &lt;a href="https://wikis.world/@LucasWerkmeister/116232804022551632"&gt;performed&lt;/a&gt; the song to open the showcase / closing ceremony, which was great.
+        I would love to have more hackathon venues with pianos and/or other musical instruments available!
+      &lt;/p&gt;
+&lt;p&gt;
+        (Side note: one thing about this event that makes me a bit uncomfortable is how much we all relied on Telegram.
+        If an attendee wasn’t on Telegram, they’ll have missed not only a lot of chatter, but also some announcements during the day –
+        or rather, they’d have found out about things like lunch, the group photo, or the showcase Etherpad from their table neigbors instead.
+        The Telegram channel that’s used for the main hackathon is at least bridged to &lt;code&gt;#wikimedia-hackathon&lt;/code&gt; on Libera Chat (IRC),
+        but this hackathon used a separate channel without, as far as I’m aware, any bridge.
+        I think it probably would’ve been better to stick to the main hackathon channel and just post a warning in there a few days in advance
+        that the channel would become quite chatty for a while and that everyone not in Arnhem should consider muting it until this event was over.)
+      &lt;/p&gt;
+&lt;p&gt;
+        Jumping back to the opening, I briefly introduced myself,
+        mentioning my nigh-perennial hackathon project (&lt;a href="https://phabricator.wikimedia.org/T231755"&gt;T231755&lt;/a&gt;, making language names translatable on translatewiki.net)
+        and some other areas where I might be able to help out.
+        The introduction procedure was different than it usually is at the main hackathon –
+        instead of having people line up at the podium to introduce themselves,
+        a microphone was handed around the audience and everyone got a turn.
+        I thought this was actually a good way to do it (though how well it would scale to the main hackathon is another question):
+        it removes the barrier of having to consider whether you should introduce yourself or not,
+        instead assuming that everyone deserves an introduction.
+        (The Etherpad trying to take notes of everyone’s introductions got a bit chaotic during this, but mostly it worked well.)
+      &lt;/p&gt;
+&lt;p&gt;
+        After the showcase, I settled into what is by now my usual hackathon mode: find a table with some people I know
+        and start working on my “background” project (in this case, making language names translatable)
+        while keeping an eye on Telegram and waiting for collaboration opportunities either there or from people coming up to me.
+        I won’t recount everything in detail here, but I was able to help several people with various issues,
+        and contribute input to some ongoing discussions.
+      &lt;/p&gt;
+&lt;p&gt;
+        On my “background” project, I made significant progress.
+        I had thankfully left fairly detailed notes in &lt;a href="https://phabricator.wikimedia.org/T231755#9772825"&gt;a comment two years ago&lt;/a&gt;
+        (at the &lt;a href="https://lucaswerkmeister.de/posts/2024/05/15/wikimedia-hackathon-2024/"&gt;2024 Tallinn hackathon&lt;/a&gt;;
+        in &lt;a href="https://lucaswerkmeister.de/posts/2025/05/10/wikimedia-hackathon-2025/"&gt;2025 in Istanbul&lt;/a&gt;
+        I had mostly worked on &lt;a href="https://gitlab.wikimedia.org/toolforge-repos/wdactle/"&gt;WDactle&lt;/a&gt; instead).
+        The first part of that comment (fixing the missing language names) got fixed at the mini hackathon half a year ago
+        (though I made &lt;a href="https://gerrit.wikimedia.org/r/c/mediawiki/extensions/cldr/+/1251311"&gt;two&lt;/a&gt; more
+        &lt;a href="https://gerrit.wikimedia.org/r/c/mediawiki/extensions/cldr/+/1251867"&gt;fixes&lt;/a&gt; at this hackathon),
+        so now I tackled the other part, in a series of changes that I uploaded to Gerrit:
+        &lt;a href="https://gerrit.wikimedia.org/r/c/mediawiki/extensions/cldr/+/1251857/"&gt;implement a temporary script to move language names to i18n files&lt;/a&gt;,
+        &lt;a href="https://gerrit.wikimedia.org/r/c/mediawiki/extensions/cldr/+/1251858/"&gt;run it&lt;/a&gt;,
+        &lt;a href="https://gerrit.wikimedia.org/r/c/mediawiki/extensions/cldr/+/1251859/"&gt;load language names from there&lt;/a&gt;,
+        &lt;a href="https://gerrit.wikimedia.org/r/c/mediawiki/extensions/cldr/+/1251860/"&gt;update rebuild.php for these changes&lt;/a&gt;,
+        &lt;a href="https://gerrit.wikimedia.org/r/c/mediawiki/extensions/cldr/+/1251861/"&gt;remove now-unused LocalNames files&lt;/a&gt;,
+        and &lt;a href="https://gerrit.wikimedia.org/r/c/mediawiki/extensions/cldr/+/1251862/"&gt;remove the temporary script again&lt;/a&gt;.
+        Not all of the changes in this chain are fully ready yet, but the first few already got merged anyway;
+        we’ll see how fast the rest of this work matures (I might work some more on it during the main hackathon in Milan).
+        At the showcase, I briefly summarized the goal of this work and showed the patches I uploaded.
+      &lt;/p&gt;
+&lt;p&gt;
+        My other larger project at this hackathon came from &lt;a href="https://meta.wikimedia.org/wiki/User:Ideophagous"&gt;Ideophagous&lt;/a&gt;,
+        who wanted to create some Moroccan Arabic lexemes (&lt;a href="https://phabricator.wikimedia.org/T420020"&gt;T420020&lt;/a&gt;).
+        I showed him the &lt;a href="https://www.wikidata.org/wiki/Wikidata:Wikidata_Lexeme_Forms"&gt;Wikidata Lexeme Forms&lt;/a&gt; tool,
+        and he agreed to create some &lt;a href="https://www.wikidata.org/wiki/Wikidata:Wikidata_Lexeme_Forms/Moroccan_Arabic"&gt;Moroccan Arabic templates&lt;/a&gt; for it,
+        which can be used to create lexemes either manually or &lt;a href="https://www.wikidata.org/wiki/Wikidata:Wikidata_Lexeme_Forms#Bulk_mode"&gt;in bulk&lt;/a&gt;.
+        By the end of the second day, the templates were finished enough that I could deploy them to the tool,
+        and since then, they’ve been used to create several lexemes!
+        Ideophagous presented this project at the showcase.
+      &lt;/p&gt;
+&lt;p&gt;
+        (Another side note, while we’re on the subject of the showcase –
+        I &lt;a href="https://wikis.world/@LucasWerkmeister/116228724769769390"&gt;mentioned this on Mastodon&lt;/a&gt; but wanted to elaborate on it a bit more.
+        Quite a few showcase presentations mentioned they used “AI” tools,
+        i.e. LLMs (nothing text-to-image or text-to-video as far as I remember; there was one project using what I’d call “classical” machine vision, which I’m not including in this paragraph),
+        often in the form of “vibe coding”.
+        And it made my stomach turn every time.
+        These tools are built on staggering amounts of training data,
+        stolen from all over the internet (and offline sources), including Wikimedia projects, with no attribution.
+        In the process of hoovering up this training data,
+        they &lt;a href="https://diff.wikimedia.org/2025/04/01/how-crawlers-impact-the-operations-of-the-wikimedia-projects/"&gt;create ungodly amounts of network traffic&lt;/a&gt;,
+        making the lives of Wikimedia’s SREs miserable for the past several years,
+        and ultimately have made it necessary to impose &lt;a href="https://lists.wikimedia.org/hyperkitty/list/wikitech-l@lists.wikimedia.org/thread/GBFZTN3A233IR6F4HEENCIUCVI2ZH6YB/"&gt;new rate limits&lt;/a&gt;
+        which even &lt;a href="https://phabricator.wikimedia.org/T420011"&gt;affected us during the hackathon itself&lt;/a&gt;.
+        I don’t know if the Wikimedians using these tools don’t understand this, or if they don’t care,
+        but either way I think it fucking sucks.
+        Rant over, at least for now;
+        though I suspect my post about the Milan hackathon might end up including something rather similar.)
+      &lt;/p&gt;
+&lt;p&gt;
+        One other project I worked on was &lt;a href="https://lucaswerkmeister.de/posts/2025/04/12/introducing-m3api/"&gt;m3api&lt;/a&gt;,
+        my library for using the MediaWiki Action API from JavaScript;
+        I’ve been working on replacing its network interface,
+        so that the &lt;a href="https://www.npmjs.com/package/m3api-rest"&gt;m3api-rest&lt;/a&gt; extension package
+        can support more request methods, request body types, and response body types.
+        I mostly worked on this “around” the hackathon, rather than “during”
+        (e.g. during train rides, or late in the evening when I had nothing else to do),
+        because this is a volunteer project and I was supposed to be at the hackathon on staff time :)
+        but I still managed to make some good progress on m3api-rest’s support for the new network interface:
+        on the &lt;code&gt;fetch&lt;/code&gt; branch, it now has some support for sending additional request body types,
+        and plans for how to implement the rest.
+        I didn’t showcase this because it’s just ongoing work on the side,
+        but I still wanted to mention it here.
+      &lt;/p&gt;
+&lt;p&gt;
+        And that’s it!
+        Overall, this was a great hackathon for me –
+        I could easily reach it by train,
+        and I met lots of lovely people,
+        exchanged some sweets,
+        got some useful work done,
+        and also had some non-technical “projects” (music; at some previous hackathons, juggling ^^).
+        I’m looking forward to the next one in Milan!
+      &lt;/p&gt;
+
+&lt;/article&gt;</description><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2026/03/17/wikimedia-hackathon-northwestern-europe-2026/</guid><pubDate>Tue, 17 Mar 2026 00:00:00 GMT</pubDate></item><item><title>Wikimedia Netherlands Mini Hackathon 2025 recap</title><link>https://lucaswerkmeister.de/posts/2025/10/30/wmnl-mini-hackathon-2025/</link><description>&lt;article&gt;
 
 &lt;p&gt;
         Last weekend, I participated in the &lt;a href="https://nl.wikimedia.org/wiki/Mini_Hackathon_October_2025"&gt;Wikimedia Netherlands Mini Hackathon 2025&lt;/a&gt;
@@ -1616,356 +1751,4 @@ width, height &lt;span class="keyword operator"&gt;=&lt;/span&gt; &lt;span class
         it has a lot of information, and is also available in several other languages.
       &lt;/p&gt;
 
-&lt;/article&gt;</description><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2022/03/20/mw-lua-for-non-lua-programmers/</guid><pubDate>Sun, 20 Mar 2022 00:00:00 GMT</pubDate></item><item><title>Building a Wikidata Tool – Behind the Scenes</title><link>https://lucaswerkmeister.de/posts/2019/01/04/speedpatrolling/</link><description>&lt;article&gt;
-
-&lt;p&gt;
-        At &lt;a href="http://www.wikidata.org/entity/Q60178200"&gt;35C3&lt;/a&gt;, I held a one-hour presentation
-        (&lt;a href="https://cfp.verschwoerhaus.de/35c3/talk/XRQNHR/"&gt;talk page&lt;/a&gt;, &lt;a href="https://commons.wikimedia.org/wiki/File:35c3_WikipakaWG_-_Building_a_Wikidata_tool_(eng).webm"&gt;recording&lt;/a&gt;)
-        where I built a simple Wikidata tool from scratch and deployed it on Wikimedia Toolforge.
-        To avoid giving the impression that I can just churn out tools like it’s no big deal,
-        this blog post describes how I practiced the presentation
-        and which problems I encountered at the time
-        (so that I wouldn’t have to encounter them live during the presentation),
-        as well as the problems that still occurred during the presentation despite my practice.
-      &lt;/p&gt;
-&lt;aside&gt;
-        The tool isn’t really in a finished state yet –
-        as of this writing, I have to clean it up some more before properly announcing it –
-        but you can already try it out at &lt;a href="https://tools.wmflabs.org/speedpatrolling/"&gt;tools.wmflabs.org/speedpatrolling&lt;/a&gt; if you want.
-      &lt;/aside&gt;
-&lt;h2&gt;Basic idea&lt;/h2&gt;
-&lt;p&gt;
-        The general idea for this tool was suggested by &lt;a href="https://twitter.com/Jokrates"&gt;Jonas&lt;/a&gt; during some conversations a while ago:
-        while &lt;a href="https://phabricator.wikimedia.org/T95878"&gt;Wikidata’s mobile interface currently doesn’t let you edit&lt;/a&gt;,
-        and fixing that will probably be a lot of work,
-        one way for people to contribute while mobile,
-        e. g. on the train to work or in similar situations,
-        would be a kind of “patrolling &lt;a href="https://www.wikidata.org/wiki/Special:GoToLinkedPage/enwiki/Q15078152"&gt;Tinder&lt;/a&gt;” –
-        swipe right to mark an edit as patrolled,
-        swipe left to undo it or roll it back,
-        or something like that.
-      &lt;/p&gt;
-&lt;p&gt;
-        Since I don’t have any experience working with touch devices or gesture inputs,
-        I decided to go with three simple buttons for the first version:
-        skip an edit (very important – never force users to make a contribution just to move forward when they might not understand the current task!),
-        mark as patrolled,
-        or rollback.
-        People without rollback rights would simply not have the option to rollback –
-        undoing one edit is not very helpful,
-        since vandalism often happens in series of edits,
-        and I didn’t want to reimplement rollback functionality for people without proper rollback rights.
-        (Also, I couldn’t use “Tinder” in the name, so it was unimaginatively to be called “SpeedPatrolling”.)
-      &lt;/p&gt;
-&lt;p&gt;
-        I also asked &lt;a href="https://www.wikidata.org/wiki/User:Lydia_Pintscher_(WMDE)"&gt;Lydia&lt;/a&gt; if she was okay with this idea
-        (all this was going to be a private activity, but still,
-        I don’t want to do things that she thinks are a bad idea,
-        probably for good reasons that I can’t think of).
-        We looked through the &lt;a href="https://phabricator.wikimedia.org/T90870"&gt;list of self-contained tasks around Wikidata&lt;/a&gt; for something else to do,
-        but couldn’t find much that fit the bill of this presentation
-        (Toolforge tool, uses OAuth, can be built in one hour),
-        so she said I could go ahead with this project.
-      &lt;/p&gt;
-&lt;h2&gt;Preparation&lt;/h2&gt;
-&lt;p&gt;
-        Lots of things changed during the preparation phase.
-        I didn’t keep track of all of them,
-        so the following list, recalled from memory, is likely incomplete.
-      &lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;
-            The first problem arrived as soon as I tried to start working on the tool.
-            I was going to use the &lt;a href="https://github.com/lucaswerkmeister/cookiecutter-toolforge"&gt;cookiecutter-toolforge&lt;/a&gt; template to get started with the tool,
-            which includes a hook to check that the tool name you provided is actually a legal tool name.
-            The hook was originally only compatible with Python 3;
-            however, I was going to hold this presentation on my work laptop, which has Ubuntu installed,
-            where Cookiecutter is only available for Python 2.
-            In order to be able to use the template, I first needed to &lt;a href="https://github.com/lucaswerkmeister/cookiecutter-toolforge/commit/62429fb8c50fb8c889495cb13a47b378cbbd1a5a"&gt;update the hook to support Python 2&lt;/a&gt;.
-          &lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;
-            When I originally planned the outline of the code I was going to write
-            (before I even started actually writing any code),
-            I intended to get at least as far as the “diff” page,
-            including the buttons to skip, patrol or rollback an edit,
-            before getting started with OAuth.
-            However, as soon as I actually started programming the tool
-            (first step: get a list of unpatrolled recent changes),
-            I noticed that this didn’t work:
-            the information whether an edit is patrolled or not isn’t public,
-            so to even get a list of unpatrolled changes
-            you need to make an API request as a user with the &lt;code&gt;patrol&lt;/code&gt; right.
-            This meant that I had to move the registration of the OAuth consumer to the very beginning of the presentation,
-            just after the introductory remarks and the tool template setup,
-            before I could even start to write a single line of code.
-          &lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;
-            Then, when figuring out how to get a list of unpatrolled changes via the API,
-            I found that the values for the &lt;a href="https://www.wikidata.org/w/api.php?action=help&amp;amp;modules=query%2Brecentchanges"&gt;&lt;code&gt;rcshow&lt;/code&gt; parameter&lt;/a&gt; were insufficiently documented;
-            specifically, I was unsure whether I needed &lt;code&gt;!patrolled&lt;/code&gt; or &lt;code&gt;unpatrolled&lt;/code&gt; changes,
-            and the difference between them wasn’t documented anywhere
-            (&lt;code&gt;unpatrolled&lt;/code&gt; was &lt;a href="https://www.mediawiki.org/wiki/Special:PermanentLink/2985437#Parameters"&gt;completely missing&lt;/a&gt;).
-            To understand the relationship between patrolled, autopatrolled and unpatrolled edits,
-            I first had to look through the MediaWiki code
-            and then tried to &lt;a href="https://www.mediawiki.org/wiki/Special:Diff/3013350"&gt;update the documentation&lt;/a&gt; to the best of my ability.
-          &lt;/p&gt;
-&lt;p&gt;
-            While looking at the code,
-            I also found a (very minor) security bug,
-            which I reported as &lt;a href="https://phabricator.wikimedia.org/T212118"&gt;T212118&lt;/a&gt;.
-            It hasn’t been fixed yet (and as such is not yet publicly visible),
-            but should hopefully be resolved soon.
-          &lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;
-            When writing the handler for the &lt;code&gt;/diff/&lt;/code&gt; route,
-            I originally intended to have it redirect to &lt;code&gt;/diff/&lt;var&gt;id&lt;/var&gt;/&lt;/code&gt;,
-            without implementing that route
-            (so the browser would display a 404 page after handling the redirect).
-            However, Flask’s &lt;code&gt;url_for()&lt;/code&gt; function requires a function name,
-            so to implement the redirect,
-            a stub &lt;code&gt;/diff/&lt;var&gt;id&lt;/var&gt;/&lt;/code&gt; is also necessary.
-          &lt;/p&gt;
-&lt;aside&gt;
-&lt;p&gt;
-              I also briefly struggled to find good names for these functions,
-              since they can’t very well both be called &lt;code&gt;diff()&lt;/code&gt;,
-              even though that’s the only constant part in both routes.
-              In the end I settled on &lt;code&gt;any_diff()&lt;/code&gt; and &lt;code&gt;diff()&lt;/code&gt;.
-            &lt;/p&gt;
-&lt;/aside&gt;
-&lt;/li&gt;
-&lt;li id="embed"&gt;
-&lt;p&gt;
-            My original plan for the “diff” page was to directly embed the mobile diff page,
-            since it’s a nicely compact representation of the diff, with not too much clutter on the page
-            (no sidebar, header bar, etc., which would look weird when embedded on another page).
-            However, during the first practice round, I discovered that MediaWiki would not let me do that:
-            since I was logged in, and the diff page included a “mark as patrolled” link,
-            MediaWiki sent an &lt;code&gt;X-Frame-Options: deny&lt;/code&gt; header to prevent &lt;a href="https://www.wikidata.org/wiki/Special:GoToLinkedPage/enwiki/Q163231"&gt;clickjacking&lt;/a&gt;,
-            so the browser only displayed a blank iframe on the tool page.
-          &lt;/p&gt;
-&lt;p&gt;
-            I tried to make embedding the diff page work –
-            for example, if I could somehow instruct the iframe to load anonymously,
-            as in a private window (that is, without cookie headers),
-            so that the user would not be logged in and MediaWiki would not prevent the embedding –
-            but ultimately found no working solution for that.
-            Instead, I decided to download the diff page from the tool’s code (anonymously),
-            serve it under a certain route,
-            and then embed that page (from my own tool) in the tool’s full diff page.
-            This was implemented using the following Python code:
-          &lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-python"&gt;@app.route('/diff/&amp;lt;int:id&amp;gt;/embed')
-def diff_embed(id):
-    with urllib.request.urlopen('https://m.wikidata.org/wiki/Special:MobileDiff/%d' % id) as r:
-        html = r.read().decode('utf-8')
-    html = html.replace('"/w/', '"https://m.wikidata.org/w/')
-    html = html.replace('"/wiki/', '"https://m.wikidata.org/wiki/')
-    return html
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;
-            The two &lt;code&gt;replace()&lt;/code&gt; calls try to turn some relative URLs into absolute ones,
-            e. g. in hyperlinks or when loading JavaScript/CSS.
-            It’s a hack, of course, but it more or less worked and would be good enough for the presentation.
-            (A proper version of this would presumably better be implemented using the &lt;a href="https://www.wikidata.org/wiki/Special:GoToLinkedPage/enwiki/Q2893296"&gt;Beautiful Soup&lt;/a&gt; library.)
-            In the second practice run, I didn’t even bother embedding Wikidata and went straight for this hack instead;
-            however, I afterwards decided that it would be nicer for the presentation to first show the error when embedding Wikidata,
-            and then introduce the hack,
-            since it looked like there would be enough time for this.
-          &lt;/p&gt;
-&lt;p&gt;
-            To my great surprise, though, during the presentation embedding Wikidata suddenly worked, with no error.
-            I only later figured out what happened:
-            in the first practice run, I planned to first embed &lt;code&gt;https://&lt;strong&gt;www&lt;/strong&gt;.wikidata.org/wiki/Special:MobileDiff/&lt;var&gt;id&lt;/var&gt;&lt;/code&gt;,
-            and then briefly mention how the mobile diff page on the main domain still has some clutter on it,
-            and that we need to use the mobile domain instead, embedding &lt;code&gt;https://&lt;strong&gt;m&lt;/strong&gt;.wikidata.org/wiki/Special:MobileDiff/&lt;var&gt;id&lt;/var&gt;&lt;/code&gt;.
-            As I then ran into the &lt;code&gt;X-Frame-Options&lt;/code&gt; header, I never got as far as the &lt;code&gt;m.wikidata.org&lt;/code&gt; domain.
-            However, during the presentation, I skipped the &lt;code&gt;www.wikidata.org&lt;/code&gt; step and went straight to &lt;code&gt;m.wikidata.org&lt;/code&gt;,
-            and since I’m not logged in there,
-            there’s no “mark as patrolled” link and MediaWiki lets me embed this page.
-          &lt;/p&gt;
-&lt;p&gt;
-            Of course, I can’t rely on the fact that all tool users would never be logged in on &lt;code&gt;m.wikidata.org&lt;/code&gt;
-            (this tool is, in fact, meant to be especially useful on mobile),
-            so I’ll still have to work around this somehow;
-            however, in the meantime, I also learned that the &lt;a href="https://labels.wmflabs.org/"&gt;Wiki Labels tool&lt;/a&gt;
-            (&lt;a href="https://github.com/wikimedia/wikilabels"&gt;source code&lt;/a&gt;)
-            also includes pretty diffs in its output, without embedding anything,
-            so I’ll look into how that is implemented instead of resurrecting my ugly hack.
-            (Fortunately, Wiki Labels is also a Flask app and published under a permissive source code license,
-            so it should be possible to borrow the relevant code from it.)
-          &lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;
-            When I first started adding buttons to the diff page,
-            I discovered that clicking the “skip” button
-            unexpectedly sent a POST request to &lt;code&gt;/diff/skip&lt;/code&gt; instead of &lt;code&gt;/diff/&lt;var&gt;id&lt;/var&gt;/skip&lt;/code&gt;.
-            I eventually figured out that this was
-            because had written the “diff” route as &lt;code&gt;/diff/&lt;var&gt;id&lt;/var&gt;&lt;/code&gt; instead of &lt;code&gt;/diff/&lt;var&gt;id&lt;/var&gt;&lt;strong&gt;/&lt;/strong&gt;&lt;/code&gt;;
-            without the trailing slash, the relative URL in &lt;code&gt;formaction="skip"&lt;/code&gt; replaced the last URL component instead of appending to it.
-          &lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;
-            The cookiecutter-toolforge template includes some sample code for protection against
-            &lt;abbr title="cross-site request forgery"&gt;&lt;a href="https://www.wikidata.org/wiki/Special:GoToLinkedPage/enwiki/Q15401472"&gt;CSRF&lt;/a&gt;&lt;/abbr&gt; attacks,
-            which I had recently strengthened after discovering that the original version was not completely effective.
-            However, I hadn’t tested this strengthened version properly,
-            and as a result all POSTs were rejected as invalid until I fixed it.
-          &lt;/p&gt;
-&lt;p&gt;
-            Specifically, the CSRF protection included the following code (abbreviated):
-          &lt;/p&gt;
-&lt;pre&gt;&lt;code class="language-python"&gt;def full_url(endpoint, **kwargs):
-    schema=flask.request.headers.get('X-Forwarded-Proto', 'http')
-    return flask.url_for(endpoint, _external=True, _schema=schema, **kwargs)
-
-def submitted_request_valid():
-    # ...
-    if not flask.request.referrer.startswith(full_url('index')):
-        return False
-    return True&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;
-            This was intended to check that the referrer started with &lt;code&gt;https://tools.wmflabs.org/&lt;var&gt;tool-name&lt;/var&gt;/&lt;/code&gt;;
-            the HTTP/HTTPS tweaking in &lt;code&gt;full_url()&lt;/code&gt; is necessary because Flask on Toolforge sits behind a proxy,
-            and so it doesn’t know that absolute URLs to it should actually use HTTPS, not HTTP.
-          &lt;/p&gt;
-&lt;p&gt;
-            However, the parameter to communicate this to &lt;code&gt;flask.url_for()&lt;/code&gt; is called &lt;code&gt;_schem&lt;strong&gt;e&lt;/strong&gt;&lt;/code&gt;,
-            not &lt;code&gt;_schem&lt;strong&gt;a&lt;/strong&gt;&lt;/code&gt;.
-            Since &lt;code&gt;_schema&lt;/code&gt; is not a recognized paramater for &lt;code&gt;flask.url_for()&lt;/code&gt; nor for &lt;code&gt;index()&lt;/code&gt;,
-            it was appended to the URL as a query parameter,
-            resulting in &lt;code&gt;submitted_request_valid()&lt;/code&gt; rejecting all requests
-            because their referrers would not begin with &lt;code&gt;http://tools.wmflabs.org/&lt;var&gt;tool-name&lt;/var&gt;/?_schema=https&lt;/code&gt;.
-            To make POSTs work, I had to &lt;a href="https://github.com/lucaswerkmeister/cookiecutter-toolforge/commit/6500426f479074a8426c665cdd176da0d721eb07"&gt;fix the &lt;code&gt;full_url()&lt;/code&gt; function&lt;/a&gt; in the template.
-            (I hope no one created a new tool between the bug being introduced and fixed in the template,
-            otherwise that tool would have to be fixed as well.)
-          &lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;
-            When trying to make the API request to mark an edit as patrolled,
-            I originally tried to use a regular MediaWiki API CSRF token as the &lt;code&gt;token&lt;/code&gt; parameter for &lt;code&gt;action='patrol'&lt;/code&gt;.
-            However, that action requires a &lt;code&gt;patrol&lt;/code&gt;-type token.
-            (Likewike, there is a dedicated token type for rollback.)
-          &lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;
-            When I started adding the handler for the “rollback” button,
-            I envisioned it as rolling back the specified revision,
-            just like the “patrol” handler.
-            But that’s just not how rollback works:
-            you don’t rollback a revision, you rollback all edits by a user on a page.
-            So I had to write some more code to query for the page ID and user name of that revision,
-            and then submit that to the rollback API.
-            If the request failed – for example, because someone else had edited the page after our user –
-            I was going to cop out and tell the user to please resolve the situation manually.
-          &lt;/p&gt;
-&lt;p&gt;
-            However, it turned out that the MediaWiki API would not let me rollback edits,
-            instead throwing a “permission denied” error:
-          &lt;/p&gt;
-&lt;blockquote&gt;
-            mwapi.errors.APIError: permissiondenied: The action you have requested is limited to users in one of the groups: *, [[Wikidata:Users|Users]].
-          &lt;/blockquote&gt;
-&lt;p&gt;
-            This greatly confused me at the time:
-            my OAuth consumer had the “rollback” grant, I was a rollbacker,
-            and neither “*” (any?) nor “users” are generally allowed to rollback edits
-            (that’s restricted to rollbackers and even more privileged groups).
-            I &lt;a href="https://discourse-mediawiki.wmflabs.org/t/permissiondenied-on-rollback-api/1005"&gt;asked for help on the Wikimedia Developer Support forum&lt;/a&gt;,
-            but we were unable to figure out a solution or workaround before the presentation.
-            Since rollback support wasn’t critical to me
-            (depending on the time of day, it can take a bit to find edits that should be rolled back anyways, to test the feature),
-            I took this as a ready-made excuse to just not implement rollback support during the presentation
-            (not even the version that would throw the MediaWiki error),
-            which gave me about five extra minutes of time.
-            It turned out I didn’t need that extra time, but I wasn’t sure about that until the presentation was done.
-          &lt;/p&gt;
-&lt;p&gt;
-            Afterwards, Gergő Tisza figured out what was wrong:
-            rollback requires both edit and rollback rights, and I didn’t request edit rights for my consumer.
-            This is now being discussed in &lt;a href="https://phabricator.wikimedia.org/T212851"&gt;T212851&lt;/a&gt;;
-            for the time being, I haven’t implemented rollback support in the tool yet.
-          &lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;During the presentation&lt;/h2&gt;
-&lt;p&gt;
-        Despite my practice, some things went wrong during the presentation as well.
-        You can watch those in the recording, of course, but I might as well list them here, too:
-      &lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;
-            When I started to write the tool,
-            the Toolforge API reported that the “speedpatrolling” tool name was not available for a new tool.
-            I think this must have been a temporary hiccup,
-            since no such tool existed at the time,
-            the same error was also reported for other tool names,
-            and I was later able to create the tool under that name without a problem.
-            However, to proceed during the presentation,
-            I eventually had to disable the hook in the cookiecutter-toolforge template
-            which usually checks if a name is available before proceeding with the template,
-            by moving its file in my local copy of the template.
-          &lt;/p&gt;
-&lt;p&gt;
-            Unfortunately, this confusion also led me to call the tool “speed-patrolling” instead of “speedpatrolling” during the presentation,
-            even though that name didn’t work either;
-            after the presentation, I had to do some cleanup to create the “speedpatrolling” tool,
-            update all references in the source code,
-            and then finally &lt;a href="https://phabricator.wikimedia.org/T212968"&gt;requested that “speed-patrolling” be deleted&lt;/a&gt;.
-          &lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;
-            As mentioned &lt;a href="https://lucaswerkmeister.de/posts/2019/01/04/speedpatrolling/#embed"&gt;above&lt;/a&gt;,
-            embedding the diff worked right away even though I didn’t expect it to.
-          &lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;
-            Although this presentation and tool are private projects,
-            and I worked on them using my private accounts,
-            I did this on my work laptop,
-            because it was easier to practice it there
-            (and also, I guess, because my private laptop needs an adapter to emit HDMI).
-            However, this meant that when I was SSHing into Toolforge,
-            I was using my work account instead of my private account,
-            so I couldn’t deploy the tool, to which only my private account had access.
-            To fix this, I had to SSH into my home PC
-            (I’m &lt;em&gt;very&lt;/em&gt; glad I left it running over the holidays
-            &lt;small&gt;(and yes, my electricity plan is green, why do you ask)&lt;/small&gt;)
-            so I could SSH from there into Toolforge, using my private account.
-            (Note that this is not the same as tunneling my SSH traffic through that PC (&lt;code&gt;ssh -J host&lt;/code&gt;),
-            in which case I would still authenticate against Toolforge using my work credentials.)
-          &lt;/p&gt;
-&lt;aside&gt;
-            This means that in the recording, you can see which hostname I use to refer to my home PC.
-            I’ve been meaning to write a blog post about my machine names for a while now…
-            &lt;del&gt;I’ll do it eventually™&lt;/del&gt;
-&lt;ins&gt;&lt;a href="https://lucaswerkmeister.de/posts/2019/01/11/system-naming-scheme/"&gt;it’s online now&lt;/a&gt;&lt;/ins&gt;.
-          &lt;/aside&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;
-        And there we go!
-        I hope this makes me seem less like, I don’t know, some kind of wizard?
-        It’s completely normal to run into problems while building a tool
-        (or doing any kind of software development, I suppose) –
-        what matters is that you can find ways overcome those problems
-        (including but not limited to solving them),
-        and get help when you need it.
-        Try it out, it’s a lot of fun!
-      &lt;/p&gt;
-
-&lt;/article&gt;</description><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2019/01/04/speedpatrolling/</guid><pubDate>Fri, 04 Jan 2019 00:00:00 GMT</pubDate></item></channel></rss>
+&lt;/article&gt;</description><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2022/03/20/mw-lua-for-non-lua-programmers/</guid><pubDate>Sun, 20 Mar 2022 00:00:00 GMT</pubDate></item></channel></rss>

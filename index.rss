@@ -1,5 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Lucas’ Posts</title><link>https://lucaswerkmeister.de/posts/</link><description>I suppose this is a blog of sorts – or at least a place where I occasionally post stuff. Not necessarily about anything in particular.</description><lastBuildDate>Sun, 01 Mar 2026 13:46:43 GMT</lastBuildDate><generator>PyRSS2Gen-1.1.0</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Wikimedia Netherlands Mini Hackathon 2025 recap</title><link>https://lucaswerkmeister.de/posts/2025/10/30/wmnl-mini-hackathon-2025/</link><description>&lt;article&gt;
+<rss version="2.0"><channel><title>Lucas’ Posts</title><link>https://lucaswerkmeister.de/posts/</link><description>I suppose this is a blog of sorts – or at least a place where I occasionally post stuff. Not necessarily about anything in particular.</description><lastBuildDate>Tue, 17 Mar 2026 00:26:08 GMT</lastBuildDate><generator>PyRSS2Gen-1.1.0</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Wikimedia Hackathon Northwestern Europe 2026 recap</title><link>https://lucaswerkmeister.de/posts/2026/03/17/wikimedia-hackathon-northwestern-europe-2026/</link><description>&lt;article&gt;
+
+&lt;p&gt;
+        Last weekend, I participated in the &lt;a href="https://www.mediawiki.org/wiki/Wikimedia_Hackathon_Northwestern_Europe_2026"&gt;Wikimedia Hackathon Northwestern Europe 2026&lt;/a&gt;,
+        which took place in Arnhem from 13 to 14 March 2026,
+        ca. seven weeks before the “big” &lt;a href="https://www.mediawiki.org/wiki/Wikimedia_Hackathon_2026"&gt;Wikimedia Hackathon 2026&lt;/a&gt; in Milan.
+        Just like for &lt;a href="https://lucaswerkmeister.de/posts/2025/10/30/wmnl-mini-hackathon-2025/"&gt;previous&lt;/a&gt;
+&lt;a href="https://lucaswerkmeister.de/posts/2025/05/10/wikimedia-hackathon-2025/"&gt;Wikimedia&lt;/a&gt;
+&lt;a href="https://lucaswerkmeister.de/posts/2024/05/15/wikimedia-hackathon-2024/"&gt;Hackathon&lt;/a&gt;
+&lt;a href="https://lucaswerkmeister.de/posts/2023/06/03/wikimedia-hackathon-2023/"&gt;events&lt;/a&gt;,
+        I want to write a bit about the experience.
+      &lt;/p&gt;
+&lt;p&gt;
+        As is traditional for the Dutch (mini) hackathons, there was an informal meetup the evening before which involved a variety of beer options.
+        I’m usually not great in this type of setting,
+        but I had a somewhat better experience this time than at the mini hackathons,
+        in that there were more non-Dutch speakers present;
+        the evening further improved once I stepped outside and talked to folks there instead of inside the place.
+        I had the opportunity to chat with several people, including meeting &lt;a href="https://phabricator.wikimedia.org/p/SomeRandomDeveloper/"&gt;SomeRandomDeveloper&lt;/a&gt; for the first time, which was great.
+        (On my way back to the hotel there was an &lt;a href="https://wikis.world/@LucasWerkmeister/116218552009879904"&gt;unfortunate incident&lt;/a&gt; which we need not dwell on further.)
+      &lt;/p&gt;
+&lt;p&gt;
+        The hackathon properly started the next morning, when &lt;a href="https://meta.wikimedia.org/wiki/User:Multichill"&gt;Multichill&lt;/a&gt; asked me on Telegram if I wanted to play the piano;
+        I rushed to the venue, was ushered into the auditorium, and started playing some Scott Joplin to lure the rest of the crowd into the room so the opening ceremony could start.
+        (To my ears, the piano was fine and well tuned, though some other folks seemed to think it was a bit out of tune ^^)
+        People seemed to enjoy this, which was nice; also, to jump a bit ahead in the chronology,
+        this resulted in &lt;a href="https://meta.wikimedia.org/wiki/User:Egezort"&gt;Ege&lt;/a&gt; reaching out to me and asking if we wanted to do a song together!
+        He suggested &lt;i&gt;The House of the Rising Sun&lt;/i&gt;, and I managed to get a key to the auditorium so we could practice on the second day;
+        once I listened to the reference recording to get the tempo right (I had it in my head twice as fast as it actually is, oops),
+        the rehearsal went well, so we &lt;a href="https://wikis.world/@LucasWerkmeister/116232804022551632"&gt;performed&lt;/a&gt; the song to open the showcase / closing ceremony, which was great.
+        I would love to have more hackathon venues with pianos and/or other musical instruments available!
+      &lt;/p&gt;
+&lt;p&gt;
+        (Side note: one thing about this event that makes me a bit uncomfortable is how much we all relied on Telegram.
+        If an attendee wasn’t on Telegram, they’ll have missed not only a lot of chatter, but also some announcements during the day –
+        or rather, they’d have found out about things like lunch, the group photo, or the showcase Etherpad from their table neigbors instead.
+        The Telegram channel that’s used for the main hackathon is at least bridged to &lt;code&gt;#wikimedia-hackathon&lt;/code&gt; on Libera Chat (IRC),
+        but this hackathon used a separate channel without, as far as I’m aware, any bridge.
+        I think it probably would’ve been better to stick to the main hackathon channel and just post a warning in there a few days in advance
+        that the channel would become quite chatty for a while and that everyone not in Arnhem should consider muting it until this event was over.)
+      &lt;/p&gt;
+&lt;p&gt;
+        Jumping back to the opening, I briefly introduced myself,
+        mentioning my nigh-perennial hackathon project (&lt;a href="https://phabricator.wikimedia.org/T231755"&gt;T231755&lt;/a&gt;, making language names translatable on translatewiki.net)
+        and some other areas where I might be able to help out.
+        The introduction procedure was different than it usually is at the main hackathon –
+        instead of having people line up at the podium to introduce themselves,
+        a microphone was handed around the audience and everyone got a turn.
+        I thought this was actually a good way to do it (though how well it would scale to the main hackathon is another question):
+        it removes the barrier of having to consider whether you should introduce yourself or not,
+        instead assuming that everyone deserves an introduction.
+        (The Etherpad trying to take notes of everyone’s introductions got a bit chaotic during this, but mostly it worked well.)
+      &lt;/p&gt;
+&lt;p&gt;
+        After the showcase, I settled into what is by now my usual hackathon mode: find a table with some people I know
+        and start working on my “background” project (in this case, making language names translatable)
+        while keeping an eye on Telegram and waiting for collaboration opportunities either there or from people coming up to me.
+        I won’t recount everything in detail here, but I was able to help several people with various issues,
+        and contribute input to some ongoing discussions.
+      &lt;/p&gt;
+&lt;p&gt;
+        On my “background” project, I made significant progress.
+        I had thankfully left fairly detailed notes in &lt;a href="https://phabricator.wikimedia.org/T231755#9772825"&gt;a comment two years ago&lt;/a&gt;
+        (at the &lt;a href="https://lucaswerkmeister.de/posts/2024/05/15/wikimedia-hackathon-2024/"&gt;2024 Tallinn hackathon&lt;/a&gt;;
+        in &lt;a href="https://lucaswerkmeister.de/posts/2025/05/10/wikimedia-hackathon-2025/"&gt;2025 in Istanbul&lt;/a&gt;
+        I had mostly worked on &lt;a href="https://gitlab.wikimedia.org/toolforge-repos/wdactle/"&gt;WDactle&lt;/a&gt; instead).
+        The first part of that comment (fixing the missing language names) got fixed at the mini hackathon half a year ago
+        (though I made &lt;a href="https://gerrit.wikimedia.org/r/c/mediawiki/extensions/cldr/+/1251311"&gt;two&lt;/a&gt; more
+        &lt;a href="https://gerrit.wikimedia.org/r/c/mediawiki/extensions/cldr/+/1251867"&gt;fixes&lt;/a&gt; at this hackathon),
+        so now I tackled the other part, in a series of changes that I uploaded to Gerrit:
+        &lt;a href="https://gerrit.wikimedia.org/r/c/mediawiki/extensions/cldr/+/1251857/"&gt;implement a temporary script to move language names to i18n files&lt;/a&gt;,
+        &lt;a href="https://gerrit.wikimedia.org/r/c/mediawiki/extensions/cldr/+/1251858/"&gt;run it&lt;/a&gt;,
+        &lt;a href="https://gerrit.wikimedia.org/r/c/mediawiki/extensions/cldr/+/1251859/"&gt;load language names from there&lt;/a&gt;,
+        &lt;a href="https://gerrit.wikimedia.org/r/c/mediawiki/extensions/cldr/+/1251860/"&gt;update rebuild.php for these changes&lt;/a&gt;,
+        &lt;a href="https://gerrit.wikimedia.org/r/c/mediawiki/extensions/cldr/+/1251861/"&gt;remove now-unused LocalNames files&lt;/a&gt;,
+        and &lt;a href="https://gerrit.wikimedia.org/r/c/mediawiki/extensions/cldr/+/1251862/"&gt;remove the temporary script again&lt;/a&gt;.
+        Not all of the changes in this chain are fully ready yet, but the first few already got merged anyway;
+        we’ll see how fast the rest of this work matures (I might work some more on it during the main hackathon in Milan).
+        At the showcase, I briefly summarized the goal of this work and showed the patches I uploaded.
+      &lt;/p&gt;
+&lt;p&gt;
+        My other larger project at this hackathon came from &lt;a href="https://meta.wikimedia.org/wiki/User:Ideophagous"&gt;Ideophagous&lt;/a&gt;,
+        who wanted to create some Moroccan Arabic lexemes (&lt;a href="https://phabricator.wikimedia.org/T420020"&gt;T420020&lt;/a&gt;).
+        I showed him the &lt;a href="https://www.wikidata.org/wiki/Wikidata:Wikidata_Lexeme_Forms"&gt;Wikidata Lexeme Forms&lt;/a&gt; tool,
+        and he agreed to create some &lt;a href="https://www.wikidata.org/wiki/Wikidata:Wikidata_Lexeme_Forms/Moroccan_Arabic"&gt;Moroccan Arabic templates&lt;/a&gt; for it,
+        which can be used to create lexemes either manually or &lt;a href="https://www.wikidata.org/wiki/Wikidata:Wikidata_Lexeme_Forms#Bulk_mode"&gt;in bulk&lt;/a&gt;.
+        By the end of the second day, the templates were finished enough that I could deploy them to the tool,
+        and since then, they’ve been used to create several lexemes!
+        Ideophagous presented this project at the showcase.
+      &lt;/p&gt;
+&lt;p&gt;
+        (Another side note, while we’re on the subject of the showcase –
+        I &lt;a href="https://wikis.world/@LucasWerkmeister/116228724769769390"&gt;mentioned this on Mastodon&lt;/a&gt; but wanted to elaborate on it a bit more.
+        Quite a few showcase presentations mentioned they used “AI” tools,
+        i.e. LLMs (nothing text-to-image or text-to-video as far as I remember; there was one project using what I’d call “classical” machine vision, which I’m not including in this paragraph),
+        often in the form of “vibe coding”.
+        And it made my stomach turn every time.
+        These tools are built on staggering amounts of training data,
+        stolen from all over the internet (and offline sources), including Wikimedia projects, with no attribution.
+        In the process of hoovering up this training data,
+        they &lt;a href="https://diff.wikimedia.org/2025/04/01/how-crawlers-impact-the-operations-of-the-wikimedia-projects/"&gt;create ungodly amounts of network traffic&lt;/a&gt;,
+        making the lives of Wikimedia’s SREs miserable for the past several years,
+        and ultimately have made it necessary to impose &lt;a href="https://lists.wikimedia.org/hyperkitty/list/wikitech-l@lists.wikimedia.org/thread/GBFZTN3A233IR6F4HEENCIUCVI2ZH6YB/"&gt;new rate limits&lt;/a&gt;
+        which even &lt;a href="https://phabricator.wikimedia.org/T420011"&gt;affected us during the hackathon itself&lt;/a&gt;.
+        I don’t know if the Wikimedians using these tools don’t understand this, or if they don’t care,
+        but either way I think it fucking sucks.
+        Rant over, at least for now;
+        though I suspect my post about the Milan hackathon might end up including something rather similar.)
+      &lt;/p&gt;
+&lt;p&gt;
+        One other project I worked on was &lt;a href="https://lucaswerkmeister.de/posts/2025/04/12/introducing-m3api/"&gt;m3api&lt;/a&gt;,
+        my library for using the MediaWiki Action API from JavaScript;
+        I’ve been working on replacing its network interface,
+        so that the &lt;a href="https://www.npmjs.com/package/m3api-rest"&gt;m3api-rest&lt;/a&gt; extension package
+        can support more request methods, request body types, and response body types.
+        I mostly worked on this “around” the hackathon, rather than “during”
+        (e.g. during train rides, or late in the evening when I had nothing else to do),
+        because this is a volunteer project and I was supposed to be at the hackathon on staff time :)
+        but I still managed to make some good progress on m3api-rest’s support for the new network interface:
+        on the &lt;code&gt;fetch&lt;/code&gt; branch, it now has some support for sending additional request body types,
+        and plans for how to implement the rest.
+        I didn’t showcase this because it’s just ongoing work on the side,
+        but I still wanted to mention it here.
+      &lt;/p&gt;
+&lt;p&gt;
+        And that’s it!
+        Overall, this was a great hackathon for me –
+        I could easily reach it by train,
+        and I met lots of lovely people,
+        exchanged some sweets,
+        got some useful work done,
+        and also had some non-technical “projects” (music; at some previous hackathons, juggling ^^).
+        I’m looking forward to the next one in Milan!
+      &lt;/p&gt;
+
+&lt;/article&gt;</description><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2026/03/17/wikimedia-hackathon-northwestern-europe-2026/</guid><pubDate>Tue, 17 Mar 2026 00:00:00 GMT</pubDate></item><item><title>Wikimedia Netherlands Mini Hackathon 2025 recap</title><link>https://lucaswerkmeister.de/posts/2025/10/30/wmnl-mini-hackathon-2025/</link><description>&lt;article&gt;
 
 &lt;p&gt;
         Last weekend, I participated in the &lt;a href="https://nl.wikimedia.org/wiki/Mini_Hackathon_October_2025"&gt;Wikimedia Netherlands Mini Hackathon 2025&lt;/a&gt;
@@ -1580,175 +1715,4 @@ WantedBy=timers.target
         &lt;/p&gt;
 &lt;/div&gt;
 
-&lt;/article&gt;</description><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2024/11/23/how-to-invent-everything-review/</guid><pubDate>Sat, 23 Nov 2024 00:00:00 GMT</pubDate></item><item><title>JBL Quantum 810 wireless headset review</title><link>https://lucaswerkmeister.de/posts/2024/09/28/jbl-quantum-810-review/</link><description>&lt;article&gt;
-
-&lt;p&gt;
-        Quick review of the
-        &lt;span&gt;
-
-&lt;span&gt;
-            JBL Quantum 810 wireless headset&lt;/span&gt;&lt;/span&gt;,
-        which I recently got.
-        My main point of comparison is my previous headset (also wireless),
-        a HyperX Cloud Flight, whose charging port eventually broke down.
-      &lt;/p&gt;
-&lt;div&gt;
-&lt;p&gt;
-          I’ll start with some general characteristics.
-          I wasn’t dead set on an exact choice of headset model,
-          but I wanted it to have these features
-          (and then made my choice by looking around the store website,
-          checking a few reviews,
-          and then seeing what was in stock on site and in a sensible price range):
-        &lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-            A headset, i.e. headphones with an integrated microphone.
-            I don’t want to subject the people I talk with to terrible webcam audio,
-            and I don’t want to have a separate microphone with a mic stand on my desk either.
-          &lt;/li&gt;
-&lt;li&gt;
-            Wireless.
-            I originally got a wireless headset to replace my old wired one early in the pandemic,
-            because coworkers were complaining about echo from me,
-            which I attributed to crosstalk between the speaker and microphone wires.
-            But it turns out a wireless headset (or headphones) is also massively convenient –
-            it’s just nice to be able to walk around the apartment with it,
-            or even just lean further back in my chair than I previously could.
-            I’d recommend it for anyone.
-          &lt;/li&gt;
-&lt;li&gt;
-            With a USB dongle.
-            This is quite important for me because it means I can plug it into my USB switch,
-            together with the mouse, keyboard, and webcam,
-            and then easily toggle all four peripherals between my work laptop and my private PC.
-            (The screens are on separate switches.
-            You can get devices that let you switch everything together –
-            the usual term seems to be “KVM” –
-            but they appear to be much more expensive,
-            so I’m happy to just press three buttons instead of one.)
-            The JBL Quantum 810 apparently also supports bluetooth,
-            but I haven’t had a reason to try that so far.
-            (It can also continue working while plugged in to charge,
-            which wasn’t the case for the HyperX Cloud Flight.)
-          &lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;
-          And some specific points on the JBL Quantum 810:
-        &lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-            Its microphone is attached permanently,
-            with a hinge to let you move it between your mouth (in use) and your temple (not in use).
-            The microphone is automatically muted while pointed upwards,
-            which is convenient, though I wouldn’t rely on it alone.
-            The HyperX Cloud Flight had a detachable microphone, which wasn’t bad,
-            but it certainly was a bit more fiddly to put it on my head and then attach the microphone each time.
-          &lt;/li&gt;
-&lt;li&gt;
-            The power switch is a switch (with on and off positions),
-            rather than a button you have to hold down for several seconds.
-            I find this much more convenient.
-            (It more than outweighs the minor disadvantage that,
-            if the headset turns itself off due to inactivity or low battery,
-            the button’s position no longer reflects the actual power state.)
-          &lt;/li&gt;
-&lt;li&gt;
-            The wireless range is longer than with my previous headset –
-            enough to pretty reliably reach my whole apartment.
-            (Which isn’t huge, but the HyperX Cloud Flight only reached part of it.)
-            I assume the previous headset used Bluetooth internally, or at least the 2.4 GHz frequency range;
-            the JBL Quantum 810, when used with its dongle, apparently uses the 5 GHz frequency range,
-            and I assume that helps with the range.
-            (If you want measurements, my guess would be that the range is at least 10 m,
-            probably closer to 15 m, and that’s with a concrete wall or two in the way.)
-          &lt;/li&gt;
-&lt;li&gt;
-            It works on Linux, at least using recent versions.
-            (I found some reports of issues around 2021 or so,
-            so if you’re on an older kernel you might want to look that up for yourself.)
-            It shows up as a sound output and a separate input for the microphone, as you’d expect.
-            Unlike with the HyperX Cloud Flight,
-            the volume wheel on the headset does &lt;em&gt;not&lt;/em&gt; affect the system volume – they’re separate.
-            Initially I had the wheel set to the max and the system volume around 50%,
-            but it turned out that this meant my system audio was very quiet on live streams
-            (i.e., my viewers couldn’t hear the game I was playing),
-            so now I instead have my system volume at max and the wheel somewhere around the middle.
-            I would prefer the wheel to adjust the system volume instead,
-            but I can live with this as well.
-          &lt;/li&gt;
-&lt;li&gt;
-            The JBL Quantum 810 has some features I’m not interested in –
-            I don’t remember the exact details,
-            but there was at least some form of RGB lighting,
-            and some kind of noise cancelling.
-            It was possible (and, following the manual, relatively straightforward)
-            to turn all of these off using the controls on the headset itself:
-            I did &lt;em&gt;not&lt;/em&gt; need some vendor-specific Windows-only app,
-            and I appreciate that.
-          &lt;/li&gt;
-&lt;li&gt;
-            Speaking of unused features:
-            the JBL Quantum 810 has a second “volume” wheel above the “real” one.
-            Apparently this is meant to let gamers adjust the relative volume of the game vs. voice chat –
-            if I understood correctly,
-            the headset is supposed to offer two sound outputs,
-            you configure your system to send the game to one and the voice chat to the other,
-            and then the wheel on the headset adjusts the mixing between the two.
-            I haven’t seen any trace of this on Linux,
-            but I also don’t need it anyway,
-            so I just keep that wheel turned all the way to the “game” end.
-            🤷
-          &lt;/li&gt;
-&lt;li&gt;
-            The battery life is quite remarkable compared to the HyperX Cloud Flight.
-            I haven’t kept close track of it,
-            but so far my guess would be that I’m recharging it slightly less than once per week,
-            and I would say I don’t exactly use it sparingly.
-            (2025-02-10 update: I seem to be recharging it every ten days or so.)
-            The manufacturer claims a battery life of 43 hours
-            (when using the dongle and with RGB turned off;
-            over Bluetooth it would apparently be 49 hours?),
-            and I have no reason to disbelieve that so far.
-            It also charges over USB-C, which is convenient at this point in my life
-            (the HyperX Cloud Flight charges over Micro-USB,
-            but I have barely any other devices left which require that plug).
-          &lt;/li&gt;
-&lt;li&gt;
-            The biggest downside:
-            when it’s not playing sound, the headset likes to turn its speakers off.
-            (I’m guessing this helps with the battery life?)
-            This sounds minor, but it gets pretty annoying after a while.
-            It means that, if I’m wearing the headset but not currently listening to anything,
-            any quick notification chime will either sound like it has a weird fade-in effect for no reason,
-            or I won’t even hear it at all.
-            And the headset’s threshold for “not playing sound” is high enough
-            that sometimes it turns itself off while I &lt;em&gt;am&lt;/em&gt; listening to some quiet audio,
-            and I’ll have to crank up the volume just to stop the headset from turning itself off,
-            even if my ears could hear the audio well enough at the previous volume.
-            I searched around a bit,
-            but it doesn’t seem like there’s anything you can do about this behavior.
-          &lt;/li&gt;
-&lt;li&gt;
-            And a less important downside for the end:
-            while the battery life is good,
-            there’s no way to see the current battery level,
-            and the first of the three (IIRC) “battery low” chimes comes a bit late for my taste –
-            only an hour or two, if memory serves, before the headset is totally dead.
-            (2025-02-10 update: three are three “battery low” chimes in total,
-            and today I got them all within 30-40 minutes,
-            and then the battery was totally dead within 15-30 minutes of the last chime.)
-            I wouldn’t mind having a bit more advance notice that I’ll have to charge the headset soon.
-            That said, the headset recharges pretty quickly,
-            so it doesn’t take too long to get it back into a usable state.
-          &lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;
-          I think that’s all I have to say about it right now!
-          (If you were hoping for me to say something about the audio quality…
-          sorry, I don’t really have an insightful comment on that.
-          It sounds alright.)
-        &lt;/p&gt;
-&lt;/div&gt;
-
-&lt;/article&gt;</description><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2024/09/28/jbl-quantum-810-review/</guid><pubDate>Sat, 28 Sep 2024 00:00:00 GMT</pubDate></item></channel></rss>
+&lt;/article&gt;</description><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2024/11/23/how-to-invent-everything-review/</guid><pubDate>Sat, 23 Nov 2024 00:00:00 GMT</pubDate></item></channel></rss>
