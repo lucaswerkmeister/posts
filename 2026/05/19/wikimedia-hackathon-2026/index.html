@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Wikimedia Hackathon 2026 recap</title>
+    <link rel="stylesheet" href="/basic.css"/>
+    <link rel="alternate" type="application/rss+xml" href="/posts/index.rss"/>
+  </head>
+  <body vocab="http://schema.org/">
+    <article resource="https://lucaswerkmeister.de/posts/2026/05/19/wikimedia-hackathon-2026/" typeof="BlogPosting">
+      <header>
+        <h1 property="name headline">Wikimedia Hackathon 2026 recap</h1>
+        <address><a rel="author" href="https://lucaswerkmeister.de" typeof="Person"><span property="name" lang="de-DE">Lucas Werkmeister</span></a></address>,
+        <time property="datePublished" datetime="2026-05-19">2026-05-19</time>.
+        <link property="publisher" href="https://lucaswerkmeister.de" typeof="Person"/>
+        <meta property="isAccessibleForFree" content="true"/>
+        <meta property="keywords" content="wikimedia"/>
+      </header>
+      <p>
+        Two weeks ago, I took part in the <a href="https://www.mediawiki.org/wiki/Wikimedia_Hackathon_2026">Wikimedia Hackathon 2026</a>,
+        which took place on 1–3 May (Friday–Sunday) in Milan, Italy.
+        Like <a href="/posts/2025/05/10/wikimedia-hackathon-2025/">in</a>
+        <a href="/posts/2024/05/15/wikimedia-hackathon-2024/">previous</a>
+        <a href="/posts/2023/06/03/wikimedia-hackathon-2023/">years</a>,
+        I wanted to write a bit about the experience.
+      </p>
+      <p>
+        I came into this hackathon with one planned presentation / session (<a href="https://phabricator.wikimedia.org/T423292">T423292</a>):
+        <a href="https://commons.wikimedia.org/wiki/File:Cool_new_things_in_JS_%2B_CSS_%E2%80%93_Wikimedia_Hackathon_2026.pdf">Cool new things in JavaScript + CSS</a>.
+        This is the continuation of two sessions I did at the <a href="/posts/2023/06/03/wikimedia-hackathon-2023/">2023 hackathon</a>,
+        <a href="https://commons.wikimedia.org/wiki/File:Cool_new_things_in_PHP_%E2%80%93_Wikimedia_Hackathon_2023.pdf">Cool new things in PHP</a> and
+        <a href="https://commons.wikimedia.org/wiki/File:Cool_new_things_in_MediaWiki_code_%E2%80%93_Wikimedia_Hackathon_2023.pdf">Cool new things in MediaWiki code</a>.
+        The goal of these sessions is twofold:
+        to make people aware of these features at all,
+        and also to let them know that these features are now available and can be used.
+        I’ve spent far too much time trying to figure out if I’m allowed to use a feature
+        based on the <a href="https://www.mediawiki.org/wiki/Compatibility#Browsers">browser support matrix</a>
+        and resources like <a href="https://caniuse.com/">Can I use…</a> or <a href="https://developer.mozilla.org/">MDN</a>
+        (this is somewhat more tedious in JavaScript+CSS than in PHP, where we at least only have one engine with a single minimum version);
+        gathering all the available features in one place
+        (with a separate section at the end for features that we can’t use yet but can look forward to)
+        should hopefully make this no longer necessary.
+      </p>
+      <p>
+        I also came to Milan with three ideas for projects:
+        making language names in the CLDR extension translatable (<a href="https://phabricator.wikimedia.org/T231755">T231755</a>),
+        a project I’ve been working on at hackathons since <a href="/posts/2024/05/15/wikimedia-hackathon-2024/">2024</a>;
+        adding support for QUERY requests to the Action API (<a href="https://phabricator.wikimedia.org/T410883">T410883</a>);
+        and, motivated by the “Cool new things in JS” presentation,
+        an <code>mw.html.format`...`</code> tag function to write HTML as template literals with automatic escaping (<a href="https://phabricator.wikimedia.org/T425136">T425136</a>).
+        This year, I didn’t really pick up any other projects while at the event,
+        but just ping-ponged between these projects when I had free time.
+        The CLDR project in particular mainly involved talking to other people
+        to find out how this might be best implemented and how we could test the performance;
+        many thanks for enduring my repeated questions go to <a href="https://www.mediawiki.org/wiki/User:Brooke_Vibber">Brooke</a> (localisation cache),
+        <a href="https://www.mediawiki.org/wiki/User:Effie_Mouzeli_(WMF)">Effie</a>
+        (<a href="https://wikitech.wikimedia.org/wiki/Mw-experimental">mw-experimental</a> – unfortunately the conclusion was that this particular change can’t be tested there),
+        and <a href="https://meta.wikimedia.org/wiki/User:Reedy">Reedy</a> (deployment / evaluation plan).
+        The other two projects made some more tangible progress,
+        which I <a href="https://www.youtube.com/watch?v=rHMTJB8gleQ&t=1260s">demonstrated</a> at the showcase (ca. 21:00–22:15).
+      </p>
+      <p>
+        Aside from my particular projects, this was pretty much a standard hackathon for me.
+        I met and talked to lots of nice people;
+        I attended some interesting sessions
+        (<a href="https://phabricator.wikimedia.org/T423452">Fifty Shades of Caching and How LLMs Paint It Black</a> was basically a shared wailing session about the horror that is the present-day web,
+        <a href="https://phabricator.wikimedia.org/T424780">How MediaWiki code gets deployed and things we are changing</a> was exciting,
+        “Overview of Parsoid architecture and high-level overview of the Parsoid codebase” [no task / link] was super interesting and informative – so many debugging facilities in Parsoid!);
+        and I generally had a nice time.
+        I think the social aspect during the normal program time fell a bit short
+        (there was no Wikimedia Cuteness Association meetup nor anything like the juggling / rubik’s cube sessions of past years),
+        but there were enough social opportunities in the evenings to make up for it.
+      </p>
+      <p>
+        (Side note: compared to the <a href="/posts/2026/03/17/wikimedia-hackathon-northwestern-europe-2026/">Northwestern Europe hackathon</a> earlier this year,
+        my impression was that this hackathon had less “vibe coding” / “AI” going on,
+        both during the event and in what people presented at the showcase.
+        But perhaps I just did a better job at evading it, I don’t know.
+        There was a session about <a href="https://phabricator.wikimedia.org/T420352">Being a developer in the age of AI taking over our profession: how do we deal with it as a community?</a>,
+        which was in such high demand that a second copy of it was scheduled for later in the day;
+        I attended it but don’t think I managed to contribute (or take away) much, to be honest.
+        If you want to know more about that session, read <a href="https://www.haykranen.nl/2026/05/02/wikimedia-hackathon-ai-identity-crisis/">Hay’s summary</a>.)
+      </p>
+      <p>
+        As for travel, I was fortunate enough to be able to travel to and from this hackathon by train once more;
+        on Mastodon I kept it all in one thread this year (rather than several per-day threads),
+        so you can <a href="https://wikis.world/@LucasWerkmeister/116487717344107408">read about my entire hackathon journey</a> there.
+        And I think that’s all for now – see you either in a few months in Paris, or next year in Albania 🙂
+      </p>
+      <footer>
+        <div class="license-info">
+          <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+            <img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png"/>
+          </a><br/>
+          This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+        </div>
+      </footer>
+    </article>
+  </body>
+</html>

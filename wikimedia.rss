@@ -1,5 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Lucas’ Posts (#wikimedia)</title><link>https://lucaswerkmeister.de/posts/</link><description>I suppose this is a blog of sorts – or at least a place where I occasionally post stuff. Not necessarily about anything in particular.</description><lastBuildDate>Tue, 17 Mar 2026 00:26:09 GMT</lastBuildDate><generator>PyRSS2Gen-1.1.0</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Wikimedia Hackathon Northwestern Europe 2026 recap</title><link>https://lucaswerkmeister.de/posts/2026/03/17/wikimedia-hackathon-northwestern-europe-2026/</link><description>&lt;article&gt;
+<rss version="2.0"><channel><title>Lucas’ Posts (#wikimedia)</title><link>https://lucaswerkmeister.de/posts/</link><description>I suppose this is a blog of sorts – or at least a place where I occasionally post stuff. Not necessarily about anything in particular.</description><lastBuildDate>Tue, 19 May 2026 11:59:45 GMT</lastBuildDate><generator>PyRSS2Gen-1.1.0</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Wikimedia Hackathon 2026 recap</title><link>https://lucaswerkmeister.de/posts/2026/05/19/wikimedia-hackathon-2026/</link><description>&lt;article&gt;
+
+&lt;p&gt;
+        Two weeks ago, I took part in the &lt;a href="https://www.mediawiki.org/wiki/Wikimedia_Hackathon_2026"&gt;Wikimedia Hackathon 2026&lt;/a&gt;,
+        which took place on 1–3 May (Friday–Sunday) in Milan, Italy.
+        Like &lt;a href="https://lucaswerkmeister.de/posts/2025/05/10/wikimedia-hackathon-2025/"&gt;in&lt;/a&gt;
+&lt;a href="https://lucaswerkmeister.de/posts/2024/05/15/wikimedia-hackathon-2024/"&gt;previous&lt;/a&gt;
+&lt;a href="https://lucaswerkmeister.de/posts/2023/06/03/wikimedia-hackathon-2023/"&gt;years&lt;/a&gt;,
+        I wanted to write a bit about the experience.
+      &lt;/p&gt;
+&lt;p&gt;
+        I came into this hackathon with one planned presentation / session (&lt;a href="https://phabricator.wikimedia.org/T423292"&gt;T423292&lt;/a&gt;):
+        &lt;a href="https://commons.wikimedia.org/wiki/File:Cool_new_things_in_JS_%2B_CSS_%E2%80%93_Wikimedia_Hackathon_2026.pdf"&gt;Cool new things in JavaScript + CSS&lt;/a&gt;.
+        This is the continuation of two sessions I did at the &lt;a href="https://lucaswerkmeister.de/posts/2023/06/03/wikimedia-hackathon-2023/"&gt;2023 hackathon&lt;/a&gt;,
+        &lt;a href="https://commons.wikimedia.org/wiki/File:Cool_new_things_in_PHP_%E2%80%93_Wikimedia_Hackathon_2023.pdf"&gt;Cool new things in PHP&lt;/a&gt; and
+        &lt;a href="https://commons.wikimedia.org/wiki/File:Cool_new_things_in_MediaWiki_code_%E2%80%93_Wikimedia_Hackathon_2023.pdf"&gt;Cool new things in MediaWiki code&lt;/a&gt;.
+        The goal of these sessions is twofold:
+        to make people aware of these features at all,
+        and also to let them know that these features are now available and can be used.
+        I’ve spent far too much time trying to figure out if I’m allowed to use a feature
+        based on the &lt;a href="https://www.mediawiki.org/wiki/Compatibility#Browsers"&gt;browser support matrix&lt;/a&gt;
+        and resources like &lt;a href="https://caniuse.com/"&gt;Can I use…&lt;/a&gt; or &lt;a href="https://developer.mozilla.org/"&gt;MDN&lt;/a&gt;
+        (this is somewhat more tedious in JavaScript+CSS than in PHP, where we at least only have one engine with a single minimum version);
+        gathering all the available features in one place
+        (with a separate section at the end for features that we can’t use yet but can look forward to)
+        should hopefully make this no longer necessary.
+      &lt;/p&gt;
+&lt;p&gt;
+        I also came to Milan with three ideas for projects:
+        making language names in the CLDR extension translatable (&lt;a href="https://phabricator.wikimedia.org/T231755"&gt;T231755&lt;/a&gt;),
+        a project I’ve been working on at hackathons since &lt;a href="https://lucaswerkmeister.de/posts/2024/05/15/wikimedia-hackathon-2024/"&gt;2024&lt;/a&gt;;
+        adding support for QUERY requests to the Action API (&lt;a href="https://phabricator.wikimedia.org/T410883"&gt;T410883&lt;/a&gt;);
+        and, motivated by the “Cool new things in JS” presentation,
+        an &lt;code&gt;mw.html.format`...`&lt;/code&gt; tag function to write HTML as template literals with automatic escaping (&lt;a href="https://phabricator.wikimedia.org/T425136"&gt;T425136&lt;/a&gt;).
+        This year, I didn’t really pick up any other projects while at the event,
+        but just ping-ponged between these projects when I had free time.
+        The CLDR project in particular mainly involved talking to other people
+        to find out how this might be best implemented and how we could test the performance;
+        many thanks for enduring my repeated questions go to &lt;a href="https://www.mediawiki.org/wiki/User:Brooke_Vibber"&gt;Brooke&lt;/a&gt; (localisation cache),
+        &lt;a href="https://www.mediawiki.org/wiki/User:Effie_Mouzeli_(WMF)"&gt;Effie&lt;/a&gt;
+        (&lt;a href="https://wikitech.wikimedia.org/wiki/Mw-experimental"&gt;mw-experimental&lt;/a&gt; – unfortunately the conclusion was that this particular change can’t be tested there),
+        and &lt;a href="https://meta.wikimedia.org/wiki/User:Reedy"&gt;Reedy&lt;/a&gt; (deployment / evaluation plan).
+        The other two projects made some more tangible progress,
+        which I &lt;a href="https://www.youtube.com/watch?v=rHMTJB8gleQ&amp;amp;t=1260s"&gt;demonstrated&lt;/a&gt; at the showcase (ca. 21:00–22:15).
+      &lt;/p&gt;
+&lt;p&gt;
+        Aside from my particular projects, this was pretty much a standard hackathon for me.
+        I met and talked to lots of nice people;
+        I attended some interesting sessions
+        (&lt;a href="https://phabricator.wikimedia.org/T423452"&gt;Fifty Shades of Caching and How LLMs Paint It Black&lt;/a&gt; was basically a shared wailing session about the horror that is the present-day web,
+        &lt;a href="https://phabricator.wikimedia.org/T424780"&gt;How MediaWiki code gets deployed and things we are changing&lt;/a&gt; was exciting,
+        “Overview of Parsoid architecture and high-level overview of the Parsoid codebase” [no task / link] was super interesting and informative – so many debugging facilities in Parsoid!);
+        and I generally had a nice time.
+        I think the social aspect during the normal program time fell a bit short
+        (there was no Wikimedia Cuteness Association meetup nor anything like the juggling / rubik’s cube sessions of past years),
+        but there were enough social opportunities in the evenings to make up for it.
+      &lt;/p&gt;
+&lt;p&gt;
+        (Side note: compared to the &lt;a href="https://lucaswerkmeister.de/posts/2026/03/17/wikimedia-hackathon-northwestern-europe-2026/"&gt;Northwestern Europe hackathon&lt;/a&gt; earlier this year,
+        my impression was that this hackathon had less “vibe coding” / “AI” going on,
+        both during the event and in what people presented at the showcase.
+        But perhaps I just did a better job at evading it, I don’t know.
+        There was a session about &lt;a href="https://phabricator.wikimedia.org/T420352"&gt;Being a developer in the age of AI taking over our profession: how do we deal with it as a community?&lt;/a&gt;,
+        which was in such high demand that a second copy of it was scheduled for later in the day;
+        I attended it but don’t think I managed to contribute (or take away) much, to be honest.
+        If you want to know more about that session, read &lt;a href="https://www.haykranen.nl/2026/05/02/wikimedia-hackathon-ai-identity-crisis/"&gt;Hay’s summary&lt;/a&gt;.)
+      &lt;/p&gt;
+&lt;p&gt;
+        As for travel, I was fortunate enough to be able to travel to and from this hackathon by train once more;
+        on Mastodon I kept it all in one thread this year (rather than several per-day threads),
+        so you can &lt;a href="https://wikis.world/@LucasWerkmeister/116487717344107408"&gt;read about my entire hackathon journey&lt;/a&gt; there.
+        And I think that’s all for now – see you either in a few months in Paris, or next year in Albania 🙂
+      &lt;/p&gt;
+
+&lt;/article&gt;</description><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2026/05/19/wikimedia-hackathon-2026/</guid><pubDate>Tue, 19 May 2026 00:00:00 GMT</pubDate></item><item><title>Wikimedia Hackathon Northwestern Europe 2026 recap</title><link>https://lucaswerkmeister.de/posts/2026/03/17/wikimedia-hackathon-northwestern-europe-2026/</link><description>&lt;article&gt;
 
 &lt;p&gt;
         Last weekend, I participated in the &lt;a href="https://www.mediawiki.org/wiki/Wikimedia_Hackathon_Northwestern_Europe_2026"&gt;Wikimedia Hackathon Northwestern Europe 2026&lt;/a&gt;,
@@ -1570,185 +1644,4 @@ width, height &lt;span class="keyword operator"&gt;=&lt;/span&gt; &lt;span class
         Otherwise, I think that’s it!
       &lt;/p&gt;
 
-&lt;/p&gt;&lt;/article&gt;</description><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2023/06/03/wikimedia-hackathon-2023/</guid><pubDate>Sat, 03 Jun 2023 00:00:00 GMT</pubDate></item><item><title>MediaWiki Lua for non-Lua programmers</title><link>https://lucaswerkmeister.de/posts/2022/03/20/mw-lua-for-non-lua-programmers/</link><description>&lt;article&gt;
-
-&lt;p&gt;
-        This is a blog post to “onboard” people to Lua programming for MediaWiki
-        (e.g. on Wikipedias or Wikimedia Commons).
-        The target audience is people who already know some programming,
-        but aren’t very familiar with Lua specifically.
-        The goal is not that you’ll be a professional Lua programmer,
-        but that you’ll be aware of some of the more important aspects,
-        and be able to write some useful Lua code with a good portion of trial-and-error and some googling.
-        I’ll be comparing Lua to several other programming languages,
-        in the hope that you’re familiar enough with at least some of them to understand what I mean.
-      &lt;/p&gt;
-&lt;h2&gt;Some syntax&lt;/h2&gt;
-&lt;p&gt;
-        No semicolons.
-        No braces – blocks are usually introduced by a relevant keyword
-        (e.g. &lt;code&gt;function name(args)&lt;/code&gt;, &lt;code&gt;if cond then&lt;/code&gt;)
-        and always end with the keyword &lt;code&gt;end&lt;/code&gt;.
-        Strings concatenate with &lt;code class="example"&gt;..&lt;/code&gt;,
-        not &lt;code class="counterexample"&gt;.&lt;/code&gt; like in PHP/Perl or &lt;code class="counterexample"&gt;+&lt;/code&gt; like in Java(Script)/Python.
-        The not-equal operator is &lt;code class="example"&gt;~=&lt;/code&gt;,
-        not &lt;code class="counterexample"&gt;!=&lt;/code&gt; like in most other languages.
-        Comments begin with &lt;code class="example"&gt;--&lt;/code&gt;, like in Haskell;
-        &lt;code class="counterexample"&gt;#&lt;/code&gt; (PHP, Perl, Python) is the length operator instead,
-        &lt;code class="counterexample"&gt;//&lt;/code&gt; and &lt;code class="counterexample"&gt;/* */&lt;/code&gt; (C, C++, Java, JS) are syntax errors.
-      &lt;/p&gt;
-&lt;p&gt;
-        Local variables are declared with the keyword &lt;code&gt;local&lt;/code&gt;,
-        otherwise all variables are global (even inside a function!) –
-        in other words, you’ll want to write &lt;code&gt;local&lt;/code&gt; a lot of the time.
-        (If you test your module using &lt;a href="https://en.wikipedia.org/wiki/Module:ScribuntoUnit"&gt;ScribuntoUnit&lt;/a&gt;,
-        it will yell at you if you forgot a &lt;code&gt;local&lt;/code&gt; somewhere and accidentally leaked a global variable.)
-      &lt;/p&gt;
-&lt;h2&gt;Tables&lt;/h2&gt;
-&lt;p&gt;
-&lt;strong&gt;Tables&lt;/strong&gt; are a fairly fundamental data structure in Lua.
-        They’re similar to arrays in PHP,
-        in that they’re a single data structure that fulfills two purposes which many other languages have as separate data structures:
-        &lt;strong&gt;lists&lt;/strong&gt;/arrays/vectors, and &lt;strong&gt;maps&lt;/strong&gt;/dictionaries/hashes.
-        In Lua as in PHP, a list is just a map with sequential integer keys;
-        unlike in PHP and most other languages, though, &lt;strong&gt;list indexes start from 1&lt;/strong&gt;, not 0.
-        (Nothing stops you from using 0 as an index manually, but it will make everything more confusing.
-        The syntax &lt;code&gt;{ "first", "last" }&lt;/code&gt; creates a table using indexes 1 and 2, not 0 and 1.)
-      &lt;/p&gt;
-&lt;p&gt;
-        Unlike in JavaScript and PHP, and more like in Python and some other languages,
-        table keys (indexes) are not limited to strings or numbers:
-        any other value, including a table, can be used as a key.
-        That said, numbers and strings are more common, and strings have shortcut syntax:
-        &lt;code&gt;someTable.someKey&lt;/code&gt; is equivalent to &lt;code&gt;someTable["someKey"]&lt;/code&gt;.
-      &lt;/p&gt;
-&lt;p&gt;
-        Tables also fulfill the role of &lt;strong&gt;objects&lt;/strong&gt;,
-        including methods, which we’ll talk about later.
-        There’s no special syntax to define classes or create instances of a class.
-        There are “metatables”, which can customize various behavior of a table,
-        kind of like the prototype of an object in JavaScript,
-        but I’ll just mention that here and let you look it up if you think you need it,
-        since I don’t think it usually comes up in normal module programming.
-      &lt;/p&gt;
-&lt;p&gt;Here’s an example table:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class="keyword"&gt;local&lt;/span&gt; someTable &lt;span class="keyword operator"&gt;=&lt;/span&gt; {
-    &lt;span class="comment"&gt;-- normalKey: "normalValue" in JavaScript,&lt;/span&gt;
-    &lt;span class="comment"&gt;-- i.e. uses the string "normalKey" as the key&lt;/span&gt;
-    normalKey &lt;span class="keyword operator"&gt;=&lt;/span&gt; &lt;span class="string"&gt;"normalValue"&lt;/span&gt;,
-    &lt;span class="comment"&gt;-- "otherKey": "otherValue" in Python&lt;/span&gt;
-    &lt;span class="comment"&gt;-- [ "otherKey" ]: "otherValue" in JavaScript&lt;/span&gt;
-    &lt;span class="comment"&gt;-- ("otherKey" can be any expression)&lt;/span&gt;
-    [ &lt;span class="string"&gt;"otherKey"&lt;/span&gt; ] &lt;span class="keyword operator"&gt;=&lt;/span&gt; &lt;span class="string"&gt;"otherValue"&lt;/span&gt;,
-    &lt;span class="comment"&gt;-- [ "a", "b", "c" ] in Python, JavaScript, etc.&lt;/span&gt;
-    &lt;span class="string"&gt;"a"&lt;/span&gt;, &lt;span class="string"&gt;"b"&lt;/span&gt;, &lt;span class="string"&gt;"c"&lt;/span&gt;, &lt;span class="comment"&gt;-- implicit indexes 1, 2, 3&lt;/span&gt;
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;
-        For more information on tables, including a longer syntax example (scroll down a bit),
-        see the &lt;a href="https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Scribunto/Lua_reference_manual#table"&gt;Scribunto Lua reference manual § table&lt;/a&gt;.
-      &lt;/p&gt;
-&lt;h2&gt;nil&lt;/h2&gt;
-&lt;p&gt;
-&lt;code&gt;nil&lt;/code&gt; is Lua’s version of “null/none/nothing”. (Like in Lisp!)
-        For example, it’s what you get when accessing a table key that doesn’t exist.
-        (Incidentally, there’s actually no syntax to delete a table entry –
-        you just set it to &lt;code&gt;nil&lt;/code&gt; instead: &lt;code&gt;someTable.someKey = nil&lt;/code&gt;.)
-      &lt;/p&gt;
-&lt;h2&gt;Functions&lt;/h2&gt;
-&lt;p&gt;
-        Unlike in most other languages, &lt;strong&gt;functions can return multiple values&lt;/strong&gt;.
-        A function can &lt;code&gt;return "first", "second", "third"&lt;/code&gt;,
-        and a caller can assign &lt;code&gt;local a, b, c = someFunction()&lt;/code&gt;,
-        and &lt;code&gt;a&lt;/code&gt; will be &lt;code&gt;"first"&lt;/code&gt;, &lt;code&gt;b&lt;/code&gt; will be &lt;code&gt;"second"&lt;/code&gt;, and &lt;code&gt;c&lt;/code&gt; will be &lt;code&gt;"third"&lt;/code&gt;.
-        (Yes, you can emulate this in other languages by returning a list, don’t @ me.)
-        If you’re just writing your own code, you can of course ignore this,
-        but you should be aware of it when interacting with other people’s code,
-        and you may also find that it’s useful for you.
-      &lt;/p&gt;
-&lt;p&gt;
-        If a function returns more values than a caller is interested in, the extra values are dropped.
-        This means that you can use this feature to return additional / auxiliary information,
-        and callers who aren’t interested in it can just write &lt;code&gt;local mainResult = yourFunction()&lt;/code&gt;
-        and ignore whatever else it happens to return.
-        If a function returns &lt;em&gt;fewer&lt;/em&gt; values than a caller asked for –
-        &lt;code&gt;local first, second, third = functionReturningOneValue()&lt;/code&gt; –
-        then the other values are set to &lt;code&gt;nil&lt;/code&gt;.
-      &lt;/p&gt;
-&lt;p&gt;
-        You can also define functions in a table,
-        in a way that I haven’t seen in a lot of other languages,
-        but actually find very natural and convenient:
-      &lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class="storage function"&gt;function&lt;/span&gt; &lt;span class="entity name function"&gt;someTable.someFunction&lt;/span&gt;() ... &lt;span class="keyword"&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;This is exactly the same as:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;someTable.someFunction &lt;span class="keyword operator"&gt;=&lt;/span&gt; &lt;span class="keyword"&gt;function&lt;/span&gt;() ... &lt;span class="keyword"&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;
-        But nicer to read, since &lt;code&gt;someTable.someFunction()&lt;/code&gt; matches how the function will be called.
-        This also leads us nicely into our next topic.
-      &lt;/p&gt;
-&lt;h2&gt;Methods&lt;/h2&gt;
-&lt;p&gt;
-        As we’ve just seen, you can have functions inside a table,
-        and call those functions using the &lt;code&gt;.&lt;/code&gt; syntax familiar from many other languages.
-        However, these functions don’t automatically have access to the surrounding table.
-        For that, Lua has a mechanism kind of reminiscent of Python,
-        in that you’ll use the name &lt;code&gt;self&lt;/code&gt; to identify that surrounding table
-        (what many other languages call &lt;code&gt;this&lt;/code&gt;).
-        However, you don’t define &lt;code&gt;self&lt;/code&gt; as the first parameter of the method,
-        like you would in Python (&lt;code&gt;def some_method(self, other_param)&lt;/code&gt;);
-        instead, &lt;em&gt;you define and call the method with a colon instead of a period&lt;/em&gt;:
-      &lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class="storage function"&gt;function&lt;/span&gt; &lt;span class="entity name function"&gt;someTable:someMethod&lt;/span&gt;(param1, param2)
-    &lt;span class="keyword"&gt;return&lt;/span&gt; self.something &lt;span class="keyword operator"&gt;+&lt;/span&gt; param1 &lt;span class="keyword operator"&gt;+&lt;/span&gt; param2
-&lt;span class="keyword"&gt;end&lt;/span&gt;
-
-&lt;span class="keyword"&gt;local&lt;/span&gt; result &lt;span class="keyword operator"&gt;=&lt;/span&gt; someTable:someMethod(arg1, arg2)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;This is exactly equivalent to:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class="comment"&gt;-- do not write code like this, this is for demonstration only&lt;/span&gt;
-&lt;span class="storage function"&gt;function&lt;/span&gt; &lt;span class="entity name function"&gt;someTable.someMethod&lt;/span&gt;(self, param1, param2)
-    &lt;span class="keyword"&gt;return&lt;/span&gt; self.something &lt;span class="keyword operator"&gt;+&lt;/span&gt; param1 &lt;span class="keyword operator"&gt;+&lt;/span&gt; param2
-&lt;span class="keyword"&gt;end&lt;/span&gt;
-
-&lt;span class="keyword"&gt;local&lt;/span&gt; result &lt;span class="keyword operator"&gt;=&lt;/span&gt; someTable.someMethod(someTable, arg1, arg2)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;
-        When defining a method, the colon is syntactic sugar for a first &lt;code&gt;self&lt;/code&gt; parameter;
-        when calling it, it’s syntactic sugar for passing in the table as the first argument.
-        (In theory, you can mix and match this,
-        and colon-call non-colon-defined methods or vice versa,
-        but that will probably just result in confusion.)
-        When writing Lua, it’s important to get into a habit of using table members the right way,
-        which is usually indicated in the relevant documentation.
-        For instance, &lt;a href="https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Scribunto/Lua_reference_manual#Frame_object"&gt;frame objects&lt;/a&gt;
-        have &lt;code&gt;frame&lt;strong&gt;.&lt;/strong&gt;args&lt;/code&gt; but &lt;code&gt;frame&lt;strong&gt;:&lt;/strong&gt;getParent()&lt;/code&gt; –
-        the arguments are a normal table member, the parent frame is a method.
-        &lt;code class="example"&gt;frame&lt;strong&gt;:&lt;/strong&gt;getParent()&lt;strong&gt;.&lt;/strong&gt;args&lt;/code&gt; correctly gets the parent frame args (assuming there is a parent frame!);
-        &lt;code class="counterexample"&gt;frame&lt;strong&gt;.&lt;/strong&gt;getParent()&lt;/code&gt; is wrong,
-        and &lt;code class="counterexample"&gt;frame&lt;strong&gt;:&lt;/strong&gt;getParent()&lt;strong&gt;:&lt;/strong&gt;args&lt;/code&gt; is a syntax error.
-      &lt;/p&gt;
-&lt;h2&gt;Named arguments&lt;/h2&gt;
-&lt;p&gt;
-        When calling a function with a single table literal argument,
-        you can omit the surrounding parentheses:
-        &lt;code&gt;func{...}&lt;/code&gt; means the same as &lt;code&gt;func({...})&lt;/code&gt;.
-        Some methods in MediaWiki are intended to be called like this,
-        emulating named arguments in some other languages:
-      &lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class="keyword"&gt;local&lt;/span&gt; wikitext &lt;span class="keyword operator"&gt;=&lt;/span&gt; frame:expandTemplate{
-    title &lt;span class="keyword operator"&gt;=&lt;/span&gt; &lt;span class="string"&gt;'Some template'&lt;/span&gt;,
-    args &lt;span class="keyword operator"&gt;=&lt;/span&gt; {
-        &lt;span class="string"&gt;'first'&lt;/span&gt;,
-        &lt;span class="string"&gt;'second'&lt;/span&gt;,
-        other &lt;span class="keyword operator"&gt;=&lt;/span&gt; &lt;span class="string"&gt;'named'&lt;/span&gt;,
-    },
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;This would be equivalent to &lt;code&gt;{{Some template |first |second |other=named}}&lt;/code&gt;.&lt;/p&gt;
-&lt;h2&gt;Conclusion&lt;/h2&gt;
-&lt;p&gt;
-        This was just an overview of some more noteworthy aspects of Lua.
-        For a more thorough introduction,
-        including more details on using Lua in MediaWiki specifically,
-        see the &lt;a href="https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Scribunto/Lua_reference_manual"&gt;Scribunto Lua reference manual&lt;/a&gt;:
-        it has a lot of information, and is also available in several other languages.
-      &lt;/p&gt;
-
-&lt;/article&gt;</description><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2022/03/20/mw-lua-for-non-lua-programmers/</guid><pubDate>Sun, 20 Mar 2022 00:00:00 GMT</pubDate></item></channel></rss>
+&lt;/p&gt;&lt;/article&gt;</description><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2023/06/03/wikimedia-hackathon-2023/</guid><pubDate>Sat, 03 Jun 2023 00:00:00 GMT</pubDate></item></channel></rss>

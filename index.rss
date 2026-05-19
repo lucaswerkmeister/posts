@@ -1,5 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Lucas’ Posts</title><link>https://lucaswerkmeister.de/posts/</link><description>I suppose this is a blog of sorts – or at least a place where I occasionally post stuff. Not necessarily about anything in particular.</description><lastBuildDate>Tue, 17 Mar 2026 00:26:08 GMT</lastBuildDate><generator>PyRSS2Gen-1.1.0</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Wikimedia Hackathon Northwestern Europe 2026 recap</title><link>https://lucaswerkmeister.de/posts/2026/03/17/wikimedia-hackathon-northwestern-europe-2026/</link><description>&lt;article&gt;
+<rss version="2.0"><channel><title>Lucas’ Posts</title><link>https://lucaswerkmeister.de/posts/</link><description>I suppose this is a blog of sorts – or at least a place where I occasionally post stuff. Not necessarily about anything in particular.</description><lastBuildDate>Tue, 19 May 2026 11:59:44 GMT</lastBuildDate><generator>PyRSS2Gen-1.1.0</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Wikimedia Hackathon 2026 recap</title><link>https://lucaswerkmeister.de/posts/2026/05/19/wikimedia-hackathon-2026/</link><description>&lt;article&gt;
+
+&lt;p&gt;
+        Two weeks ago, I took part in the &lt;a href="https://www.mediawiki.org/wiki/Wikimedia_Hackathon_2026"&gt;Wikimedia Hackathon 2026&lt;/a&gt;,
+        which took place on 1–3 May (Friday–Sunday) in Milan, Italy.
+        Like &lt;a href="https://lucaswerkmeister.de/posts/2025/05/10/wikimedia-hackathon-2025/"&gt;in&lt;/a&gt;
+&lt;a href="https://lucaswerkmeister.de/posts/2024/05/15/wikimedia-hackathon-2024/"&gt;previous&lt;/a&gt;
+&lt;a href="https://lucaswerkmeister.de/posts/2023/06/03/wikimedia-hackathon-2023/"&gt;years&lt;/a&gt;,
+        I wanted to write a bit about the experience.
+      &lt;/p&gt;
+&lt;p&gt;
+        I came into this hackathon with one planned presentation / session (&lt;a href="https://phabricator.wikimedia.org/T423292"&gt;T423292&lt;/a&gt;):
+        &lt;a href="https://commons.wikimedia.org/wiki/File:Cool_new_things_in_JS_%2B_CSS_%E2%80%93_Wikimedia_Hackathon_2026.pdf"&gt;Cool new things in JavaScript + CSS&lt;/a&gt;.
+        This is the continuation of two sessions I did at the &lt;a href="https://lucaswerkmeister.de/posts/2023/06/03/wikimedia-hackathon-2023/"&gt;2023 hackathon&lt;/a&gt;,
+        &lt;a href="https://commons.wikimedia.org/wiki/File:Cool_new_things_in_PHP_%E2%80%93_Wikimedia_Hackathon_2023.pdf"&gt;Cool new things in PHP&lt;/a&gt; and
+        &lt;a href="https://commons.wikimedia.org/wiki/File:Cool_new_things_in_MediaWiki_code_%E2%80%93_Wikimedia_Hackathon_2023.pdf"&gt;Cool new things in MediaWiki code&lt;/a&gt;.
+        The goal of these sessions is twofold:
+        to make people aware of these features at all,
+        and also to let them know that these features are now available and can be used.
+        I’ve spent far too much time trying to figure out if I’m allowed to use a feature
+        based on the &lt;a href="https://www.mediawiki.org/wiki/Compatibility#Browsers"&gt;browser support matrix&lt;/a&gt;
+        and resources like &lt;a href="https://caniuse.com/"&gt;Can I use…&lt;/a&gt; or &lt;a href="https://developer.mozilla.org/"&gt;MDN&lt;/a&gt;
+        (this is somewhat more tedious in JavaScript+CSS than in PHP, where we at least only have one engine with a single minimum version);
+        gathering all the available features in one place
+        (with a separate section at the end for features that we can’t use yet but can look forward to)
+        should hopefully make this no longer necessary.
+      &lt;/p&gt;
+&lt;p&gt;
+        I also came to Milan with three ideas for projects:
+        making language names in the CLDR extension translatable (&lt;a href="https://phabricator.wikimedia.org/T231755"&gt;T231755&lt;/a&gt;),
+        a project I’ve been working on at hackathons since &lt;a href="https://lucaswerkmeister.de/posts/2024/05/15/wikimedia-hackathon-2024/"&gt;2024&lt;/a&gt;;
+        adding support for QUERY requests to the Action API (&lt;a href="https://phabricator.wikimedia.org/T410883"&gt;T410883&lt;/a&gt;);
+        and, motivated by the “Cool new things in JS” presentation,
+        an &lt;code&gt;mw.html.format`...`&lt;/code&gt; tag function to write HTML as template literals with automatic escaping (&lt;a href="https://phabricator.wikimedia.org/T425136"&gt;T425136&lt;/a&gt;).
+        This year, I didn’t really pick up any other projects while at the event,
+        but just ping-ponged between these projects when I had free time.
+        The CLDR project in particular mainly involved talking to other people
+        to find out how this might be best implemented and how we could test the performance;
+        many thanks for enduring my repeated questions go to &lt;a href="https://www.mediawiki.org/wiki/User:Brooke_Vibber"&gt;Brooke&lt;/a&gt; (localisation cache),
+        &lt;a href="https://www.mediawiki.org/wiki/User:Effie_Mouzeli_(WMF)"&gt;Effie&lt;/a&gt;
+        (&lt;a href="https://wikitech.wikimedia.org/wiki/Mw-experimental"&gt;mw-experimental&lt;/a&gt; – unfortunately the conclusion was that this particular change can’t be tested there),
+        and &lt;a href="https://meta.wikimedia.org/wiki/User:Reedy"&gt;Reedy&lt;/a&gt; (deployment / evaluation plan).
+        The other two projects made some more tangible progress,
+        which I &lt;a href="https://www.youtube.com/watch?v=rHMTJB8gleQ&amp;amp;t=1260s"&gt;demonstrated&lt;/a&gt; at the showcase (ca. 21:00–22:15).
+      &lt;/p&gt;
+&lt;p&gt;
+        Aside from my particular projects, this was pretty much a standard hackathon for me.
+        I met and talked to lots of nice people;
+        I attended some interesting sessions
+        (&lt;a href="https://phabricator.wikimedia.org/T423452"&gt;Fifty Shades of Caching and How LLMs Paint It Black&lt;/a&gt; was basically a shared wailing session about the horror that is the present-day web,
+        &lt;a href="https://phabricator.wikimedia.org/T424780"&gt;How MediaWiki code gets deployed and things we are changing&lt;/a&gt; was exciting,
+        “Overview of Parsoid architecture and high-level overview of the Parsoid codebase” [no task / link] was super interesting and informative – so many debugging facilities in Parsoid!);
+        and I generally had a nice time.
+        I think the social aspect during the normal program time fell a bit short
+        (there was no Wikimedia Cuteness Association meetup nor anything like the juggling / rubik’s cube sessions of past years),
+        but there were enough social opportunities in the evenings to make up for it.
+      &lt;/p&gt;
+&lt;p&gt;
+        (Side note: compared to the &lt;a href="https://lucaswerkmeister.de/posts/2026/03/17/wikimedia-hackathon-northwestern-europe-2026/"&gt;Northwestern Europe hackathon&lt;/a&gt; earlier this year,
+        my impression was that this hackathon had less “vibe coding” / “AI” going on,
+        both during the event and in what people presented at the showcase.
+        But perhaps I just did a better job at evading it, I don’t know.
+        There was a session about &lt;a href="https://phabricator.wikimedia.org/T420352"&gt;Being a developer in the age of AI taking over our profession: how do we deal with it as a community?&lt;/a&gt;,
+        which was in such high demand that a second copy of it was scheduled for later in the day;
+        I attended it but don’t think I managed to contribute (or take away) much, to be honest.
+        If you want to know more about that session, read &lt;a href="https://www.haykranen.nl/2026/05/02/wikimedia-hackathon-ai-identity-crisis/"&gt;Hay’s summary&lt;/a&gt;.)
+      &lt;/p&gt;
+&lt;p&gt;
+        As for travel, I was fortunate enough to be able to travel to and from this hackathon by train once more;
+        on Mastodon I kept it all in one thread this year (rather than several per-day threads),
+        so you can &lt;a href="https://wikis.world/@LucasWerkmeister/116487717344107408"&gt;read about my entire hackathon journey&lt;/a&gt; there.
+        And I think that’s all for now – see you either in a few months in Paris, or next year in Albania 🙂
+      &lt;/p&gt;
+
+&lt;/article&gt;</description><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2026/05/19/wikimedia-hackathon-2026/</guid><pubDate>Tue, 19 May 2026 00:00:00 GMT</pubDate></item><item><title>Wikimedia Hackathon Northwestern Europe 2026 recap</title><link>https://lucaswerkmeister.de/posts/2026/03/17/wikimedia-hackathon-northwestern-europe-2026/</link><description>&lt;article&gt;
 
 &lt;p&gt;
         Last weekend, I participated in the &lt;a href="https://www.mediawiki.org/wiki/Wikimedia_Hackathon_Northwestern_Europe_2026"&gt;Wikimedia Hackathon Northwestern Europe 2026&lt;/a&gt;,
@@ -1554,165 +1628,4 @@ WantedBy=timers.target
         as some of the unread emails were probably notifications from various other platforms.
       &lt;/p&gt;
 
-&lt;/article&gt;</description><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2024/11/26/email-bankruptcy/</guid><pubDate>Tue, 26 Nov 2024 00:00:00 GMT</pubDate></item><item><title>How To Invent Everything review</title><link>https://lucaswerkmeister.de/posts/2024/11/23/how-to-invent-everything-review/</link><description>&lt;article&gt;
-
-&lt;div&gt;
-&lt;p&gt;
-&lt;span&gt;
-
- &lt;!-- no work/edition distinction in RDFa apparently 🤷 --&gt;
-
-&lt;i&gt;How To Invent Everything: A Survival Guide for the Stranded Time Traveler&lt;/i&gt;, &lt;!-- no title/subtitle distinction either --&gt;
-            by
-            &lt;span&gt;
-
-&lt;span&gt;Ryan North&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;,
-          is a fun book.
-          The basic premise is that this is a guide for rebuilding civilization from scratch,
-          if you should find yourself stranded in the past with nothing but this book.
-        &lt;/p&gt;
-&lt;p&gt;
-          More specifically, the conceit of the entire book is that it’s &lt;em&gt;actually&lt;/em&gt; a guide for a stranded time traveler,
-          and all of us reading the book in the 21st century aren’t really its intended target audience.
-          In the introductory “note to readers”,
-          the real author, Ryan North,
-          claims to have discovered a copy of the text embedded in bedrock billions of years old,
-          where it was presumably left by a real time traveler
-          (who, being stranded on a very early Earth,
-          would sadly have had little opportunity to make use of the guide);
-          the bulk of the book (everything except said introductory note and the endnotes and index)
-          was supposedly written by a fictional author (coincidentally &lt;em&gt;also&lt;/em&gt; named Ryan North),
-          who lives in a future version of our own world which possesses time travel technology.
-        &lt;/p&gt;
-&lt;p&gt;
-          I confess that at first I found this irritating.
-          Why am I being asked, I thought, to believe (or suspend disbelief for) this ridiculous and pointless framing device?
-          But as I kept reading, I came to appreciate it, and understood that it’s not pointless at all.
-          By writing from the perspective of a fictional future author from a society with access to time machines,
-          the real author gets to state all sorts of things with confidence which in reality we can only surmise or guess at,
-          and then slap on an endnote along the lines of
-          “my research has around two thousand years’ wiggle room on the date” or
-          “all the research I found suggests the date here is at best an educated guess”.
-          (And occasionally the fictional author can just directly describe a fun “temporal experiment”
-          and leave it to the endnotes to point out that obviously we can’t really know
-          what would happen if you dropped a functional wooden glider in Europe in 1000 CE.)
-          This greatly streamlines the text and makes for a book that’s simply more fun to read.
-        &lt;/p&gt;
-&lt;p&gt;
-          The actual guide part of the book is consistently interesting and entertaining.
-          The explanations or instructions are often by necessity somewhat terse –
-          it took me a while to understand what the point of the Bessemer process is,
-          and I’m &lt;em&gt;still&lt;/em&gt; not sure how the various parts of a spinning wheel work without running into each other –
-          but the writing style generally leaves me with the impression that I’d be able to figure things out somehow,
-          and eager to try it out.
-        &lt;/p&gt;
-&lt;p&gt;
-          A recurring theme of the book is how embarrassing the actual course of history and technological development is for humanity as a whole.
-          This most often refers to the sheer amount of time humans needed to figure things out when they had all the necessary prerequisites
-          (five fundamental technologies, all of which could have been invented at any point in humanity’s history,
-          are described in “a table any human should be embarrassed to even be in the same room with”;
-          on “non-sucky numbers”, the author remarks that
-          “&lt;i&gt;Homo sapiens sapiens&lt;/i&gt;, a species that considers itself so smart that it put ‘smart’ in its own name,
-          &lt;em&gt;twice&lt;/em&gt;, and in &lt;em&gt;Latin&lt;/em&gt;, took more than 40,000 years to figure [them] out”),
-          but also to various inventors’ incorrect understanding of their inventions
-          (on heavier-than-air flight: “for decades, every single person who flew managed to do so
-          without having a correct understanding of how and why their planes really worked”).
-          This makes for an amusing text
-          (unless you want to get offended on the dead people’s behalf, I suppose)
-          and also helps to reinforce the impression that,
-          if you were trapped in the past with no supporting technology except this book,
-          you &lt;em&gt;would&lt;/em&gt; be able to reinvent everything much faster than we managed in our real timeline.
-        &lt;/p&gt;
-&lt;p&gt;
-          This also makes for an (I think) interesting comparison with the &lt;i&gt;Civilization&lt;/i&gt; games –
-          when I first read the book, this wasn’t on my mind because it had been years since I’d played any,
-          but on my more recent reread (having played a bunch of Civ6 in the meantime) I started to think about it.
-          There are some superficial similarities between the two:
-          both like to introduce technologies with vaguely related quotations, for example,
-          and both feature a tech tree (Appendix A in the book).
-          But the overall goal is quite different.
-          The Civ tech tree is carefully balanced on gameplay grounds,
-          and the game tries to approximate the course of civilization development in our actual history.
-          Flight, for instance, has 21 prerequisite technologies (from animal husbandry to industrialization),
-          and no matter what you do, you’re not going to get it much earlier than the modern era.
-          &lt;i&gt;How To Invent Everything&lt;/i&gt;, on the other hand,
-          delights in pointing out that lighter-than-air flight (i.e., hot-air balloons)
-          requires nothing other than fabric and fire
-          and could have been invented thousands of years ago,
-          if only humans hadn’t been so insistent in trying to copy birds.
-          In some cases, the book completely skips over a technological development in our timeline
-          in favor of an alternative solution that is both simpler and better –
-          for example, instead of teaching you how to invent (massively complicated) marine chronometers,
-          it offers a totally different solution to the &lt;a href="https://en.wikipedia.org/wiki/Longitude_problem"&gt;longitude problem&lt;/a&gt;
-          (which I’m not going to spoil here 😛).
-        &lt;/p&gt;
-&lt;p&gt;
-          With all that said, I want to turn to my one major issue with the book.
-          As you may have gathered at this point, the book has a focus on technology:
-          there are sections on other subjects,
-          such as nutrition (section 9), medicine (section 14), music (section 16),
-          and a minimum of lip service is even paid to philosophy (section 12),
-          but the bulk of the book is taken up by section 10,
-          which lists various technologies, their prerequisites,
-          and how to invent them ahead of schedule.
-          For a popular science book aimed at geeks in the present day,
-          this is totally fine and sensible.
-        &lt;/p&gt;
-&lt;p&gt;
-          However, if you take the book’s conceit seriously,
-          and actually consider it as a manual for rebuilding civilization from scratch,
-          then I think the implications of this are frankly terrifying.
-          The book takes pride in being, on account of all the knowledge inside it,
-          “the most dangerous item on the planet” (section 3.2),
-          and yet its approach to managing that danger,
-          and ensuring that the knowledge is not misused,
-          amounts to simply assuming that the reader is a decent person
-          and hoping that this will result in a decent society with no major problems.
-          For instance, in section 10.12.1, the author asserts that the reader
-          “[won’t] have to labor under the hangover of thousands of years of patriarchy”;
-          even if you assume that the reader didn’t end up in a time period with an existing patriarchal society
-          (despite this being considered a possibility elsewhere in the book),
-          it strikes me as bold to assume that the reader won’t have any biases of their own, conscious or otherwise.
-        &lt;/p&gt;
-&lt;p&gt;
-          Topics which the book feels no need to even mention include:
-          human rights and civil rights;
-          democracy, representative democracy, and elected rather than hereditary heads of state (is this too much to ask of a Canadian author?);
-          how to run democratic elections (universal and equal suffrage, secret ballots, the right to stand for office, etc.);
-          constitutions, separation of powers, separation of church and state;
-          the rule of law, the state monopoly on violence, basic legal principles like the right to counsel;
-          why corporal punishment or the death penalty are bad ideas;
-          the paradox of tolerance.
-        &lt;/p&gt;
-&lt;p&gt;
-          I can think of some reasons not to include these things in the book, but none of them convince me.
-          Sure, there’s limited space available,
-          but surely a summary of the Universal Declaration of Human Rights would be more valuable
-          than three full pages of frequencies for musical notes (Appendix G).
-          Some of these things might seem obvious,
-          but the book doesn’t otherwise shy away from repeating obvious things
-          (if only to clown on humans for taking such a long time to figure them out anyway) –
-          section 10.8.2 spends a page and a half on the concept of buttons (the clothes kind).
-          And in any case, many of these ideas are far from obvious –
-          they took society centuries and millennia to work out in our timeline.
-          A book which lets the reader “fast forward” through technological progress
-          should aim to put them on at least equal footing in terms of societal progress.
-        &lt;/p&gt;
-&lt;p&gt;
-          Admittedly, some of these principles are harder to introduce to a civilization than technologies.
-          To introduce glass, you “just” have to invent it and then you can expect
-          that people will see that it’s useful and be interested in making more themselves;
-          to introduce social principles, you have to explain them to people and convince them of them.
-          But this should be all the more reason for a guide to civilization to prepare the reader with this information,
-          so that they can actually try to convince their fellow humans using the arguments from the guide,
-          rather than being left with nothing but a vague feeling of
-          “well I think the society I’m from used to follow this principle but I’m not even sure why let alone how to convince others of it”.
-        &lt;/p&gt;
-&lt;p&gt;
-          But as I said: this criticism mainly applies within the book’s fictional framework
-          of being an actual guide for real time-travelers.
-          For a reader in the real world, I’m still happy to recommend the book 🙂
-        &lt;/p&gt;
-&lt;/div&gt;
-
-&lt;/article&gt;</description><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2024/11/23/how-to-invent-everything-review/</guid><pubDate>Sat, 23 Nov 2024 00:00:00 GMT</pubDate></item></channel></rss>
+&lt;/article&gt;</description><guid isPermaLink="true">https://lucaswerkmeister.de/posts/2024/11/26/email-bankruptcy/</guid><pubDate>Tue, 26 Nov 2024 00:00:00 GMT</pubDate></item></channel></rss>
