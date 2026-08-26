@@ -22,7 +22,7 @@
         to the <a href="https://wikitech.wikimedia.org/wiki/Help:Toolforge/Building_container_images">Toolforge Build Service</a>,
         and I thought it would be useful to write a bit about the process and my motivation for doing it.
       </p>
-      <h2>Why I did it</h2>
+      <h2 id="why-i-did-it">Why I did it</h2>
       <p>
         Recently, the Wikimedia Cloud Services team announced the
         <a href="https://lists.wikimedia.org/hyperkitty/list/cloud-announce@lists.wikimedia.org/thread/5D7NK7Z7KMWQPWQC23453YB7FV555Q5R/">Toolforge push-to-deploy beta</a>,
@@ -44,13 +44,13 @@
         now seems like a good time to migrate my tools to the build service,
         so that I’ll have less work to do to set up push-to-deploy once it becomes available.
       </p>
-      <h2>What I did</h2>
+      <h2 id="what-i-did">What I did</h2>
       <p>
         I also used this as an opportunity to adopt some best practices in my tools in general,
         even if not all of them were related to the build service migration.
         I’ll go through them here in roughly the order in which I did them in most tools.
       </p>
-      <h3>Add health check</h3>
+      <h3 id="add-health-check">Add health check</h3>
       <p>
         A <a href="https://wikitech.wikimedia.org/wiki/Help:Toolforge/Web#Health_checks">health check</a>
         is a way for the Toolforge infrastructure to detect if a tool is running (“healthy”) or not.
@@ -86,7 +86,7 @@
         I usually did this improvement first (unless I forgot or it was already set up)
         because it meant that most of the following improvements could be deployed without downtime for users.
       </p>
-      <h3>Splitting prod and dev dependencies</h3>
+      <h3 id="splitting-prod-and-dev-dependencies">Splitting prod and dev dependencies</h3>
       <p>
         In most of my tools, I previously had only one <code>requirements.txt</code> file
         (compiled using <a href="https://pip-tools.readthedocs.io/en/latest/">pip-tools</a> from <code>requirements.in</code>).
@@ -113,7 +113,7 @@
         it’s good enough for me.
         (I guess an alternative would be to reuse the health check for this.)
       </p>
-      <h3>Configuration from environment variables</h3>
+      <h3 id="configuration-from-environment-variables">Configuration from environment variables</h3>
       <p>
         All of my Flask tool read the <a href="https://flask.palletsprojects.com/en/stable/config/">Flask configuration</a>
         from a (user-only-readable) <code>config.yaml</code> file in the source code directory;
@@ -144,7 +144,7 @@
         (The code reading the <code>config.yaml</code> file is still there, by the way –
         it’s much more convenient for local development, even if it’s not used on Toolforge anymore.)
       </p>
-      <h3>Move CI from GitHub to GitLab</h3>
+      <h3 id="move-ci-from-github-to-gitlab">Move CI from GitHub to GitLab</h3>
       <p>
         The CI for most of my tools was on GitHub,
         mainly because many of them predated Wikimedia GitLab (or the availability of GitLab CI there).
@@ -154,7 +154,7 @@
         to the point where I just copy+pasted the <code>.gitlab-ci.yml</code> file between tools.
         (In QuickCategories, setting up a MariaDB service for CI required a little bit more work.)
       </p>
-      <h3>Actual build service migration</h3>
+      <h3 id="actual-build-service-migration">Actual build service migration</h3>
       <p>
         The migration to the build service starts with the <a href="https://wikitech.wikimedia.org/wiki/Help:Toolforge/Building_container_images#Procfile"><code>Procfile</code></a>,
         which tells the infrastructure how to run the tool.
@@ -231,7 +231,7 @@ webservice start</code></pre>
         (initially as a separate commit,
         later in the same big migration commit because I couldn’t be bothered to separate it anymore).
       </p>
-      <h2>More details</h2>
+      <h2 id="more-details">More details</h2>
       <p>
         If you want to follow the migrations in more detail,
         you can look at the relevant Git commit ranges and <abbr title="Server Admin Log">SAL</abbr> entries:
