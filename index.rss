@@ -459,7 +459,7 @@
         to the &lt;a href="https://wikitech.wikimedia.org/wiki/Help:Toolforge/Building_container_images"&gt;Toolforge Build Service&lt;/a&gt;,
         and I thought it would be useful to write a bit about the process and my motivation for doing it.
       &lt;/p&gt;
-&lt;h2&gt;Why I did it&lt;/h2&gt;
+&lt;h2 id="why-i-did-it"&gt;Why I did it&lt;/h2&gt;
 &lt;p&gt;
         Recently, the Wikimedia Cloud Services team announced the
         &lt;a href="https://lists.wikimedia.org/hyperkitty/list/cloud-announce@lists.wikimedia.org/thread/5D7NK7Z7KMWQPWQC23453YB7FV555Q5R/"&gt;Toolforge push-to-deploy beta&lt;/a&gt;,
@@ -481,13 +481,13 @@
         now seems like a good time to migrate my tools to the build service,
         so that I’ll have less work to do to set up push-to-deploy once it becomes available.
       &lt;/p&gt;
-&lt;h2&gt;What I did&lt;/h2&gt;
+&lt;h2 id="what-i-did"&gt;What I did&lt;/h2&gt;
 &lt;p&gt;
         I also used this as an opportunity to adopt some best practices in my tools in general,
         even if not all of them were related to the build service migration.
         I’ll go through them here in roughly the order in which I did them in most tools.
       &lt;/p&gt;
-&lt;h3&gt;Add health check&lt;/h3&gt;
+&lt;h3 id="add-health-check"&gt;Add health check&lt;/h3&gt;
 &lt;p&gt;
         A &lt;a href="https://wikitech.wikimedia.org/wiki/Help:Toolforge/Web#Health_checks"&gt;health check&lt;/a&gt;
         is a way for the Toolforge infrastructure to detect if a tool is running (“healthy”) or not.
@@ -523,7 +523,7 @@
         I usually did this improvement first (unless I forgot or it was already set up)
         because it meant that most of the following improvements could be deployed without downtime for users.
       &lt;/p&gt;
-&lt;h3&gt;Splitting prod and dev dependencies&lt;/h3&gt;
+&lt;h3 id="splitting-prod-and-dev-dependencies"&gt;Splitting prod and dev dependencies&lt;/h3&gt;
 &lt;p&gt;
         In most of my tools, I previously had only one &lt;code&gt;requirements.txt&lt;/code&gt; file
         (compiled using &lt;a href="https://pip-tools.readthedocs.io/en/latest/"&gt;pip-tools&lt;/a&gt; from &lt;code&gt;requirements.in&lt;/code&gt;).
@@ -550,7 +550,7 @@
         it’s good enough for me.
         (I guess an alternative would be to reuse the health check for this.)
       &lt;/p&gt;
-&lt;h3&gt;Configuration from environment variables&lt;/h3&gt;
+&lt;h3 id="configuration-from-environment-variables"&gt;Configuration from environment variables&lt;/h3&gt;
 &lt;p&gt;
         All of my Flask tool read the &lt;a href="https://flask.palletsprojects.com/en/stable/config/"&gt;Flask configuration&lt;/a&gt;
         from a (user-only-readable) &lt;code&gt;config.yaml&lt;/code&gt; file in the source code directory;
@@ -581,7 +581,7 @@
         (The code reading the &lt;code&gt;config.yaml&lt;/code&gt; file is still there, by the way –
         it’s much more convenient for local development, even if it’s not used on Toolforge anymore.)
       &lt;/p&gt;
-&lt;h3&gt;Move CI from GitHub to GitLab&lt;/h3&gt;
+&lt;h3 id="move-ci-from-github-to-gitlab"&gt;Move CI from GitHub to GitLab&lt;/h3&gt;
 &lt;p&gt;
         The CI for most of my tools was on GitHub,
         mainly because many of them predated Wikimedia GitLab (or the availability of GitLab CI there).
@@ -591,7 +591,7 @@
         to the point where I just copy+pasted the &lt;code&gt;.gitlab-ci.yml&lt;/code&gt; file between tools.
         (In QuickCategories, setting up a MariaDB service for CI required a little bit more work.)
       &lt;/p&gt;
-&lt;h3&gt;Actual build service migration&lt;/h3&gt;
+&lt;h3 id="actual-build-service-migration"&gt;Actual build service migration&lt;/h3&gt;
 &lt;p&gt;
         The migration to the build service starts with the &lt;a href="https://wikitech.wikimedia.org/wiki/Help:Toolforge/Building_container_images#Procfile"&gt;&lt;code&gt;Procfile&lt;/code&gt;&lt;/a&gt;,
         which tells the infrastructure how to run the tool.
@@ -668,7 +668,7 @@ webservice start&lt;/code&gt;&lt;/pre&gt;
         (initially as a separate commit,
         later in the same big migration commit because I couldn’t be bothered to separate it anymore).
       &lt;/p&gt;
-&lt;h2&gt;More details&lt;/h2&gt;
+&lt;h2 id="more-details"&gt;More details&lt;/h2&gt;
 &lt;p&gt;
         If you want to follow the migrations in more detail,
         you can look at the relevant Git commit ranges and &lt;abbr title="Server Admin Log"&gt;SAL&lt;/abbr&gt; entries:
