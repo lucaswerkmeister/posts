@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Lucas’ Posts (#wikimedia)</title><link>https://lucaswerkmeister.de/posts/</link><description>I suppose this is a blog of sorts – or at least a place where I occasionally post stuff. Not necessarily about anything in particular.</description><lastBuildDate>Fri, 28 Aug 2026 18:15:44 GMT</lastBuildDate><generator>PyRSS2Gen-1.1.0</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Why Unions and Works Councils Are Important for the Wikimedia Movement</title><link>https://lucaswerkmeister.de/posts/2026/08/28/unions-and-works-councils-wikimedia/</link><description>&lt;article&gt;
+<rss version="2.0"><channel><title>Lucas’ Posts (#wikimedia)</title><link>https://lucaswerkmeister.de/posts/</link><description>I suppose this is a blog of sorts – or at least a place where I occasionally post stuff. Not necessarily about anything in particular.</description><lastBuildDate>Thu, 03 Sep 2026 15:55:29 GMT</lastBuildDate><generator>PyRSS2Gen-1.1.0</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Why Unions and Works Councils Are Important for the Wikimedia Movement</title><link>https://lucaswerkmeister.de/posts/2026/08/28/unions-and-works-councils-wikimedia/</link><description>&lt;article&gt;
 
 &lt;p style="font-size: 1.5rem"&gt;
         Employees of the Wikimedia Foundation (WMF) want to organize in a union.
@@ -11,28 +11,31 @@
       &lt;/p&gt;
 &lt;h2&gt;What happened?&lt;/h2&gt;
 &lt;p&gt;
-        In July 2026, the Wiki Workers United U.S., a group of Wikimedia Foundation employees who want to unionize, &lt;a href="https://wikiworkersunited.org/announcements/2026-07-20-us-demands-voluntary-recognition/"&gt;announced&lt;/a&gt;:
-        a majority of employees in the USA who are entitled to vote has expressed their interest in being represented by the &lt;a href="https://de.wikipedia.org/wiki/Communications_Workers_of_America"&gt;Communications Workers of America&lt;/a&gt;
-        [&lt;i&gt;&lt;a href="https://en.wikipedia.org/wiki/Communications_Workers_of_America"&gt;en&lt;/a&gt;&lt;/i&gt;] union.
+        In July 2026, the Wiki Workers United U.S. – a group of Wikimedia Foundation employees who strive to found a union – &lt;a href="https://wikiworkersunited.org/announcements/2026-07-20-us-demands-voluntary-recognition/"&gt;announced&lt;/a&gt;:
+        they demanded that the WMF voluntarily recognize the &lt;a href="https://de.wikipedia.org/wiki/Communications_Workers_of_America"&gt;Communications Workers of America&lt;/a&gt; (CWA)
+        [&lt;i&gt;&lt;a href="https://en.wikipedia.org/wiki/Communications_Workers_of_America"&gt;en&lt;/a&gt;&lt;/i&gt;]
+        as their union representation.
+        To this end, employees had signed so-called &lt;a href="https://beta.dol.gov/policy-regulations/unions-collective-bargaining/what-union/forming-union"&gt;Union Authorization Cards&lt;/a&gt;.
       &lt;/p&gt;
 &lt;p&gt;
-        In early August, the Wikimedia Foundation declared that they would not recognize CWA as the union representative.
-        &lt;a href="https://wikimediafoundation.org/news/2026/07/27/statement-cwa-recognition-request/"&gt;The reasons cited&lt;/a&gt; were feedback from among the employees and misunderstandings about what a union can do.
+        “Wiki Workers United” therefore called for the WMF to enter into negotiations with CWA.
+        Following this, the Wikimedia Foundation &lt;a href="https://wikimediafoundation.org/news/2026/07/27/statement-cwa-recognition-request/"&gt;suggested in early August&lt;/a&gt;
+        to first hold a secret election on the question of founding a union under the supervision of the National Labor Relations Board (NLRB).
       &lt;/p&gt;
 &lt;p&gt;
-        This step provoked criticism. The WMF’s reasons are criticized as being pretextual and part of delay tactics intended to prevent the employees from organizing in a union.
+        This step provoked criticism. The WMF’s reasons are criticized as being part of delay tactics intended to prevent the employees from organizing in a union.
       &lt;/p&gt;
 &lt;p&gt;
-        To organize another vote among WMF employees, the CWA called on the National Labor Relations Board (NLRB).
+        In order to organize a vote among WMF employees, the CWA called upon the NLRB.
         This federal agency is meant to supervise the rightful organization of employees in the private sector.
-        The counting of the new vote is &lt;a href="https://wikiworkersunited.org/announcements/2026-08-05-us-upcoming-nlrb-election/"&gt;scheduled for 3 September&lt;/a&gt;.
+        The counting of the vote will complete &lt;a href="https://wikiworkersunited.org/announcements/2026-08-05-us-upcoming-nlrb-election/"&gt;on 3 September&lt;/a&gt;.
       &lt;/p&gt;
 &lt;p&gt;
         As part of their registration with the NLRB, the Wikimedia Foundation also specified their legal counsel:
         the Littler Mendelson law firm,
         according to a &lt;a href="https://medium.com/regarding-wikipedia/the-wikimedia-foundation-hired-the-union-busters-its-own-encyclopedia-warned-about-42b7142a5cd1"&gt;media report&lt;/a&gt;.
         The source for this is Wikipedia itself and an &lt;a href="https://en.wikipedia.org/wiki/Littler_Mendelson#cite_note-31"&gt;official document linked there&lt;/a&gt;.
-        However, the document, or rather the site of the NLRB, are not reachable since 11 August.
+        However, the NLRB website is currently not reachable from a German IP address.
       &lt;/p&gt;
 &lt;h2&gt;Why the works council is important for Wikimedia Germany&lt;/h2&gt;
 &lt;p&gt;
@@ -95,7 +98,7 @@
           In Germany, works council work is the best way to apply negotiation processes within a company.
           This allows foundational principles of Wikipedia such as cooperation and participation to become living practice within the staff body and the employer-employee relation.
         &lt;/p&gt;
-&lt;cite&gt;Merle von Wittich, works council member, Wikimedia Germany&lt;/cite&gt;
+&lt;cite&gt;Merle von Wittich, Advisor Community Network, Wikimedia Germany&lt;/cite&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;
         Merle’s favorite subject is health.
@@ -122,7 +125,7 @@
           For me, the works council is the place which is best suited to get a complete and realistic picture of the employees’ situation –
           and, based on that, to support them to improve their working environment.
         &lt;/p&gt;
-&lt;cite&gt;Lucas Werkmeister, works council member, Wikimedia Germany&lt;/cite&gt;
+&lt;cite&gt;Lucas Werkmeister, software developer, Wikimedia Germany&lt;/cite&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;
         Lucas can think of many works agreements which have achieved just that and are appreciated by the colleagues.
@@ -141,9 +144,9 @@
       &lt;/p&gt;
 &lt;h2&gt;What happens next in the USA&lt;/h2&gt;
 &lt;p&gt;
-        The ballots for the repeat vote were already sent to eligible Wikimedia staff in the USA on 11 August.
+        The ballots for the NLRB vote were already sent to eligible Wikimedia staff in the USA on 11 August.
         On 3 September 2026 they will be counted in the regional NLRB office in San Francisco.
-        If this repeated vote also results in a majority of employees expressing their desire for union representation,
+        If this vote also results in a majority of employees expressing their desire for union representation,
         we expect that the Wikimedia Foundation will enter constructive and fair negotiations with the union.
       &lt;/p&gt;
 
